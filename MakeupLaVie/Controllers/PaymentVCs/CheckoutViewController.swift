@@ -81,7 +81,6 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                 checkoutCell.resetImageRotation()
             }
         }
-        
         view.endEditing(true)
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
