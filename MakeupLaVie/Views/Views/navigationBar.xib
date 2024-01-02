@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="navigationBarView" customModule="MakeupLaVie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhl-Ho-acz">
+                    <rect key="frame" x="8" y="8" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="aUt-V2-jBM"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="Icon-29"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands.pk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kap-d1-JMl">
+                    <rect key="frame" x="53" y="13.666666666666664" width="287" height="23"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZF-YV-9vo">
+                    <rect key="frame" x="350" y="8" width="35" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="Icon-22"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="dTZ-EI-wP5"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="WZF-YV-9vo" firstAttribute="width" secondItem="Nhl-Ho-acz" secondAttribute="width" id="1sc-UN-nD3"/>
+                <constraint firstItem="Nhl-Ho-acz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="7b9-ED-Sbh"/>
+                <constraint firstItem="kap-d1-JMl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ARq-cL-aLQ"/>
+                <constraint firstAttribute="trailing" secondItem="WZF-YV-9vo" secondAttribute="trailing" constant="8" id="BeD-fg-FUh"/>
+                <constraint firstItem="WZF-YV-9vo" firstAttribute="leading" secondItem="kap-d1-JMl" secondAttribute="trailing" constant="10" id="fFC-38-P9I"/>
+                <constraint firstItem="WZF-YV-9vo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="gcV-1Y-PIi"/>
+                <constraint firstItem="Nhl-Ho-acz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="h5p-4F-i3l"/>
+                <constraint firstAttribute="bottom" secondItem="WZF-YV-9vo" secondAttribute="bottom" constant="7" id="i7C-0V-YEx"/>
+                <constraint firstAttribute="bottom" secondItem="Nhl-Ho-acz" secondAttribute="bottom" constant="7" id="rgZ-Qe-QtO"/>
+                <constraint firstItem="kap-d1-JMl" firstAttribute="leading" secondItem="Nhl-Ho-acz" secondAttribute="trailing" constant="10" id="yd8-ZL-1vD"/>
+                <constraint firstItem="kap-d1-JMl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zsZ-7v-rmY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftNavBtn" destination="Nhl-Ho-acz" id="cea-pQ-8cX"/>
+                <outlet property="rightNavBtn" destination="WZF-YV-9vo" id="VDJ-4H-u52"/>
+                <outlet property="titleLbl" destination="kap-d1-JMl" id="zKi-k3-4xC"/>
+            </connections>
+            <point key="canvasLocation" x="136.64122137404578" y="-251.05633802816902"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Icon-22" width="20" height="20"/>
+        <image name="Icon-29" width="29" height="29"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
