@@ -118,6 +118,13 @@
 		76ADA3702A25C87D0084A376 /* ViewProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADA36F2A25C87D0084A376 /* ViewProductModel.swift */; };
 		76F284C22A3C71CB00E5850D /* CategoryProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */; };
 		76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4B3712A43222E00E36DC2 /* WishListModel.swift */; };
+		E039B5DD2B45A88200CB38D8 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */; };
+		E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */; };
+		E0EC327B2B4D82A000E7F057 /* OrderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */; };
+		E0F68EF32B4E78930075A915 /* orderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */; };
+		E0F68EF52B4E85C50075A915 /* OrderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F68EF42B4E85C50075A915 /* OrderFooterView.xib */; };
+		E0F68EF72B4E85E90075A915 /* OrderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF62B4E85E90075A915 /* OrderFooterView.swift */; };
+		E0F68EF92B4EB3DA0075A915 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF82B4EB3DA0075A915 /* CornerRadius.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,6 +254,12 @@
 		76ADA36F2A25C87D0084A376 /* ViewProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductModel.swift; sourceTree = "<group>"; };
 		76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductModel.swift; sourceTree = "<group>"; };
 		76F4B3712A43222E00E36DC2 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
+		E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHeaderView.xib; sourceTree = "<group>"; };
+		E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderView.swift; sourceTree = "<group>"; };
+		E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTableViewCell.swift; sourceTree = "<group>"; };
+		E0F68EF42B4E85C50075A915 /* OrderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderFooterView.xib; sourceTree = "<group>"; };
+		E0F68EF62B4E85E90075A915 /* OrderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFooterView.swift; sourceTree = "<group>"; };
+		E0F68EF82B4EB3DA0075A915 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +267,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E039B5DD2B45A88200CB38D8 /* IQKeyboardManagerSwift in Frameworks */,
 				768635902A03C8250089C19E /* SwiftyJSON in Frameworks */,
 				18A179A32A84BA2000054D15 /* MultiSlider in Frameworks */,
 				7686358D2A03C76F0089C19E /* Kingfisher in Frameworks */,
@@ -287,6 +301,10 @@
 				18A179A62A84E25C00054D15 /* BrandsPK */,
 				18E546342A615F3900B8E8F0 /* navigationBar.xib */,
 				18052EB52A651870009BABDF /* navigationBarView.swift */,
+				E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */,
+				E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */,
+				E0F68EF42B4E85C50075A915 /* OrderFooterView.xib */,
+				E0F68EF62B4E85E90075A915 /* OrderFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -367,6 +385,7 @@
 				76257C3E29EFCB4D0089CCE9 /* ImageZoom */,
 				18A819512A5FD8880091C4DA /* UserInfo.swift */,
 				18F98F062A66AE350057578D /* utilityFunctions.swift */,
+				E0F68EF82B4EB3DA0075A915 /* CornerRadius.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -604,6 +623,7 @@
 				76A4A93729FA7E2E00C6C7D0 /* MassageVC.swift */,
 				76A4A93929FA7E4B00C6C7D0 /* MyReviewsVC.swift */,
 				76A4A93B29FA7E6F00C6C7D0 /* NotificationsVC.swift */,
+				E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */,
 			);
 			path = "SettingVC ";
 			sourceTree = "<group>";
@@ -755,6 +775,7 @@
 				18052EBC2A657E10009BABDF /* Cosmos */,
 				18BC18342A7A8B220035CD43 /* SDWebImage */,
 				18A179A22A84BA2000054D15 /* MultiSlider */,
+				E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */,
 			);
 			productName = MakeupLaVie;
 			productReference = 7696C80429E51CB100383B01 /* MakeupLaVie.app */;
@@ -835,6 +856,7 @@
 				18052EBB2A657E10009BABDF /* XCRemoteSwiftPackageReference "Cosmos" */,
 				18BC18332A7A8B220035CD43 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				18A179A12A84BA2000054D15 /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				E039B5DB2B45A88200CB38D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 7696C80529E51CB100383B01 /* Products */;
 			projectDirPath = "";
@@ -855,12 +877,14 @@
 				76883E452A247F7600240AF1 /* BestProductCollectionCell.xib in Resources */,
 				768CC4692A20BF7E0092C4F7 /* SpecialCollectionCell.xib in Resources */,
 				7696C81429E51CB300383B01 /* Assets.xcassets in Resources */,
+				E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */,
 				18E546352A615F3900B8E8F0 /* navigationBar.xib in Resources */,
 				768CC4632A20BEDC0092C4F7 /* SpecialTableView.xib in Resources */,
 				76883E492A24852900240AF1 /* HotDealTableView.xib in Resources */,
 				7696C80F29E51CB200383B01 /* Main.storyboard in Resources */,
 				18052EBA2A652CEC009BABDF /* LaunchScreen.storyboard in Resources */,
 				76417DDE2A0CED7700894E8A /* TrendingCollectionViewCell.xib in Resources */,
+				E0F68EF52B4E85C50075A915 /* OrderFooterView.xib in Resources */,
 				76883E412A247F3C00240AF1 /* BestProductsTableView.xib in Resources */,
 				76883E4D2A24855700240AF1 /* HotDealCollectionView.xib in Resources */,
 				76A4A92F29FA3E6000C6C7D0 /* CollectionViewCell.xib in Resources */,
@@ -928,6 +952,7 @@
 				76A4A93C29FA7E6F00C6C7D0 /* NotificationsVC.swift in Sources */,
 				76A63D7829ED193200082DED /* CategoryVC.swift in Sources */,
 				768CC4622A20BEDC0092C4F7 /* SpecialTableView.swift in Sources */,
+				E0EC327B2B4D82A000E7F057 /* OrderHeaderView.swift in Sources */,
 				18CCC6312A86142C0046E43A /* ReviewViewController.swift in Sources */,
 				768635792A026DB90089C19E /* LoginModel.swift in Sources */,
 				76A6EE292A389592009AA9DF /* SecondBrowseProductModel.swift in Sources */,
@@ -959,10 +984,12 @@
 				18A179A52A84E1C800054D15 /* BrandPKViewController.swift in Sources */,
 				18BC182E2A7A63810035CD43 /* DashBoardCell.swift in Sources */,
 				76930CE729EFF7B300B33105 /* ReviewsVC.swift in Sources */,
+				E0F68EF72B4E85E90075A915 /* OrderFooterView.swift in Sources */,
 				18A819522A5FD8880091C4DA /* UserInfo.swift in Sources */,
 				76A63D6A29ED180F00082DED /* LoginVC.swift in Sources */,
 				768635922A03CBA80089C19E /* Constant.swift in Sources */,
 				76A6EE2C2A39BF6C009AA9DF /* cartTableViewCell.swift in Sources */,
+				E0F68EF32B4E78930075A915 /* orderTableViewCell.swift in Sources */,
 				76A4A92A29FA3DD200C6C7D0 /* CollectionViewInsideTableViewCell.swift in Sources */,
 				76A63D7C29ED196100082DED /* CartVC.swift in Sources */,
 				76ADA3702A25C87D0084A376 /* ViewProductModel.swift in Sources */,
@@ -973,6 +1000,7 @@
 				18CCC6302A86142C0046E43A /* MainViewController.swift in Sources */,
 				768849492A1C8A1600D81158 /* APIManager.swift in Sources */,
 				76257C3B29EFC6AE0089CCE9 /* ProductDetailsVC.swift in Sources */,
+				E0F68EF92B4EB3DA0075A915 /* CornerRadius.swift in Sources */,
 				18E546382A61717D00B8E8F0 /* TabBarVC.swift in Sources */,
 				768CC4682A20BF7E0092C4F7 /* SpecialCollectionCell.swift in Sources */,
 				76883E4C2A24855700240AF1 /* HotDealCollectionView.swift in Sources */,
@@ -1363,6 +1391,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E039B5DB2B45A88200CB38D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1395,6 +1431,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7686358E2A03C8250089C19E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E039B5DB2B45A88200CB38D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

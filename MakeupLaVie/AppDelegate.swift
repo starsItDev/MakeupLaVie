@@ -7,10 +7,10 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -18,10 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let vc: UIViewController?
         //if TokenService.tokenInstance.checkForLogin(){
-            vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC
+        vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC
         //let navVC = UINavigationController(rootViewController: vc!)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
+        IQKeyboardManager.shared.enable = true
         return true
         
         //        let vc : UIViewController?

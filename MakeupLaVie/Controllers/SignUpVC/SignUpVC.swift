@@ -24,11 +24,15 @@ class SignUpVC: UIViewController , UITextViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    @objc func handleTap() {
+        view.endEditing(true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
@@ -132,15 +136,15 @@ class SignUpVC: UIViewController , UITextViewDelegate{
                 let message = body?["message"]?.stringValue
                 utilityFunctions.showAlertWithTitle(title: "Verification Required", withMessage: message ?? "", withNavigation: self)
                 self.navigationController?.popViewController(animated: true)
-//                let user = body?["user"]?.dictionary
-//                let id = user?["id"]?.intValue
-//                let first_name = user?["first_name"]?.stringValue
-//                let last_name = user?["last_name"]?.stringValue
-//                let created_at = user?["created_at"]?.stringValue
-//                let updated_at = user?["updated_at"]?.stringValue
-//                let locale = user?["locale"]?.stringValue
-//                let phone = user?["phone"]?.stringValue
-//                let account_type = user?["account_type"]?.intValue
+                //                let user = body?["user"]?.dictionary
+                //                let id = user?["id"]?.intValue
+                //                let first_name = user?["first_name"]?.stringValue
+                //                let last_name = user?["last_name"]?.stringValue
+                //                let created_at = user?["created_at"]?.stringValue
+                //                let updated_at = user?["updated_at"]?.stringValue
+                //                let locale = user?["locale"]?.stringValue
+                //                let phone = user?["phone"]?.stringValue
+                //                let account_type = user?["account_type"]?.intValue
             }
             else{
                 let body = response["body"].dictionary

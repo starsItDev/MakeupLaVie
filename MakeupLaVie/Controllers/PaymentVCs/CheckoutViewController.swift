@@ -23,9 +23,9 @@ struct ExistingAddress{
     var Address: String
 }
 
-protocol CheckoutViewControllerDelegate: AnyObject {
-    func didSelectShippingButton(changeLineColor: Bool)
-}
+//protocol CheckoutViewControllerDelegate: AnyObject {
+//    func didSelectShippingButton(changeLineColor: Bool)
+//}
 
 class CheckoutViewController: UIViewController, UITextFieldDelegate{
     
@@ -40,7 +40,6 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var postCodeTxt: UITextField!
     @IBOutlet weak var address1Txt: UITextField!
     @IBOutlet weak var address2Txt: UITextField!
-    @IBOutlet weak var billingTableView: UITableView!
     
     // MARK: - Variables
     var params = [String: Any]()
@@ -56,7 +55,6 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     var existAddrArr = [String]()
     var countries = [String]()
     var provinces = [String]()
-    weak var delegate: CheckoutViewControllerDelegate?
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -69,46 +67,24 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         existingAddressTxt.inputView = addressPicker
         countryTxt.inputView = countryPicker
         stateTxt.inputView = statePicker
-        billingPeopleArr = Array(repeating: Person(Address: "", firstName: "", lastName: "", number: "", country: "", province: "", city: "", postcode: "", AddressOne: "", AddressTwo: ""), count: 10)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissPicker))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - HelperFunctions
-    @objc func dismissPicker() {
-        for cell in billingTableView.visibleCells {
-            if let checkoutCell = cell as? CheckoutTableViewCell {
-                checkoutCell.resetImageRotation()
-            }
-        }
+    @objc func handleTap() {
         view.endEditing(true)
+        dismissPickers()
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let indexPath = getIndexPath(for: textField)
-        let isPickerTextField = indexPath.section == 0 || indexPath.section == 4 || indexPath.section == 5
-        if !isPickerTextField {
-            textField.layer.borderColor = UIColor.red.cgColor
-            textField.layer.borderWidth = 2.0
-            if let cell = textField.superview?.superview as? CheckoutTableViewCell {
-                cell.togglePickerVisibility(true)
-            }
-        }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 1.0
-        if let cell = textField.superview?.superview as? CheckoutTableViewCell {
-            cell.togglePickerVisibility(false)
-        }
-    }
-    private func getIndexPath(for textField: UITextField) -> IndexPath {
-        let point = textField.convert(CGPoint.zero, to: billingTableView)
-        return billingTableView.indexPathForRow(at: point)!
+    func dismissPickers() {
+        existingAddressTxt.resignFirstResponder()
+        countryTxt.resignFirstResponder()
+        stateTxt.resignFirstResponder()
     }
     @IBAction func unCheckButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-            sender.setImage(UIImage(named: "black"), for: .normal)
+            sender.setImage(UIImage(named: "tick"), for: .normal)
         } else {
             sender.setImage(UIImage(named: "unCheck"), for: .normal)
         }
@@ -172,7 +148,9 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     @IBAction func cartBtnTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+    @IBAction func checkOutBackBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     func checkOutDetailsAPI(){
         let url = base_url + "checkout"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
@@ -194,8 +172,8 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                                 let city = i["city"].stringValue
                                 let existAddr = "\(firstName)\(lastName)(\(address1))"
                                 self.existAddrArr.append(existAddr)
-                                self.countries.append(i["country"].stringValue)
-                                self.provinces.append(i["state"].stringValue)
+                                //self.countries.append(i["country"].stringValue)
+                                //self.provinces.append(i["state"].stringValue)
                                 self.existingAddressTxt.text = existAddr
                                 self.firstNameTxt.text = firstName
                                 self.lastNameTxt.text = lastName
@@ -207,7 +185,7 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                                 self.stateTxt.text = state
                                 self.cityTxt.text = city
                                 
-                                let person = Person(Address: address1, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+                                let person = Person(Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
                                 self.billingPeopleArr.append(person)
                             }
                         }
@@ -224,103 +202,20 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         let url = base_url + "checkout/billing"
         Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
             if error == nil && statusCode == 200{
-                if let body = response["body"].dictionary{
-//                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as! ShippingViewController
-//                    vc.shippingPeopleArr = self.shippingPeopleArr
-//                    vc.showData()
-                    self.delegate?.didSelectShippingButton(changeLineColor: true)
+                if response["body"].dictionary != nil {
+                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as? ShippingViewController {
+                        if !self.billingPeopleArr.isEmpty{
+                            vc.billingData = self.billingPeopleArr.last
+                        }
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    //                    vc.shippingPeopleArr = self.shippingPeopleArr
+                    //                    vc.showData()
+                    //                    self.delegate?.didSelectShippingButton(changeLineColor: true)
                 }
             }
         }
         //self.delegate?.didSelectShippingButton(changeLineColor: true) //only for testing
-    }
-}
-
-// MARK: - Extension TableView
-extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.billingPeopleArr.count
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 17
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView()
-        footer.backgroundColor = UIColor.white
-        return footer
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CheckoutTableViewCell
-        let personData = billingPeopleArr[indexPath.section]
-        switch indexPath.section {
-        case 0:
-            
-            addressPicker.tag = 0
-            
-            addressPicker.dataSource = self
-            cell.cellTextField.inputView = addressPicker
-            cell.cellTextField.text = personData.Address
-            cell.cellTextField.placeholder = "Existing Address*"
-            cell.pickerImage.isHidden = false
-            cell.rotateImage(angle: cell.rotationAngle)
-        case 1:
-            cell.cellTextField.placeholder = "First Name*"
-            cell.cellTextField.text = personData.firstName
-            cell.pickerImage.isHidden = true
-        case 2:
-            cell.cellTextField.placeholder = "Last Name*"
-            cell.cellTextField.text = personData.lastName
-            cell.pickerImage.isHidden = true
-        case 3:
-            cell.cellTextField.placeholder = "Phone Number*"
-            cell.cellTextField.text = personData.number
-            cell.pickerImage.isHidden = true
-        case 4:
-            
-            countryPicker.tag = 4
-            
-            countryPicker.dataSource = self
-            cell.cellTextField.inputView = countryPicker
-            cell.cellTextField.text = personData.country
-            cell.cellTextField.placeholder = "Country*"
-            cell.pickerImage.isHidden = false
-            cell.rotateImage(angle: cell.rotationAngle)
-        case 5:
-            
-            statePicker.tag = 5
-            
-            statePicker.dataSource = self
-            cell.cellTextField.inputView = statePicker
-            cell.cellTextField.text = personData.province
-            cell.cellTextField.placeholder = "State / Province*"
-            cell.pickerImage.isHidden = false
-            cell.rotateImage(angle: cell.rotationAngle)
-        case 6:
-            cell.cellTextField.placeholder = "City*"
-            cell.cellTextField.text = personData.city
-            cell.pickerImage.isHidden = true
-        case 7:
-            cell.cellTextField.placeholder = "Postcode / ZIP*"
-            cell.cellTextField.text = personData.postcode
-            cell.pickerImage.isHidden = true
-        case 8:
-            cell.cellTextField.placeholder = "Address 1*"
-            cell.cellTextField.text = personData.AddressOne
-            cell.pickerImage.isHidden = true
-        case 9:
-            cell.cellTextField.placeholder = "Address 2*"
-            cell.cellTextField.text = personData.AddressTwo
-            cell.pickerImage.isHidden = true
-        default:
-            break
-        }
-        cell.cellTextField.tag = indexPath.section
-        cell.cellTextField.delegate = self
-        return cell
     }
 }
 
@@ -331,95 +226,66 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        switch pickerView.tag {
-//        case 0:
-//            return Address.count
-//        case 4:
-//            return countries.count
-//        case 5:
-//            return provinces.count
-//        default:
-//            return 0
-//        }
         if pickerView == addressPicker{
-            return existAddrArr.count
+            return billingPeopleArr.count + 1
         }
-        else if pickerView == countryPicker{
-            return countries.count
-        }
-        else if pickerView == statePicker{
-            return provinces.count
-        }
-        else{
+        else {
             return 0
         }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        switch pickerView.tag {
-//        case 0:
-//            return Address[row]
-//        case 4:
-//            return countries[row]
-//        case 5:
-//            return provinces[row]
-//        default:
-//            return nil
-//        }
         if pickerView == addressPicker{
-            return existAddrArr[row]
+            if row == 0 {
+                return "App new Address"
+            } else {
+                return billingPeopleArr[row - 1].Address
+            }
         }
         else if pickerView == countryPicker{
-            return countries[row]
+            return billingPeopleArr[row].country
         }
         else if pickerView == statePicker{
-            return provinces[row]
+            return billingPeopleArr[row].province
         }
         else{
             return nil
         }
-        
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedTag = pickerView.tag
-        guard selectedTag < billingPeopleArr.count
-        else {
-            return
-        }
-        var selectedPerson = billingPeopleArr[row]
-//        switch pickerView.tag {
-//        case 0:
-//            selectedPerson.Address = Address[row]
-//        case 4:
-//            selectedPerson.country = countries[row]
-//        case 5:
-//            selectedPerson.province = provinces[row]
-//        default:
-//            break
-//        }
-        if pickerView == addressPicker{
-            selectedPerson.Address = existAddrArr[row]
-            
-            self.existingAddressTxt.text = selectedPerson.Address
-//            self.firstNameTxt.text = selectedPerson.firstName
-//            self.lastNameTxt.text = selectedPerson.lastName
-//            self.phoneNoTxt.text = selectedPerson.number
-//            self.countryTxt.text = selectedPerson.country
-//            self.stateTxt.text = selectedPerson.province
-//            self.cityTxt.text = selectedPerson.city
-//            self.postCodeTxt.text = selectedPerson.postcode
-//            self.address1Txt.text = selectedPerson.AddressOne
-//            self.address2Txt.text = selectedPerson.AddressTwo
+        if pickerView == addressPicker {
+            if row == 0 {
+                existingAddressTxt.text = "App New Address"
+                firstNameTxt.text = ""
+                lastNameTxt.text = ""
+                phoneNoTxt.text = ""
+                cityTxt.text = ""
+                postCodeTxt.text = ""
+                address1Txt.text = ""
+                address2Txt.text = ""
+            } else {
+                let selectedTag = pickerView.tag
+                guard selectedTag < billingPeopleArr.count
+                else {
+                    return
+                }
+                self.existingAddressTxt.text = billingPeopleArr[row - 1].Address
+                self.firstNameTxt.text = billingPeopleArr[row - 1].firstName
+                self.lastNameTxt.text = billingPeopleArr[row - 1].lastName
+                self.phoneNoTxt.text = billingPeopleArr[row - 1].number
+                self.countryTxt.text = billingPeopleArr[row - 1].country
+                self.stateTxt.text = billingPeopleArr[row - 1].province
+                self.cityTxt.text = billingPeopleArr[row - 1].city
+                self.postCodeTxt.text = billingPeopleArr[row - 1].postcode
+                self.address1Txt.text = billingPeopleArr[row - 1].AddressOne
+                self.address2Txt.text = billingPeopleArr[row - 1].AddressTwo
+            }
         }
         else if pickerView == countryPicker{
-            selectedPerson.country = countries[row]
-            self.countryTxt.text = selectedPerson.country
+            self.countryTxt.text = billingPeopleArr[row].country
         }
         else if pickerView == statePicker{
-            selectedPerson.province = provinces[row]
-            self.stateTxt.text = selectedPerson.province
+            self.stateTxt.text = billingPeopleArr[row].province
         }
-        billingPeopleArr[selectedTag] = selectedPerson
-        //billingTableView.reloadData()
     }
 }
 

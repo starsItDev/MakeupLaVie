@@ -7,38 +7,12 @@
 
 import UIKit
 
-struct ShippingPerson: Equatable {
-    var Address: String
-    var firstName: String
-    var lastName: String
-    var number: String
-    var country: String
-    var province: String
-    var city: String
-    var postcode: String
-    var AddressOne: String
-    var AddressTwo: String
-
-    static func == (lhs: ShippingPerson, rhs: ShippingPerson) -> Bool {
-        return lhs.Address == rhs.Address &&
-            lhs.firstName == rhs.firstName &&
-            lhs.lastName == rhs.lastName &&
-            lhs.number == rhs.number &&
-            lhs.country == rhs.country &&
-            lhs.province == rhs.province &&
-            lhs.city == rhs.city &&
-            lhs.postcode == rhs.postcode &&
-            lhs.AddressOne == rhs.AddressOne &&
-            lhs.AddressTwo == rhs.AddressTwo
-    }
-}
-
-protocol ShippingViewControllerDelegate: AnyObject {
-    func didTapBackToCheckout()
-    func didSelectPaymentButton(changeLineColor: Bool)
-    func scrollHalf()
-    func scrollToInitialPosition()
-}
+//protocol ShippingViewControllerDelegate: AnyObject {
+//    func didTapBackToCheckout()
+//    func didSelectPaymentButton(changeLineColor: Bool)
+//    func scrollHalf()
+//    func scrollToInitialPosition()
+//}
 
 class ShippingViewController: UIViewController {
     
@@ -53,13 +27,13 @@ class ShippingViewController: UIViewController {
     @IBOutlet weak var postCodeTxt: UITextField!
     @IBOutlet weak var address1Txt: UITextField!
     @IBOutlet weak var address2Txt: UITextField!
-    @IBOutlet weak var shippingTableView: UITableView!
-    weak var delegate: ShippingViewControllerDelegate?
-    @IBOutlet weak var shippingTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var countryImage: UIImageView!
+    @IBOutlet weak var stateImage: UIImageView!
+    @IBOutlet weak var fieldsStackView: UIStackView!
+    @IBOutlet weak var stackHeight: NSLayoutConstraint!
     
     // MARK: - Variables
     var params = [String: Any]()
-    //var people: [Person] = []
     var addressPicker = UIPickerView()
     let countryPicker = UIPickerView()
     let statePicker = UIPickerView()
@@ -68,15 +42,18 @@ class ShippingViewController: UIViewController {
     var selectedProvince: String?
     var shippingPeopleArr: [Person] = []
     var billingData: Person?
-    var shippingPerson: ShippingPerson?
+    var billingPeopleArr: [Person] = []
+    var billingAddress = [String]()
     var Address = [String]()
     var countries = [String]()
     var provinces = [String]()
+    var totalAmount = String()
+    var sameAddress = false
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
-            super.viewDidLoad()
-        //checkOutDetailsAPI()
+        super.viewDidLoad()
+        checkOutDetailsAPI()
         addressPicker.delegate = self
         countryPicker.delegate = self
         statePicker.delegate = self
@@ -84,146 +61,163 @@ class ShippingViewController: UIViewController {
         existingAddressTxt.inputView = addressPicker
         countryTxt.inputView = countryPicker
         stateTxt.inputView = statePicker
-        shippingPeopleArr = Array(repeating: Person(Address: "", firstName: "", lastName: "", number: "", country: "", province: "", city: "", postcode: "", AddressOne: "", AddressTwo: ""), count: 10)
-        if shippingPerson != nil {
-            existingAddressTxt.text = shippingPerson?.Address
-            firstNameTxt.text = shippingPerson?.firstName
-            lastNameTxt.text = shippingPerson?.lastName
-            phoneNoTxt.text = shippingPerson?.number
-            countryTxt.text = shippingPerson?.country
-            stateTxt.text = shippingPerson?.province
-            cityTxt.text = shippingPerson?.city
-            postCodeTxt.text = shippingPerson?.postcode
-            address1Txt.text = shippingPerson?.AddressOne
-            address2Txt.text = shippingPerson?.AddressTwo
-            }
-       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissPicker))
-           view.addGestureRecognizer(tapGesture)
-        }
-   
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
     // MARK: - HelperFunctions
-    @objc func dismissPicker() {
-          for cell in shippingTableView.visibleCells {
-          if let checkoutCell = cell as? ShippingTableViewCell {
-                 checkoutCell.resetImageRotation()
-        }
-    }
+    @objc func handleTap() {
         view.endEditing(true)
-}
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-           let indexPath = getIndexPath(for: textField)
-           let isPickerTextField = indexPath.section == 0 || indexPath.section == 4 || indexPath.section == 5
-           if !isPickerTextField {
-               textField.layer.borderColor = UIColor.red.cgColor
-               textField.layer.borderWidth = 2.0
-           if let cell = textField.superview?.superview as? ShippingTableViewCell {
-                cell.togglePickerVisibility(true)
-        }
+        dismissPickers()
     }
-}
-    func textFieldDidEndEditing(_ textField: UITextField) {
-           textField.layer.borderColor = UIColor.gray.cgColor
-           textField.layer.borderWidth = 1.0
-           if let cell = textField.superview?.superview as? ShippingTableViewCell {
-                  cell.togglePickerVisibility(false)
+    func dismissPickers() {
+        existingAddressTxt.resignFirstResponder()
+        countryTxt.resignFirstResponder()
+        stateTxt.resignFirstResponder()
     }
-}
-    private func getIndexPath(for textField: UITextField) -> IndexPath {
-           let point = textField.convert(CGPoint.zero, to: shippingTableView)
-           return shippingTableView.indexPathForRow(at: point)!
-}
     @IBAction func backToBilling(_ sender: UIButton) {
-        delegate?.didTapBackToCheckout()
-        delegate?.scrollToInitialPosition()
-}
-    @IBAction func paymentButton(_ sender: UIButton) {
-//        if (existingAddressTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Existing Address is required", withNavigation: self)
-//            return
-//        }
-//        if (firstNameTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "First Name is required", withNavigation: self)
-//            return
-//        }
-//        if (lastNameTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Last Name is required", withNavigation: self)
-//            return
-//        }
-//        if (phoneNoTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Phone Number is required", withNavigation: self)
-//            return
-//        }
-//        if (countryTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Country is required", withNavigation: self)
-//            return
-//        }
-//        if (stateTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "State is required", withNavigation: self)
-//            return
-//        }
-//        if (cityTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "City Name is required", withNavigation: self)
-//            return
-//        }
-//        if (postCodeTxt?.text?.isEmpty)! {
-//            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Postcode/Zip Name is required", withNavigation: self)
-//            return
-//        }
-        if (address1Txt?.text?.isEmpty)! {
-            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Address 1 is required", withNavigation: self)
-            return
+        //        delegate?.didTapBackToCheckout()
+        //        delegate?.scrollToInitialPosition()
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    @IBAction func checkOutBackBtn(_ sender: UIButton) {
+        if let cartVC = navigationController?.viewControllers.first(where: { $0 is CartVC }) {
+            navigationController?.popToViewController(cartVC, animated: true)
         }
-        else{
-            params["first_name"] = firstNameTxt.text
-            params["last_name"] = lastNameTxt.text
-            params["phone"] = phoneNoTxt.text
-            params["country"] = countryTxt.text
-            params["state"] = stateTxt.text
-            params["city"] = cityTxt.text
-            params["zip"] = postCodeTxt.text
-            params["address_1"] = address1Txt.text
-            params["address_2"] = address2Txt.text
+    }
+    @IBAction func paymentButton(_ sender: UIButton) {
+        if sameAddress == true{
+            params["first_name"] = billingData?.firstName
+            params["last_name"] = billingData?.lastName
+            params["phone"] = billingData?.number
+            params["country"] = billingData?.country
+            params["state"] = billingData?.province
+            params["city"] = billingData?.city
+            params["zip"] = billingData?.postcode
+            params["address_1"] = billingData?.AddressOne
+            params["address_2"] = billingData?.AddressTwo
             params["default"] = 1
             var paramDic = [String: Any]()
             paramDic["address_id"] = "1"
             paramDic["shipping"] = params
             postShippingAPICall(params: paramDic)
-            
         }
-        
-}
+        else {
+            if (existingAddressTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Existing Address is required", withNavigation: self)
+                return
+            }
+            if (firstNameTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "First Name is required", withNavigation: self)
+                return
+            }
+            if (lastNameTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Last Name is required", withNavigation: self)
+                return
+            }
+            if (phoneNoTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Phone Number is required", withNavigation: self)
+                return
+            }
+            if (phoneNoTxt.text?.count ?? 0 < 6) {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Phone Number should be at least six characters", withNavigation: self)
+                return
+            }
+            if (countryTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Country is required", withNavigation: self)
+                return
+            }
+            if (stateTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "State is required", withNavigation: self)
+                return
+            }
+            if (cityTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "City Name is required", withNavigation: self)
+                return
+            }
+            if (postCodeTxt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Postcode/Zip Name is required", withNavigation: self)
+                return
+            }
+            if (address1Txt?.text?.isEmpty)! {
+                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Address 1 is required", withNavigation: self)
+                return
+            }
+            else{
+                params["first_name"] = firstNameTxt.text
+                params["last_name"] = lastNameTxt.text
+                params["phone"] = phoneNoTxt.text
+                params["country"] = countryTxt.text
+                params["state"] = stateTxt.text
+                params["city"] = cityTxt.text
+                params["zip"] = postCodeTxt.text
+                params["address_1"] = address1Txt.text
+                params["address_2"] = address2Txt.text
+                params["default"] = 1
+                var paramDic = [String: Any]()
+                paramDic["address_id"] = "1"
+                paramDic["shipping"] = params
+                postShippingAPICall(params: paramDic)
+                
+            }
+        }
+    }
     @IBAction func unCheckButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
-           sender.setImage(UIImage(named: "black"), for: .normal)
-           shippingTableView.isHidden = true
-           shippingTableViewHeight.constant = 0
-}   else {
-           sender.setImage(UIImage(named: "unCheck"), for: .normal)
-           shippingTableView.isHidden = false
-           shippingTableViewHeight.constant = 670
+            self.sameAddress = true
+            sender.setImage(UIImage(named: "tick"), for: .normal)
+            fieldsStackView.isHidden = true
+            if let billingData = billingData {
+                existingAddressTxt.text = "\(billingData.firstName) \(billingData.lastName) (\(billingData.AddressOne))"
+                self.firstNameTxt.text = billingData.firstName
+                self.lastNameTxt.text = billingData.lastName
+                self.phoneNoTxt.text = billingData.number
+                self.postCodeTxt.text = billingData.postcode
+                self.address1Txt.text = billingData.AddressOne
+                self.address2Txt.text = billingData.AddressTwo
+                self.countryTxt.text = billingData.country
+                self.stateTxt.text = billingData.province
+                self.cityTxt.text = billingData.city
+            }
+            existingAddressTxt.isUserInteractionEnabled = false
+            existingAddressTxt.textColor = .lightGray
+            stackHeight.constant = 0
+        } else {
+            self.sameAddress = false
+            sender.setImage(UIImage(named: "unCheck"), for: .normal)
+            fieldsStackView.isHidden = false
+            if Address.isEmpty{
+                existingAddressTxt.text = "App new address"
+                firstNameTxt.text = ""
+                lastNameTxt.text = ""
+                phoneNoTxt.text = ""
+                postCodeTxt.text = ""
+                address1Txt.text = ""
+                address2Txt.text = ""
+                cityTxt.text = ""
+            } else {
+                existingAddressTxt.text = self.Address.last
+                firstNameTxt.text = self.shippingPeopleArr.last?.firstName
+                lastNameTxt.text = self.shippingPeopleArr.last?.lastName
+                phoneNoTxt.text = self.shippingPeopleArr.last?.number
+                postCodeTxt.text = self.shippingPeopleArr.last?.postcode
+                address1Txt.text = self.shippingPeopleArr.last?.AddressOne
+                address2Txt.text = self.shippingPeopleArr.last?.AddressTwo
+                cityTxt.text = self.shippingPeopleArr.last?.city
+            }
+            existingAddressTxt.isUserInteractionEnabled = true
+            existingAddressTxt.textColor = .black
+            stackHeight.constant = 556
         }
     }
-    
-//    func showData(){
-//
-//        for items in shippingPeopleArr{
-//            self.Address.append(items.Address)
-//            self.countries.append(items.country)
-//            self.provinces.append(items.province)
-//
-//        }
-//
-//        print(Address)
-//        print(countries)
-//        print(provinces)
-//    }
-    
     func checkOutDetailsAPI(){
         let url = base_url + "checkout"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary{
+                    self.totalAmount = body["total"]?.string ?? ""
                     if let addresses = body["addresses"]?.array {
                         for i in addresses{
                             let type = i["type"].stringValue
@@ -253,8 +247,27 @@ class ShippingViewController: UIViewController {
                                 self.stateTxt.text = state
                                 self.cityTxt.text = city
                                 
-                                let person = Person(Address: address1, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+                                let person = Person(Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
                                 self.shippingPeopleArr.append(person)
+                            }
+                            else if type == "billing" {
+                                shippingId = i["id"].intValue
+                                let firstName = i["first_name"].stringValue
+                                let lastName = i["last_name"].stringValue
+                                let phoneNo = i["phone"].stringValue
+                                let zipCode = i["zip"].stringValue
+                                let address1 = i["address_1"].stringValue
+                                let address2 = i["address_2"].stringValue
+                                let country = i["country"].stringValue
+                                let state = i["state"].stringValue
+                                let city = i["city"].stringValue
+                                let existAddr = "\(firstName)\(lastName)(\(address1))"
+                                self.billingAddress.append(existAddr)
+                                self.countries.append(i["country"].stringValue)
+                                self.provinces.append(i["state"].stringValue)
+                                let person = Person(Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+                                self.billingData = person
+                                self.billingPeopleArr.append(person)
                             }
                         }
                     }
@@ -270,191 +283,91 @@ class ShippingViewController: UIViewController {
         let url = base_url + "checkout/shipping"
         Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
             if error == nil && statusCode == 200{
-                if let body = response["body"].dictionary{
-                    self.delegate?.didSelectPaymentButton(changeLineColor: true)
-                    self.delegate?.scrollHalf()
+                if response["body"].dictionary != nil{
+                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+                        if self.totalAmount != ""{
+                            vc.totalAmount = self.totalAmount
+                        }
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    //                    self.delegate?.didSelectPaymentButton(changeLineColor: true)
+                    //                    self.delegate?.scrollHalf()
                 }
             }
         }
-        self.delegate?.didSelectPaymentButton(changeLineColor: true)
-        self.delegate?.scrollHalf()
-    }
-}
-
-    // MARK: - Extension TableView
-extension ShippingViewController: UITableViewDelegate, UITableViewDataSource{
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-       return self.shippingPeopleArr.count
-}
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1
-}
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-       return 17
-}
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    let footer = UIView()
-        footer.backgroundColor = UIColor.white
-        return footer
-}
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for:      indexPath) as! ShippingTableViewCell
-    let personData = shippingPeopleArr[indexPath.section]
-    switch indexPath.section {
-    case 0:
-        let addressPicker = UIPickerView()
-        addressPicker.tag = 0
-        addressPicker.delegate = self
-        addressPicker.dataSource = self
-        cell.cellTextField.inputView = addressPicker
-        cell.cellTextField.text = personData.Address
-        cell.cellTextField.placeholder = "Existing Address*"
-        cell.pickerImage.isHidden = false
-        cell.rotateImage(angle: cell.rotationAngle)
-    case 1:
-        cell.cellTextField.placeholder = "First Name*"
-        cell.cellTextField.text = personData.firstName
-        cell.pickerImage.isHidden = true
-    case 2:
-        cell.cellTextField.placeholder = "Last Name*"
-        cell.cellTextField.text = personData.lastName
-        cell.pickerImage.isHidden = true
-    case 3:
-        cell.cellTextField.placeholder = "Phone Number*"
-        cell.cellTextField.text = personData.number
-        cell.pickerImage.isHidden = true
-    case 4:
-       let countryPicker = UIPickerView()
-        countryPicker.tag = 4
-        countryPicker.delegate = self
-        countryPicker.dataSource = self
-        cell.cellTextField.inputView = countryPicker
-        cell.cellTextField.text = personData.country
-        cell.cellTextField.placeholder = "Country*"
-        cell.pickerImage.isHidden = false
-        cell.rotateImage(angle: cell.rotationAngle)
-    case 5:
-       let statePicker = UIPickerView()
-        statePicker.tag = 5
-        statePicker.delegate = self
-        statePicker.dataSource = self
-        cell.cellTextField.inputView = statePicker
-        cell.cellTextField.text = personData.province
-        cell.cellTextField.placeholder = "State / Province*"
-        cell.pickerImage.isHidden = false
-        cell.rotateImage(angle: cell.rotationAngle)
-    case 6:
-        cell.cellTextField.placeholder = "City*"
-        cell.cellTextField.text = personData.city
-        cell.pickerImage.isHidden = true
-    case 7:
-        cell.cellTextField.placeholder = "Postcode / ZIP*"
-        cell.cellTextField.text = personData.postcode
-        cell.pickerImage.isHidden = true
-    case 8:
-        cell.cellTextField.placeholder = "Address 1*"
-        cell.cellTextField.text = personData.AddressOne
-        cell.pickerImage.isHidden = true
-    case 9:
-        cell.cellTextField.placeholder = "Address 2*"
-        cell.cellTextField.text = personData.AddressTwo
-        cell.pickerImage.isHidden = true
-    default:
-        break
-}
-       cell.cellTextField.tag = indexPath.row
-       return cell
+        //        self.delegate?.didSelectPaymentButton(changeLineColor: true)
+        //        self.delegate?.scrollHalf()
     }
 }
 
 // MARK: - Extension PickerView
 extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-
-func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-}
-func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//    switch pickerView.tag {
-//      case 0:
-//        return Address.count
-//      case 4:
-//        return countries.count
-//      case 5:
-//        return provinces.count
-//      default:
-//        return 0
-//    }
-    if pickerView == addressPicker{
-        return Address.count
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
-    else if pickerView == countryPicker{
-        print(countries.count)
-        return countries.count
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == addressPicker{
+            return shippingPeopleArr.count + 1
+        }
+        else {
+            return 0
+        }
     }
-    else if pickerView == statePicker{
-        return provinces.count
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == addressPicker{
+            if row == 0 {
+                return "App New Address"
+            } else {
+                return shippingPeopleArr[row - 1].Address
+            }
+        }
+        else if pickerView == countryPicker{
+            return shippingPeopleArr[row].country
+        }
+        else if pickerView == statePicker{
+            return shippingPeopleArr[row].province
+        }
+        else{
+            return nil
+        }
     }
-    else{
-        return 0
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == addressPicker{
+            if row == 0 {
+                existingAddressTxt.text = "App new Address"
+                firstNameTxt.text = ""
+                lastNameTxt.text = ""
+                phoneNoTxt.text = ""
+                cityTxt.text = ""
+                postCodeTxt.text = ""
+                address1Txt.text = ""
+                address2Txt.text = ""
+            } else {
+                let selectedTag = pickerView.tag
+                guard selectedTag < shippingPeopleArr.count
+                else {
+                    return
+                }
+                self.existingAddressTxt.text = shippingPeopleArr[row - 1].Address
+                self.firstNameTxt.text = shippingPeopleArr[row - 1].firstName
+                self.lastNameTxt.text = shippingPeopleArr[row - 1].lastName
+                self.phoneNoTxt.text = shippingPeopleArr[row - 1].number
+                self.countryTxt.text = shippingPeopleArr[row - 1].country
+                self.stateTxt.text = shippingPeopleArr[row - 1].province
+                self.cityTxt.text = shippingPeopleArr[row - 1].city
+                self.postCodeTxt.text = shippingPeopleArr[row - 1].postcode
+                self.address1Txt.text = shippingPeopleArr[row - 1].AddressOne
+                self.address2Txt.text = shippingPeopleArr[row - 1].AddressTwo
+            }
+        }
+        else if pickerView == countryPicker{
+            self.countryTxt.text = shippingPeopleArr[row].country
+        }
+        else if pickerView == statePicker{
+            self.stateTxt.text = shippingPeopleArr[row].province
+        }
     }
-}
-func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//    switch pickerView.tag {
-//      case 0:
-//        return Address[row]
-//      case 4:
-//        return countries[row]
-//      case 5:
-//        return provinces[row]
-//      default:
-//        return nil
-//    }
-    if pickerView == addressPicker{
-        return Address[row]
-    }
-    else if pickerView == countryPicker{
-        return countries[row]
-    }
-    else if pickerView == statePicker{
-        return provinces[row]
-    }
-    else{
-        return nil
-    }
-}
-func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    let selectedTag = pickerView.tag
-    guard selectedTag < shippingPeopleArr.count
-    else {
-       return
-}
-    var selectedPerson = shippingPeopleArr[selectedTag]
-//    switch pickerView.tag {
-//    case 0:
-//        selectedPerson.Address = Address[row]
-//    case 4:
-//        selectedPerson.country = countries[row]
-//    case 5:
-//        selectedPerson.province = provinces[row]
-//    default:
-//        break
-//}
-    if pickerView == addressPicker{
-        selectedPerson.Address = Address[row]
-        self.existingAddressTxt.text = selectedPerson.Address
-    }
-    else if pickerView == countryPicker{
-        selectedPerson.country = countries[row]
-        self.countryTxt.text = selectedPerson.country
-    }
-    else if pickerView == statePicker{
-        selectedPerson.province = provinces[row]
-        self.stateTxt.text = selectedPerson.province
-    }
-    shippingPeopleArr[selectedTag] = selectedPerson
-    shippingTableView.reloadData()
-   }
 }
 
 

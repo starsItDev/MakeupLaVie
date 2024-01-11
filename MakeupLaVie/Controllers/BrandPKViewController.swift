@@ -9,7 +9,7 @@ import MultiSlider
 
 
 class BrandPKViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var brandsCollectionView: UICollectionView!
@@ -72,11 +72,11 @@ class BrandPKViewController: UIViewController {
         multiSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
         priceView.addSubview(multiSlider)
         multiSlider.translatesAutoresizingMaskIntoConstraints = false
- NSLayoutConstraint.activate([
-        multiSlider.leadingAnchor.constraint(equalTo: priceView.leadingAnchor),
-        multiSlider.trailingAnchor.constraint(equalTo: priceView.trailingAnchor),
-        multiSlider.topAnchor.constraint(equalTo: priceView.topAnchor, constant: 46),
-        multiSlider.heightAnchor.constraint(equalToConstant: 45) ])
+        NSLayoutConstraint.activate([
+            multiSlider.leadingAnchor.constraint(equalTo: priceView.leadingAnchor),
+            multiSlider.trailingAnchor.constraint(equalTo: priceView.trailingAnchor),
+            multiSlider.topAnchor.constraint(equalTo: priceView.topAnchor, constant: 46),
+            multiSlider.heightAnchor.constraint(equalToConstant: 45) ])
         updatePriceLabels(lowerValue: Int(multiSlider.value[0]), upperValue: Int(multiSlider.value[1]))
         searchFormAPI()
     }
@@ -86,10 +86,10 @@ class BrandPKViewController: UIViewController {
         self.lowerValue = Int(slider.value[0])
         self.upperValue = Int(slider.value[1])
         updatePriceLabels(lowerValue: lowerValue, upperValue: upperValue)
-}
+    }
     private func updatePriceLabels(lowerValue: Int, upperValue: Int) {
-           startPriceLabel.text = "\(Int(lowerValue))"
-           endPriceLabel.text = "\(Int(upperValue))"
+        startPriceLabel.text = "\(Int(lowerValue))"
+        endPriceLabel.text = "\(Int(upperValue))"
     }
     @IBAction func backBtnTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -145,15 +145,15 @@ class BrandPKViewController: UIViewController {
         if category_Id != 0{
             body.updateValue(category_Id, forKey: "category_id")
         }
-//        if categoryName != ""{
-//            body.updateValue(categoryName, forKey: "categoryName")
-//        }
+        //        if categoryName != ""{
+        //            body.updateValue(categoryName, forKey: "categoryName")
+        //        }
         if brand_Id != 0{
             body.updateValue(brand_Id, forKey: "brand_id")
         }
-//        if brandName != ""{
-//            body.updateValue(brandName, forKey: "brandName")
-//        }
+        //        if brandName != ""{
+        //            body.updateValue(brandName, forKey: "brandName")
+        //        }
         if searchBarTxt.text != ""{
             body.updateValue(searchBarTxt.text ?? "", forKey: "search")
         }
@@ -217,162 +217,162 @@ class BrandPKViewController: UIViewController {
     
 }
 
-    // MARK: - Extension CollectionVIew
+// MARK: - Extension CollectionVIew
 extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-            case categoriesCollectionView:
-               return categoryArray.count
+        case categoriesCollectionView:
+            return categoryArray.count
         case subCategoriesColView:
             return subCategoryArray.count
-            case brandsCollectionView:
-               return BrandArray.count
-            case productsCollectionView:
-               return productLabel.count
-            case colorCollectionView:
-               return colorArray.count
-            case sizeCollectionView:
-            return sizeArray.count
-            default:
-                return 0
-       }
-  }
-   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      switch collectionView {
-        case categoriesCollectionView:
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoriesCollectionViewCell
-          cell.categoriesLabel?.text = categoryArray[indexPath.item].title
-          
-              cell.layer.borderWidth = 2.0
-              cell.layer.borderColor = UIColor.gray.cgColor
-          
-              return cell
-      case subCategoriesColView:
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoryCell", for: indexPath) as! CategoriesCollectionViewCell
-          cell.categoriesLabel?.text = subCategoryArray[indexPath.item].title
-              cell.layer.borderWidth = 2.0
-              cell.layer.borderColor = UIColor.gray.cgColor
-              return cell
         case brandsCollectionView:
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellTwo", for: indexPath) as! BrandsCollectionViewCell
-          cell.brandsCellLabel?.text = BrandArray[indexPath.item].title
-              cell.layer.borderWidth = 2.0
-              cell.layer.borderColor = UIColor.gray.cgColor
-              return cell
+            return BrandArray.count
         case productsCollectionView:
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellThree", for: indexPath) as! ProductCollectionViewCell
-              cell.productCellLabel?.text = productLabel[indexPath.item]
-              cell.layer.borderWidth = 2.0
-              cell.layer.borderColor = UIColor.gray.cgColor
-              return cell
-       case colorCollectionView:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFour", for: indexPath) as! ColorCollectionViewCell
-          cell.colourButton?.backgroundColor = hexStringToUIColor(hex: colorArray[indexPath.item])
-             return cell
+            return productLabel.count
+        case colorCollectionView:
+            return colorArray.count
         case sizeCollectionView:
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFive", for: indexPath) as! SizeCollectionViewCell
-          
-          cell.sizeCellLabel?.text = sizeArray[indexPath.item]
-              cell.layer.borderWidth = 2.0
-              cell.layer.borderColor = UIColor.gray.cgColor
-              return cell
-              default:
-                  return UICollectionViewCell()
-          }
+            return sizeArray.count
+        default:
+            return 0
+        }
     }
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    switch collectionView {
-    case categoriesCollectionView:
-        if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell {
-            self.category_Id = categoryArray[indexPath.item].id ?? 0
-            self.categoryName = categoryArray[indexPath.item].title ?? ""
-//            subCategoriesColView.isHidden = false
-//            subCategoryHeight.constant = 50
-        if let prevSelectedIndex = previouslySelectedIndex, prevSelectedIndex == indexPath {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            cell.cellView.backgroundColor = UIColor.white
-            cell.categoriesCellLabel.textColor = UIColor.black
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+        case categoriesCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoriesCollectionViewCell
+            cell.categoriesLabel?.text = categoryArray[indexPath.item].title
             
-            previouslySelectedIndex = nil
-     } else {
-        if let prevSelectedIndex = previouslySelectedIndex,
-           let prevCell = collectionView.cellForItem(at: prevSelectedIndex) as? CategoriesCollectionViewCell {
-               prevCell.cellView.backgroundColor = UIColor.white
-               prevCell.categoriesCellLabel.textColor = UIColor.black
-    }
-            cell.cellView.backgroundColor = UIColor.red
-            cell.categoriesCellLabel.textColor = UIColor.white
-            previouslySelectedIndex = indexPath
-     }
- }
-     case brandsCollectionView:
-        if let cell = collectionView.cellForItem(at: indexPath) as? BrandsCollectionViewCell {
-            self.brand_Id = BrandArray[indexPath.item].id ?? 0
-            self.brandName = BrandArray[indexPath.item].title ?? ""
-        if selectedIndexPathTwo.contains(indexPath) {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            cell.brandsCellView.backgroundColor = UIColor.white
-            cell.brandsCellLabel.textColor = UIColor.black
-            if let indexToRemove = selectedIndexPathTwo.firstIndex(of: indexPath) {
-            selectedIndexPathTwo.remove(at: indexToRemove)
-         }
-    } else {
-            cell.brandsCellView.backgroundColor = UIColor.red
-            cell.brandsCellLabel.textColor = UIColor.white
-            //selectedIndexPathTwo.removeAll()
-            selectedIndexPathTwo.append(indexPath)
-         }
-    }
-    case productsCollectionView:
-      if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
-      if selectedIndexPathThree.contains(indexPath) {
-           collectionView.deselectItem(at: indexPath, animated: true)
-           cell.productCellView.backgroundColor = UIColor.white
-           cell.productCellLabel.textColor = UIColor.black
-      if let indexToRemove = selectedIndexPathThree
-           .firstIndex(of: indexPath) {
-           selectedIndexPathThree.remove(at: indexToRemove)
-        }
-    } else {
-            cell.productCellView.backgroundColor = UIColor.red
-            cell.productCellLabel.textColor = UIColor.white
-            selectedIndexPathThree.removeAll()
-            selectedIndexPathThree.append(indexPath)
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.gray.cgColor
+            
+            return cell
+        case subCategoriesColView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoryCell", for: indexPath) as! CategoriesCollectionViewCell
+            cell.categoriesLabel?.text = subCategoryArray[indexPath.item].title
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.gray.cgColor
+            return cell
+        case brandsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellTwo", for: indexPath) as! BrandsCollectionViewCell
+            cell.brandsCellLabel?.text = BrandArray[indexPath.item].title
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.gray.cgColor
+            return cell
+        case productsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellThree", for: indexPath) as! ProductCollectionViewCell
+            cell.productCellLabel?.text = productLabel[indexPath.item]
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.gray.cgColor
+            return cell
+        case colorCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFour", for: indexPath) as! ColorCollectionViewCell
+            cell.colourButton?.backgroundColor = hexStringToUIColor(hex: colorArray[indexPath.item])
+            return cell
+        case sizeCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellFive", for: indexPath) as! SizeCollectionViewCell
+            
+            cell.sizeCellLabel?.text = sizeArray[indexPath.item]
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.gray.cgColor
+            return cell
+        default:
+            return UICollectionViewCell()
         }
     }
-    case colorCollectionView:
-       if let cell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell {
-       if selectedIndexPathFive.contains(indexPath) {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            cell.colorCellView.layer.borderColor = UIColor.lightGray.cgColor
-      if let indexToRemove = selectedIndexPathFive
-            .firstIndex(of: indexPath) {
-            selectedIndexPathFive.remove(at: indexToRemove)
-        }
-    } else {
-        cell.colorCellView.layer.borderColor = UIColor.red.cgColor
-            //selectedIndexPathFive.removeAll()
-            selectedIndexPathFive.append(indexPath)
-       }
-    }
-    case sizeCollectionView:
-       if let cell = collectionView.cellForItem(at: indexPath) as? SizeCollectionViewCell {
-       if selectedIndexPathFour.contains(indexPath) {
-            collectionView.deselectItem(at: indexPath, animated: true)
-            cell.sizeCellView.backgroundColor = UIColor.white
-            cell.sizeCellLabel.textColor = UIColor.black
-      if let indexToRemove = selectedIndexPathFour
-            .firstIndex(of: indexPath) {
-            selectedIndexPathFour.remove(at: indexToRemove)
-        }
-    } else {
-            cell.sizeCellView.backgroundColor = UIColor.red
-            cell.sizeCellLabel.textColor = UIColor.white
-            //selectedIndexPathFour.removeAll()
-            selectedIndexPathFour.append(indexPath)
-       }
-    }
-       default:
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case categoriesCollectionView:
+            if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell {
+                self.category_Id = categoryArray[indexPath.item].id ?? 0
+                self.categoryName = categoryArray[indexPath.item].title ?? ""
+                //            subCategoriesColView.isHidden = false
+                //            subCategoryHeight.constant = 50
+                if let prevSelectedIndex = previouslySelectedIndex, prevSelectedIndex == indexPath {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    cell.cellView.backgroundColor = UIColor.white
+                    cell.categoriesCellLabel.textColor = UIColor.black
+                    
+                    previouslySelectedIndex = nil
+                } else {
+                    if let prevSelectedIndex = previouslySelectedIndex,
+                       let prevCell = collectionView.cellForItem(at: prevSelectedIndex) as? CategoriesCollectionViewCell {
+                        prevCell.cellView.backgroundColor = UIColor.white
+                        prevCell.categoriesCellLabel.textColor = UIColor.black
+                    }
+                    cell.cellView.backgroundColor = UIColor.red
+                    cell.categoriesCellLabel.textColor = UIColor.white
+                    previouslySelectedIndex = indexPath
+                }
+            }
+        case brandsCollectionView:
+            if let cell = collectionView.cellForItem(at: indexPath) as? BrandsCollectionViewCell {
+                self.brand_Id = BrandArray[indexPath.item].id ?? 0
+                self.brandName = BrandArray[indexPath.item].title ?? ""
+                if selectedIndexPathTwo.contains(indexPath) {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    cell.brandsCellView.backgroundColor = UIColor.white
+                    cell.brandsCellLabel.textColor = UIColor.black
+                    if let indexToRemove = selectedIndexPathTwo.firstIndex(of: indexPath) {
+                        selectedIndexPathTwo.remove(at: indexToRemove)
+                    }
+                } else {
+                    cell.brandsCellView.backgroundColor = UIColor.red
+                    cell.brandsCellLabel.textColor = UIColor.white
+                    //selectedIndexPathTwo.removeAll()
+                    selectedIndexPathTwo.append(indexPath)
+                }
+            }
+        case productsCollectionView:
+            if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
+                if selectedIndexPathThree.contains(indexPath) {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    cell.productCellView.backgroundColor = UIColor.white
+                    cell.productCellLabel.textColor = UIColor.black
+                    if let indexToRemove = selectedIndexPathThree
+                        .firstIndex(of: indexPath) {
+                        selectedIndexPathThree.remove(at: indexToRemove)
+                    }
+                } else {
+                    cell.productCellView.backgroundColor = UIColor.red
+                    cell.productCellLabel.textColor = UIColor.white
+                    selectedIndexPathThree.removeAll()
+                    selectedIndexPathThree.append(indexPath)
+                }
+            }
+        case colorCollectionView:
+            if let cell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell {
+                if selectedIndexPathFive.contains(indexPath) {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    cell.colorCellView.layer.borderColor = UIColor.lightGray.cgColor
+                    if let indexToRemove = selectedIndexPathFive
+                        .firstIndex(of: indexPath) {
+                        selectedIndexPathFive.remove(at: indexToRemove)
+                    }
+                } else {
+                    cell.colorCellView.layer.borderColor = UIColor.red.cgColor
+                    //selectedIndexPathFive.removeAll()
+                    selectedIndexPathFive.append(indexPath)
+                }
+            }
+        case sizeCollectionView:
+            if let cell = collectionView.cellForItem(at: indexPath) as? SizeCollectionViewCell {
+                if selectedIndexPathFour.contains(indexPath) {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    cell.sizeCellView.backgroundColor = UIColor.white
+                    cell.sizeCellLabel.textColor = UIColor.black
+                    if let indexToRemove = selectedIndexPathFour
+                        .firstIndex(of: indexPath) {
+                        selectedIndexPathFour.remove(at: indexToRemove)
+                    }
+                } else {
+                    cell.sizeCellView.backgroundColor = UIColor.red
+                    cell.sizeCellLabel.textColor = UIColor.white
+                    //selectedIndexPathFour.removeAll()
+                    selectedIndexPathFour.append(indexPath)
+                }
+            }
+        default:
             break
         }
     }
@@ -381,15 +381,15 @@ extension BrandPKViewController{
     func hexStringToUIColor(hex: String) -> UIColor? {
         var cleanHex = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         cleanHex = cleanHex.replacingOccurrences(of: "#", with: "")
-
+        
         var rgbValue: UInt64 = 0
-
+        
         Scanner(string: cleanHex).scanHexInt64(&rgbValue)
-
+        
         let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
         let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
-
+        
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 }
