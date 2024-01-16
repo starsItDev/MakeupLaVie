@@ -25,14 +25,12 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var compareBtn: UIButton!
     @IBOutlet weak var wishListBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
-    
     var selectedIndex: Int?
     private var viewModel = MianHomeViewModel()
     var wishlistproducts: [ResponseWishlist] = []
     var params = [String: Any]()
     var hasCartItem = false
     var hasWishList = false
-    
     var selectedResponseID: Int?
     private var responseID: Int?
     var responseIds: [Int] = []
@@ -41,11 +39,9 @@ class ProductDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         apiCall()
         configuration()
         updateAddCartButtonText()
-        
     }
     
     func updateAddCartButtonText() {
@@ -58,13 +54,9 @@ class ProductDetailsVC: UIViewController {
     @IBAction func addCartBtnPressed(_ sender: UIButton) {
         if self.hasCartItem{
             self.addCartBtn.setTitle("ADD TO CART", for: .normal)
-            
-            //            sender.setTitle("REMOVE FROM CART", for: .normal)
             cartUpdateAPI()
-            
         }
-        else{
-            
+        else {
             cartUpdateAPI()
             self.addCartBtn.setTitle("REMOVE FROM CART", for: .normal)
             if let tabItems = tabBarController?.tabBar.items {
@@ -93,8 +85,6 @@ class ProductDetailsVC: UIViewController {
     @IBAction func shareBtnTapped(_ sender: Any) {
         
     }
-    
-    
     func cartUpdateAPI() {
         let url = base_url + "cart/update"
         params["id"] = self.responseID
@@ -103,7 +93,7 @@ class ProductDetailsVC: UIViewController {
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary{
                     let message = body["message"]?.string ?? ""
-                    utilityFunctions.showAlertWithTitle(title: "", withMessage: message, withNavigation: self)
+                    print("\(message)")
                 }
             }
             else{
