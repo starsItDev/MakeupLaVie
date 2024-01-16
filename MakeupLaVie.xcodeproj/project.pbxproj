@@ -119,6 +119,7 @@
 		76F284C22A3C71CB00E5850D /* CategoryProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */; };
 		76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4B3712A43222E00E36DC2 /* WishListModel.swift */; };
 		E039B5DD2B45A88200CB38D8 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */; };
+		E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188812B4FC86100B49D17 /* MyOrderModel.swift */; };
 		E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */; };
 		E0EC327B2B4D82A000E7F057 /* OrderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */; };
 		E0F68EF32B4E78930075A915 /* orderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */; };
@@ -254,6 +255,7 @@
 		76ADA36F2A25C87D0084A376 /* ViewProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductModel.swift; sourceTree = "<group>"; };
 		76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductModel.swift; sourceTree = "<group>"; };
 		76F4B3712A43222E00E36DC2 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
+		E0A188812B4FC86100B49D17 /* MyOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderModel.swift; sourceTree = "<group>"; };
 		E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHeaderView.xib; sourceTree = "<group>"; };
 		E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderView.swift; sourceTree = "<group>"; };
 		E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTableViewCell.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				18BC182F2A7A7CC70035CD43 /* GenericListingModel.swift */,
 				76A6EE262A3838B1009AA9DF /* BrowseProductModel.swift */,
 				76A6EE282A389592009AA9DF /* SecondBrowseProductModel.swift */,
+				E0A188812B4FC86100B49D17 /* MyOrderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				76883E512A24ABD200240AF1 /* File.swift in Sources */,
 				76A4A93229FA7DBD00C6C7D0 /* OrderVC.swift in Sources */,
 				7662416E2A1CD3C60081C6A8 /* UIImage+KingFisher.swift in Sources */,
+				E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */,
 				7688494C2A1C9F2700D81158 /* ViewModel.swift in Sources */,
 				76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */,
 				7696C81229E51CB200383B01 /* MakeupLaVie.xcdatamodeld in Sources */,

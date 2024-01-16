@@ -7,13 +7,8 @@
 
 import UIKit
 
-//protocol paymentViewControllerDelegate: AnyObject {
-//    func didTapBackToShipping()
-//    func didSelectReviewButton(changeLineColor: Bool)
-//}
 class PaymentViewController: UIViewController {
     
-//  weak var delegate: paymentViewControllerDelegate?
     @IBOutlet weak var cashOnDelivery: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
     var totalAmount = String()
@@ -24,14 +19,10 @@ class PaymentViewController: UIViewController {
     }
     
     @IBAction func backToShipping(_ sender: UIButton) {
-//      delegate?.didTapBackToShipping()
         self.navigationController?.popViewController(animated: true)
     }
-    
     @IBAction func checkOutBackBtn(_ sender: UIButton) {
-        if let cartVC = navigationController?.viewControllers.first(where: { $0 is CartVC }) {
-            navigationController?.popToViewController(cartVC, animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func reviewButton(_ sender: UIButton) {
         if cashOnDelivery.isSelected {

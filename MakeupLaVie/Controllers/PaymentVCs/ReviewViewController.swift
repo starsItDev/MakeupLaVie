@@ -12,6 +12,7 @@ struct Product{
     var price: String
     var quantity: String
     var image: String
+    var salePrice: String
 }
 struct BillingAddress {
     var name: String
@@ -23,10 +24,6 @@ struct ShippingAddress {
     var address: String
     var phone: String
 }
-
-//protocol ReviewViewControllerDelegate{
-//    func didTapBackToPayment()
-//}
 
 class ReviewViewController: UIViewController {
     
@@ -45,26 +42,27 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var reviewTableHeight: NSLayoutConstraint!
     
-    //MARK: Variables
-    //    var delegate: ReviewViewControllerDelegate?
+    //MARK: - Variables
     var images: [UIImage?] = [UIImage(named: "emptyCheck"), UIImage(named: "walkInCustomer")]
-    //    var billingId: Int?
-    //    var shippingId: Int?
     var paymentId = 1
+    var termsCondition = 1
     var prodArr = [Product]()
     var billingAddress: [BillingAddress] = []
     var shippingAddress: [ShippingAddress] = []
     
+    //MARK: - Override function
     override func viewDidLoad() {
         super.viewDidLoad()
         reviewTableView.rowHeight = UITableView.automaticDimension
         reviewTableView.estimatedRowHeight = 105
-        orderNoteTxt.layer.cornerRadius = 5
-        //self.callPreviewOrderAPI()
+        orderNoteTxt.layer.borderWidth = 1
+        orderNoteTxt.layer.borderColor = UIColor.black.cgColor
     }
     override func viewWillAppear(_ animated: Bool) {
         self.callPreviewOrderAPI()
     }
+    
+    //MARK: - Helper Functions
     @IBAction func uncheckButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
@@ -77,9 +75,7 @@ class ReviewViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func checkOutBackBtn(_ sender: UIButton) {
-        if let cartVC = navigationController?.viewControllers.first(where: { $0 is CartVC }) {
-            navigationController?.popToViewController(cartVC, animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func termsConditionBtn(_ sender: UIButton) {
         if let url = URL(string: "https://shop.plazauk.com/help/terms") {
@@ -87,12 +83,34 @@ class ReviewViewController: UIViewController {
         }
     }
     @IBAction func completeBtn(_ sender: UIButton) {
-        if termsBtn.isSelected {
-            if let cartVC = navigationController?.viewControllers.first(where: { $0 is CartVC }) {
-                navigationController?.popToViewController(cartVC, animated: true)
-            }
-        } else {
+        if !termsBtn.isSelected {
             utilityFunctions.showAlertWithTitle(title: "Alert", withMessage: "Please agree to terms and conditions", withNavigation: self)
+        } else {
+            let params: [String: Any] = [
+                "billing_address": billingId,
+                "shipping_address": shippingId,
+                "payment_method": paymentId,
+                "terms": termsCondition,
+                "order_note": orderNoteTxt.text ?? ""
+            ]
+            postCompleteOrderAPICall(params: params)
+        }
+    }
+    func postCompleteOrderAPICall(params: [String: Any]) {
+        let url = base_url + "checkout/order"
+        Networking.instance.postApiCall(url: url, param: params) { (response, error, statusCode) in
+            if error == nil {
+                if statusCode == 200 {
+                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OrderVC") as? OrderVC {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+                else {
+                    print("Status code: \(statusCode)")
+                }
+            } else {
+                print("API call error")
+            }
         }
     }
     func callPreviewOrderAPI(){
@@ -129,7 +147,8 @@ class ReviewViewController: UIViewController {
                             let price = item["price"].stringValue
                             let quantity = item["quantity"].stringValue
                             let image = item["image"].stringValue
-                            let obj = Product(title: title, price: price, quantity: quantity, image: image)
+                            let saleprice = item["sale_price"].stringValue
+                            let obj = Product(title: title, price: price, quantity: quantity, image: image, salePrice: saleprice)
                             self.prodArr.append(obj)
                         }
                         self.reviewTableView.reloadData()
@@ -141,7 +160,9 @@ class ReviewViewController: UIViewController {
                         self.paymentMethodLbl.text = payment["title"].stringValue
                     }
                     if let totalPrice = body["total"]?.stringValue{
-                        self.totalPriceLbl.text = totalPrice
+                        if let totalPriceDouble = Double(totalPrice) {
+                            self.totalPriceLbl.text = String(totalPriceDouble)
+                        }
                     }
                 }
                 self.billingNameLbl.text = self.billingAddress.last?.name
@@ -154,7 +175,7 @@ class ReviewViewController: UIViewController {
         }
     }
 }
-
+//MARK: - Extension TableView
 extension ReviewViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -166,7 +187,13 @@ extension ReviewViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ReviewTableViewCell
         cell.reviewItemNameLbl.text = prodArr[indexPath.row].title
-        let price = prodArr[indexPath.row].price
+        var price = String()
+        if prodArr[indexPath.row].salePrice == "-1.00"
+        {
+            price = prodArr[indexPath.row].price
+        } else {
+            price = prodArr[indexPath.row].salePrice
+        }
         let quantity = prodArr[indexPath.row].quantity
         cell.reviewPriceNameLbl.text = "\(price) x \(quantity)"
         let imageUrl = prodArr[indexPath.row].image

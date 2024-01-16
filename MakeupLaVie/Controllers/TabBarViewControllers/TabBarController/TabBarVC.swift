@@ -14,10 +14,7 @@ class TabBarVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
-    
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if homeTabBar.selectedItem?.title == "Me"{

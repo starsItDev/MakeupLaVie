@@ -11,14 +11,9 @@ class VouchersVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
-
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-
 }

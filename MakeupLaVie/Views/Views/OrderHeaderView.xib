@@ -15,14 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="initial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTN-iK-ztc">
-                    <rect key="frame" x="333.33333333333331" y="14.999999999999998" width="39.666666666666686" height="19.333333333333329"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="initia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTN-iK-ztc">
+                    <rect key="frame" x="342.33333333333331" y="14.999999999999998" width="35.666666666666686" height="19.333333333333329"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <color key="textColor" red="0.27923518419999999" green="0.79636865850000005" blue="0.59970289470000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order # 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2v-CH-R8f">
-                    <rect key="frame" x="20" y="14.999999999999998" width="68.333333333333329" height="19.333333333333329"/>
+                    <rect key="frame" x="15" y="14.999999999999998" width="68.333333333333329" height="19.333333333333329"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <color key="textColor" red="0.62698388100000002" green="0.0" blue="0.065550617869999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -33,9 +33,9 @@
             <accessibility key="accessibilityConfiguration" identifier="OrderHeaderView"/>
             <constraints>
                 <constraint firstItem="C2v-CH-R8f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="VHm-mz-m79"/>
-                <constraint firstItem="C2v-CH-R8f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="caA-Fj-b31"/>
+                <constraint firstItem="C2v-CH-R8f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="caA-Fj-b31"/>
                 <constraint firstItem="DTN-iK-ztc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="eu9-5h-neH"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DTN-iK-ztc" secondAttribute="trailing" constant="20" id="lXp-tn-HKI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DTN-iK-ztc" secondAttribute="trailing" constant="15" id="lXp-tn-HKI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

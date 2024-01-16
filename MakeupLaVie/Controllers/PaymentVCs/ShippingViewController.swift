@@ -7,13 +7,6 @@
 
 import UIKit
 
-//protocol ShippingViewControllerDelegate: AnyObject {
-//    func didTapBackToCheckout()
-//    func didSelectPaymentButton(changeLineColor: Bool)
-//    func scrollHalf()
-//    func scrollToInitialPosition()
-//}
-
 class ShippingViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -76,15 +69,10 @@ class ShippingViewController: UIViewController {
         stateTxt.resignFirstResponder()
     }
     @IBAction func backToBilling(_ sender: UIButton) {
-        //        delegate?.didTapBackToCheckout()
-        //        delegate?.scrollToInitialPosition()
         self.navigationController?.popViewController(animated: true)
-        
     }
     @IBAction func checkOutBackBtn(_ sender: UIButton) {
-        if let cartVC = navigationController?.viewControllers.first(where: { $0 is CartVC }) {
-            navigationController?.popToViewController(cartVC, animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func paymentButton(_ sender: UIButton) {
         if sameAddress == true{
@@ -290,13 +278,9 @@ class ShippingViewController: UIViewController {
                         }
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
-                    //                    self.delegate?.didSelectPaymentButton(changeLineColor: true)
-                    //                    self.delegate?.scrollHalf()
                 }
             }
         }
-        //        self.delegate?.didSelectPaymentButton(changeLineColor: true)
-        //        self.delegate?.scrollHalf()
     }
 }
 

@@ -9,15 +9,17 @@ import UIKit
 
 class orderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var myOrderImage: UIImageView!
+    @IBOutlet weak var orderTitle: UILabel!
+    @IBOutlet weak var orderPrice: UILabel!
+    @IBOutlet weak var orderQuantity: UILabel!
+    @IBOutlet weak var totalPrice: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }
