@@ -119,6 +119,8 @@
 		76F284C22A3C71CB00E5850D /* CategoryProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */; };
 		76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4B3712A43222E00E36DC2 /* WishListModel.swift */; };
 		E039B5DD2B45A88200CB38D8 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */; };
+		E052BB702B58FBE900ABCEF1 /* SwipingMediaView in Frameworks */ = {isa = PBXBuildFile; productRef = E052BB6F2B58FBE900ABCEF1 /* SwipingMediaView */; };
+		E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */; };
 		E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188812B4FC86100B49D17 /* MyOrderModel.swift */; };
 		E0C19E7E2B568306007CE996 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C19E7D2B568306007CE996 /* CornerRadius.swift */; };
 		E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */; };
@@ -126,6 +128,7 @@
 		E0F68EF32B4E78930075A915 /* orderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */; };
 		E0F68EF52B4E85C50075A915 /* OrderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F68EF42B4E85C50075A915 /* OrderFooterView.xib */; };
 		E0F68EF72B4E85E90075A915 /* OrderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF62B4E85E90075A915 /* OrderFooterView.swift */; };
+		E0F8BB2B2B5961BD0074985D /* ProductTwoImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F8BB2A2B5961BD0074985D /* ProductTwoImageCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +258,7 @@
 		76ADA36F2A25C87D0084A376 /* ViewProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductModel.swift; sourceTree = "<group>"; };
 		76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductModel.swift; sourceTree = "<group>"; };
 		76F4B3712A43222E00E36DC2 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
+		E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0A188812B4FC86100B49D17 /* MyOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderModel.swift; sourceTree = "<group>"; };
 		E0C19E7D2B568306007CE996 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHeaderView.xib; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTableViewCell.swift; sourceTree = "<group>"; };
 		E0F68EF42B4E85C50075A915 /* OrderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderFooterView.xib; sourceTree = "<group>"; };
 		E0F68EF62B4E85E90075A915 /* OrderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFooterView.swift; sourceTree = "<group>"; };
+		E0F8BB2A2B5961BD0074985D /* ProductTwoImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTwoImageCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +278,7 @@
 				768635902A03C8250089C19E /* SwiftyJSON in Frameworks */,
 				18A179A32A84BA2000054D15 /* MultiSlider in Frameworks */,
 				7686358D2A03C76F0089C19E /* Kingfisher in Frameworks */,
+				E052BB702B58FBE900ABCEF1 /* SwipingMediaView in Frameworks */,
 				18052EBD2A657E10009BABDF /* Cosmos in Frameworks */,
 				7686358A2A03C6590089C19E /* Alamofire in Frameworks */,
 				18BC18352A7A8B220035CD43 /* SDWebImage in Frameworks */,
@@ -423,7 +429,6 @@
 				768CC4612A20BEDC0092C4F7 /* SpecialTableView.xib */,
 				76A4A92829FA3DD200C6C7D0 /* CollectionViewInsideTableViewCell.swift */,
 				76A4A92929FA3DD200C6C7D0 /* CollectionViewInsideTableViewCell.xib */,
-				76A63D7529ED191600082DED /* HomeVC.swift */,
 			);
 			path = TableViewInsideCollection;
 			sourceTree = "<group>";
@@ -696,6 +701,8 @@
 				76257C3A29EFC6AE0089CCE9 /* ProductDetailsVC.swift */,
 				76510F482A27128300A22F9E /* ProductDetailsCollectionCell.swift */,
 				76930CE629EFF7B300B33105 /* ReviewsVC.swift */,
+				E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */,
+				E0F8BB2A2B5961BD0074985D /* ProductTwoImageCollectionCell.swift */,
 			);
 			path = SearchVC;
 			sourceTree = "<group>";
@@ -716,6 +723,7 @@
 		76A63D7429ED18FC00082DED /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				76A63D7529ED191600082DED /* HomeVC.swift */,
 				768C55FD29F905F5000C5B24 /* TableViewCollectionView */,
 				76A63D7F29ED25C200082DED /* CollectionViewCell */,
 			);
@@ -763,6 +771,7 @@
 				18BC18342A7A8B220035CD43 /* SDWebImage */,
 				18A179A22A84BA2000054D15 /* MultiSlider */,
 				E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */,
+				E052BB6F2B58FBE900ABCEF1 /* SwipingMediaView */,
 			);
 			productName = MakeupLaVie;
 			productReference = 7696C80429E51CB100383B01 /* MakeupLaVie.app */;
@@ -844,6 +853,7 @@
 				18BC18332A7A8B220035CD43 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				18A179A12A84BA2000054D15 /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				E039B5DB2B45A88200CB38D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				E052BB6E2B58FBE900ABCEF1 /* XCRemoteSwiftPackageReference "SwipingMediaView" */,
 			);
 			productRefGroup = 7696C80529E51CB100383B01 /* Products */;
 			projectDirPath = "";
@@ -909,6 +919,7 @@
 				76A4A94529FA815400C6C7D0 /* TermsAndConditonsVC.swift in Sources */,
 				768635872A03926E0089C19E /* UderInfoModel.swift in Sources */,
 				18CCC6332A86142C0046E43A /* PaymentViewController.swift in Sources */,
+				E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */,
 				7686357B2A026DCE0089C19E /* SignUpModel.swift in Sources */,
 				76A6EE272A3838B1009AA9DF /* BrowseProductModel.swift in Sources */,
 				18A819502A5FD30F0091C4DA /* Networking.swift in Sources */,
@@ -982,6 +993,7 @@
 				76A63D7C29ED196100082DED /* CartVC.swift in Sources */,
 				76ADA3702A25C87D0084A376 /* ViewProductModel.swift in Sources */,
 				E0C19E7E2B568306007CE996 /* CornerRadius.swift in Sources */,
+				E0F8BB2B2B5961BD0074985D /* ProductTwoImageCollectionCell.swift in Sources */,
 				18BC18322A7A87F70035CD43 /* collectioncell.swift in Sources */,
 				76A63D7629ED191600082DED /* HomeVC.swift in Sources */,
 				76A63D6D29ED185400082DED /* SignUpVC.swift in Sources */,
@@ -1170,7 +1182,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1199,7 +1211,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1387,6 +1399,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		E052BB6E2B58FBE900ABCEF1 /* XCRemoteSwiftPackageReference "SwipingMediaView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jtCodes/SwipingMediaView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1424,6 +1444,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E039B5DB2B45A88200CB38D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		E052BB6F2B58FBE900ABCEF1 /* SwipingMediaView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E052BB6E2B58FBE900ABCEF1 /* XCRemoteSwiftPackageReference "SwipingMediaView" */;
+			productName = SwipingMediaView;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -64,6 +64,24 @@
       }
     },
     {
+      "identity" : "sdwebimageswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+      "state" : {
+        "revision" : "261b6cec35686d2dc192b809ab50742b4502a73b",
+        "version" : "2.2.6"
+      }
+    },
+    {
+      "identity" : "svevideoui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SergioEstevao/SVEVideoUI.git",
+      "state" : {
+        "revision" : "82c2aff90d9382befe3385f20713c81d5db94c34",
+        "version" : "0.3.2"
+      }
+    },
+    {
       "identity" : "sweeterswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yonat/SweeterSwift",
@@ -79,6 +97,15 @@
       "state" : {
         "revision" : "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
         "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "swipingmediaview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jtCodes/SwipingMediaView.git",
+      "state" : {
+        "revision" : "f2959b08bdf747749858cc8a84198131c6c9132a",
+        "version" : "2.1.0"
       }
     }
   ],
