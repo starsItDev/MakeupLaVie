@@ -20,7 +20,6 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var wishListBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var productImageCollectionView: UICollectionView!
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var productTwoImageCollectionView: UICollectionView!
     var selectedIndex: Int?
     private var viewModel = MianHomeViewModel()
@@ -34,18 +33,13 @@ class ProductDetailsVC: UIViewController {
     var selectedIDResponse: Int?
     var similarProductsArr = [ViewProductBody]()
     var photosArr = [Photo]()
-    var counter = 0
-    var timer: Timer?
     
+    //MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         apiCall()
         configuration()
         updateAddCartButtonText()
-        pageControl.currentPage = 0
-        //      let time = UserInfo.shared.expiresTime
-        //        var timer = Timer()
-        //        timer = Timer.scheduledTimer(timeInterval: TimeInterval(time), target: self, selector: #selector(self.apiCall), userInfo: nil, repeats: true)
     }
     
     //MARK: - Helper Functions
@@ -157,23 +151,6 @@ class ProductDetailsVC: UIViewController {
         self.countlbl.text = String(describing: value)
         //cartUpdateAPI(selectedID: responseID, quantity: String(value))
     }
-    @objc func changeImage(){
-        guard !photosArr.isEmpty else {
-            return
-        }
-        if counter < photosArr.count{
-            let index = IndexPath.init(item: counter, section: 0)
-            self.productImageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-            pageControl.currentPage = counter
-            counter += 1
-        }
-        else{
-            counter = 0
-            let index = IndexPath.init(item: counter, section: 0)
-            self.productImageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-            pageControl.currentPage = counter
-        }
-    }
     @objc func apiCall() {
         guard let responseID = self.selectedResponseID else {
             print("No selected response ID available.")
@@ -205,7 +182,6 @@ class ProductDetailsVC: UIViewController {
                 self.responseID = model.body.id
                 DispatchQueue.main.async {
                     self.updateUI(with: model)
-                    self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
                 }
             } catch {
                 print("Error decoding JSON: \(error)")
@@ -246,7 +222,6 @@ class ProductDetailsVC: UIViewController {
         }
         self.similarProductsArr = model.body.similarProducts ?? []
         self.photosArr = model.body.photos ?? []
-        pageControl.numberOfPages = photosArr.count
         self.productCollectionView.reloadData()
         self.productImageCollectionView.reloadData()
         self.productTwoImageCollectionView.reloadData()
@@ -332,7 +307,14 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
             showImageSlider(at: indexPath.item)
         }
         else if collectionView == productTwoImageCollectionView {
-            showImageSlider(at: indexPath.item)
+            didSelectProductTwoImage(at: indexPath)
+        }
+    }
+    func didSelectProductTwoImage(at indexPath: IndexPath) {
+        let selectedImage = photosArr[indexPath.row]
+        if let index = photosArr.firstIndex(where: { $0.thumbMain == selectedImage.thumbMain }) {
+            let newIndex = IndexPath(item: index, section: 0)
+            self.productImageCollectionView.scrollToItem(at: newIndex, at: .centeredHorizontally, animated: true)
         }
     }
     func showImageSlider(at index: Int) {
@@ -392,6 +374,8 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
     
     var images: [Photo] = []
     var currentIndex: Int?
+    var pageViewController: UIPageViewController!
+    var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -402,7 +386,18 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageViewController.dataSource = self
         pageViewController.delegate = self
+        pageControl = UIPageControl()
+        pageControl.numberOfPages = images.count
+        pageControl.currentPage = currentIndex ?? 0
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.white
+        view.addSubview(pageControl)
         
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -180),
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
         if let index = currentIndex, index >= 0, index < images.count {
             let initialVC = viewControllerAtIndex(index)
             pageViewController.setViewControllers([initialVC], direction: .forward, animated: true, completion: nil)
@@ -439,5 +434,11 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
             return nil
         }
         return viewControllerAtIndex(currentIndex + 1)
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let currentVC = pageViewController.viewControllers?.first,
+           let currentIndex = images.firstIndex(where: { $0.thumbMain == (currentVC.view.subviews.first as? UIImageView)?.sd_imageURL?.absoluteString }) {
+            pageControl.currentPage = currentIndex
+        }
     }
 }

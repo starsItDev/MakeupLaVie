@@ -2793,23 +2793,13 @@
                                                             <outlet property="delegate" destination="g9v-iS-mw9" id="3Nl-Vn-tWn"/>
                                                         </connections>
                                                     </collectionView>
-                                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="AoI-Sv-rFa">
-                                                        <rect key="frame" x="156.33333333333334" y="204" width="80.666666666666657" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="Nar-h9-Ohd"/>
-                                                        </constraints>
-                                                        <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="currentPageIndicatorTintColor" red="0.94905811549999997" green="0.55847644809999997" blue="0.1910396516" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </pageControl>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="AoI-Sv-rFa" firstAttribute="centerX" secondItem="r6b-2Y-0VM" secondAttribute="centerX" id="50r-zr-zbr"/>
                                                     <constraint firstItem="fOU-0V-4qZ" firstAttribute="top" secondItem="2dT-BV-sGn" secondAttribute="bottom" id="NOz-AM-T5z"/>
                                                     <constraint firstItem="fOU-0V-4qZ" firstAttribute="leading" secondItem="r6b-2Y-0VM" secondAttribute="leading" id="PuG-K6-4qQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="2dT-BV-sGn" secondAttribute="trailing" id="Pzk-aE-f26"/>
                                                     <constraint firstAttribute="trailing" secondItem="fOU-0V-4qZ" secondAttribute="trailing" id="WPx-dD-52I"/>
-                                                    <constraint firstAttribute="bottom" secondItem="AoI-Sv-rFa" secondAttribute="bottom" id="fch-4g-h6q"/>
                                                     <constraint firstItem="2dT-BV-sGn" firstAttribute="leading" secondItem="r6b-2Y-0VM" secondAttribute="leading" id="m1V-Z3-3eP"/>
                                                     <constraint firstAttribute="bottom" secondItem="fOU-0V-4qZ" secondAttribute="bottom" id="piR-Rz-SuF"/>
                                                     <constraint firstItem="2dT-BV-sGn" firstAttribute="top" secondItem="r6b-2Y-0VM" secondAttribute="top" id="qvA-QH-0HA"/>
@@ -3196,7 +3186,6 @@
                         <outlet property="compareBtn" destination="FjF-Jn-pE9" id="9HG-7v-Ajh"/>
                         <outlet property="countlbl" destination="H7Z-Ia-gj7" id="Ycs-Ng-amS"/>
                         <outlet property="desLbl" destination="C3R-u6-Lzu" id="R36-GF-KzG"/>
-                        <outlet property="pageControl" destination="AoI-Sv-rFa" id="HpL-Ar-T6k"/>
                         <outlet property="productCollectionView" destination="EeR-Kb-vJM" id="Jpo-uk-spo"/>
                         <outlet property="productImageCollectionView" destination="2dT-BV-sGn" id="LgV-Zd-K3w"/>
                         <outlet property="productTwoImageCollectionView" destination="fOU-0V-4qZ" id="fjd-o2-lak"/>
@@ -3916,7 +3905,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vouchers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgQ-Os-lUk">
-                                                                    <rect key="frame" x="15.333333333333343" y="60" width="63.333333333333343" height="17"/>
+                                                                    <rect key="frame" x="15.333333333333346" y="60" width="63.333333333333343" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -3953,7 +3942,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WishList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyD-fU-fjA">
-                                                                    <rect key="frame" x="17.666666666666686" y="60" width="58.333333333333343" height="17"/>
+                                                                    <rect key="frame" x="17.666666666666689" y="60" width="58.333333333333343" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
