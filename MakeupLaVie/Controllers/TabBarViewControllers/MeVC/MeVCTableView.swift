@@ -10,6 +10,7 @@ import UIKit
 class MeVCTableView: UITableViewCell {
     
     @IBOutlet var myLabel: UILabel!
+    @IBOutlet weak var myImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

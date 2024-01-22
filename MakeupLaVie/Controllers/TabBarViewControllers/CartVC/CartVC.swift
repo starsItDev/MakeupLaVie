@@ -91,6 +91,7 @@ class CartVC: UIViewController {
     @IBAction func checkoutBtnTapped(_ sender: Any) {
         if UserInfo.shared.isUserLoggedIn{
             let checkOutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+            checkOutVC.isComingFromEdit = false
             self.navigationController?.pushViewController(checkOutVC, animated: true)
         }
         else{

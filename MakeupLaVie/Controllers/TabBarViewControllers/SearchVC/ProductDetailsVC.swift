@@ -9,10 +9,11 @@ import Cosmos
 
 class ProductDetailsVC: UIViewController {
     
+    //MARK: - Outlets
     @IBOutlet weak var productCollectionView: UICollectionView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet weak var rsLbl: UILabel!
-    @IBOutlet weak var desLbl: UILabel!
+    //@IBOutlet weak var desLbl: UILabel!
     @IBOutlet weak var addCartBtn: UIButton!
     @IBOutlet weak var countlbl: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
@@ -21,6 +22,9 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var productImageCollectionView: UICollectionView!
     @IBOutlet weak var productTwoImageCollectionView: UICollectionView!
+    @IBOutlet weak var descTextView: UITextView!
+    
+    //MARK: Variables
     var selectedIndex: Int?
     private var viewModel = MianHomeViewModel()
     var wishlistproducts: [ResponseWishlist] = []
@@ -193,7 +197,9 @@ class ProductDetailsVC: UIViewController {
         titleLbl.text = model.body.title
         rsLbl.text = model.body.price
         let plainTextDescription = model.body.description.htmlToPlainText
-        desLbl.text = plainTextDescription
+        //desLbl.text = plainTextDescription
+        descTextView.text = plainTextDescription
+        descTextView.sizeToFit()
         self.hasCartItem = model.body.hasCartItem
         print(model.body.hasCartItem)
         if self.hasCartItem{
@@ -281,28 +287,31 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
         }
         return UICollectionViewCell()
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == productCollectionView {
-            return CGSize(width: 158, height: 230)
-        }
-        else if collectionView == productImageCollectionView {
-            return CGSize(width: productImageCollectionView.bounds.width, height: productImageCollectionView.bounds.height)
-        }
-        else if collectionView == productTwoImageCollectionView {
-            return CGSize(width: 126, height: 114)
-        }
-        return CGSize(width: 0, height: 0)
-    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == productCollectionView {
+//            return CGSize(width: 158, height: 230)
+//        }
+//        else if collectionView == productImageCollectionView {
+//            return CGSize(width: self.view.bounds.width, height: 170)
+//        }
+//        else if collectionView == productTwoImageCollectionView {
+//            return CGSize(width: 50, height: 50)
+//        }
+//        return CGSize(width: 0, height: 0)
+//    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == productCollectionView {
-            let selectedID = responseIds[indexPath.row]
+            let selectedID = similarProductsArr[indexPath.row].id
             selectedIDResponse = selectedID
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             guard let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsVC") as? ProductDetailsVC else {
                 return
             }
             nextViewController.selectedResponseID = selectedID
-            self.present(nextViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(nextViewController, animated: true)
         } else if collectionView == productImageCollectionView {
             showImageSlider(at: indexPath.item)
         }
@@ -379,7 +388,7 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
         closeButton.tintColor = .white
         navigationItem.leftBarButtonItem = closeButton
@@ -390,7 +399,7 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
         pageControl.numberOfPages = images.count
         pageControl.currentPage = currentIndex ?? 0
         pageControl.pageIndicatorTintColor = UIColor.lightGray
-        pageControl.currentPageIndicatorTintColor = UIColor.white
+        pageControl.currentPageIndicatorTintColor = UIColor.orange
         view.addSubview(pageControl)
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false

@@ -9,7 +9,7 @@ class MeVC: UIViewController {
     @IBOutlet var nameLbl: UILabel!
     
     var array:[String] = ["Update Profile","Change Password","My Addresses", "Terms And Conditions","Privacy Policy","Help","Logout"]
-    
+    var picArr = [#imageLiteral(resourceName: "ic_user_edit"), #imageLiteral(resourceName: "ic_password__3_"), #imageLiteral(resourceName: "ic_address"), #imageLiteral(resourceName: "ic_terms_and_conditions"), #imageLiteral(resourceName: "ic_privacy"), #imageLiteral(resourceName: "ic_customer_service"), #imageLiteral(resourceName: "ic_logout")]
     @IBOutlet var meCVView: UIView!
     @IBOutlet var imgView: UIImageView!
     
@@ -68,6 +68,7 @@ extension MeVC:UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "cell",for: indexPath) as! MeVCTableView
         cell.myLabel.text = array[indexPath.row]
+        cell.myImg.image = picArr[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -76,14 +77,17 @@ extension MeVC:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             let uname:UpdateProfileVC = self.storyboard?.instantiateViewController(withIdentifier: "UpdateProfileVC") as! UpdateProfileVC
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(uname, animated: true)
         }
         else if indexPath.row == 1{
             let VC :ChangePasswordVC = self.storyboard?.instantiateViewController(withIdentifier: "ChangePasswordVC") as! ChangePasswordVC
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(VC, animated: true)
         }
         else if indexPath.row == 2{
             let VC :MyAddressesVC = self.storyboard?.instantiateViewController(withIdentifier: "MyAddressesVC") as! MyAddressesVC
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(VC, animated: true)
         }
         else if indexPath.row == 6{

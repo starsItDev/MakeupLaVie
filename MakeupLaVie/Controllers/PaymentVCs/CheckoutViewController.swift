@@ -23,10 +23,6 @@ struct ExistingAddress{
     var Address: String
 }
 
-//protocol CheckoutViewControllerDelegate: AnyObject {
-//    func didSelectShippingButton(changeLineColor: Bool)
-//}
-
 class CheckoutViewController: UIViewController, UITextFieldDelegate{
     
     // MARK: - IBOutlets
@@ -40,7 +36,9 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var postCodeTxt: UITextField!
     @IBOutlet weak var address1Txt: UITextField!
     @IBOutlet weak var address2Txt: UITextField!
-    
+    @IBOutlet weak var checkoutLabel: UILabel!
+    @IBOutlet weak var updateView: UIView!
+
     // MARK: - Variables
     var params = [String: Any]()
     var selectedTextField: UITextField = UITextField()
@@ -55,7 +53,8 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     var existAddrArr = [String]()
     var countries = [String]()
     var provinces = [String]()
-    
+    var isComingFromEdit = true
+        
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +68,12 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         stateTxt.inputView = statePicker
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
+        if isComingFromEdit {
+            checkoutLabel.text = "Edit Address"
+            updateView.isHidden = false
+        } else {
+            checkoutLabel.text = "Checkout"
+        }
     }
     
     // MARK: - HelperFunctions
@@ -150,6 +155,11 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     }
     @IBAction func checkOutBackBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func updateAddressBtn(_ sender: UIButton) {
+        if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyAddressesVC") as? MyAddressesVC {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     func checkOutDetailsAPI(){
         let url = base_url + "checkout"
