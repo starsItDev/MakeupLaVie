@@ -8,8 +8,8 @@
 import UIKit
 
 class CategoryCollectioncell: UICollectionViewCell {
-   
+    
     @IBOutlet var categoryImg: UIImageView!
     @IBOutlet var categoryLbl: UILabel!
-
+    
 }

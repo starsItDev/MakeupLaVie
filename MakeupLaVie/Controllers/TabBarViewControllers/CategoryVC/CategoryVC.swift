@@ -8,9 +8,7 @@ import UIKit
 
 class CategoryVC: UIViewController {
     
-    
     @IBOutlet weak var categoriesSimpleCV: UICollectionView!
-    
     @IBOutlet var categoriesGridCV: UICollectionView!
     @IBOutlet var backBtn: UIButton!
     @IBOutlet weak var gridViewBtn: UIButton!
@@ -32,13 +30,11 @@ class CategoryVC: UIViewController {
             self.categoriesSimpleCV.isHidden = true
             self.categoriesGridCV.isHidden = false
         }
-        else{
-            
+        else {
             sender.isSelected = true
             gridViewBtn.setImage(UIImage(systemName: "rectangle.grid.1x2.fill"), for: .normal)
             self.categoriesGridCV.isHidden = true
             self.categoriesSimpleCV.isHidden = false
-            
         }
     }
     
@@ -94,10 +90,6 @@ extension CategoryVC: UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         }
         
     }
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //
-    //        return CGSize(width: 105, height: 130)
-    //    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var currentIndex = 0
         
@@ -124,8 +116,9 @@ extension CategoryVC: UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         
         print("Selected item not found")
     }
-    
 }
+
+//MARK: - Extension CategoryVC
 extension CategoryVC {
     func configuration() {
         initViewModel()

@@ -59,8 +59,9 @@ extension MyAddressesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AddressesTableViewCell
         let myAddress = address[indexPath.row]
-        let fullName = "\(myAddress.firstName) \(myAddress.lastName)"
-        cell.nameLabel.text = fullName
+//      let fullName = "\(myAddress.firstName) \(myAddress.lastName)"
+        cell.nameLabel.text = myAddress.city
+        cell.numberLabel.text = myAddress.country
         cell.addressLabel.text = myAddress.address1
         cell.editButton.tag = indexPath.row
         cell.editButton.addTarget(self, action: #selector(editBtnTapped(sender:)), for: .touchUpInside)

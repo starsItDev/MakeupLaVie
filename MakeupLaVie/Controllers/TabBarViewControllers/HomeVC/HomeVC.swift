@@ -9,8 +9,7 @@ import UIKit
 import SDWebImage
 
 class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDelegate2 {
-  // MARK: - OutLets
-    
+    // MARK: - OutLets
     @IBOutlet weak var specialOfferCV: UICollectionView!
     @IBOutlet weak var hotProductCV: UICollectionView!
     @IBOutlet weak var bestProductCV: UICollectionView!
@@ -28,14 +27,14 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var loginBtn: UIButton!
-    
-    
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingImageView: UIView!
     
     // MARK: - Variable
     private let refreshControl = UIRefreshControl()
     var inWishlist = false
     var isSideViewOpen: Bool = false
-        // var strName = ""
     var timer: Timer?
     var currentIndex = 0
     var makeUPImageControl:[String] = ["bg-promotion-1","bg-promotion-2","bg-promotion-3","bg-promotion-4","bg-promotion-5","bg-promotion-6"]
@@ -54,19 +53,16 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
     var BrandArray = [GenericListingModel]()
     var mArray = [Int]()
     
-    
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityIndicator.startAnimating()
         let time = UserInfo.shared.expiresTime
         //let time = 15
         if UserInfo.shared.isUserLoggedIn == true{
             self.namesArray[7] = "Logout"
             var timer = Timer()
             timer = Timer.scheduledTimer(timeInterval: TimeInterval(time), target: self, selector: #selector(self.refreshTokenAPI), userInfo: nil, repeats: true)
-            
             //refreshTokenAPI()
         }
         getCategoryAPI()
@@ -79,15 +75,12 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
         bestProductCV.reloadData()
         hotProductCV.reloadData()
         specialOfferCV.reloadData()
-        
         sideBarView.isHidden = true
         isSideViewOpen = false
         setupViews()
         drawerTableView.reloadData()
         //lblName.text = strName
-        
         myPageControl.currentPage = 0
-        //print(makeUPImageControl.count)
         myPageControl.numberOfPages = makeUPImageControl.count
         
         DispatchQueue.main.async {
@@ -106,14 +99,15 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
         hotProductCV.reloadData()
         specialOfferCV.reloadData()
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-            if #available(iOS 10.0, *) {
-                scrollView.refreshControl = refreshControl
-            } else {
-                scrollView.addSubview(refreshControl)
-            }
+        if #available(iOS 10.0, *) {
+            scrollView.refreshControl = refreshControl
+        } else {
+            scrollView.addSubview(refreshControl)
+        }
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    //MARK: - Helper Functions
     func setupViews(){
         self.navigationController?.isNavigationBarHidden = true
         sideBarView.clipsToBounds = true
@@ -123,6 +117,8 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
     
     @objc private func refreshData() {
         homePageAPI()
+        getCategoryAPI()
+        getBrandAPI()
         self.recentProductCV.reloadData()
         refreshControl.endRefreshing()
     }
@@ -134,7 +130,7 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
             myPageControl.currentPage = counter
             counter += 1
         }
-        else{
+        else {
             counter = 0
             let index = IndexPath.init(item: counter, section: 0)
             self.pagerCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
@@ -240,7 +236,7 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
         print(params)
         let url = "\(base_url)token/refresh"
         Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
-         print(response)
+            print(response)
             if statusCode == 200 && error == nil{
                 let body = response["body"].dictionary
                 let token_type = body?["token_type"]?.stringValue
@@ -327,69 +323,78 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
         }
     }
     
-    func homePageAPI(){
+    func homePageAPI() {
+        if utilityFunctions.isConnectedToNetwork() {
         let url = base_url + "home"
-        Networking.instance.getApiCall(url: url){(response, error, statusCode) in
-            if error == nil && statusCode == 200{
-                if let body = response["body"].dictionary {
-                    //print(response)
-                    if body["totalItemCount"] != nil{
-                        //                              self.totalItemCount = body["totalItemCount"] as! Int
-                    }
-                    if let res = body["recentProducts"]?.array{
-                        print(res)
-                        for dic in res{
-                            
-                            let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                            self.recentdataArray.append(model)
-                            self.recentProductCV.reloadData()
-                            
+            Networking.instance.getApiCall(url: url){(response, error, statusCode) in
+                if error == nil && statusCode == 200{
+                    self.loadingView.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    if let body = response["body"].dictionary {
+                        //print(response)
+                        if body["totalItemCount"] != nil{
+                            //                              self.totalItemCount = body["totalItemCount"] as! Int
+                        }
+                        if let res = body["recentProducts"]?.array{
+                            print(res)
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.recentdataArray.append(model)
+                                self.recentProductCV.reloadData()
+                                
+                            }
+                        }
+                        if let res = body["newProducts"]?.array{
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.newproductArray.append(model)
+                                self.newProductCV.reloadData()
+                                
+                            }
+                        }
+                        if let res = body["bestProducts"]?.array{
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.bestproductArray.append(model)
+                                self.bestProductCV.reloadData()
+                                
+                            }
+                        }
+                        if let res = body["hotDeals"]?.array{
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.hotproductArray.append(model)
+                                self.hotProductCV.reloadData()
+                                
+                            }
+                        }
+                        if let res = body["specialOffers"]?.array{
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.speciallproductArray.append(model)
+                                self.specialOfferCV.reloadData()
+                                
+                            }
                         }
                     }
-                    if let res = body["newProducts"]?.array{
-                        for dic in res{
-                            
-                            let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                            self.newproductArray.append(model)
-                            self.newProductCV.reloadData()
-                            
-                        }
-                    }
-                    if let res = body["bestProducts"]?.array{
-                        for dic in res{
-                            
-                            let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                            self.bestproductArray.append(model)
-                            self.bestProductCV.reloadData()
-                            
-                        }
-                    }
-                    if let res = body["hotDeals"]?.array{
-                        for dic in res{
-                            
-                            let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                            self.hotproductArray.append(model)
-                            self.hotProductCV.reloadData()
-                            
-                        }
-                    }
-                    if let res = body["specialOffers"]?.array{
-                        for dic in res{
-                            
-                            let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                            self.speciallproductArray.append(model)
-                            self.specialOfferCV.reloadData()
-                            
-                        }
-                    }
+                }else if statusCode == 500{
+                    utilityFunctions.showAlertWithTitle(title: "", withMessage: "Server Error", withNavigation: self)
                 }
-            }else if statusCode == 500{
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Server Error", withNavigation: self)
+                else {
+                    print(error)
+                }
             }
-            else{
-                
-                print(error)
-            }
+        }
+        else {
+            self.showToast(message: "Please check your internet connection")
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.loadingImageView.isHidden = false
         }
     }
 }
@@ -524,23 +529,23 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
                 break
             }}
         return 40
-            
+        
     }
     
     func didSelectItemAtIndex(index: Int, selectedID: Int) {
         let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
-            destinationVC.selectedIndex = index
-            destinationVC.selectedResponseID = selectedID
-            navigationController?.pushViewController(destinationVC, animated: true)
+        destinationVC.selectedIndex = index
+        destinationVC.selectedResponseID = selectedID
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
-
+    
     func didSelectItemAtIndex2(index: Int ,selectedID: Int) {
         print("ALL IS WELL")
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
         //vc.selectedIndex = index
         vc.selectedID = selectedID
-            navigationController?.pushViewController(vc, animated: true)
-
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @objc func recentHeartBtnTapped(sender: UIButton){
@@ -1067,13 +1072,13 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
             vc.selectedID = categoryArray[indexPath.item].id
             vc.selectedName = categoryArray[indexPath.item].catagorylabel
-                navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
         if collectionView == featureBrandCV{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
             vc.selectedID = BrandArray[indexPath.item].id
             vc.selectedName = BrandArray[indexPath.item].catagorylabel
-                navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

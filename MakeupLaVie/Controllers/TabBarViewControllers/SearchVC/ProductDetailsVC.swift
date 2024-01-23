@@ -23,8 +23,10 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var productImageCollectionView: UICollectionView!
     @IBOutlet weak var productTwoImageCollectionView: UICollectionView!
     @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    //MARK: Variables
+    //MARK: - Variables
     var selectedIndex: Int?
     private var viewModel = MianHomeViewModel()
     var wishlistproducts: [ResponseWishlist] = []
@@ -41,6 +43,7 @@ class ProductDetailsVC: UIViewController {
     //MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
         apiCall()
         configuration()
         updateAddCartButtonText()
@@ -186,6 +189,9 @@ class ProductDetailsVC: UIViewController {
                 self.responseID = model.body.id
                 DispatchQueue.main.async {
                     self.updateUI(with: model)
+                    self.loadingView.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                 }
             } catch {
                 print("Error decoding JSON: \(error)")
