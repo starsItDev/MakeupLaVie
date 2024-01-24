@@ -42,6 +42,7 @@ class ShippingViewController: UIViewController {
     var provinces = [String]()
     var totalAmount = String()
     var sameAddress = false
+    var addressId = 0
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -87,7 +88,7 @@ class ShippingViewController: UIViewController {
             params["address_2"] = billingData?.AddressTwo
             params["default"] = 1
             var paramDic = [String: Any]()
-            paramDic["address_id"] = "1"
+            paramDic["address_id"] = billingData?.id
             paramDic["shipping"] = params
             postShippingAPICall(params: paramDic)
         }
@@ -144,7 +145,12 @@ class ShippingViewController: UIViewController {
                 params["address_2"] = address2Txt.text
                 params["default"] = 1
                 var paramDic = [String: Any]()
-                paramDic["address_id"] = "1"
+                if self.addressId == 0{
+                    paramDic["address_id"] = "1"
+                }
+                else{
+                    paramDic["address_id"] = "\(addressId)"
+                }
                 paramDic["shipping"] = params
                 postShippingAPICall(params: paramDic)
                 
@@ -210,7 +216,8 @@ class ShippingViewController: UIViewController {
                         for i in addresses{
                             let type = i["type"].stringValue
                             if type == "shipping"{
-                                shippingId = i["id"].intValue
+                                var id = i["id"].intValue
+                                shippingId = id
                                 let firstName = i["first_name"].stringValue
                                 let lastName = i["last_name"].stringValue
                                 let phoneNo = i["phone"].stringValue
@@ -235,28 +242,29 @@ class ShippingViewController: UIViewController {
                                 self.stateTxt.text = state
                                 self.cityTxt.text = city
                                 
-                                let person = Person(Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+                                let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
                                 self.shippingPeopleArr.append(person)
                             }
-                            else if type == "billing" {
-                                shippingId = i["id"].intValue
-                                let firstName = i["first_name"].stringValue
-                                let lastName = i["last_name"].stringValue
-                                let phoneNo = i["phone"].stringValue
-                                let zipCode = i["zip"].stringValue
-                                let address1 = i["address_1"].stringValue
-                                let address2 = i["address_2"].stringValue
-                                let country = i["country"].stringValue
-                                let state = i["state"].stringValue
-                                let city = i["city"].stringValue
-                                let existAddr = "\(firstName)\(lastName)(\(address1))"
-                                self.billingAddress.append(existAddr)
-                                self.countries.append(i["country"].stringValue)
-                                self.provinces.append(i["state"].stringValue)
-                                let person = Person(Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
-                                self.billingData = person
-                                self.billingPeopleArr.append(person)
-                            }
+//                            else if type == "billing" {
+//                                var id = i["id"].intValue
+//                                shippingId = id
+//                                let firstName = i["first_name"].stringValue
+//                                let lastName = i["last_name"].stringValue
+//                                let phoneNo = i["phone"].stringValue
+//                                let zipCode = i["zip"].stringValue
+//                                let address1 = i["address_1"].stringValue
+//                                let address2 = i["address_2"].stringValue
+//                                let country = i["country"].stringValue
+//                                let state = i["state"].stringValue
+//                                let city = i["city"].stringValue
+//                                let existAddr = "\(firstName)\(lastName)(\(address1))"
+//                                self.billingAddress.append(existAddr)
+//                                self.countries.append(i["country"].stringValue)
+//                                self.provinces.append(i["state"].stringValue)
+//                                let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+//                                //self.billingData = person
+//                                self.billingPeopleArr.append(person)
+//                            }
                         }
                     }
                 }
@@ -320,6 +328,7 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == addressPicker{
             if row == 0 {
                 existingAddressTxt.text = "App new Address"
+                self.addressId = 0
                 firstNameTxt.text = ""
                 lastNameTxt.text = ""
                 phoneNoTxt.text = ""
@@ -333,6 +342,8 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 else {
                     return
                 }
+                self.addressId = shippingPeopleArr[row - 1].id
+                shippingId = addressId
                 self.existingAddressTxt.text = shippingPeopleArr[row - 1].Address
                 self.firstNameTxt.text = shippingPeopleArr[row - 1].firstName
                 self.lastNameTxt.text = shippingPeopleArr[row - 1].lastName

@@ -8,6 +8,7 @@
 import UIKit
 
 struct Person {
+    var id: Int
     var Address: String
     var firstName: String
     var lastName: String
@@ -38,7 +39,7 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var address2Txt: UITextField!
     @IBOutlet weak var checkoutLabel: UILabel!
     @IBOutlet weak var updateView: UIView!
-
+    
     // MARK: - Variables
     var params = [String: Any]()
     var selectedTextField: UITextField = UITextField()
@@ -54,7 +55,8 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     var countries = [String]()
     var provinces = [String]()
     var isComingFromEdit = true
-        
+    var addressId = 0
+    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +145,12 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
             params["address_2"] = address2Txt.text
             params["default"] = 1
             var paramDic = [String: Any]()
-            paramDic["address_id"] = "1"
+            if self.addressId == 0{
+                paramDic["address_id"] = "1"
+            }
+            else{
+                paramDic["address_id"] = "\(addressId)"
+            }
             paramDic["billing"] = params
             postCheckoutAPICall(params: paramDic)
             
@@ -170,7 +177,8 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                         for i in addresses{
                             let type = i["type"].stringValue
                             if type == "billing"{
-                                billingId = i["id"].intValue
+                                let id = i["id"].intValue
+                                billingId = id
                                 let firstName = i["first_name"].stringValue
                                 let lastName = i["last_name"].stringValue
                                 let phoneNo = i["phone"].stringValue
@@ -195,7 +203,7 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                                 self.stateTxt.text = state
                                 self.cityTxt.text = city
                                 
-                                let person = Person(Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+                                let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
                                 self.billingPeopleArr.append(person)
                             }
                         }
@@ -213,19 +221,35 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if response["body"].dictionary != nil {
-                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as? ShippingViewController {
-                        if !self.billingPeopleArr.isEmpty{
-                            vc.billingData = self.billingPeopleArr.last
+                    let body = response["body"].dictionary
+                    let type = body?["type"]?.stringValue
+                    if type == "billing"{
+                        let id = body?["id"]?.intValue
+                        billingId = id ?? 0
+                        let firstName = body?["first_name"]?.stringValue ?? ""
+                        let lastName = body?["last_name"]?.stringValue ?? ""
+                        let phoneNo = body?["phone"]?.stringValue
+                        let zipCode = body?["zip"]?.stringValue
+                        let address1 = body?["address_1"]?.stringValue ?? ""
+                        let address2 = body?["address_2"]?.stringValue
+                        let country = body?["country"]?.stringValue
+                        let state = body?["state"]?.stringValue
+                        let city = body?["city"]?.stringValue
+                        let existAddr = "\(firstName)\(lastName)(\(address1))"
+                        let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "")
+                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as? ShippingViewController {
+
+                            vc.billingData = person
+                            self.navigationController?.pushViewController(vc, animated: true)
                         }
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        //                    vc.shippingPeopleArr = self.shippingPeopleArr
+                        //                    vc.showData()
+                        //                    self.delegate?.didSelectShippingButton(changeLineColor: true)
                     }
-                    //                    vc.shippingPeopleArr = self.shippingPeopleArr
-                    //                    vc.showData()
-                    //                    self.delegate?.didSelectShippingButton(changeLineColor: true)
                 }
             }
+            //self.delegate?.didSelectShippingButton(changeLineColor: true) //only for testing
         }
-        //self.delegate?.didSelectShippingButton(changeLineColor: true) //only for testing
     }
 }
 
@@ -265,6 +289,7 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == addressPicker {
             if row == 0 {
                 existingAddressTxt.text = "App New Address"
+                self.addressId = 0
                 firstNameTxt.text = ""
                 lastNameTxt.text = ""
                 phoneNoTxt.text = ""
@@ -278,6 +303,9 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 else {
                     return
                 }
+            
+                self.addressId = billingPeopleArr[row - 1].id
+                billingId = addressId
                 self.existingAddressTxt.text = billingPeopleArr[row - 1].Address
                 self.firstNameTxt.text = billingPeopleArr[row - 1].firstName
                 self.lastNameTxt.text = billingPeopleArr[row - 1].lastName
@@ -298,6 +326,3 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
 }
-
-
-

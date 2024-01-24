@@ -10,6 +10,7 @@
 		18052EB62A651870009BABDF /* navigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18052EB52A651870009BABDF /* navigationBarView.swift */; };
 		18052EBA2A652CEC009BABDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18052EB92A652CEC009BABDF /* LaunchScreen.storyboard */; };
 		18052EBD2A657E10009BABDF /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 18052EBC2A657E10009BABDF /* Cosmos */; };
+		1821D96B2B600011007E915A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821D96A2B600011007E915A /* ToastView.swift */; };
 		188F65FE2B5ABA7F0080BE8E /* AddressesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F65FD2B5ABA7F0080BE8E /* AddressesTableViewCell.swift */; };
 		188F66002B5ABB170080BE8E /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F65FF2B5ABB170080BE8E /* AddressModel.swift */; };
 		18A179A32A84BA2000054D15 /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 18A179A22A84BA2000054D15 /* MultiSlider */; };
@@ -125,7 +126,6 @@
 		E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */; };
 		E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188812B4FC86100B49D17 /* MyOrderModel.swift */; };
 		E0A559182B5E8E5200C82A21 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = E0A559172B5E8E5200C82A21 /* SkeletonView */; };
-		E0A847B72B5FF3B30001F0AC /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A847B62B5FF3B30001F0AC /* ToastView.swift */; };
 		E0C19E7E2B568306007CE996 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C19E7D2B568306007CE996 /* CornerRadius.swift */; };
 		E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */; };
 		E0EC327B2B4D82A000E7F057 /* OrderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */; };
@@ -155,6 +155,7 @@
 /* Begin PBXFileReference section */
 		18052EB52A651870009BABDF /* navigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationBarView.swift; sourceTree = "<group>"; };
 		18052EB92A652CEC009BABDF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1821D96A2B600011007E915A /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		188F65FD2B5ABA7F0080BE8E /* AddressesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesTableViewCell.swift; sourceTree = "<group>"; };
 		188F65FF2B5ABB170080BE8E /* AddressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		18A179A42A84E1C800054D15 /* BrandPKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandPKViewController.swift; sourceTree = "<group>"; };
@@ -266,7 +267,6 @@
 		76F4B3712A43222E00E36DC2 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
 		E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0A188812B4FC86100B49D17 /* MyOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderModel.swift; sourceTree = "<group>"; };
-		E0A847B62B5FF3B30001F0AC /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToastView.swift; path = ../../../../Downloads/ToastView.swift; sourceTree = "<group>"; };
 		E0C19E7D2B568306007CE996 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHeaderView.xib; sourceTree = "<group>"; };
 		E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderView.swift; sourceTree = "<group>"; };
@@ -400,9 +400,9 @@
 			children = (
 				7662416C2A1CD38A0081C6A8 /* KingFisher */,
 				76257C3E29EFCB4D0089CCE9 /* ImageZoom */,
+				1821D96A2B600011007E915A /* ToastView.swift */,
 				18A819512A5FD8880091C4DA /* UserInfo.swift */,
 				18F98F062A66AE350057578D /* utilityFunctions.swift */,
-				E0A847B62B5FF3B30001F0AC /* ToastView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -974,7 +974,7 @@
 				7662416E2A1CD3C60081C6A8 /* UIImage+KingFisher.swift in Sources */,
 				E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */,
 				7688494C2A1C9F2700D81158 /* ViewModel.swift in Sources */,
-				E0A847B72B5FF3B30001F0AC /* ToastView.swift in Sources */,
+				1821D96B2B600011007E915A /* ToastView.swift in Sources */,
 				76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */,
 				7696C81229E51CB200383B01 /* MakeupLaVie.xcdatamodeld in Sources */,
 				18CCC6382A86148B0046E43A /* ReviewTableViewCell.swift in Sources */,

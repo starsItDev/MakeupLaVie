@@ -47,9 +47,33 @@ class UpdateProfileVC: UIViewController {
     }
     
     @IBAction func upDataBtn(_ sender: UIButton) {
-        let VC: MeVC = self.storyboard?.instantiateViewController(withIdentifier: "MeVC") as! MeVC
-        //VC.strname = firstName.text
-        //VC.stremail = lastName.text
-        self.navigationController?.pushViewController(VC, animated: true)
+        
+        if (firstName?.text?.isEmpty)! {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "First Name is required", withNavigation: self)
+            return
+        }
+        if (lastName?.text?.isEmpty)! {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Last Name is required", withNavigation: self)
+            return
+        }
+        if (phoneNoTxt?.text?.isEmpty)! {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Phone Number is required", withNavigation: self)
+            return
+        }
+        else{
+            var params = [String: Any]()
+            params["first_name"] = firstName.text
+            params["last_name"] = lastName.text
+            params["phone"] = phoneNoTxt.text
+            let url = base_url + "user/profile"
+            Networking.instance.putApiCall(url: url, param: params){(response, error, statusCode) in
+                if error == nil && statusCode == 200{
+                    
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            //let VC: MeVC = self.storyboard?.instantiateViewController(withIdentifier: "MeVC") as! MeVC
+            //self.navigationController?.pushViewController(VC, animated: true)
+        }
     }
 }

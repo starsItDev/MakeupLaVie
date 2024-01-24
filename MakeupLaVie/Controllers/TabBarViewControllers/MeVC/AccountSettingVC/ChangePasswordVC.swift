@@ -9,23 +9,44 @@ import UIKit
 
 class ChangePasswordVC: UIViewController {
 
+    @IBOutlet weak var currentPasswordTxt: UITextField!
+    @IBOutlet weak var confirmPasswordTxt: UITextField!
+    @IBOutlet weak var newPasswordTxt: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func ChangePasswordBtnTapped(_ sender: Any) {
+        if (currentPasswordTxt?.text?.isEmpty)! {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Current Password is required", withNavigation: self)
+            return
+        }
+        if (newPasswordTxt?.text?.isEmpty)! {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "New Password is required", withNavigation: self)
+            return
+        }
+        if (confirmPasswordTxt?.text?.isEmpty)! {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Confirm Password is required", withNavigation: self)
+            return
+        }
+        else{
+            var params = [String: Any]()
+            params["old_password"] = currentPasswordTxt.text
+            params["password"] = confirmPasswordTxt.text
+            params["password_confirmation"] = newPasswordTxt.text
+            let url = base_url + "user/password"
+            Networking.instance.putApiCall(url: url, param: params){(response, error, statusCode) in
+                if error == nil && statusCode == 200{
+                    
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
     }
-    */
-
 }

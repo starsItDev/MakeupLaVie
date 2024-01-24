@@ -201,8 +201,23 @@ class Networking {
     //Calling Put api call
 
     func putApiCall(url: String,param:[String:Any],completionHandler: @escaping (_ Response:JSON,_ Error:String?, _ StatusCode: Int) -> ()) {
-
-        AF.request(url , method: .post, parameters: param, encoding: JSONEncoding.default,headers: nil).response { (response) in
+        
+        let token = UserInfo.shared.accessToken
+      //let token =  UserDefaults.standard.string(forKey: "TokenString") ?? ""
+      var header: HTTPHeaders = [:]
+      if token != "" {
+        header = [
+          "Authorization": "Bearer \(token)",
+          "Accept": "application/json"
+        ]
+      }else{
+        header = [
+          "Authorization": "nil",
+          "Accept": "application/json"
+        ]
+      }
+        
+        AF.request(url , method: .put, parameters: param, encoding: JSONEncoding.default,headers: header).response { (response) in
 
             print("Request: \(String(describing: response.request))")   // original url request
 
