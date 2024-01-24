@@ -20,13 +20,20 @@ class SignUpVC: UIViewController , UITextViewDelegate{
     @IBOutlet weak var confirmPasswordBtn: UIButton!
     @IBOutlet weak var passwordBtn: UIButton!
     
+//MARK: - Variables
     var params = [String: String]()
     
+    //MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+//MARK: - Helper Functions
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -34,8 +41,7 @@ class SignUpVC: UIViewController , UITextViewDelegate{
     @objc func handleTap() {
         view.endEditing(true)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField
         print(nextField as Any)
         if textField.tag == 1 {
@@ -49,22 +55,10 @@ class SignUpVC: UIViewController , UITextViewDelegate{
         textField.resignFirstResponder()
         return true
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     @IBAction func backBtnTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
     @IBAction func signUpBtn(_ sender: UIButton) {
-        
-        //        guard let firstname = self.inPutName.text else {return}
-        //        guard let lastnmae = self.inPutLastName.text else {return}
-        //        guard let email = self.inPutEmailAddress.text else {return}
-        //        guard let phone = self.inPutPhoneNumber.text else {return}
-        //        guard let password = self.inPutConfrimPassword.text else {return}
-        //        guard let comfrimPassword = self.inPutConfrimPassword.text else {return}
         if (inPutName?.text?.isEmpty)! {
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "First Name is required", withNavigation: self)
             return
@@ -89,12 +83,10 @@ class SignUpVC: UIViewController , UITextViewDelegate{
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "Password length should be at least 6 characters long", withNavigation: self)
             return
         }
-        
         if (inPutConfrimPassword?.text?.isEmpty)! {
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "Confirm Password is required.", withNavigation: self)
             return
         }
-        
         if inPutPassword?.text != inPutConfrimPassword?.text {
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "Password does not match!", withNavigation: self)
             return
@@ -109,26 +101,20 @@ class SignUpVC: UIViewController , UITextViewDelegate{
             print(params)
             self.postSignUpAPI(params: params)
         }
-        
-        
-        
-        
-        //let register =  SignupModel(first_name: firstname, last_name: lastnmae,email: email,phone: phone, password: password,password_confirmation: comfrimPassword)
-        
-        //        APIManager.shareInstance.callingSignUpAPI(signUp: register){
-        //            (isSuccess, str ) in
-        //            if isSuccess {
+        //        let register =  SignupModel(first_name: firstname, last_name: lastnmae,email: email,phone: phone, password: password,password_confirmation: comfrimPassword)
         //
-        //                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
-        //                self.navigationController?.pushViewController(vc!, animated: true)
-        //            }else {
-        //                self.alert(message: str, title: "Alert")
-        //            }
-        //        }
+        //                APIManager.shareInstance.callingSignUpAPI(signUp: register){
+        //                    (isSuccess, str ) in
+        //                    if isSuccess {
+        //
+        //                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+        //                        self.navigationController?.pushViewController(vc!, animated: true)
+        //                    }else {
+        //                        self.alert(message: str, title: "Alert")
+        //                    }
+        //                }
     }
-    
     func postSignUpAPI(params: [String: Any]){
-        
         Networking.instance.postApiCall(url: signUp_url, param: params){(response, error, statusCode) in
             print(response)
             if error == nil && statusCode == 200{
@@ -152,41 +138,32 @@ class SignUpVC: UIViewController , UITextViewDelegate{
                 utilityFunctions.showAlertWithTitle(title: "", withMessage: message ?? "", withNavigation: self)
             }
         }
-        
     }
-    
     @IBAction func showPaswordTapped(_ sender: UIButton) {
-        if sender.isSelected == true{
-            sender.isSelected = false
-            passwordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
-            inPutPassword.isSecureTextEntry = true
-        }
-        else{
-            sender.isSelected = true
-            passwordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        if inPutPassword.isSecureTextEntry {
             inPutPassword.isSecureTextEntry = false
+            passwordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
+            passwordBtn.tintColor = .darkGray
+        } else {
+            inPutPassword.isSecureTextEntry = true
+            passwordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            passwordBtn.tintColor = .lightGray
         }
     }
-    
     @IBAction func showConfirmPasswordTapped(_ sender: UIButton) {
-        if sender.isSelected == true{
-            sender.isSelected = false
-            confirmPasswordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
-            inPutConfrimPassword.isSecureTextEntry = true
-        }
-        else{
-            sender.isSelected = true
-            confirmPasswordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        if inPutConfrimPassword.isSecureTextEntry {
             inPutConfrimPassword.isSecureTextEntry = false
+            confirmPasswordBtn.setImage(UIImage(systemName: "eye"), for: .normal)
+            confirmPasswordBtn.tintColor = .darkGray
+        } else {
+            inPutConfrimPassword.isSecureTextEntry = true
+            confirmPasswordBtn.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+            confirmPasswordBtn.tintColor = .lightGray
         }
     }
-    
-    //    @IBAction func logInBtn(_ sender: UIButton) {
-    //        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
-    //        self.navigationController?.pushViewController(vc!, animated: true)
-    //    }
-    
 }
+
+//MARK: - Extension SignUpVC
 extension SignUpVC : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == inPutEmailAddress {

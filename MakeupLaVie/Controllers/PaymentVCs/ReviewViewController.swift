@@ -121,25 +121,23 @@ class ReviewViewController: UIViewController {
             print(response)
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary{
-                    if let addresses = body["addresses"]?.array {
-                        for i in addresses{
-                            let type = i["type"].stringValue
-                            if type == "billing"{
-                                let firstName = i["first_name"].stringValue
-                                let lastName = i["last_name"].stringValue
-                                let address = i["address_1"].stringValue
-                                let number = i["phone"].stringValue
-                                let addresses = BillingAddress(name: "\(firstName) \(lastName)", address: address, phone: number)
-                                self.billingAddress.append(addresses)
-                            } else if type == "shipping" {
-                                let firstName = i["first_name"].stringValue
-                                let lastName = i["last_name"].stringValue
-                                let address = i["address_1"].stringValue
-                                let number = i["phone"].stringValue
-                                let addresses = ShippingAddress(name: "\(firstName) \(lastName)", address: address, phone: number)
-                                self.shippingAddress.append(addresses)
-                            }
-                        }
+                    if let address = body["shipping_address"]?.dictionary {
+                        let firstName = address["first_name"]?.stringValue ?? ""
+                        let lastName = address["last_name"]?.stringValue ?? ""
+                        let addresses = address["address_1"]?.stringValue
+                        let number = address["phone"]?.stringValue
+                        self.shippingNameLbl.text = "\(firstName) \(lastName)"
+                        self.shippingAddressLbl.text = addresses
+                        self.shippingPhoneLbl.text = number
+                    }
+                    if let addresses = body["billing_address"]?.dictionary {
+                        let firstName = addresses["first_name"]?.stringValue ?? ""
+                        let lastName = addresses["last_name"]?.stringValue ?? ""
+                        let address = addresses["address_1"]?.stringValue
+                        let number = addresses["phone"]?.stringValue
+                        self.billingNameLbl.text = "\(firstName) \(lastName)"
+                        self.billingAddressLbl.text = address
+                        self.billingPhoneLbl.text = number
                     }
                     if let products = body["products"]?.array{
                         for item in products {
@@ -165,16 +163,11 @@ class ReviewViewController: UIViewController {
                         }
                     }
                 }
-                self.billingNameLbl.text = self.billingAddress.last?.name
-                self.billingAddressLbl.text = self.billingAddress.last?.address
-                self.billingPhoneLbl.text = self.billingAddress.last?.phone
-                self.shippingNameLbl.text = self.shippingAddress.last?.name
-                self.shippingAddressLbl.text = self.shippingAddress.last?.address
-                self.shippingPhoneLbl.text = self.shippingAddress.last?.phone
             }
         }
     }
 }
+
 //MARK: - Extension TableView
 extension ReviewViewController: UITableViewDelegate, UITableViewDataSource{
     

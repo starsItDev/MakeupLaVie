@@ -14,10 +14,8 @@ class ToastView: UIView {
     init(message: String) {
         messageLabel = UILabel()
         super.init(frame: CGRect.zero)
-        
         setupUI()
         setupConstraints()
-        
         messageLabel.text = message
     }
     
@@ -29,6 +27,7 @@ class ToastView: UIView {
         backgroundColor = UIColor.black.withAlphaComponent(0.7)
         layer.cornerRadius = 10
         clipsToBounds = true
+        messageLabel.font = UIFont.systemFont(ofSize: 15)
         messageLabel.textColor = UIColor.white
         messageLabel.textAlignment = .center
         messageLabel.numberOfLines = 0
@@ -44,6 +43,7 @@ class ToastView: UIView {
         ])
     }
 }
+
 extension UIViewController {
     func showToast(message: String, duration: TimeInterval = 2.0) {
         let toastView = ToastView(message: message)
@@ -51,12 +51,9 @@ extension UIViewController {
         
         toastView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            toastView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 150),
-            toastView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -150),
-            toastView.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            toastView.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             toastView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
         UIView.animate(withDuration: 0.5, animations: {
             toastView.alpha = 1.0
         }) { _ in

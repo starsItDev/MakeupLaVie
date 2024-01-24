@@ -89,14 +89,18 @@ class CartVC: UIViewController {
         
     }
     @IBAction func checkoutBtnTapped(_ sender: Any) {
-        if UserInfo.shared.isUserLoggedIn{
-            let checkOutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
-            checkOutVC.isComingFromEdit = false
-            self.navigationController?.pushViewController(checkOutVC, animated: true)
-        }
-        else{
-            let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-            self.navigationController?.pushViewController(mainVC, animated: true)
+        if cartProductsArr.isEmpty {
+            showToast(message: "No item in cart")
+        } else {
+            if UserInfo.shared.isUserLoggedIn{
+                let checkOutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+                checkOutVC.isComingFromEdit = false
+                self.navigationController?.pushViewController(checkOutVC, animated: true)
+            }
+            else{
+                let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                self.navigationController?.pushViewController(mainVC, animated: true)
+            }
         }
     }
     @objc func plusBtnTapped(sender: UIButton){

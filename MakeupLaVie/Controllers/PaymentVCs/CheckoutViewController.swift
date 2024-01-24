@@ -147,9 +147,11 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
             var paramDic = [String: Any]()
             if self.addressId == 0{
                 paramDic["address_id"] = "1"
+                billingId = 1
             }
             else{
                 paramDic["address_id"] = "\(addressId)"
+                billingId = addressId
             }
             paramDic["billing"] = params
             postCheckoutAPICall(params: paramDic)

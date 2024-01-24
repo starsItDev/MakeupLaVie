@@ -1087,7 +1087,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             return CGSize(width: pagerCollectionView.bounds.width, height: 180)
         }
         if collectionView == categoryCollectionView{
-            return CGSize(width: 105, height: 80)
+            return CGSize(width: 87, height: 80)
         }
         else{
             return CGSize(width: 105, height: 130)
