@@ -68,6 +68,18 @@ class UpdateProfileVC: UIViewController {
             let url = base_url + "user/profile"
             Networking.instance.putApiCall(url: url, param: params){(response, error, statusCode) in
                 if error == nil && statusCode == 200{
+                    let body = response["body"].dictionary
+                    let user = body?["user"]?.dictionary
+                    let id = user?["id"]?.intValue
+                    let first_name = user?["first_name"]?.stringValue
+                    let last_name = user?["last_name"]?.stringValue
+                    
+                    let phone = user?["phone"]?.stringValue
+                    
+                    UserInfo.shared.userId = id ?? 0
+                    UserInfo.shared.firstName = first_name ?? ""
+                    UserInfo.shared.lastName = last_name ?? ""
+                    UserInfo.shared.phoneNo = phone ?? ""
                     
                     self.navigationController?.popViewController(animated: true)
                 }

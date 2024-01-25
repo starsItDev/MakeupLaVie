@@ -217,7 +217,7 @@ class ShippingViewController: UIViewController {
                     if let addresses = body["addresses"]?.array {
                         for i in addresses{
                             let type = i["type"].stringValue
-                            if type == "shipping"{
+                            if type == "shipping" || type == "billing"{
                                 var id = i["id"].intValue
                                 shippingId = id
                                 let firstName = i["first_name"].stringValue
@@ -278,39 +278,39 @@ class ShippingViewController: UIViewController {
     }
     
     func postShippingAPICall(params: [String:Any]){
-        let url = base_url + "checkout/shipping"
-        Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
-            if error == nil && statusCode == 200{
-                if response["body"].dictionary != nil{
-                    let body = response["body"].dictionary
-                    let type = body?["type"]?.stringValue
-                    if type == "shipping" || type == "billing"{
-                        let id = body?["id"]?.intValue
-                        shippingId = id ?? 0
-                        let firstName = body?["first_name"]?.stringValue ?? ""
-                        let lastName = body?["last_name"]?.stringValue ?? ""
-                        let phoneNo = body?["phone"]?.stringValue
-                        let zipCode = body?["zip"]?.stringValue
-                        let address1 = body?["address_1"]?.stringValue ?? ""
-                        let address2 = body?["address_2"]?.stringValue
-                        let country = body?["country"]?.stringValue
-                        let state = body?["state"]?.stringValue
-                        let city = body?["city"]?.stringValue
-                        let existAddr = "\(firstName)\(lastName)(\(address1))"
-                        let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "")
-                        
-                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
-                            if self.totalAmount != ""{
-                                vc.totalAmount = self.totalAmount
-                                
+            let url = base_url + "checkout/shipping"
+            Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
+                if error == nil && statusCode == 200{
+                    if response["body"].dictionary != nil{
+                        let body = response["body"].dictionary
+                        let type = body?["type"]?.stringValue
+                        if type == "shipping"{
+                            let id = body?["id"]?.intValue
+                            shippingId = id ?? 0
+                            let firstName = body?["first_name"]?.stringValue ?? ""
+                            let lastName = body?["last_name"]?.stringValue ?? ""
+                            let phoneNo = body?["phone"]?.stringValue
+                            let zipCode = body?["zip"]?.stringValue
+                            let address1 = body?["address_1"]?.stringValue ?? ""
+                            let address2 = body?["address_2"]?.stringValue
+                            let country = body?["country"]?.stringValue
+                            let state = body?["state"]?.stringValue
+                            let city = body?["city"]?.stringValue
+                            let existAddr = "\(firstName)\(lastName)(\(address1))"
+                            let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "")
+                            
+                            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+                                if self.totalAmount != ""{
+                                    vc.totalAmount = self.totalAmount
+                                    
+                                }
+                                self.navigationController?.pushViewController(vc, animated: true)
                             }
-                            self.navigationController?.pushViewController(vc, animated: true)
                         }
                     }
                 }
             }
         }
-    }
 }
 
 // MARK: - Extension PickerView

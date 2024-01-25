@@ -11,6 +11,8 @@ import UIKit
 var billingId = Int()
 var shippingId = Int()
 var paymentId = Int()
+var provincesArr = ["Punjab", "Sindh", "KP", "Balochistan", "Gilgit Baltistan"]
+var countriesArr = ["Pakistan"]
 
 class MainViewController: UIViewController {
     

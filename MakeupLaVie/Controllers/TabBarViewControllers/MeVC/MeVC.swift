@@ -20,10 +20,11 @@ class MeVC: UIViewController {
         meCVView.layer.shadowOpacity = 1
         meCVView.layer.shadowOffset = .zero
         meCVView.layer.shadowRadius = 3
-        self.nameLbl.text = "\(UserInfo.shared.firstName) \(UserInfo.shared.lastName)"
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.nameLbl.text = "\(UserInfo.shared.firstName) \(UserInfo.shared.lastName)"
         if !UserInfo.shared.isUserLoggedIn{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
             self.navigationController?.pushViewController(vc!, animated: true)

@@ -53,9 +53,10 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     var selectedProvince: String?
     var existAddrArr = [String]()
     var countries = [String]()
-    var provinces = [String]()
-    var isComingFromEdit = true
+    //var provinces = [String]()
+    var isComingFromEdit = false
     var addressId = 0
+    var billingData: Person?
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -70,12 +71,13 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         stateTxt.inputView = statePicker
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
-        if isComingFromEdit {
-            checkoutLabel.text = "Edit Address"
-            updateView.isHidden = false
-        } else {
-            checkoutLabel.text = "Checkout"
-        }
+//        if isComingFromEdit {
+//            checkoutLabel.text = "Edit Address"
+//            updateView.isHidden = false
+//        } else {
+//            checkoutLabel.text = "Checkout"
+//        }
+        showData()
     }
     
     // MARK: - HelperFunctions
@@ -167,7 +169,8 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     }
     @IBAction func updateAddressBtn(_ sender: UIButton) {
         if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyAddressesVC") as? MyAddressesVC {
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            self.navigationController?.popViewController(animated: true)
         }
     }
     func checkOutDetailsAPI(){
@@ -191,19 +194,19 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                                 let state = i["state"].stringValue
                                 let city = i["city"].stringValue
                                 let existAddr = "\(firstName)\(lastName)(\(address1))"
-                                self.existAddrArr.append(existAddr)
-                                //self.countries.append(i["country"].stringValue)
-                                //self.provinces.append(i["state"].stringValue)
-                                self.existingAddressTxt.text = existAddr
-                                self.firstNameTxt.text = firstName
-                                self.lastNameTxt.text = lastName
-                                self.phoneNoTxt.text = phoneNo
-                                self.postCodeTxt.text = zipCode
-                                self.address1Txt.text = address1
-                                self.address2Txt.text = address2
-                                self.countryTxt.text = country
-                                self.stateTxt.text = state
-                                self.cityTxt.text = city
+//                                self.existAddrArr.append(existAddr)
+//                                //self.countries.append(i["country"].stringValue)
+//                                //self.provinces.append(i["state"].stringValue)
+//                                self.existingAddressTxt.text = existAddr
+//                                self.firstNameTxt.text = firstName
+//                                self.lastNameTxt.text = lastName
+//                                self.phoneNoTxt.text = phoneNo
+//                                self.postCodeTxt.text = zipCode
+//                                self.address1Txt.text = address1
+//                                self.address2Txt.text = address2
+//                                self.countryTxt.text = country
+//                                self.stateTxt.text = state
+//                                self.cityTxt.text = city
                                 
                                 let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
                                 self.billingPeopleArr.append(person)
@@ -215,6 +218,42 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
             else{
                 print("Something went wrong")
             }
+        }
+    }
+    
+    func showData(){
+        if isComingFromEdit{
+            checkoutLabel.text = "Edit Address"
+            updateView.isHidden = false
+            billingId = billingData?.id ?? 0
+            self.existingAddressTxt.text = billingData?.Address
+            self.existingAddressTxt.isUserInteractionEnabled = false
+            self.firstNameTxt.text = billingData?.firstName
+            self.firstNameTxt.isUserInteractionEnabled = false
+            self.lastNameTxt.text = billingData?.lastName
+            self.lastNameTxt.isUserInteractionEnabled = false
+            self.phoneNoTxt.text = billingData?.number
+            self.phoneNoTxt.isUserInteractionEnabled = false
+            self.postCodeTxt.text = billingData?.postcode
+            self.address1Txt.text = billingData?.AddressOne
+            self.address2Txt.text = billingData?.AddressTwo
+            self.countryTxt.text = billingData?.country
+            self.countryTxt.isUserInteractionEnabled = false
+            self.stateTxt.text = billingData?.province
+            self.cityTxt.text = billingData?.city
+        }
+        else{
+            checkoutLabel.text = "Checkout"
+            self.existingAddressTxt.text = billingPeopleArr.last?.Address
+            self.firstNameTxt.text = billingPeopleArr.last?.firstName
+            self.lastNameTxt.text = billingPeopleArr.last?.lastName
+            self.phoneNoTxt.text = billingPeopleArr.last?.number
+            self.postCodeTxt.text = billingPeopleArr.last?.postcode
+            self.address1Txt.text = billingPeopleArr.last?.AddressOne
+            self.address2Txt.text = billingPeopleArr.last?.AddressTwo
+            self.countryTxt.text = billingPeopleArr.last?.country
+            self.stateTxt.text = billingPeopleArr.last?.province
+            self.cityTxt.text = billingPeopleArr.last?.city
         }
     }
     
@@ -265,6 +304,12 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == addressPicker{
             return billingPeopleArr.count + 1
         }
+        else if pickerView == countryPicker{
+            return countriesArr.count
+        }
+        else if pickerView == statePicker{
+            return provincesArr.count
+        }
         else {
             return 0
         }
@@ -278,10 +323,10 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
         else if pickerView == countryPicker{
-            return billingPeopleArr[row].country
+            return countriesArr[row]
         }
         else if pickerView == statePicker{
-            return billingPeopleArr[row].province
+            return provincesArr[row]
         }
         else{
             return nil
@@ -321,10 +366,10 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
         else if pickerView == countryPicker{
-            self.countryTxt.text = billingPeopleArr[row].country
+            self.countryTxt.text = countriesArr[row]
         }
         else if pickerView == statePicker{
-            self.stateTxt.text = billingPeopleArr[row].province
+            self.stateTxt.text = provincesArr[row]
         }
     }
 }
