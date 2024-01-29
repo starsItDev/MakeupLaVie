@@ -15,34 +15,23 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var currentPasswdEye: UIButton!
     @IBOutlet weak var newPasswdEye: UIButton!
     @IBOutlet weak var confirmPasswdEye: UIButton!
+    @IBOutlet weak var currentPasswdLbl: UILabel!
+    @IBOutlet weak var newPasswordLbl: UILabel!
+    @IBOutlet weak var confirmPasswdLbl: UILabel!
     
 //MARK: - Override Function
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentPasswordTxt.delegate = self
+        newPasswordTxt.delegate = self
+        confirmPasswordTxt.delegate = self
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
 //MARK: - Helper Function
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField
-        print(nextField as Any)
-        if textField.tag == 1 {
-            textField.resignFirstResponder()
-        }
-        else if nextField != nil {
-            nextField?.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        textField.resignFirstResponder()
-        return true
-    }
+    
     
 //MARK: - Actions
     @IBAction func backBtn(_ sender: UIButton) {
@@ -115,5 +104,73 @@ class ChangePasswordVC: UIViewController {
                 }
             }
         }
+    }
+}
+
+extension ChangePasswordVC: UITextFieldDelegate{
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        switch textField {
+        case currentPasswordTxt:
+            currentPasswdLbl.isHidden = false
+            currentPasswordTxt.layer.borderWidth = 1
+            currentPasswordTxt.layer.borderColor = UIColor.red.cgColor
+            currentPasswordTxt.layer.cornerRadius = 5
+        case newPasswordTxt:
+            newPasswordLbl.isHidden = false
+            newPasswordTxt.layer.borderWidth = 1
+            newPasswordTxt.layer.borderColor = UIColor.red.cgColor
+            newPasswordTxt.layer.cornerRadius = 5
+        case confirmPasswordTxt:
+            confirmPasswdLbl.isHidden = false
+            confirmPasswordTxt.layer.borderWidth = 1
+            confirmPasswordTxt.layer.borderColor = UIColor.red.cgColor
+            confirmPasswordTxt.layer.cornerRadius = 5
+        default:
+            break
+        }
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case currentPasswordTxt:
+            if currentPasswordTxt.text?.isEmpty ?? false {
+                currentPasswdLbl.isHidden = true
+            }
+            currentPasswordTxt.layer.borderWidth = 1
+            currentPasswordTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            currentPasswordTxt.layer.cornerRadius = 5
+        case newPasswordTxt:
+            if newPasswordTxt.text?.isEmpty ?? false {
+                newPasswordLbl.isHidden = true
+            }
+            newPasswordTxt.layer.borderWidth = 1
+            newPasswordTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            newPasswordTxt.layer.cornerRadius = 5
+        case confirmPasswordTxt:
+            if confirmPasswordTxt.text?.isEmpty ?? false {
+                confirmPasswdLbl.isHidden = true
+            }
+            confirmPasswordTxt.layer.borderWidth = 1
+            confirmPasswordTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            confirmPasswordTxt.layer.cornerRadius = 5
+        default:
+            break
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField
+        print(nextField as Any)
+        if textField.tag == 1 {
+            textField.resignFirstResponder()
+        }
+        else if nextField != nil {
+            nextField?.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        textField.resignFirstResponder()
+        return true
     }
 }

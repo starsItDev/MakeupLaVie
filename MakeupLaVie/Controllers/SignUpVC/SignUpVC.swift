@@ -19,6 +19,12 @@ class SignUpVC: UIViewController , UITextViewDelegate{
     @IBOutlet var signUp: UIButton!
     @IBOutlet weak var confirmPasswordBtn: UIButton!
     @IBOutlet weak var passwordBtn: UIButton!
+    @IBOutlet weak var firstNameLbl: UILabel!
+    @IBOutlet weak var lastNameLbl: UILabel!
+    @IBOutlet weak var emailLbl: UILabel!
+    @IBOutlet weak var numberLbl: UILabel!
+    @IBOutlet weak var passwordLbl: UILabel!
+    @IBOutlet weak var confirmPasswdLbl: UILabel!
     
 //MARK: - Variables
     var params = [String: String]()
@@ -28,6 +34,12 @@ class SignUpVC: UIViewController , UITextViewDelegate{
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
+        inPutName.delegate = self
+        inPutLastName.delegate = self
+        inPutEmailAddress.delegate = self
+        inPutPhoneNumber.delegate = self
+        inPutPassword.delegate = self
+        inPutConfrimPassword.delegate = self
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -36,8 +48,104 @@ class SignUpVC: UIViewController , UITextViewDelegate{
 //MARK: - Helper Functions
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        switch textField {
+        case inPutName:
+            firstNameLbl.isHidden = false
+            inPutName.layer.borderWidth = 1
+            inPutName.layer.borderColor = UIColor.red.cgColor
+            inPutName.borderStyle = .roundedRect
+            inPutName.layer.cornerRadius = 5
+        case inPutLastName:
+            lastNameLbl.isHidden = false
+            inPutLastName.layer.borderWidth = 1
+            inPutLastName.layer.borderColor = UIColor.red.cgColor
+            inPutLastName.borderStyle = .roundedRect
+            inPutLastName.layer.cornerRadius = 5
+        case inPutEmailAddress:
+            emailLbl.isHidden = false
+            inPutEmailAddress.layer.borderWidth = 1
+            inPutEmailAddress.layer.borderColor = UIColor.red.cgColor
+            inPutEmailAddress.borderStyle = .roundedRect
+            inPutEmailAddress.layer.cornerRadius = 5
+        case inPutPhoneNumber:
+            numberLbl.isHidden = false
+            inPutPhoneNumber.layer.borderWidth = 1
+            inPutPhoneNumber.layer.borderColor = UIColor.red.cgColor
+            inPutPhoneNumber.borderStyle = .roundedRect
+            inPutPhoneNumber.layer.cornerRadius = 5
+        case inPutPassword:
+            passwordLbl.isHidden = false
+            inPutPassword.layer.borderWidth = 1
+            inPutPassword.layer.borderColor = UIColor.red.cgColor
+            inPutPassword.borderStyle = .roundedRect
+            inPutPassword.layer.cornerRadius = 5
+        case inPutConfrimPassword:
+            confirmPasswdLbl.isHidden = false
+            inPutConfrimPassword.layer.borderWidth = 1
+            inPutConfrimPassword.layer.borderColor = UIColor.red.cgColor
+            inPutConfrimPassword.borderStyle = .roundedRect
+            inPutConfrimPassword.layer.cornerRadius = 5
+        default:
+            break
+        }
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case inPutName:
+            if inPutName.text?.isEmpty ?? false {
+                firstNameLbl.isHidden = true
+            }
+            inPutName.layer.borderWidth = 1
+            inPutName.layer.borderColor = UIColor.systemGray5.cgColor
+            inPutName.borderStyle = .roundedRect
+            inPutName.layer.cornerRadius = 5
+        case inPutLastName:
+            if inPutLastName.text?.isEmpty ?? false {
+                lastNameLbl.isHidden = true
+            }
+            inPutLastName.layer.borderWidth = 1
+            inPutLastName.layer.borderColor = UIColor.systemGray5.cgColor
+            inPutLastName.borderStyle = .roundedRect
+            inPutLastName.layer.cornerRadius = 5
+        case inPutEmailAddress:
+            if inPutEmailAddress.text?.isEmpty ?? false {
+                emailLbl.isHidden = true
+            }
+            inPutEmailAddress.layer.borderWidth = 1
+            inPutEmailAddress.layer.borderColor = UIColor.systemGray5.cgColor
+            inPutEmailAddress.borderStyle = .roundedRect
+            inPutEmailAddress.layer.cornerRadius = 5
+        case inPutPhoneNumber:
+            if inPutPhoneNumber.text?.isEmpty ?? false {
+                numberLbl.isHidden = true
+            }
+            inPutPhoneNumber.layer.borderWidth = 1
+            inPutPhoneNumber.layer.borderColor = UIColor.systemGray5.cgColor
+            inPutPhoneNumber.borderStyle = .roundedRect
+            inPutPhoneNumber.layer.cornerRadius = 5
+        case inPutPassword:
+            if inPutPassword.text?.isEmpty ?? false {
+                passwordLbl.isHidden = true
+            }
+            inPutPassword.layer.borderWidth = 1
+            inPutPassword.layer.borderColor = UIColor.systemGray5.cgColor
+            inPutPassword.borderStyle = .roundedRect
+            inPutPassword.layer.cornerRadius = 5
+        case inPutConfrimPassword:
+            if inPutConfrimPassword.text?.isEmpty ?? false {
+                confirmPasswdLbl.isHidden = true
+            }
+            inPutConfrimPassword.layer.borderWidth = 1
+            inPutConfrimPassword.layer.borderColor = UIColor.systemGray5.cgColor
+            inPutConfrimPassword.borderStyle = .roundedRect
+            inPutConfrimPassword.layer.cornerRadius = 5
+        default:
+            break
+        }
+    }
+    
     @objc func handleTap() {
         view.endEditing(true)
     }
@@ -69,6 +177,10 @@ class SignUpVC: UIViewController , UITextViewDelegate{
         }
         if (inPutEmailAddress?.text?.isEmpty)! {
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "Email is required", withNavigation: self)
+            return
+        }
+        if !(inPutEmailAddress.text?.validateEmailId() ?? false) {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Please enter correct email", withNavigation: self)
             return
         }
         if (inPutPhoneNumber?.text?.isEmpty)! {
@@ -166,11 +278,12 @@ class SignUpVC: UIViewController , UITextViewDelegate{
 //MARK: - Extension SignUpVC
 extension SignUpVC : UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == inPutEmailAddress {
-            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-            return emailPredicate.evaluate(with: (textField.text ?? "") + string)
-        } else if textField == inPutPassword {
+//        if textField == inPutEmailAddress {
+//            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+//            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+//            return emailPredicate.evaluate(with: (textField.text ?? "") + string)
+//        }
+        if textField == inPutPassword {
             let validCharacters = CharacterSet.alphanumerics
             return string.rangeOfCharacter(from: validCharacters.inverted) == nil
         }

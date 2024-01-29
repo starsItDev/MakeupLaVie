@@ -217,7 +217,24 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
                 let attributedString = NSAttributedString(string: product.price, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
                 cell.oldPriceLbl.attributedText = attributedString
             }
-            
+            if product.featured == 1{
+                cell.featureLbl.text = "Featured"
+            }
+            else if product.sponsored == 1{
+                cell.featureLbl.text = "Sponsored"
+            }
+            else if product.newLabel == 1{
+                cell.featureLbl.text = "New"
+            }
+            else if product.hotLabel == 1{
+                cell.featureLbl.text = "Hot"
+            }
+            else if product.saleLabel == 1{
+                cell.featureLbl.text = "Sale"
+            }
+            else if product.specialLabel == 1{
+                cell.featureLbl.text = "Special"
+            }
             cell.productImg.setImage(with: product.catagoryimage)
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = product.rating ?? 0

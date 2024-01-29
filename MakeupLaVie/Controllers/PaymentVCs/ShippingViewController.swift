@@ -24,6 +24,16 @@ class ShippingViewController: UIViewController {
     @IBOutlet weak var stateImage: UIImageView!
     @IBOutlet weak var fieldsStackView: UIStackView!
     @IBOutlet weak var stackHeight: NSLayoutConstraint!
+    @IBOutlet weak var existingAddressLbl: UILabel!
+    @IBOutlet weak var firstNameLbl: UILabel!
+    @IBOutlet weak var lastNameLbl: UILabel!
+    @IBOutlet weak var numberLbl: UILabel!
+    @IBOutlet weak var countryLbl: UILabel!
+    @IBOutlet weak var stateLbl: UILabel!
+    @IBOutlet weak var cityLbl: UILabel!
+    @IBOutlet weak var postCodeLbl: UILabel!
+    @IBOutlet weak var addressOneLbl: UILabel!
+    @IBOutlet weak var addressTwoLbl: UILabel!
     
     // MARK: - Variables
     var params = [String: Any]()
@@ -52,6 +62,13 @@ class ShippingViewController: UIViewController {
         countryPicker.delegate = self
         statePicker.delegate = self
         statePicker.dataSource = self
+        firstNameTxt.delegate = self
+        lastNameTxt.delegate = self
+        phoneNoTxt.delegate = self
+        cityTxt.delegate = self
+        postCodeTxt.delegate = self
+        address1Txt.delegate = self
+        address2Txt.delegate = self
         existingAddressTxt.inputView = addressPicker
         countryTxt.inputView = countryPicker
         stateTxt.inputView = statePicker
@@ -217,7 +234,7 @@ class ShippingViewController: UIViewController {
                     if let addresses = body["addresses"]?.array {
                         for i in addresses{
                             let type = i["type"].stringValue
-                            if type == "shipping" || type == "billing"{
+                            if type == "shipping"{
                                 var id = i["id"].intValue
                                 shippingId = id
                                 let firstName = i["first_name"].stringValue
@@ -244,7 +261,7 @@ class ShippingViewController: UIViewController {
                                 self.stateTxt.text = state
                                 self.cityTxt.text = city
                                 
-                                let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2)
+                                let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2, addressType: type)
                                 self.shippingPeopleArr.append(person)
                             }
 //                            else if type == "billing" {
@@ -274,7 +291,31 @@ class ShippingViewController: UIViewController {
             else{
                 print("Something went wrong")
             }
+            self.showData()
         }
+    }
+    
+    func showData() {
+        let isExistingAddressEmpty = existingAddressTxt.text?.isEmpty ?? false
+        let isFirstNameEmpty = firstNameTxt.text?.isEmpty ?? false
+        let isLastNameEmpty = lastNameTxt.text?.isEmpty ?? false
+        let isPhoneNoEmpty = phoneNoTxt.text?.isEmpty ?? false
+        let isCountryEmpty = countryTxt.text?.isEmpty ?? false
+        let isStateEmpty = stateTxt.text?.isEmpty ?? false
+        let isCityEmpty = cityTxt.text?.isEmpty ?? false
+        let isPostCodeEmpty = postCodeTxt.text?.isEmpty ?? false
+        let isAddress1Empty = address1Txt.text?.isEmpty ?? false
+        let isAddress2Empty = address2Txt.text?.isEmpty ?? false
+        existingAddressLbl.isHidden = isExistingAddressEmpty
+        firstNameLbl.isHidden = isFirstNameEmpty
+        lastNameLbl.isHidden = isLastNameEmpty
+        numberLbl.isHidden = isPhoneNoEmpty
+        countryLbl.isHidden = isCountryEmpty
+        stateLbl.isHidden = isStateEmpty
+        cityLbl.isHidden = isCityEmpty
+        postCodeLbl.isHidden = isPostCodeEmpty
+        addressOneLbl.isHidden = isAddress1Empty
+        addressTwoLbl.isHidden = isAddress2Empty
     }
     
     func postShippingAPICall(params: [String:Any]){
@@ -284,7 +325,7 @@ class ShippingViewController: UIViewController {
                     if response["body"].dictionary != nil{
                         let body = response["body"].dictionary
                         let type = body?["type"]?.stringValue
-                        if type == "shipping"{
+                        if type == "shipping" || type == "billing"{
                             let id = body?["id"]?.intValue
                             shippingId = id ?? 0
                             let firstName = body?["first_name"]?.stringValue ?? ""
@@ -297,7 +338,7 @@ class ShippingViewController: UIViewController {
                             let state = body?["state"]?.stringValue
                             let city = body?["city"]?.stringValue
                             let existAddr = "\(firstName)\(lastName)(\(address1))"
-                            let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "")
+                            let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
                             
                             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
                                 if self.totalAmount != ""{
@@ -357,6 +398,16 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 postCodeTxt.text = ""
                 address1Txt.text = ""
                 address2Txt.text = ""
+                self.existingAddressLbl.isHidden = false
+                self.firstNameLbl.isHidden = true
+                self.lastNameLbl.isHidden = true
+                self.numberLbl.isHidden = true
+                self.countryLbl.isHidden = false
+                self.stateLbl.isHidden = false
+                self.cityLbl.isHidden = true
+                self.postCodeLbl.isHidden = true
+                self.addressOneLbl.isHidden = true
+                self.addressTwoLbl.isHidden = true
             } else {
                 let selectedTag = pickerView.tag
                 guard selectedTag < shippingPeopleArr.count
@@ -375,6 +426,16 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 self.postCodeTxt.text = shippingPeopleArr[row - 1].postcode
                 self.address1Txt.text = shippingPeopleArr[row - 1].AddressOne
                 self.address2Txt.text = shippingPeopleArr[row - 1].AddressTwo
+                self.existingAddressLbl.isHidden = false
+                self.firstNameLbl.isHidden = false
+                self.lastNameLbl.isHidden = false
+                self.numberLbl.isHidden = false
+                self.countryLbl.isHidden = false
+                self.stateLbl.isHidden = false
+                self.cityLbl.isHidden = false
+                self.postCodeLbl.isHidden = false
+                self.addressOneLbl.isHidden = false
+                self.addressTwoLbl.isHidden = false
             }
         }
         else if pickerView == countryPicker{
@@ -386,4 +447,153 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+extension ShippingViewController: UITextFieldDelegate{
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        showLabel(for: textField)
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        hideLabel(for: textField)
+    }
+    func showLabel(for textField: UITextField) {
+        switch textField {
+        case existingAddressTxt:
+            existingAddressLbl.isHidden = false
+            existingAddressTxt.layer.borderWidth = 1
+            existingAddressTxt.layer.borderColor = UIColor.red.cgColor
+            existingAddressTxt.borderStyle = .roundedRect
+        case firstNameTxt:
+            firstNameLbl.isHidden = false
+            firstNameTxt.layer.borderWidth = 1
+            firstNameTxt.layer.borderColor = UIColor.red.cgColor
+            firstNameTxt.borderStyle = .roundedRect
+        case lastNameTxt:
+            lastNameLbl.isHidden = false
+            lastNameTxt.layer.borderWidth = 1
+            lastNameTxt.layer.borderColor = UIColor.red.cgColor
+            lastNameTxt.borderStyle = .roundedRect
+        case phoneNoTxt:
+            numberLbl.isHidden = false
+            phoneNoTxt.layer.borderWidth = 1
+            phoneNoTxt.layer.borderColor = UIColor.red.cgColor
+            phoneNoTxt.borderStyle = .roundedRect
+        case countryTxt:
+            countryLbl.isHidden = false
+            countryTxt.layer.borderWidth = 1
+            countryTxt.layer.borderColor = UIColor.red.cgColor
+            countryTxt.borderStyle = .roundedRect
+        case stateTxt:
+            stateLbl.isHidden = false
+            stateTxt.layer.borderWidth = 1
+            stateTxt.layer.borderColor = UIColor.red.cgColor
+            stateTxt.borderStyle = .roundedRect
+        case cityTxt:
+            cityLbl.isHidden = false
+            cityTxt.layer.borderWidth = 1
+            cityTxt.layer.borderColor = UIColor.red.cgColor
+            cityTxt.borderStyle = .roundedRect
+        case postCodeTxt:
+            postCodeLbl.isHidden = false
+            postCodeTxt.layer.borderWidth = 1
+            postCodeTxt.layer.borderColor = UIColor.red.cgColor
+            postCodeTxt.borderStyle = .roundedRect
+        case address1Txt:
+            addressOneLbl.isHidden = false
+            address1Txt.layer.borderWidth = 1
+            address1Txt.layer.borderColor = UIColor.red.cgColor
+            address1Txt.borderStyle = .roundedRect
+        case address2Txt:
+            addressTwoLbl.isHidden = false
+            address2Txt.layer.borderWidth = 1
+            address2Txt.layer.borderColor = UIColor.red.cgColor
+            address2Txt.borderStyle = .roundedRect
+        default:
+            break
+        }
+    }
+    func hideLabel(for textField: UITextField) {
+        switch textField {
+        case existingAddressTxt:
+            if existingAddressTxt.text?.isEmpty ?? false {
+                existingAddressLbl.isHidden = true
+            }
+            existingAddressTxt.layer.borderWidth = 1
+            existingAddressTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            existingAddressTxt.borderStyle = .roundedRect
+        case firstNameTxt:
+            if firstNameTxt.text?.isEmpty ?? false {
+                firstNameLbl.isHidden = true
+            }
+            firstNameTxt.layer.borderWidth = 1
+            firstNameTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            firstNameTxt.borderStyle = .roundedRect
+        case lastNameTxt:
+            if lastNameTxt.text?.isEmpty ?? false {
+                lastNameLbl.isHidden = true
+            }
+            lastNameTxt.layer.borderWidth = 1
+            lastNameTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            lastNameTxt.borderStyle = .roundedRect
+        case phoneNoTxt:
+            if phoneNoTxt.text?.isEmpty ?? false {
+                numberLbl.isHidden = true
+            }
+            phoneNoTxt.layer.borderWidth = 1
+            phoneNoTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            phoneNoTxt.borderStyle = .roundedRect
+        case countryTxt:
+            if countryTxt.text?.isEmpty ?? false {
+                countryLbl.isHidden = true
+            }
+            countryTxt.layer.borderWidth = 1
+            countryTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            countryTxt.borderStyle = .roundedRect
+        case stateTxt:
+            if stateTxt.text?.isEmpty ?? false {
+                stateLbl.isHidden = true
+            }
+            stateTxt.layer.borderWidth = 1
+            stateTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            stateTxt.borderStyle = .roundedRect
+        case cityTxt:
+            if cityTxt.text?.isEmpty ?? false {
+                cityLbl.isHidden = true
+            }
+            cityTxt.layer.borderWidth = 1
+            cityTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            cityTxt.borderStyle = .roundedRect
+        case postCodeTxt:
+            if postCodeTxt.text?.isEmpty ?? false {
+                postCodeLbl.isHidden = true
+            }
+            postCodeTxt.layer.borderWidth = 1
+            postCodeTxt.layer.borderColor = UIColor.systemGray5.cgColor
+            postCodeTxt.borderStyle = .roundedRect
+        case address1Txt:
+            if address1Txt.text?.isEmpty ?? false {
+                addressOneLbl.isHidden = true
+            }
+            address1Txt.layer.borderWidth = 1
+            address1Txt.layer.borderColor = UIColor.systemGray5.cgColor
+            address1Txt.borderStyle = .roundedRect
+        case address2Txt:
+            if address2Txt.text?.isEmpty ?? false {
+                addressTwoLbl.isHidden = true
+            }
+            address2Txt.layer.borderWidth = 1
+            address2Txt.layer.borderColor = UIColor.systemGray5.cgColor
+            address2Txt.borderStyle = .roundedRect
+        default:
+            break
+        }
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (textField.isEditing) {
+            showLabel(for: textField)
+        } else {
+            hideLabel(for: textField)
+        }
+        return true
+    }
+}
 

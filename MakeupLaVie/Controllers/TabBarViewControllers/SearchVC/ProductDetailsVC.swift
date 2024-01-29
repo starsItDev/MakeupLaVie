@@ -410,7 +410,7 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -180),
+            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         if let index = currentIndex, index >= 0, index < images.count {

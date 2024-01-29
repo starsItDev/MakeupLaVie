@@ -11,6 +11,8 @@ class LoginVC: UIViewController , UITextFieldDelegate , UITextViewDelegate {
     @IBOutlet var inputEmailAddress: UITextField!
     @IBOutlet var inputPassword: UITextField!
     @IBOutlet weak var showPasswordBtn: UIButton!
+    @IBOutlet weak var emailLbl: UILabel!
+    @IBOutlet weak var passwordLbl: UILabel!
     
 //MARK: - Variables
     var params = [String: Any]()
@@ -19,6 +21,8 @@ class LoginVC: UIViewController , UITextFieldDelegate , UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        inputEmailAddress.delegate = self
+        inputPassword.delegate = self
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -27,7 +31,45 @@ class LoginVC: UIViewController , UITextFieldDelegate , UITextViewDelegate {
 //MARK: - Helper Functions
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        switch textField {
+        case inputEmailAddress:
+            emailLbl.isHidden = false
+            inputEmailAddress.layer.borderWidth = 1
+            inputEmailAddress.layer.borderColor = UIColor.red.cgColor
+            inputEmailAddress.borderStyle = .roundedRect
+            inputEmailAddress.layer.cornerRadius = 5
+        case inputPassword:
+            passwordLbl.isHidden = false
+            inputPassword.layer.borderWidth = 1
+            inputPassword.layer.borderColor = UIColor.red.cgColor
+            inputPassword.borderStyle = .roundedRect
+            inputPassword.layer.cornerRadius = 5
+        default:
+            break
+        }
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case inputEmailAddress:
+            if inputEmailAddress.text?.isEmpty ?? false {
+                emailLbl.isHidden = true
+            }
+            inputEmailAddress.layer.borderWidth = 1
+            inputEmailAddress.layer.borderColor = UIColor.systemGray5.cgColor
+            inputEmailAddress.borderStyle = .roundedRect
+            inputEmailAddress.layer.cornerRadius = 5
+        case inputPassword:
+            if inputPassword.text?.isEmpty ?? false {
+                passwordLbl.isHidden = true
+            }
+            inputPassword.layer.borderWidth = 1
+            inputPassword.layer.borderColor = UIColor.systemGray5.cgColor
+            inputPassword.borderStyle = .roundedRect
+            inputPassword.layer.cornerRadius = 5
+        default:
+            break
+        }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField
@@ -81,6 +123,10 @@ class LoginVC: UIViewController , UITextFieldDelegate , UITextViewDelegate {
     @IBAction func logInBtn(_ sender: Any) {
         if (inputEmailAddress?.text?.isEmpty)! {
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "Email is required", withNavigation: self)
+            return
+        }
+        if !(inputEmailAddress.text?.validateEmailId() ?? false) {
+            utilityFunctions.showAlertWithTitle(title: "", withMessage: "Please enter correct email", withNavigation: self)
             return
         }
         if (inputPassword?.text?.isEmpty)! {

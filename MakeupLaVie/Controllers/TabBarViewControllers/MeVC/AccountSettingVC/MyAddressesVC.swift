@@ -15,6 +15,10 @@ class MyAddressesVC: UIViewController {
     //MARK: - override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         myAddressAPI()
     }
     
@@ -29,6 +33,7 @@ class MyAddressesVC: UIViewController {
                 if let body = response["body"].array{
                     for adr in body{
                         let id = adr["id"].intValue
+                        let type = adr["type"].stringValue
                         let firstName = adr["first_name"].stringValue
                         let lastName = adr["last_name"].stringValue
                         let phoneNo = adr["phone"].stringValue
@@ -39,31 +44,22 @@ class MyAddressesVC: UIViewController {
                         let state = adr["state"].stringValue
                         let city = adr["city"].stringValue
                         let existAddr = "\(firstName)\(lastName)(\(address1))"
-                        let person = Person(id: id , Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo , country: country , province: state , city: city , postcode: zipCode , AddressOne: address1 , AddressTwo: address2 )
+                        let person = Person(id: id , Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo , country: country , province: state , city: city , postcode: zipCode , AddressOne: address1 , AddressTwo: address2, addressType: type )
                         self.address.append(person)
                     }
+                    
+                }
+                DispatchQueue.main.async {
                     self.addressTableView.reloadData()
                 }
-//                do {
-//                    let jsonData = try response.rawData()
-//                    let decoder = JSONDecoder()
-//                    let myAddressModel = try decoder.decode(AddressResponse.self, from: jsonData)
-//                    print("Status Code: \(myAddressModel.statusCode)")
-//                    self.address = myAddressModel.body
-//                    DispatchQueue.main.async {
-//                        self.addressTableView.reloadData()
-//                    }
-//                } catch {
-//                    print("Error decoding JSON: \(error.localizedDescription)")
-//                }
             } else {
                 print("Something went wrong")
             }
         }
     }
     @objc func editBtnTapped(sender: UIButton) {
-        if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CheckoutViewController") as? CheckoutViewController {
-            vc.isComingFromEdit = true
+        if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditAddressVC") as? EditAddressVC {
+            //vc.isComingFromEdit = true
             vc.billingData = address[sender.tag]
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -79,9 +75,11 @@ extension MyAddressesVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AddressesTableViewCell
         let myAddress = address[indexPath.row]
 //      let fullName = "\(myAddress.firstName) \(myAddress.lastName)"
-        cell.nameLabel.text = myAddress.city
-        cell.numberLabel.text = myAddress.country
-        cell.addressLabel.text = myAddress.AddressOne
+        cell.addressOneLbl.text = "\(myAddress.AddressOne), \(myAddress.city), \(myAddress.province)"
+        if !myAddress.AddressTwo.isEmpty{
+            cell.addressTwoLbl.text = "\(myAddress.AddressTwo), \(myAddress.city), \(myAddress.province)"
+        }
+        //cell.addressLabel.text = myAddress.AddressOne
         cell.editButton.tag = indexPath.row
         cell.editButton.addTarget(self, action: #selector(editBtnTapped(sender:)), for: .touchUpInside)
         cell.layer.borderWidth = 5
@@ -93,4 +91,3 @@ extension MyAddressesVC: UITableViewDelegate, UITableViewDataSource {
         return 108
     }
 }
-

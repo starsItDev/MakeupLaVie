@@ -9,9 +9,9 @@ import UIKit
 
 class AddressesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressOneLbl: UILabel!
+    @IBOutlet weak var addressTwoLbl: UILabel!
+    //@IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     
     override func awakeFromNib() {

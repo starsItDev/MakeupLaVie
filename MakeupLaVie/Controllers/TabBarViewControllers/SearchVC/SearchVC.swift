@@ -20,6 +20,7 @@ class SearchVC: UIViewController {
     private var currentPage = 1
     private var isLoadingData = false
     private var isBottomLoading = false
+    var totalPages = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class SearchVC: UIViewController {
         tapGesture.cancelsTouchesInView = false
         collectionView.addGestureRecognizer(tapGesture)
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterView")
-        fetchDataFromAPI()
+        fetchDataFromAPI(page: currentPage)
         configurePagination()
         NotificationCenter.default.addObserver(self, selector: #selector(filterData), name: NSNotification.Name(rawValue: "Data"), object: nil)
         
@@ -52,11 +53,11 @@ class SearchVC: UIViewController {
         print(data)
         self.params = data
         self.isFilter = true
-        fetchDataFromAPI()
+        fetchDataFromAPI(page: currentPage)
     }
     @objc func refreshData() {
         currentPage = 1
-        fetchDataFromAPI()
+        fetchDataFromAPI(page: currentPage)
     }
     @objc func dismissKeyboard() {
         searchBar.resignFirstResponder()
@@ -66,11 +67,11 @@ class SearchVC: UIViewController {
         searchBar.delegate = self
         searchBar.placeholder = "Search"
         searchBar.searchTextField.backgroundColor = UIColor.white
-        initViewModel()
-        observeEvent()
+        //initViewModel()
+        //observeEvent()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.prefetchDataSource = self
+        //collectionView.prefetchDataSource = self
     }
     
     @IBAction func filterBtnTapped(_ sender: UIButton) {
@@ -174,8 +175,8 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
-            destinationVC.selectedResponseID = products[indexPath.item].id
-            self.navigationController?.pushViewController(destinationVC, animated: true)
+        destinationVC.selectedResponseID = products[indexPath.item].id
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -187,12 +188,12 @@ extension SearchVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //filterProducts(with: searchText)
         guard !searchText.isEmpty else{
-          filteredProducts = products
-          collectionView.reloadData()
-          return
+            filteredProducts = products
+            collectionView.reloadData()
+            return
         }
         filteredProducts = products.filter({hotDeal -> Bool in
-          hotDeal.catagorylabel.lowercased().contains(searchText.lowercased())
+            hotDeal.catagorylabel.lowercased().contains(searchText.lowercased())
         })
         collectionView.reloadData()
     }
@@ -208,61 +209,76 @@ extension SearchVC: UISearchBarDelegate {
         collectionView.reloadData()
     }
     
-//    func filterProducts(with searchText: String) {
-//        if isSearching {
-//            filteredProducts = viewModel.products.map { product in
-//                let filteredResponse = product.body.response.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
-//                return BrowseProductModel(statusCode: product.statusCode, body: BrowseProductBody(totalItemCount: 0, totalPages: 0, response: filteredResponse))
-//            }
-//        } else {
-//            filteredProducts = viewModel.products
-//        }
-//
-//        responseIds = filteredProducts.flatMap { $0.body.response.map { $0.id } }
-//
-//        collectionView.reloadData()
-//    }
+    //    func filterProducts(with searchText: String) {
+    //        if isSearching {
+    //            filteredProducts = viewModel.products.map { product in
+    //                let filteredResponse = product.body.response.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+    //                return BrowseProductModel(statusCode: product.statusCode, body: BrowseProductBody(totalItemCount: 0, totalPages: 0, response: filteredResponse))
+    //            }
+    //        } else {
+    //            filteredProducts = viewModel.products
+    //        }
+    //
+    //        responseIds = filteredProducts.flatMap { $0.body.response.map { $0.id } }
+    //
+    //        collectionView.reloadData()
+    //    }
     
     
 }
 
 extension SearchVC {
-    func initViewModel() {
-        viewModel.fetchProduct()
-    }
+    //    func initViewModel() {
+    //        viewModel.fetchProduct()
+    //    }
+    //
+    //    func observeEvent() {
+    //        viewModel.eventHandler = { [weak self] event in
+    //            guard let self = self else { return }
+    //
+    //            switch event {
+    //            case .loading:
+    //                print("Product loading...")
+    //            case .stopLoading:
+    //                print("Stop loading...")
+    //            case .dataLoaded:
+    //                print("Data loaded...")
+    //                print(self.viewModel.products)
+    //                DispatchQueue.main.async {
+    //
+    //                    self.collectionView.reloadData()
+    //                    self.isLoadingData = false
+    //                    self.currentPage += 1
+    //                    self.collectionView.refreshControl?.endRefreshing()
+    //                }
+    //            case .error(let error):
+    //                print(error)
+    //            }
+    //        }
+    //    }
     
-    func observeEvent() {
-        viewModel.eventHandler = { [weak self] event in
-            guard let self = self else { return }
-            
-            switch event {
-            case .loading:
-                print("Product loading...")
-            case .stopLoading:
-                print("Stop loading...")
-            case .dataLoaded:
-                print("Data loaded...")
-                print(self.viewModel.products)
-                DispatchQueue.main.async {
-                    
-                    self.collectionView.reloadData()
-                    self.isLoadingData = false
-                    self.currentPage += 1
-                    self.collectionView.refreshControl?.endRefreshing()
-                }
-            case .error(let error):
-                print(error)
-            }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if bottomEdge >= scrollView.contentSize.height {
+            // User has reached the bottom, load the next page
+            loadMoreData()
         }
     }
     
-    func fetchDataFromAPI() {
-//        guard !isLoadingData else {
-//            return
-//        }
+    private func loadMoreData(){
+        //get ready the data . fetch
+        
+        let nextPageNumber = currentPage + 1
+        currentPage = nextPageNumber
+        if currentPage <= totalPages{
+            fetchDataFromAPI(page: currentPage)
+        }
+    }
+    
+    func fetchDataFromAPI(page: Int) {
         
         isLoadingData = true
-        let url = base_url + "products"
+        let url = base_url + "products?page=\(page)"
         if isFilter{
             
             Networking.instance.getApiCallWithParams(url: url, param: self.params){(response, error, statusCode) in
@@ -273,6 +289,7 @@ extension SearchVC {
                         if body["totalItemCount"] != nil{
                             //                              self.totalItemCount = body["totalItemCount"] as! Int
                         }
+                        
                         if let res = body["response"]?.array{
                             for dic in res{
                                 
@@ -294,17 +311,17 @@ extension SearchVC {
                 if error == nil && statusCode == 200{
                     if let body = response["body"].dictionary{
                         print(response)
-                        if body["totalItemCount"] != nil{
-                            //                              self.totalItemCount = body["totalItemCount"] as! Int
+                        if body["totalPages"] != nil{
+                            self.totalPages = body["totalPages"]?.intValue ?? 0
                         }
                         if let res = body["response"]?.array{
                             for dic in res{
                                 
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.products.append(model)
-                                self.collectionView.reloadData()
                                 
                             }
+                            self.collectionView.reloadData()
                         }
                         
                     }
@@ -315,14 +332,14 @@ extension SearchVC {
     }
 }
 
-extension SearchVC: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let totalItems = collectionView.numberOfItems(inSection: 0)
-        let lastIndexPath = indexPaths.last
-        
-        if let lastItem = lastIndexPath?.item, lastItem == totalItems - 1 {
-            // Fetch more data when reaching the last item
-            fetchDataFromAPI()
-        }
-    }
-}
+//extension SearchVC: UICollectionViewDataSourcePrefetching {
+//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+//        let totalItems = collectionView.numberOfItems(inSection: 0)
+//        let lastIndexPath = indexPaths.last
+//
+//        if let lastItem = lastIndexPath?.item, lastItem == totalItems - 1 {
+//            // Fetch more data when reaching the last item
+//            //fetchDataFromAPI()
+//        }
+//    }
+//}

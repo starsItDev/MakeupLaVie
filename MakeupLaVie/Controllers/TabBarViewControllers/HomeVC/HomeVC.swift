@@ -8,7 +8,8 @@
 import UIKit
 import SDWebImage
 
-class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDelegate2 {
+//class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDelegate2 {
+class HomeVC: UIViewController {
     // MARK: - OutLets
     @IBOutlet weak var specialOfferCV: UICollectionView!
     @IBOutlet weak var hotProductCV: UICollectionView!
@@ -20,7 +21,7 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
     @IBOutlet weak var drawerTableView: UITableView!
     @IBOutlet var myPageControl: UIPageControl!
     @IBOutlet var pagerCollectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet var lblName: UILabel!
     @IBOutlet var searchBtn: UIButton!
     @IBOutlet var sideBarView: UIView!
@@ -397,156 +398,6 @@ class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDe
             self.loadingImageView.isHidden = false
         }
     }
-}
-
-// MARK: - Table View
-extension HomeVC: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == drawerTableView{
-            return namesArray.count
-        }
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == drawerTableView{
-            let cell = drawerTableView.dequeueReusableCell(withIdentifier: "DashBoardCell", for: indexPath) as! DashBoardCell
-            
-            cell.itemname.text = namesArray[indexPath.row]
-            cell.imgview.image = UIImage(named: imgArr[indexPath.row])
-            return cell
-        }
-        else{
-            switch indexPath.row {
-            case 0:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as? TrendingTableViewCell {
-                    cell.delegate = self
-                    return cell
-                }
-            case 1:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionViewInsideTableViewCell", for: indexPath) as? CollectionViewInsideTableViewCell{
-                    cell.delegate = self
-                    return cell
-                }
-            case 2:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "SpecialTableView", for: indexPath) as? SpecialTableView {
-                    cell.delegate = self
-                    return cell
-                }
-            case 3:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "BestProductsTableView", for: indexPath) as? BestProductsTableView {
-                    cell.delegate = self
-                    return cell
-                }
-            case 4:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "HotDealTableView", for: indexPath) as? HotDealTableView {
-                    cell.delegate = self
-                    return cell
-                }
-                
-            default:
-                break
-            }
-            return UITableViewCell()
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == drawerTableView{
-            if indexPath.row == 0{
-                self.sideBarView.isHidden = true
-                self.shadowView.isHidden = true
-            }
-            else if indexPath.row == 1{
-                self.tabBarController?.selectedIndex = 2
-            }
-            else if indexPath.row == 2{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
-                vc?.isWishList = false
-                self.tabBarController?.tabBar.isHidden = true
-                self.navigationController?.pushViewController(vc!, animated: true)
-            }
-            else if indexPath.row == 3{
-                self.tabBarController?.selectedIndex = 1
-            }
-            else if indexPath.row == 4{
-                if UserInfo.shared.isUserLoggedIn{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
-                    self.tabBarController?.tabBar.isHidden = true
-                    vc?.isWishList = true
-                    self.navigationController?.pushViewController(vc!, animated: true)
-                }
-                else{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-            else if indexPath.row == 5{
-                if UserInfo.shared.isUserLoggedIn{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
-                    self.tabBarController?.tabBar.isHidden = true
-                    vc?.isCompare = true
-                    self.navigationController?.pushViewController(vc!, animated: true)
-                }
-                else{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-            else if indexPath.row == 6{
-                if let url = URL(string: "https://app.ecommercep.com/api/help/privacy"){
-                    UIApplication.shared.open(url)
-                }
-            }
-            else if indexPath.row == 7{
-                if UserInfo.shared.isUserLoggedIn == true{
-                    UserInfo.logOut()
-                    self.namesArray[7] = "Login"
-                    viewDidLoad()
-                }
-                else{
-                    
-                    self.tabBarController?.tabBar.isHidden = true
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
-                    self.navigationController?.pushViewController(vc!, animated: true)
-                }
-            }
-            self.sideBarView.isHidden = true
-            self.shadowView.isHidden = true
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == drawerTableView{
-            
-        }
-        else{
-            switch indexPath.row {
-            case 0:
-                return 155
-            case 1,2,3,4:
-                return 450
-            default:
-                break
-            }}
-        return 40
-        
-    }
-    
-    func didSelectItemAtIndex(index: Int, selectedID: Int) {
-        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
-        destinationVC.selectedIndex = index
-        destinationVC.selectedResponseID = selectedID
-        navigationController?.pushViewController(destinationVC, animated: true)
-    }
-    
-    func didSelectItemAtIndex2(index: Int ,selectedID: Int) {
-        print("ALL IS WELL")
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
-        //vc.selectedIndex = index
-        vc.selectedID = selectedID
-        navigationController?.pushViewController(vc, animated: true)
-        
-    }
     
     @objc func recentHeartBtnTapped(sender: UIButton){
         let id = recentdataArray[sender.tag].id ?? 0
@@ -663,6 +514,160 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
             }
         }
     }
+}
+
+// MARK: - Table View
+extension HomeVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == drawerTableView{
+            return namesArray.count
+        }
+        else{
+            return 10
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == drawerTableView{
+            let cell = drawerTableView.dequeueReusableCell(withIdentifier: "DashBoardCell", for: indexPath) as! DashBoardCell
+
+            cell.itemname.text = namesArray[indexPath.row]
+            cell.imgview.image = UIImage(named: imgArr[indexPath.row])
+            return cell
+        }
+        else{
+//            switch indexPath.row {
+//            case 0:
+//                if let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as? TrendingTableViewCell {
+//                    cell.delegate = self
+//                    return cell
+//                }
+//            case 1:
+//                if let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionViewInsideTableViewCell", for: indexPath) as? CollectionViewInsideTableViewCell{
+//                    cell.delegate = self
+//                    return cell
+//                }
+//            case 2:
+//                if let cell = tableView.dequeueReusableCell(withIdentifier: "SpecialTableView", for: indexPath) as? SpecialTableView {
+//                    cell.delegate = self
+//                    return cell
+//                }
+//            case 3:
+//                if let cell = tableView.dequeueReusableCell(withIdentifier: "BestProductsTableView", for: indexPath) as? BestProductsTableView {
+//                    cell.delegate = self
+//                    return cell
+//                }
+//            case 4:
+//                if let cell = tableView.dequeueReusableCell(withIdentifier: "HotDealTableView", for: indexPath) as? HotDealTableView {
+//                    cell.delegate = self
+//                    return cell
+//                }
+//
+//            default:
+//                break
+//            }
+            return UITableViewCell()
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == drawerTableView{
+            if indexPath.row == 0{
+                self.sideBarView.isHidden = true
+                self.shadowView.isHidden = true
+            }
+            else if indexPath.row == 1{
+                self.tabBarController?.selectedIndex = 2
+            }
+            else if indexPath.row == 2{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
+                vc?.isWishList = false
+                self.tabBarController?.tabBar.isHidden = true
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
+            else if indexPath.row == 3{
+                self.tabBarController?.selectedIndex = 1
+            }
+            else if indexPath.row == 4{
+                if UserInfo.shared.isUserLoggedIn{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
+                    self.tabBarController?.tabBar.isHidden = true
+                    vc?.isWishList = true
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                }
+                else{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            else if indexPath.row == 5{
+                if UserInfo.shared.isUserLoggedIn{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
+                    self.tabBarController?.tabBar.isHidden = true
+                    vc?.isCompare = true
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                }
+                else{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            else if indexPath.row == 6{
+                if let url = URL(string: "https://app.ecommercep.com/api/help/privacy"){
+                    UIApplication.shared.open(url)
+                }
+            }
+            else if indexPath.row == 7{
+                if UserInfo.shared.isUserLoggedIn == true{
+                    UserInfo.logOut()
+                    self.namesArray[7] = "Login"
+                    viewDidLoad()
+                }
+                else{
+
+                    self.tabBarController?.tabBar.isHidden = true
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                }
+            }
+            self.sideBarView.isHidden = true
+            self.shadowView.isHidden = true
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == drawerTableView{
+
+        }
+        else{
+            switch indexPath.row {
+            case 0:
+                return 155
+            case 1,2,3,4:
+                return 450
+            default:
+                break
+            }}
+        return 40
+
+    }
+//
+//    func didSelectItemAtIndex(index: Int, selectedID: Int) {
+//        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
+//        destinationVC.selectedIndex = index
+//        destinationVC.selectedResponseID = selectedID
+//        navigationController?.pushViewController(destinationVC, animated: true)
+//    }
+//
+//    func didSelectItemAtIndex2(index: Int ,selectedID: Int) {
+//        print("ALL IS WELL")
+//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
+//        //vc.selectedIndex = index
+//        vc.selectedID = selectedID
+//        navigationController?.pushViewController(vc, animated: true)
+//
+//    }
+//
+//
 }
 
 // MARK: - Collection View

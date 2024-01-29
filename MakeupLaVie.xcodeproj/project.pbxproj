@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180056882B63F9BC00E47C6B /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180056872B63F9BC00E47C6B /* Validation.swift */; };
 		18052EB62A651870009BABDF /* navigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18052EB52A651870009BABDF /* navigationBarView.swift */; };
 		18052EBA2A652CEC009BABDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18052EB92A652CEC009BABDF /* LaunchScreen.storyboard */; };
 		18052EBD2A657E10009BABDF /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 18052EBC2A657E10009BABDF /* Cosmos */; };
@@ -154,6 +155,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180056872B63F9BC00E47C6B /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		18052EB52A651870009BABDF /* navigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationBarView.swift; sourceTree = "<group>"; };
 		18052EB92A652CEC009BABDF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1821D96A2B600011007E915A /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		7652FC4129EEAB82000FD465 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				180056872B63F9BC00E47C6B /* Validation.swift */,
 				7662416C2A1CD38A0081C6A8 /* KingFisher */,
 				76257C3E29EFCB4D0089CCE9 /* ImageZoom */,
 				1821D96A2B600011007E915A /* ToastView.swift */,
@@ -965,6 +968,7 @@
 				18F98F072A66AE350057578D /* utilityFunctions.swift in Sources */,
 				76A4A94129FA810D00C6C7D0 /* ChangePasswordVC.swift in Sources */,
 				76A4A93A29FA7E4B00C6C7D0 /* MyReviewsVC.swift in Sources */,
+				180056882B63F9BC00E47C6B /* Validation.swift in Sources */,
 				76A4A93C29FA7E6F00C6C7D0 /* NotificationsVC.swift in Sources */,
 				76A63D7829ED193200082DED /* CategoryVC.swift in Sources */,
 				768CC4622A20BEDC0092C4F7 /* SpecialTableView.swift in Sources */,
