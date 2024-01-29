@@ -222,6 +222,7 @@ class HomeVC: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch? = touches.first
         if touch?.view == shadowView{
+            isSideViewOpen = false
             sideBarView.isHidden = true
             shadowView.isHidden = true
         }
