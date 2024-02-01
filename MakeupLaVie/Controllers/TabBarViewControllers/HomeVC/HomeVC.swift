@@ -89,6 +89,7 @@ class HomeVC: UIViewController {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
+        checkUserLoggedIn()
         getCategoryAPI()
         getBrandAPI()
         homePageAPI()
@@ -107,6 +108,7 @@ class HomeVC: UIViewController {
         }
         self.tabBarController?.tabBar.isHidden = false
     }
+    
     
     //MARK: - Helper Functions
     func setupViews(){
@@ -227,6 +229,19 @@ class HomeVC: UIViewController {
             shadowView.isHidden = true
         }
     }
+    
+    func checkUserLoggedIn(){
+        let url = base_url + "user/me"
+        Networking.instance.getApiCall(url: url){(response, error, statusCode) in
+            if statusCode == 200 && error == nil{
+                UserInfo.shared.isUserLoggedIn = true
+            }
+            else if statusCode == 401{
+                UserInfo.logOut()
+            }
+        }
+    }
+    
     @objc func refreshTokenAPI(){
         print("----Timer-----")
         var params = [String:Any]()
