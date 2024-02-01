@@ -156,7 +156,7 @@ extension WishListVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         if instance.hasWishlist == true{
             
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            cell.heartBtn.tintColor = #colorLiteral(red: 0.6526356339, green: 0.03706990182, blue: 0.03365417197, alpha: 1)
+            cell.heartBtn.tintColor = #colorLiteral(red: 0.9991409183, green: 0.2293452919, blue: 0.188941747, alpha: 1)
             cell.heartBtn.isSelected = true
         }
         

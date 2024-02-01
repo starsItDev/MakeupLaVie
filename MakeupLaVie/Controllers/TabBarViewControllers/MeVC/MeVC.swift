@@ -34,27 +34,33 @@ class MeVC: UIViewController {
  
     @IBAction func orderBtn(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "OrderVC") as? OrderVC
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func VoucherBtn(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VouchersVC") as? VouchersVC
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func WishListBtn(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
         vc?.isWishList = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func MessageBtn(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MassageVC") as? MassageVC
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func ReviewBtn(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyReviewsVC") as? MyReviewsVC
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     @IBAction func NotificationBtn(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "NotificationsVC") as? NotificationsVC
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc!, animated: true)
     }
 }

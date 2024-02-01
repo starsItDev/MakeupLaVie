@@ -21,6 +21,7 @@ class SearchVC: UIViewController {
     private var isLoadingData = false
     private var isBottomLoading = false
     var totalPages = -1
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,6 @@ class SearchVC: UIViewController {
         
     }
     func configurePagination() {
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.refreshControl = refreshControl
     }
@@ -58,6 +58,7 @@ class SearchVC: UIViewController {
     @objc func refreshData() {
         currentPage = 1
         fetchDataFromAPI(page: currentPage)
+        refreshControl.endRefreshing()
     }
     @objc func dismissKeyboard() {
         searchBar.resignFirstResponder()

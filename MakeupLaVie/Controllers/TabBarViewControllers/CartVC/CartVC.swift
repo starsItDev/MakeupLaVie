@@ -167,6 +167,12 @@ extension CartVC : UITableViewDelegate,UITableViewDataSource{
         cell.minusBtn.addTarget(self, action: #selector(minusBtnTapped(sender:)), for: .touchUpInside)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as? ProductDetailsVC {
+            vc.selectedResponseID = cartProductsArr[indexPath.row].id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension CartVC{

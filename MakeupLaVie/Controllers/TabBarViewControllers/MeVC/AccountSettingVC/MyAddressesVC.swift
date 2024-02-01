@@ -11,13 +11,14 @@ class MyAddressesVC: UIViewController {
 
     @IBOutlet weak var addressTableView: UITableView!
     var address: [Person] = []
-    
+    var params = [String: Any]()
+    let refreshControl = UIRefreshControl()
+
     //MARK: - override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        refreshPage()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         myAddressAPI()
     }
@@ -26,7 +27,32 @@ class MyAddressesVC: UIViewController {
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    func refreshPage() {
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        addressTableView.refreshControl = refreshControl
+    }
+    @objc func refreshData() {
+        myAddressAPI()
+        refreshControl.endRefreshing()
+    }
+    @objc func deleteBtnTapped(sender: UIButton) {
+        let url = base_url + "user/address/delete"
+        params["id"] = address[sender.tag].id
+        Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
+            if error == nil && statusCode == 200{
+                if let body = response["body"].dictionary {
+                    let message = body["message"]?.string ?? ""
+                    print(message)
+                    self.address.remove(at: sender.tag)
+                    self.addressTableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+                    self.addressTableView.reloadData()
+                    self.showToast(message: "Address Deleted successfully")
+                }
+            }
+        }
+    }
     func myAddressAPI() {
+        address.removeAll()
         let urlString = base_url + "user/addresses"
         Networking.instance.getApiCall(url: urlString) { (response, error, statusCode) in
             if error == nil && statusCode == 200 {
@@ -59,7 +85,6 @@ class MyAddressesVC: UIViewController {
     }
     @objc func editBtnTapped(sender: UIButton) {
         if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditAddressVC") as? EditAddressVC {
-            //vc.isComingFromEdit = true
             vc.billingData = address[sender.tag]
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -74,14 +99,14 @@ extension MyAddressesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AddressesTableViewCell
         let myAddress = address[indexPath.row]
-//      let fullName = "\(myAddress.firstName) \(myAddress.lastName)"
         cell.addressOneLbl.text = "\(myAddress.AddressOne), \(myAddress.city), \(myAddress.province)"
         if !myAddress.AddressTwo.isEmpty{
             cell.addressTwoLbl.text = "\(myAddress.AddressTwo), \(myAddress.city), \(myAddress.province)"
         }
-        //cell.addressLabel.text = myAddress.AddressOne
         cell.editButton.tag = indexPath.row
         cell.editButton.addTarget(self, action: #selector(editBtnTapped(sender:)), for: .touchUpInside)
+        cell.deleteBtn.tag = indexPath.row
+        cell.deleteBtn.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
         cell.layer.borderWidth = 5
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.cornerRadius = 10

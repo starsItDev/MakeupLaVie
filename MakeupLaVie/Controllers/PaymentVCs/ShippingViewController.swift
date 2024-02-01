@@ -247,19 +247,19 @@ class ShippingViewController: UIViewController {
                                 let state = i["state"].stringValue
                                 let city = i["city"].stringValue
                                 let existAddr = "\(firstName)\(lastName)(\(address1))"
-                                self.Address.append(existAddr)
-                                self.countries.append(i["country"].stringValue)
-                                self.provinces.append(i["state"].stringValue)
-                                self.existingAddressTxt.text = existAddr
-                                self.firstNameTxt.text = firstName
-                                self.lastNameTxt.text = lastName
-                                self.phoneNoTxt.text = phoneNo
-                                self.postCodeTxt.text = zipCode
-                                self.address1Txt.text = address1
-                                self.address2Txt.text = address2
-                                self.countryTxt.text = country
-                                self.stateTxt.text = state
-                                self.cityTxt.text = city
+//                                self.Address.append(existAddr)
+//                                self.countries.append(i["country"].stringValue)
+//                                self.provinces.append(i["state"].stringValue)
+//                                self.existingAddressTxt.text = existAddr
+//                                self.firstNameTxt.text = firstName
+//                                self.lastNameTxt.text = lastName
+//                                self.phoneNoTxt.text = phoneNo
+//                                self.postCodeTxt.text = zipCode
+//                                self.address1Txt.text = address1
+//                                self.address2Txt.text = address2
+//                                self.countryTxt.text = country
+//                                self.stateTxt.text = state
+//                                self.cityTxt.text = city
                                 
                                 let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2, addressType: type)
                                 self.shippingPeopleArr.append(person)
@@ -296,6 +296,17 @@ class ShippingViewController: UIViewController {
     }
     
     func showData() {
+        self.addressId = shippingPeopleArr.last?.id ?? 0
+        self.existingAddressTxt.text = shippingPeopleArr.last?.Address
+        self.firstNameTxt.text = shippingPeopleArr.last?.firstName
+        self.lastNameTxt.text = shippingPeopleArr.last?.lastName
+        self.phoneNoTxt.text = shippingPeopleArr.last?.number
+        self.postCodeTxt.text = shippingPeopleArr.last?.postcode
+        self.address1Txt.text = shippingPeopleArr.last?.AddressOne
+        self.address2Txt.text = shippingPeopleArr.last?.AddressTwo
+        self.countryTxt.text = shippingPeopleArr.last?.country
+        self.stateTxt.text = shippingPeopleArr.last?.province
+        self.cityTxt.text = shippingPeopleArr.last?.city
         let isExistingAddressEmpty = existingAddressTxt.text?.isEmpty ?? false
         let isFirstNameEmpty = firstNameTxt.text?.isEmpty ?? false
         let isLastNameEmpty = lastNameTxt.text?.isEmpty ?? false
@@ -339,7 +350,12 @@ class ShippingViewController: UIViewController {
                             let city = body?["city"]?.stringValue
                             let existAddr = "\(firstName)\(lastName)(\(address1))"
                             let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
-                            
+                            if let existingIndex = self.billingPeopleArr.firstIndex(where: { $0.id == id }) {
+                                self.shippingPeopleArr[existingIndex] = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+                            } else {
+                                let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+                                self.shippingPeopleArr.append(person)
+                            }
                             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
                                 if self.totalAmount != ""{
                                     vc.totalAmount = self.totalAmount

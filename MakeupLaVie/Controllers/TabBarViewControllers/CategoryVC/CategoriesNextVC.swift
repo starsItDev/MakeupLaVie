@@ -259,7 +259,7 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
             return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 250)
         }
         else{
-            return CGSize(width: 330, height: 220)
+            return CGSize(width: 358, height: 220)
         }
         //return CGSize(width: 158, height: 305)
     }

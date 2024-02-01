@@ -89,13 +89,6 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         stateTxt.inputView = statePicker
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
-//        if isComingFromEdit {
-//            checkoutLabel.text = "Edit Address"
-//            updateView.isHidden = false
-//        } else {
-//            checkoutLabel.text = "Checkout"
-//        }
-        
     }
     
     // MARK: - HelperFunctions
@@ -186,10 +179,7 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func updateAddressBtn(_ sender: UIButton) {
-        if let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyAddressesVC") as? MyAddressesVC {
-            
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     func checkOutDetailsAPI(){
         let url = base_url + "checkout"
@@ -212,19 +202,19 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                                 let state = i["state"].stringValue
                                 let city = i["city"].stringValue
                                 let existAddr = "\(firstName)\(lastName)(\(address1))"
-//                                self.existAddrArr.append(existAddr)
-//                                //self.countries.append(i["country"].stringValue)
-//                                //self.provinces.append(i["state"].stringValue)
-//                                self.existingAddressTxt.text = existAddr
-//                                self.firstNameTxt.text = firstName
-//                                self.lastNameTxt.text = lastName
-//                                self.phoneNoTxt.text = phoneNo
-//                                self.postCodeTxt.text = zipCode
-//                                self.address1Txt.text = address1
-//                                self.address2Txt.text = address2
-//                                self.countryTxt.text = country
-//                                self.stateTxt.text = state
-//                                self.cityTxt.text = city
+                                //                                self.existAddrArr.append(existAddr)
+                                //                                //self.countries.append(i["country"].stringValue)
+                                //                                //self.provinces.append(i["state"].stringValue)
+                                //                                self.existingAddressTxt.text = existAddr
+                                //                                self.firstNameTxt.text = firstName
+                                //                                self.lastNameTxt.text = lastName
+                                //                                self.phoneNoTxt.text = phoneNo
+                                //                                self.postCodeTxt.text = zipCode
+                                //                                self.address1Txt.text = address1
+                                //                                self.address2Txt.text = address2
+                                //                                self.countryTxt.text = country
+                                //                                self.stateTxt.text = state
+                                //                                self.cityTxt.text = city
                                 
                                 let person = Person(id: id, Address: existAddr, firstName: firstName, lastName: lastName, number: phoneNo, country: country, province: state, city: city, postcode: zipCode, AddressOne: address1, AddressTwo: address2, addressType: type)
                                 self.billingPeopleArr.append(person)
@@ -241,28 +231,8 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     }
     
     func showData(){
-//        if isComingFromEdit{
-//            checkoutLabel.text = "Edit Address"
-//            updateView.isHidden = false
-//            billingId = billingData?.id ?? 0
-//            self.existingAddressTxt.text = billingData?.Address
-//            self.existingAddressTxt.isUserInteractionEnabled = false
-//            self.firstNameTxt.text = billingData?.firstName
-//            self.firstNameTxt.isUserInteractionEnabled = false
-//            self.lastNameTxt.text = billingData?.lastName
-//            self.lastNameTxt.isUserInteractionEnabled = false
-//            self.phoneNoTxt.text = billingData?.number
-//            self.phoneNoTxt.isUserInteractionEnabled = false
-//            self.postCodeTxt.text = billingData?.postcode
-//            self.address1Txt.text = billingData?.AddressOne
-//            self.address2Txt.text = billingData?.AddressTwo
-//            self.countryTxt.text = billingData?.country
-//            self.countryTxt.isUserInteractionEnabled = false
-//            self.stateTxt.text = billingData?.province
-//            self.cityTxt.text = billingData?.city
-//        }
-//        else{
             checkoutLabel.text = "Checkout"
+            self.addressId = billingPeopleArr.last?.id ?? 0
             self.existingAddressTxt.text = billingPeopleArr.last?.Address
             self.firstNameTxt.text = billingPeopleArr.last?.firstName
             self.lastNameTxt.text = billingPeopleArr.last?.lastName
@@ -293,9 +263,7 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
             postCodeLbl.isHidden = isPostCodeEmpty
             addressOneLbl.isHidden = isAddress1Empty
             addressTwoLbl.isHidden = isAddress2Empty
-        //}
     }
-    
     func postCheckoutAPICall(params: [String:Any]){
         let url = base_url + "checkout/billing"
         Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
@@ -316,10 +284,18 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                         let state = body?["state"]?.stringValue
                         let city = body?["city"]?.stringValue
                         let existAddr = "\(firstName)\(lastName)(\(address1))"
-                        let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+//                        let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+                        if let existingIndex = self.billingPeopleArr.firstIndex(where: { $0.id == id }) {
+                            // Update the existing address
+                            self.billingPeopleArr[existingIndex] = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+                        } else {
+                            // Add a new address to billingPeopleArr
+                            let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+                            self.billingPeopleArr.append(person)
+                        }
                         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as? ShippingViewController {
 
-                            vc.billingData = person
+                            vc.billingData = self.billingPeopleArr.last
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
                     }
@@ -395,7 +371,7 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 else {
                     return
                 }
-            
+                
                 self.addressId = billingPeopleArr[row - 1].id
                 billingId = addressId
                 self.existingAddressTxt.text = billingPeopleArr[row - 1].Address

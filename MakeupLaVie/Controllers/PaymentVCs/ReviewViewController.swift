@@ -57,9 +57,7 @@ class ReviewViewController: UIViewController {
         reviewTableView.estimatedRowHeight = 105
         orderNoteTxt.layer.borderWidth = 1
         orderNoteTxt.layer.borderColor = UIColor.black.cgColor
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.callPreviewOrderAPI()
+        callPreviewOrderAPI()
     }
     
     //MARK: - Helper Functions

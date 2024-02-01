@@ -11,8 +11,8 @@ class AddressesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var addressOneLbl: UILabel!
     @IBOutlet weak var addressTwoLbl: UILabel!
-    //@IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
