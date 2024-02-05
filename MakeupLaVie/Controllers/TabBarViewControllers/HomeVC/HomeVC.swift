@@ -62,20 +62,20 @@ class HomeVC: UIViewController {
         //let time = 15
         if UserInfo.shared.isUserLoggedIn == true{
             self.namesArray[7] = "Logout"
-            var timer = Timer()
-            timer = Timer.scheduledTimer(timeInterval: TimeInterval(time), target: self, selector: #selector(self.refreshTokenAPI), userInfo: nil, repeats: true)
+            var timerr = Timer()
+            timerr = Timer.scheduledTimer(timeInterval: TimeInterval(time), target: self, selector: #selector(self.refreshTokenAPI), userInfo: nil, repeats: true)
             //refreshTokenAPI()
         }
-        getCategoryAPI()
-        getBrandAPI()
-        homePageAPI()
-        categoryCollectionView.reloadData()
-        recentProductCV.reloadData()
-        featureBrandCV.reloadData()
-        newProductCV.reloadData()
-        bestProductCV.reloadData()
-        hotProductCV.reloadData()
-        specialOfferCV.reloadData()
+//        getCategoryAPI()
+//        getBrandAPI()
+//        homePageAPI()
+//        categoryCollectionView.reloadData()
+//        recentProductCV.reloadData()
+//        featureBrandCV.reloadData()
+//        newProductCV.reloadData()
+//        bestProductCV.reloadData()
+//        hotProductCV.reloadData()
+//        specialOfferCV.reloadData()
         sideBarView.isHidden = true
         isSideViewOpen = false
         setupViews()
@@ -119,10 +119,25 @@ class HomeVC: UIViewController {
     }
     
     @objc private func refreshData() {
-        homePageAPI()
-        getCategoryAPI()
-        getBrandAPI()
-        self.recentProductCV.reloadData()
+        if utilityFunctions.isConnectedToNetwork(){
+            homePageAPI()
+            getCategoryAPI()
+            getBrandAPI()
+            categoryCollectionView.reloadData()
+            recentProductCV.reloadData()
+            featureBrandCV.reloadData()
+            newProductCV.reloadData()
+            bestProductCV.reloadData()
+            hotProductCV.reloadData()
+            specialOfferCV.reloadData()
+        }
+        else{
+            self.showToast(message: "Please check your internet connection")
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.loadingView.isHidden = false
+            self.loadingImageView.isHidden = false
+        }
         refreshControl.endRefreshing()
     }
     
@@ -288,6 +303,7 @@ class HomeVC: UIViewController {
     }
     
     func getCategoryAPI(){
+        self.categoryArray.removeAll()
         let url = base_url + "categories"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil{
@@ -315,6 +331,7 @@ class HomeVC: UIViewController {
     }
     
     func getBrandAPI(){
+        BrandArray.removeAll()
         let url = base_url + "brands"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil{
@@ -341,6 +358,11 @@ class HomeVC: UIViewController {
     }
     
     func homePageAPI() {
+        recentdataArray.removeAll()
+        newproductArray.removeAll()
+        bestproductArray.removeAll()
+        hotproductArray.removeAll()
+        speciallproductArray.removeAll()
         if utilityFunctions.isConnectedToNetwork() {
         let url = base_url + "home"
             Networking.instance.getApiCall(url: url){(response, error, statusCode) in
@@ -358,45 +380,45 @@ class HomeVC: UIViewController {
                                 
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.recentdataArray.append(model)
-                                self.recentProductCV.reloadData()
                                 
                             }
+                            self.recentProductCV.reloadData()
                         }
                         if let res = body["newProducts"]?.array{
                             for dic in res{
                                 
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.newproductArray.append(model)
-                                self.newProductCV.reloadData()
                                 
                             }
+                            self.newProductCV.reloadData()
                         }
                         if let res = body["bestProducts"]?.array{
                             for dic in res{
                                 
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.bestproductArray.append(model)
-                                self.bestProductCV.reloadData()
                                 
                             }
+                            self.bestProductCV.reloadData()
                         }
                         if let res = body["hotDeals"]?.array{
                             for dic in res{
                                 
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.hotproductArray.append(model)
-                                self.hotProductCV.reloadData()
                                 
                             }
+                            self.hotProductCV.reloadData()
                         }
                         if let res = body["specialOffers"]?.array{
                             for dic in res{
                                 
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.speciallproductArray.append(model)
-                                self.specialOfferCV.reloadData()
                                 
                             }
+                            self.specialOfferCV.reloadData()
                         }
                     }
                 }else if statusCode == 500{
@@ -411,6 +433,7 @@ class HomeVC: UIViewController {
             self.showToast(message: "Please check your internet connection")
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
+            self.loadingView.isHidden = false
             self.loadingImageView.isHidden = false
         }
     }

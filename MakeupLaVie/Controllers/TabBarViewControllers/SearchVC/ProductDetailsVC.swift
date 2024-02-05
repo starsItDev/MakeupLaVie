@@ -132,7 +132,7 @@ class ProductDetailsVC: UIViewController {
             if complete{
                 if self.hasWishList{
                     self.wishListBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                    self.wishListBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    //self.wishListBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 }
                 else{
                     self.wishListBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -222,7 +222,7 @@ class ProductDetailsVC: UIViewController {
         }
         else{
             self.wishListBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-            self.wishListBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            //self.wishListBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
         
         ratingView.settings.fillMode = .precise
@@ -275,6 +275,8 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
             cell.titleLbl.text = instance.title
             cell.rsLbl.text = instance.price
             cell.img.setImage(with: instance.image)
+            cell.cosmosView.settings.fillMode = .precise
+            cell.cosmosView.rating = instance.rating
             cell.layer.borderWidth = 0.5
             cell.layer.borderColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
             cell.layer.cornerRadius = 6

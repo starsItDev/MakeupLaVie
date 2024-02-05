@@ -108,16 +108,19 @@ class CategoriesNextVC: UIViewController {
     }
     
     @objc func toggleViewBtnTapped(sender: UIButton) {
-        if sender.isSelected{
-            sender.isSelected = false
+        if toggleViewBtn.isSelected{
+            
+            //sender.isSelected = false
             toggleViewBtn.setImage(UIImage(systemName: "square.grid.3x2.fill"), for: .normal)
+            toggleViewBtn.isSelected = false
             self.categoriesSimpleCV.isHidden = true
             self.categoriesGridCV.isHidden = false
         }
         else{
             
-            sender.isSelected = true
+            //sender.isSelected = true
             toggleViewBtn.setImage(UIImage(systemName: "rectangle.grid.1x2.fill"), for: .normal)
+            toggleViewBtn.isSelected = true
             self.categoriesGridCV.isHidden = true
             self.categoriesSimpleCV.isHidden = false
             
@@ -162,7 +165,7 @@ class CategoriesNextVC: UIViewController {
     
     func browseProdAPICall(){
         self.productsArr.removeAll()
-        let url = base_url + "products?\(prodAttribute ?? "")=1"
+        let url = base_url + "products?label=\(prodAttribute ?? "")"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {
@@ -256,7 +259,7 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == categoriesGridCV{
-            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 250)
+            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 268)
         }
         else{
             return CGSize(width: 358, height: 220)
