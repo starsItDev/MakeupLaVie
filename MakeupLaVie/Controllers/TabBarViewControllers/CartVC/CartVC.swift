@@ -32,7 +32,7 @@ class CartVC: UIViewController {
     private var responseID: Int?
     var totalPriceForPayment: String?
     var selectedAddOnIndexPaths: Set<IndexPath> = []
-    
+    var isDeleteButtonEnabled = true
     override func viewDidLoad() {
         super.viewDidLoad()
         VoucherView.layer.borderColor = UIColor.red.cgColor
@@ -131,13 +131,42 @@ class CartVC: UIViewController {
             cartProductsArr[sender.tag].quantity = qty
         }
     }
-    @objc func deleteBtnTapped(sender: UIButton){
+//    @objc func deleteBtnTapped(sender: UIButton){
+//        let url = base_url + "cart/update"
+//        params["id"] = cartProductsArr[sender.tag].id
+//        params["quantity"] = cartProductsArr[sender.tag].quantity
+//        Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
+//            if error == nil && statusCode == 200{
+//                if let body = response["body"].dictionary{
+//                    let message = body["message"]?.string ?? ""
+//                    self.cartProductsArr.remove(at: sender.tag)
+//                    self.cardtableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+//                    self.cardtableView.reloadData()
+//                }
+//            }
+//        }
+//    }
+   
+
+    @objc func deleteBtnTapped(sender: UIButton) {
+        // Disable the delete button to prevent multiple clicks
+        if !isDeleteButtonEnabled {
+            return
+        }
+
+        isDeleteButtonEnabled = false
+
         let url = base_url + "cart/update"
         params["id"] = cartProductsArr[sender.tag].id
         params["quantity"] = cartProductsArr[sender.tag].quantity
-        Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
-            if error == nil && statusCode == 200{
-                if let body = response["body"].dictionary{
+        Networking.instance.postApiCall(url: url, param: params) { (response, error, statusCode) in
+            // Enable the delete button after the API call is completed
+            defer {
+                self.isDeleteButtonEnabled = true
+            }
+
+            if error == nil && statusCode == 200 {
+                if let body = response["body"].dictionary {
                     let message = body["message"]?.string ?? ""
                     self.cartProductsArr.remove(at: sender.tag)
                     self.cardtableView.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
@@ -146,6 +175,7 @@ class CartVC: UIViewController {
             }
         }
     }
+
 }
 extension CartVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,7 +13,7 @@ class LoginVC: UIViewController , UITextFieldDelegate , UITextViewDelegate {
     @IBOutlet weak var showPasswordBtn: UIButton!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var passwordLbl: UILabel!
-    
+    @IBOutlet weak var loginBtn: UIButton!
 //MARK: - Variables
     var params = [String: Any]()
     

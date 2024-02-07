@@ -11,8 +11,10 @@ class PaymentViewController: UIViewController {
     
     @IBOutlet weak var cashOnDelivery: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
+    var onDismiss: (() -> Void)?
+
     var totalAmount = String()
-    
+    var isReviewButtonEnabled = true
     override func viewDidLoad() {
         super.viewDidLoad()
         priceLabel.text = "\(Double(totalAmount) ?? 0)"
@@ -25,12 +27,23 @@ class PaymentViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func reviewButton(_ sender: UIButton) {
+        if !isReviewButtonEnabled {
+                    return
+                }
+
+                isReviewButtonEnabled = false
+
         if cashOnDelivery.isSelected {
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController {
+                vc.onDismiss = { [weak self] in
+                                    // Enable the review button after the ReviewViewController is dismissed
+                                    self?.isReviewButtonEnabled = true
+                                }
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
             showAlert()
+            isReviewButtonEnabled = true
         }
     }
     @IBAction func cashOnDeliveryButton(_ sender: UIButton) {

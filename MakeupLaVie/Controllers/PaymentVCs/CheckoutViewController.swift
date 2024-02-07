@@ -28,6 +28,9 @@ struct ExistingAddress{
 class CheckoutViewController: UIViewController, UITextFieldDelegate{
     
     // MARK: - IBOutlets
+    
+    @IBOutlet weak var shipppingBtn: UIButton!
+    
     @IBOutlet weak var existingAddressTxt: UITextField!
     @IBOutlet weak var firstNameTxt: UITextField!
     @IBOutlet weak var lastNameTxt: UITextField!
@@ -68,7 +71,7 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     //var isComingFromEdit = false
     var addressId = 0
     var billingData: Person?
-    
+    var isShippingButtonEnabled = true
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +113,12 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
         }
     }
     @IBAction func shippingButton(_ sender: UIButton) {
+        if !isShippingButtonEnabled {
+               return
+           }
+
+           isShippingButtonEnabled = false
+
         if (existingAddressTxt?.text?.isEmpty)! {
             utilityFunctions.showAlertWithTitle(title: "", withMessage: "Existing Address is required", withNavigation: self)
             return
@@ -293,6 +302,10 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
                             let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
                             self.billingPeopleArr.append(person)
                         }
+                        DispatchQueue.main.async {
+                                self.isShippingButtonEnabled = true
+                            }
+
                         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as? ShippingViewController {
 
                             vc.billingData = self.billingPeopleArr.last

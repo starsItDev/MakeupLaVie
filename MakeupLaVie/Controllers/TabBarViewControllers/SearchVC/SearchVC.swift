@@ -293,9 +293,9 @@ extension SearchVC {
                     self.products.removeAll()
                     if let body = response["body"].dictionary{
                         print(response)
-                        if body["totalItemCount"] != nil{
-                            //                              self.totalItemCount = body["totalItemCount"] as! Int
-                        }
+                        if body["totalPages"] != nil{
+                                                    self.totalPages = body["totalPages"]?.intValue ?? 0
+                                                }
                         
                         if let res = body["response"]?.array{
                             for dic in res{

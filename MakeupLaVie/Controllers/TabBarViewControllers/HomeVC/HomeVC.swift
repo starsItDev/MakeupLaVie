@@ -33,6 +33,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var loadingImageView: UIView!
     
     // MARK: - Variable
+    var isHeartButtonEnabled = true
     private let refreshControl = UIRefreshControl()
     var inWishlist = false
     var isSideViewOpen: Bool = false
@@ -437,12 +438,24 @@ class HomeVC: UIViewController {
             self.loadingImageView.isHidden = false
         }
     }
-    
-    @objc func recentHeartBtnTapped(sender: UIButton){
+
+    @objc func recentHeartBtnTapped(sender: UIButton) {
+        // Disable the button to prevent multiple clicks
+        if !isHeartButtonEnabled {
+            return
+        }
+
+        isHeartButtonEnabled = false
+
         let id = recentdataArray[sender.tag].id ?? 0
-        WishList.wishListAPICall(id: id){(complete) in
-            if complete == true{
-                if self.recentdataArray[sender.tag].hasWishlist!{
+        WishList.wishListAPICall(id: id) { (complete) in
+            // Enable the button after the API call is completed or after some action
+            defer {
+                self.isHeartButtonEnabled = true
+            }
+
+            if complete {
+                if self.recentdataArray[sender.tag].hasWishlist! {
                     if self.traitCollection.userInterfaceStyle == .dark {
                         sender.setImage(UIImage(systemName: "heart"), for: .normal)
                         sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -451,16 +464,13 @@ class HomeVC: UIViewController {
                         sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     }
                     self.recentdataArray[sender.tag].hasWishlist = false
-                }
-                else{
+                } else {
                     sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
                     print("added in recent")
                     self.recentdataArray[sender.tag].hasWishlist = true
                 }
-                
-            }
-            else{
+            } else {
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
                 self.navigationController?.pushViewController(vc, animated: true)
             }

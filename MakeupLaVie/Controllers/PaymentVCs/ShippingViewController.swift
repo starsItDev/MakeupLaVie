@@ -53,7 +53,7 @@ class ShippingViewController: UIViewController {
     var totalAmount = String()
     var sameAddress = false
     var addressId = 0
-    
+    var isReviewButtonEnabled = true
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +93,12 @@ class ShippingViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func paymentButton(_ sender: UIButton) {
+        if !isReviewButtonEnabled {
+                    return
+                }
+
+                isReviewButtonEnabled = false
+
         if sameAddress == true{
             params["first_name"] = billingData?.firstName
             params["last_name"] = billingData?.lastName
@@ -361,6 +367,10 @@ class ShippingViewController: UIViewController {
                                     vc.totalAmount = self.totalAmount
                                     
                                 }
+                                vc.onDismiss = { [weak self] in
+                                                    // Enable the review button after the ReviewViewController is dismissed
+                                                    self?.isReviewButtonEnabled = true
+                                                }
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }
                         }

@@ -3533,7 +3533,7 @@
                                         <rect key="frame" x="2" y="2" width="56" height="56"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FCI-pa-0D1">
-                                                <rect key="frame" x="0.0" y="1.7763568394002505e-15" width="56" height="56"/>
+                                                <rect key="frame" x="0.0" y="1" width="56" height="54.666666666666671"/>
                                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                             </imageView>
                                         </subviews>
@@ -3633,7 +3633,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vouchers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgQ-Os-lUk">
-                                                                    <rect key="frame" x="15.333333333333346" y="60" width="63.333333333333343" height="17"/>
+                                                                    <rect key="frame" x="15.333333333333343" y="60" width="63.333333333333343" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -3670,7 +3670,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WishList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyD-fU-fjA">
-                                                                    <rect key="frame" x="17.666666666666689" y="60" width="58.333333333333343" height="17"/>
+                                                                    <rect key="frame" x="17.666666666666686" y="60" width="58.333333333333343" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -8187,6 +8187,7 @@
                         <outlet property="phoneNoTxt" destination="85B-zX-GG9" id="tq8-0T-GZi"/>
                         <outlet property="postCodeLbl" destination="NU4-8w-N27" id="yoJ-f7-5df"/>
                         <outlet property="postCodeTxt" destination="8tl-lv-gOF" id="0S0-ya-f7n"/>
+                        <outlet property="shipppingBtn" destination="Iqb-HL-cZ8" id="3uK-cW-LWL"/>
                         <outlet property="stateLbl" destination="oEx-yQ-uTB" id="MPJ-SO-dbC"/>
                         <outlet property="stateTxt" destination="AjC-Dd-m56" id="M01-AB-J8c"/>
                         <outlet property="updateView" destination="CTj-LV-j5X" id="tzJ-A5-UW4"/>
@@ -8905,6 +8906,7 @@
                         <outlet property="emailLbl" destination="n8Y-LM-2XM" id="okq-XM-3Wg"/>
                         <outlet property="inputEmailAddress" destination="xeD-Jn-E8H" id="qyY-Z6-Tpa"/>
                         <outlet property="inputPassword" destination="Fl6-ef-Jjw" id="5PG-bY-Ppy"/>
+                        <outlet property="loginBtn" destination="bDm-yO-R6j" id="mjm-Qa-eT3"/>
                         <outlet property="passwordLbl" destination="c1l-gQ-iEt" id="A9c-Hs-hBB"/>
                         <outlet property="showPasswordBtn" destination="OwZ-To-8qN" id="Dii-sr-3fg"/>
                     </connections>
@@ -9712,7 +9714,7 @@
         <image name="unCheck" width="48" height="48"/>
         <image name="wifi.slash" catalog="system" width="128" height="101"/>
         <namedColor name="Color">
-            <color red="0.87058823529411766" green="0.87058823529411766" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.87099999189376831" green="0.87099999189376831" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black-white">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
