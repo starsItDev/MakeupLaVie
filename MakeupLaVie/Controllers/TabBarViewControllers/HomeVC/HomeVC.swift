@@ -443,8 +443,13 @@ class HomeVC: UIViewController {
         WishList.wishListAPICall(id: id){(complete) in
             if complete == true{
                 if self.recentdataArray[sender.tag].hasWishlist!{
-                    sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                    sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
                     self.recentdataArray[sender.tag].hasWishlist = false
                 }
                 else{
@@ -466,8 +471,13 @@ class HomeVC: UIViewController {
         WishList.wishListAPICall(id: id){(complete) in
             if complete == true{
                 if self.newproductArray[sender.tag].hasWishlist!{
-                    sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                    sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
                     self.newproductArray[sender.tag].hasWishlist = false
                 }
                 else{
@@ -489,8 +499,13 @@ class HomeVC: UIViewController {
         WishList.wishListAPICall(id: id){(complete) in
             if complete == true{
                 if self.bestproductArray[sender.tag].hasWishlist!{
-                    sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                    sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
                     self.bestproductArray[sender.tag].hasWishlist = false
                 }
                 else{
@@ -512,8 +527,13 @@ class HomeVC: UIViewController {
         WishList.wishListAPICall(id: id){(complete) in
             if complete == true{
                 if self.hotproductArray[sender.tag].hasWishlist!{
-                    sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                    sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
                     self.hotproductArray[sender.tag].hasWishlist = false
                 }
                 else{
@@ -535,8 +555,13 @@ class HomeVC: UIViewController {
         WishList.wishListAPICall(id: id){(complete) in
             if complete == true{
                 if self.speciallproductArray[sender.tag].hasWishlist!{
-                    sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                    sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
                     self.speciallproductArray[sender.tag].hasWishlist = false
                 }
                 else{
@@ -811,9 +836,13 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
             }
             else{
-                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
             }
             
             cell.heartBtn.tag = indexPath.item
@@ -821,7 +850,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = instance.rating ?? 0
-            
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
@@ -830,7 +859,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         else if collectionView == featureBrandCV{
             let cell = featureBrandCV.dequeueReusableCell(withReuseIdentifier: "brandcell", for: indexPath) as! collectioncell
             cell.brandimg.sd_setImage(with: URL(string: BrandArray[indexPath.row].catagoryimage))
-            
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
@@ -887,14 +916,19 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
             }
-            else{
-                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
             }
             
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = instance.rating ?? 0
-            
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
@@ -949,14 +983,19 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
             }
-            else{
-                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
             }
             
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = instance.rating ?? 0
-            
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
@@ -1010,14 +1049,19 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
             }
-            else{
-                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
             }
             
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = instance.rating ?? 0
-            
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
@@ -1073,14 +1117,19 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
             }
-            else{
-                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
             }
             
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = instance.rating ?? 0
-            
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true

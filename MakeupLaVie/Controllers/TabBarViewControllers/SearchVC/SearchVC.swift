@@ -57,6 +57,7 @@ class SearchVC: UIViewController {
     }
     @objc func refreshData() {
         currentPage = 1
+        self.products.removeAll()
         fetchDataFromAPI(page: currentPage)
         refreshControl.endRefreshing()
     }
@@ -67,7 +68,7 @@ class SearchVC: UIViewController {
     func configure() {
         searchBar.delegate = self
         searchBar.placeholder = "Search"
-        searchBar.searchTextField.backgroundColor = UIColor.white
+//       searchBar.searchTextField.backgroundColor = UIColor.white
         //initViewModel()
         //observeEvent()
         collectionView.delegate = self
@@ -85,8 +86,13 @@ class SearchVC: UIViewController {
         WishList.wishListAPICall(id: id){(complete) in
             if complete == true{
                 if self.products[sender.tag].hasWishlist!{
-                    sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                    sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
                     self.products[sender.tag].hasWishlist = false
                 }
                 else{
@@ -95,7 +101,6 @@ class SearchVC: UIViewController {
                     print("added in recent")
                     self.products[sender.tag].hasWishlist = true
                 }
-                
             }
             else{
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -155,18 +160,20 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
         }
-        else{
-            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-            cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            
+        else {
+            if traitCollection.userInterfaceStyle == .dark {
+                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            } else {
+                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            }
         }
-        
         cell.heartBtn.tag = indexPath.item
         cell.heartBtn.addTarget(self, action: #selector(heartBtnTapped(sender:)), for: .touchUpInside)
-        
         cell.cosmosRating.settings.fillMode = .precise
         cell.cosmosRating.rating = instance.rating ?? 0
-        
+        cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 6
         cell.layer.masksToBounds = true
@@ -257,8 +264,7 @@ extension SearchVC {
     //            }
     //        }
     //    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         if bottomEdge >= scrollView.contentSize.height {
             // User has reached the bottom, load the next page

@@ -65,16 +65,18 @@ class ProductDetailsVC: UIViewController {
         }
         else {
             cartUpdateAPI()
-            self.addCartBtn.setTitle("REMOVE FROM CART", for: .normal)
-            if let tabItems = tabBarController?.tabBar.items {
-                let tabItem = tabItems[3]
-                if tabItem.badgeValue == nil{
-                    tabItem.badgeValue = "1"
-                }
-                else{
-                    var newBadgeValue = Int(tabItem.badgeValue ?? "")
-                    newBadgeValue = (newBadgeValue ?? 0) + 1
-                    tabItem.badgeValue = "\(newBadgeValue ?? 0)"
+            if UserInfo.shared.isUserLoggedIn {
+                self.addCartBtn.setTitle("REMOVE FROM CART", for: .normal)
+                if let tabItems = tabBarController?.tabBar.items {
+                    let tabItem = tabItems[3]
+                    if tabItem.badgeValue == nil{
+                        tabItem.badgeValue = "1"
+                    }
+                    else{
+                        var newBadgeValue = Int(tabItem.badgeValue ?? "")
+                        newBadgeValue = (newBadgeValue ?? 0) + 1
+                        tabItem.badgeValue = "\(newBadgeValue ?? 0)"
+                    }
                 }
             }
         }
@@ -396,7 +398,7 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "white-gray")
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeButtonTapped))
         closeButton.tintColor = .white
         navigationItem.leftBarButtonItem = closeButton

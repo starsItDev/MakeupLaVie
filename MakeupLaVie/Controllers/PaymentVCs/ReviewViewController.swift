@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol OrderCompletionDelegate: AnyObject {
+    func orderCompletedSuccessfully()
+}
+
 struct Product{
     var title: String
     var price: String
@@ -56,7 +60,7 @@ class ReviewViewController: UIViewController {
         reviewTableView.rowHeight = UITableView.automaticDimension
         reviewTableView.estimatedRowHeight = 105
         orderNoteTxt.layer.borderWidth = 1
-        orderNoteTxt.layer.borderColor = UIColor.black.cgColor
+        orderNoteTxt.layer.borderColor = UIColor.darkGray.cgColor
         callPreviewOrderAPI()
     }
     
@@ -99,8 +103,8 @@ class ReviewViewController: UIViewController {
         Networking.instance.postApiCall(url: url, param: params) { (response, error, statusCode) in
             if error == nil {
                 if statusCode == 200 {
-                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OrderVC") as? OrderVC {
-                        self.navigationController?.pushViewController(vc, animated: true)
+                    if let cartVC = self.navigationController?.viewControllers.first(where: { $0 is CartVC }) {
+                        self.navigationController?.popToViewController(cartVC, animated: true)
                     }
                 }
                 else {

@@ -27,12 +27,4 @@ class NextGridCollectionViewCell: UICollectionViewCell {
         cellView.layer.shadowOffset = CGSize(width: 2, height: 2)
         cellView.layer.shadowRadius = 4
     }
-    @IBAction func favBtnPressed(_ sender: Any) {
-        
-        if favImg.image == UIImage(named: "like") {
-                favImg.image = UIImage(named: "heart (4)")
-            } else {
-                favImg.image = UIImage(named: "like")
-            }
-    }
 }

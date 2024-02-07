@@ -127,7 +127,6 @@
 		E052BB702B58FBE900ABCEF1 /* SwipingMediaView in Frameworks */ = {isa = PBXBuildFile; productRef = E052BB6F2B58FBE900ABCEF1 /* SwipingMediaView */; };
 		E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */; };
 		E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188812B4FC86100B49D17 /* MyOrderModel.swift */; };
-		E0A559182B5E8E5200C82A21 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = E0A559172B5E8E5200C82A21 /* SkeletonView */; };
 		E0C19E7E2B568306007CE996 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C19E7D2B568306007CE996 /* CornerRadius.swift */; };
 		E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */; };
 		E0EC327B2B4D82A000E7F057 /* OrderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */; };
@@ -292,7 +291,6 @@
 				E052BB702B58FBE900ABCEF1 /* SwipingMediaView in Frameworks */,
 				18052EBD2A657E10009BABDF /* Cosmos in Frameworks */,
 				7686358A2A03C6590089C19E /* Alamofire in Frameworks */,
-				E0A559182B5E8E5200C82A21 /* SkeletonView in Frameworks */,
 				18BC18352A7A8B220035CD43 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,7 +787,6 @@
 				18A179A22A84BA2000054D15 /* MultiSlider */,
 				E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */,
 				E052BB6F2B58FBE900ABCEF1 /* SwipingMediaView */,
-				E0A559172B5E8E5200C82A21 /* SkeletonView */,
 			);
 			productName = MakeupLaVie;
 			productReference = 7696C80429E51CB100383B01 /* MakeupLaVie.app */;
@@ -872,7 +869,6 @@
 				18A179A12A84BA2000054D15 /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				E039B5DB2B45A88200CB38D8 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				E052BB6E2B58FBE900ABCEF1 /* XCRemoteSwiftPackageReference "SwipingMediaView" */,
-				E0A559162B5E8E5200C82A21 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 7696C80529E51CB100383B01 /* Products */;
 			projectDirPath = "";
@@ -1431,14 +1427,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		E0A559162B5E8E5200C82A21 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1481,11 +1469,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E052BB6E2B58FBE900ABCEF1 /* XCRemoteSwiftPackageReference "SwipingMediaView" */;
 			productName = SwipingMediaView;
-		};
-		E0A559172B5E8E5200C82A21 /* SkeletonView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E0A559162B5E8E5200C82A21 /* XCRemoteSwiftPackageReference "SkeletonView" */;
-			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 

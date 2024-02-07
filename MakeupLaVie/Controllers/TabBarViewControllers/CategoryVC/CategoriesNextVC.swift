@@ -195,8 +195,34 @@ class CategoriesNextVC: UIViewController {
             }
         }
     }
-    
-    
+    @objc func heartBtnTapped(sender: UIButton){
+            let id = productsArr[sender.tag].id ?? 0
+            WishList.wishListAPICall(id: id){(complete) in
+                if complete == true{
+                    if self.productsArr[sender.tag].hasWishlist!{
+                        if self.traitCollection.userInterfaceStyle == .dark {
+                            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                            sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                        } else {
+                            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                            sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                        }
+                        self.productsArr[sender.tag].hasWishlist = false
+                    }
+                    else{
+                        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+                        print("added in recent")
+                        self.productsArr[sender.tag].hasWishlist = true
+                    }
+                    
+                }
+                else{
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }
 }
 extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -238,9 +264,25 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
             else if product.specialLabel == 1{
                 cell.featureLbl.text = "Special"
             }
+            if product.hasWishlist == true{
+                cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+            }
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
+            }
+            cell.heartBtn.tag = indexPath.item
+            cell.heartBtn.addTarget(self, action: #selector(heartBtnTapped(sender:)), for: .touchUpInside)
             cell.productImg.setImage(with: product.catagoryimage)
             cell.cosmosRating.settings.fillMode = .precise
             cell.cosmosRating.rating = product.rating ?? 0
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
@@ -252,6 +294,25 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
             cell.titleLbl.text = product.catagorylabel
             cell.rsLbl.text = product.price
             cell.imgView.setImage(with: product.catagoryimage)
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
+            cell.layer.borderWidth = 0.5
+            cell.layer.cornerRadius = 6
+            cell.layer.masksToBounds = true
+            if product.hasWishlist == true{
+                cell.favBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                cell.favBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+            }
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.favBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.favBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.favBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.favBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
+            }
+            cell.favBtn.tag = indexPath.item
+            cell.favBtn.addTarget(self, action: #selector(heartBtnTapped(sender:)), for: .touchUpInside)
             //            cell.cosmosView.settings.fillMode = .precise
             //            cell.cosmosView.rating = product.
             return cell

@@ -105,16 +105,24 @@ class BrandPKViewController: UIViewController {
             for indexpath in selectedPaths{
                 categoriesCollectionView.deselectItem(at: indexpath, animated: true)
                 let cell = categoriesCollectionView.cellForItem(at: indexpath) as! CategoriesCollectionViewCell
-                cell.cellView.backgroundColor = UIColor.white
-                cell.categoriesCellLabel.textColor = UIColor.black
+                cell.cellView.backgroundColor = UIColor(named: "white-gray")
+                cell.categoriesCellLabel.textColor = UIColor(named: "black-white")
+            }
+        }
+        if !selectedIndexPathThree.isEmpty{
+            for indexpath in selectedIndexPathThree{
+                productsCollectionView.deselectItem(at: indexpath, animated: true)
+                let cell = productsCollectionView.cellForItem(at: indexpath) as! ProductCollectionViewCell
+                cell.productCellView.backgroundColor = UIColor(named: "white-gray")
+                cell.productCellLabel.textColor = UIColor(named: "black-white")
             }
         }
         if !selectedIndexPathTwo.isEmpty{
             for indexpath in selectedIndexPathTwo{
                 brandsCollectionView.deselectItem(at: indexpath, animated: true)
                 let cell = brandsCollectionView.cellForItem(at: indexpath) as! BrandsCollectionViewCell
-                cell.brandsCellView.backgroundColor = UIColor.white
-                cell.brandsCellLabel.textColor = UIColor.black
+                cell.brandsCellView.backgroundColor = UIColor(named: "white-gray")
+                cell.brandsCellLabel.textColor = UIColor(named: "black-white")
             }
         }
         if !selectedIndexPathFive.isEmpty{
@@ -128,8 +136,8 @@ class BrandPKViewController: UIViewController {
             for indexpath in selectedIndexPathFour{
                 sizeCollectionView.deselectItem(at: indexpath, animated: true)
                 let cell = sizeCollectionView.cellForItem(at: indexpath) as! SizeCollectionViewCell
-                cell.sizeCellView.backgroundColor = UIColor.white
-                cell.sizeCellLabel.textColor = UIColor.black
+                cell.sizeCellView.backgroundColor = UIColor(named: "white-gray")
+                cell.sizeCellLabel.textColor = UIColor(named: "black-white")
             }
         }
     }
@@ -290,15 +298,15 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
                 //            subCategoryHeight.constant = 50
                 if let prevSelectedIndex = previouslySelectedIndex, prevSelectedIndex == indexPath {
                     collectionView.deselectItem(at: indexPath, animated: true)
-                    cell.cellView.backgroundColor = UIColor.white
-                    cell.categoriesCellLabel.textColor = UIColor.black
+                    cell.cellView.backgroundColor = UIColor(named: "white-gray")
+                    cell.categoriesCellLabel.textColor = UIColor(named: "black-white")
                     
                     previouslySelectedIndex = nil
                 } else {
                     if let prevSelectedIndex = previouslySelectedIndex,
                        let prevCell = collectionView.cellForItem(at: prevSelectedIndex) as? CategoriesCollectionViewCell {
-                        prevCell.cellView.backgroundColor = UIColor.white
-                        prevCell.categoriesCellLabel.textColor = UIColor.black
+                        prevCell.cellView.backgroundColor = UIColor(named: "white-gray")
+                        prevCell.categoriesCellLabel.textColor = UIColor(named: "black-white")
                     }
                     cell.cellView.backgroundColor = UIColor.red
                     cell.categoriesCellLabel.textColor = UIColor.white
@@ -311,8 +319,8 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
                 self.brandName = BrandArray[indexPath.item].title ?? ""
                 if selectedIndexPathTwo.contains(indexPath) {
                     collectionView.deselectItem(at: indexPath, animated: true)
-                    cell.brandsCellView.backgroundColor = UIColor.white
-                    cell.brandsCellLabel.textColor = UIColor.black
+                    cell.brandsCellView.backgroundColor = UIColor(named: "white-gray")
+                    cell.brandsCellLabel.textColor = UIColor(named: "black-white")
                     if let indexToRemove = selectedIndexPathTwo.firstIndex(of: indexPath) {
                         selectedIndexPathTwo.remove(at: indexToRemove)
                     }
@@ -327,8 +335,8 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
             if let cell = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell {
                 if selectedIndexPathThree.contains(indexPath) {
                     collectionView.deselectItem(at: indexPath, animated: true)
-                    cell.productCellView.backgroundColor = UIColor.white
-                    cell.productCellLabel.textColor = UIColor.black
+                    cell.productCellView.backgroundColor = UIColor(named: "white-gray")
+                    cell.productCellLabel.textColor = UIColor(named: "black-white")
                     if let indexToRemove = selectedIndexPathThree
                         .firstIndex(of: indexPath) {
                         selectedIndexPathThree.remove(at: indexToRemove)
@@ -359,8 +367,8 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
             if let cell = collectionView.cellForItem(at: indexPath) as? SizeCollectionViewCell {
                 if selectedIndexPathFour.contains(indexPath) {
                     collectionView.deselectItem(at: indexPath, animated: true)
-                    cell.sizeCellView.backgroundColor = UIColor.white
-                    cell.sizeCellLabel.textColor = UIColor.black
+                    cell.sizeCellView.backgroundColor = UIColor(named: "white-gray")
+                    cell.sizeCellLabel.textColor = UIColor(named: "black-white")
                     if let indexToRemove = selectedIndexPathFour
                         .firstIndex(of: indexPath) {
                         selectedIndexPathFour.remove(at: indexToRemove)

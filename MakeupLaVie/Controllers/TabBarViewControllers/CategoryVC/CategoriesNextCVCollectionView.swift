@@ -25,11 +25,17 @@ class CategoriesNextCVCollectionView: UICollectionViewCell {
         cellView.layer.shadowRadius = 4
     }
     @IBAction func favBtnPressed(_ sender: Any) {
-        
-        if favImg.image == UIImage(named: "like") {
-                favImg.image = UIImage(named: "heart (4)")
-            } else {
-                favImg.image = UIImage(named: "like")
-            }
+//        if favImg.image == UIImage(named: "like") {
+//            if traitCollection.userInterfaceStyle == .dark {
+//                favImg.image = UIImage(systemName: "heart")
+//                favImg.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//            } else {
+//                favImg.image = UIImage(systemName: "heart")
+//                favImg.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//            }
+//        } else {
+//            favImg.image = UIImage(systemName: "heart.fill")
+//            favImg.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+//        }
     }
 }

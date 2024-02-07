@@ -108,7 +108,7 @@ extension MyAddressesVC: UITableViewDelegate, UITableViewDataSource {
         cell.deleteBtn.tag = indexPath.row
         cell.deleteBtn.addTarget(self, action: #selector(deleteBtnTapped(sender:)), for: .touchUpInside)
         cell.layer.borderWidth = 5
-        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderColor = UIColor(named: "white-gray")?.cgColor
         cell.layer.cornerRadius = 10
         return cell
     }
