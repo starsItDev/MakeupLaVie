@@ -11,15 +11,17 @@ class OrderVC: UIViewController {
     
     @IBOutlet weak var orderTableView: UITableView!
     var myOrder = [MyOrderResponse]()
+    var currentPage = 1
+    var totalPages = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myOrderAPI()
+        myOrderAPI(page: currentPage)
     }
     
     //MARK: - Helper Functions
-    func myOrderAPI() {
-        let urlString = base_url + "user/orders"
+    func myOrderAPI(page: Int) {
+        let urlString = base_url + "user/orders?page=\(page)"
         Networking.instance.getApiCall(url: urlString) { (response, error, statusCode) in
             if error == nil && statusCode == 200 {
                 do {
@@ -27,7 +29,12 @@ class OrderVC: UIViewController {
                     let decoder = JSONDecoder()
                     let myOrderModel = try decoder.decode(MyOrderModel.self, from: jsonData)
                     print("Status Code: \(myOrderModel.statusCode)")
-                    self.myOrder = myOrderModel.body.response
+                    self.myOrder.append(contentsOf: myOrderModel.body.response)
+                    if let body = response["body"].dictionary{
+                        if body["totalPages"] != nil{
+                            self.totalPages = body["totalPages"]?.intValue ?? 0
+                        }
+                    }
                     DispatchQueue.main.async {
                         self.orderTableView.reloadData()
                     }
@@ -37,6 +44,19 @@ class OrderVC: UIViewController {
             } else {
                 print("Something went wrong")
             }
+        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if bottomEdge >= scrollView.contentSize.height {
+            loadMoreData()
+        }
+    }
+    func loadMoreData(){
+        let nextPageNumber = currentPage + 1
+        currentPage = nextPageNumber
+        if currentPage <= totalPages{
+            myOrderAPI(page: currentPage)
         }
     }
     @IBAction func backBtn(_ sender: UIButton) {
@@ -65,9 +85,7 @@ extension OrderVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let orderHeader = Bundle.main.loadNibNamed("OrderHeaderView", owner: OrderVC.self, options: nil)?.first as! OrderHeaderView
-        let totalSections = myOrder.count
-        let reversedOrderNumber = totalSections - section
-        orderHeader.orderNamelbl.text = "Order # \(reversedOrderNumber)"
+        orderHeader.orderNamelbl.text = "Order # \(section + 1)"
         orderHeader.initialLbl.text = myOrder[section].status
         return orderHeader
     }

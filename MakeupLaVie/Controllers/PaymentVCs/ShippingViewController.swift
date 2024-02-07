@@ -362,15 +362,19 @@ class ShippingViewController: UIViewController {
                                 let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
                                 self.shippingPeopleArr.append(person)
                             }
+                            DispatchQueue.main.async {
+                                    self.isReviewButtonEnabled = true
+                                }
                             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
                                 if self.totalAmount != ""{
                                     vc.totalAmount = self.totalAmount
                                     
                                 }
-                                vc.onDismiss = { [weak self] in
-                                                    // Enable the review button after the ReviewViewController is dismissed
-                                                    self?.isReviewButtonEnabled = true
-                                                }
+//                                vc.onDismiss = { [weak self] in
+//                                                    // Enable the review button after the ReviewViewController is dismissed
+//                                                    self?.isReviewButtonEnabled = true
+//                                                }
+                               
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }
                         }

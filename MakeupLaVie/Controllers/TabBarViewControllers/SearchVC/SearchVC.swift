@@ -68,7 +68,7 @@ class SearchVC: UIViewController {
     func configure() {
         searchBar.delegate = self
         searchBar.placeholder = "Search"
-//       searchBar.searchTextField.backgroundColor = UIColor.white
+        //       searchBar.searchTextField.backgroundColor = UIColor.white
         //initViewModel()
         //observeEvent()
         collectionView.delegate = self
@@ -294,8 +294,8 @@ extension SearchVC {
                     if let body = response["body"].dictionary{
                         print(response)
                         if body["totalPages"] != nil{
-                                                    self.totalPages = body["totalPages"]?.intValue ?? 0
-                                                }
+                            self.totalPages = body["totalPages"]?.intValue ?? 0
+                        }
                         
                         if let res = body["response"]?.array{
                             for dic in res{

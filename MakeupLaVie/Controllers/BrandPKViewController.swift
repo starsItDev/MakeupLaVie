@@ -49,6 +49,7 @@ class BrandPKViewController: UIViewController {
     //let brandsLabel = ["CAROLINA HERRERA", "GARNIER", "HUGGO"]
     let productLabel = ["test1", "test2", "test3"]
     let sizeLabel = ["S", "M", "L", "XL", "XXL"]
+    var body: [String:Any] = [:]
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -101,6 +102,18 @@ class BrandPKViewController: UIViewController {
         multiSlider.value[0] = CGFloat(minValue!)
         multiSlider.value[1] = CGFloat(maxValue!)
         searchBarTxt.text = ""
+        category_Id = 0
+        brand_Id = 0
+        lowerValue = 0
+        upperValue = 0
+            body.updateValue("", forKey: "min_price")
+            body.updateValue("", forKey: "max_price")
+            body.updateValue(0, forKey: "category_id")
+
+            body.updateValue(0, forKey: "brand_id")
+        
+            body.updateValue("", forKey: "search")
+        
         if let selectedPaths = categoriesCollectionView.indexPathsForSelectedItems{
             for indexpath in selectedPaths{
                 categoriesCollectionView.deselectItem(at: indexpath, animated: true)
@@ -143,7 +156,7 @@ class BrandPKViewController: UIViewController {
     }
     
     @IBAction func showBtnTapped(_ sender: Any) {
-        var body: [String:Any] = [:]
+        
         if lowerValue != 0{
             body.updateValue(startPriceLabel.text ?? "", forKey: "min_price")
         }
@@ -222,7 +235,7 @@ class BrandPKViewController: UIViewController {
             }
         }
     }
-    
+   
 }
 
 // MARK: - Extension CollectionVIew
@@ -250,7 +263,12 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
         case categoriesCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoriesCollectionViewCell
             cell.categoriesLabel?.text = categoryArray[indexPath.item].title
-            
+//            if previouslySelectedIndex == indexPath{
+//                categoriesCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+//                cell.cellView.backgroundColor = UIColor.red
+//                cell.categoriesCellLabel.textColor = UIColor.white
+//            }
+            cell.isSelected = indexPath == previouslySelectedIndex
             cell.layer.borderWidth = 2.0
             cell.layer.borderColor = UIColor.gray.cgColor
             
@@ -288,31 +306,32 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case categoriesCollectionView:
-            if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell {
-                self.category_Id = categoryArray[indexPath.item].id ?? 0
-                self.categoryName = categoryArray[indexPath.item].title ?? ""
-                //            subCategoriesColView.isHidden = false
-                //            subCategoryHeight.constant = 50
-                if let prevSelectedIndex = previouslySelectedIndex, prevSelectedIndex == indexPath {
-                    collectionView.deselectItem(at: indexPath, animated: true)
+            guard let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell else {
+                    return
+                }
+
+                // Toggle the selected state of the cell
+                cell.isSelected = !cell.isSelected
+
+                // Update the selected index
+            previouslySelectedIndex = cell.isSelected ? indexPath : nil
+            self.category_Id = categoryArray[indexPath.item].id ?? 0
+            self.categoryName = categoryArray[indexPath.item].title ?? ""
+                // Change the background color based on the selected state
+                if cell.isSelected {
+                    cell.cellView.backgroundColor = UIColor.red
+                    cell.categoriesCellLabel.textColor = UIColor.white
+                   
+                } else {
+                    // Reset the background color to its original state when deselected
                     cell.cellView.backgroundColor = UIColor(named: "white-gray")
                     cell.categoriesCellLabel.textColor = UIColor(named: "black-white")
                     
-                    previouslySelectedIndex = nil
-                } else {
-                    if let prevSelectedIndex = previouslySelectedIndex,
-                       let prevCell = collectionView.cellForItem(at: prevSelectedIndex) as? CategoriesCollectionViewCell {
-                        prevCell.cellView.backgroundColor = UIColor(named: "white-gray")
-                        prevCell.categoriesCellLabel.textColor = UIColor(named: "black-white")
-                    }
-                    cell.cellView.backgroundColor = UIColor.red
-                    cell.categoriesCellLabel.textColor = UIColor.white
-                    previouslySelectedIndex = indexPath
                 }
-            }
         case brandsCollectionView:
             if let cell = collectionView.cellForItem(at: indexPath) as? BrandsCollectionViewCell {
                 self.brand_Id = BrandArray[indexPath.item].id ?? 0
