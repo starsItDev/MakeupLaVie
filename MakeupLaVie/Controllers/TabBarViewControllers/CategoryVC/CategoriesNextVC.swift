@@ -17,6 +17,7 @@ class CategoriesNextVC: UIViewController {
     var selectedIndex: Int?
     var prodAttribute: String?
     var seeAll: Bool?
+    var isBrand: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,7 +136,13 @@ class CategoriesNextVC: UIViewController {
             print("No selected ID available.")
             return
         }
-        let urlString = "https://shop.plazauk.com/api/products?category_id=\(selectedID)" + sortingString
+        var urlString = String()
+        if isBrand ?? false{
+            urlString = "https://shop.plazauk.com/api/products?brand_id=\(selectedID)"
+        }
+        else{
+            urlString = "https://shop.plazauk.com/api/products?category_id=\(selectedID)" + sortingString
+        }
         Networking.instance.getApiCall(url: urlString){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {
@@ -165,7 +172,7 @@ class CategoriesNextVC: UIViewController {
     
     func browseProdAPICall(){
         self.productsArr.removeAll()
-        let url = base_url + "products?label=\(prodAttribute ?? "")"
+            let url = base_url + "products?label=\(prodAttribute ?? "")"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {

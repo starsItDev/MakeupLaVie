@@ -1181,6 +1181,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
             vc.selectedID = BrandArray[indexPath.item].id
             vc.selectedName = BrandArray[indexPath.item].catagorylabel
+            vc.isBrand = true
             navigationController?.pushViewController(vc, animated: true)
         }
     }
