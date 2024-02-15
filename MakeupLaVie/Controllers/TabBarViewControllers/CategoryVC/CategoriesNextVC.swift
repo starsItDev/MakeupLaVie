@@ -18,6 +18,8 @@ class CategoriesNextVC: UIViewController {
     var prodAttribute: String?
     var seeAll: Bool?
     var isBrand: Bool?
+    var totalPages = -1
+    var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class CategoriesNextVC: UIViewController {
                          selector:#selector(filterSuccess(_:)),
                          name: NSNotification.Name ("Data"), object: nil)
         if seeAll == true{
-            browseProdAPICall()
+            browseProdAPICall(page: currentPage)
         }
     }
     @objc func filterSuccess(_ notification: Notification){
@@ -52,7 +54,7 @@ class CategoriesNextVC: UIViewController {
         if let categoryName = notif["categoryName"] as? String{
             self.titleLabel.text = categoryName
         }
-        if let searchbarText = notif["searchBarValue"] as? String{
+        if let searchbarText = notif["search"] as? String{
             str = str + "&search=\(searchbarText)"
         }
         categoryAPICall(sortingString: str)
@@ -170,14 +172,35 @@ class CategoriesNextVC: UIViewController {
         }
     }
     
-    func browseProdAPICall(){
-        self.productsArr.removeAll()
-            let url = base_url + "products?label=\(prodAttribute ?? "")"
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if bottomEdge >= scrollView.contentSize.height {
+            // User has reached the bottom, load the next page
+            loadMoreData()
+        }
+    }
+    
+    private func loadMoreData(){
+        //get ready the data . fetch
+        
+        let nextPageNumber = currentPage + 1
+        currentPage = nextPageNumber
+        if currentPage <= totalPages{
+            browseProdAPICall(page: currentPage)
+        }
+    }
+    
+    func browseProdAPICall(page: Int){
+        //self.productsArr.removeAll()
+            let url = base_url + "products?label=\(prodAttribute ?? "")&&page=\(page)"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {
                     if body["totalItemCount"] != nil{
                         //                              self.totalItemCount = body["totalItemCount"] as! Int
+                    }
+                    if body["totalPages"] != nil{
+                        self.totalPages = body["totalPages"]?.intValue ?? 0
                     }
                     if let res = body["response"]?.array{
                         print(res)

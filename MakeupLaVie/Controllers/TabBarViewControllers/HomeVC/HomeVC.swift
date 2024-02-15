@@ -67,16 +67,16 @@ class HomeVC: UIViewController {
             timerr = Timer.scheduledTimer(timeInterval: TimeInterval(time), target: self, selector: #selector(self.refreshTokenAPI), userInfo: nil, repeats: true)
             //refreshTokenAPI()
         }
-//        getCategoryAPI()
-//        getBrandAPI()
-//        homePageAPI()
-//        categoryCollectionView.reloadData()
-//        recentProductCV.reloadData()
-//        featureBrandCV.reloadData()
-//        newProductCV.reloadData()
-//        bestProductCV.reloadData()
-//        hotProductCV.reloadData()
-//        specialOfferCV.reloadData()
+        getCategoryAPI()
+        getBrandAPI()
+        homePageAPI()
+        categoryCollectionView.reloadData()
+        recentProductCV.reloadData()
+        featureBrandCV.reloadData()
+        newProductCV.reloadData()
+        bestProductCV.reloadData()
+        hotProductCV.reloadData()
+        specialOfferCV.reloadData()
         sideBarView.isHidden = true
         isSideViewOpen = false
         setupViews()
@@ -91,16 +91,16 @@ class HomeVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         checkUserLoggedIn()
-        getCategoryAPI()
-        getBrandAPI()
-        homePageAPI()
-        categoryCollectionView.reloadData()
-        recentProductCV.reloadData()
-        featureBrandCV.reloadData()
-        newProductCV.reloadData()
-        bestProductCV.reloadData()
-        hotProductCV.reloadData()
-        specialOfferCV.reloadData()
+//        getCategoryAPI()
+//        getBrandAPI()
+//        homePageAPI()
+//        categoryCollectionView.reloadData()
+//        recentProductCV.reloadData()
+//        featureBrandCV.reloadData()
+//        newProductCV.reloadData()
+//        bestProductCV.reloadData()
+//        hotProductCV.reloadData()
+//        specialOfferCV.reloadData()
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         if #available(iOS 10.0, *) {
             scrollView.refreshControl = refreshControl
@@ -165,6 +165,7 @@ class HomeVC: UIViewController {
         vc.prodAttribute = "recent"
         vc.selectedName = "Recent Products"
         vc.seeAll = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -173,14 +174,16 @@ class HomeVC: UIViewController {
         vc.prodAttribute = "new"
         vc.selectedName = "New Products"
         vc.seeAll = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func featureSeeAllBtnTapped(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
-        vc.prodAttribute = "featured"
-        vc.selectedName = "Brands"
-        vc.seeAll = true
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BrandsVC") as! BrandsVC
+//        vc.prodAttribute = "featured"
+//        vc.selectedName = "Brands"
+//        vc.seeAll = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -189,6 +192,7 @@ class HomeVC: UIViewController {
         vc.prodAttribute = "best"
         vc.selectedName = "Best Products"
         vc.seeAll = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -197,6 +201,7 @@ class HomeVC: UIViewController {
         vc.prodAttribute = "hot"
         vc.selectedName = "Hot Products"
         vc.seeAll = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -205,6 +210,7 @@ class HomeVC: UIViewController {
         vc.prodAttribute = "special"
         vc.selectedName = "Special Products"
         vc.seeAll = true
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -39,6 +39,7 @@ class ProductDetailsVC: UIViewController {
     var selectedIDResponse: Int?
     var similarProductsArr = [ViewProductBody]()
     var photosArr = [Photo]()
+    var selectedIndexPath: IndexPath?
     
     //MARK: - Override Functions
     override func viewDidLoad() {
@@ -293,6 +294,17 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
         else if collectionView == productTwoImageCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductTwoImageCollectionCell
             cell.productTwoImage.sd_setImage(with: URL(string: photosArr[indexPath.row].thumbIcon))
+            cell.layer.borderWidth = 1
+            if indexPath.item == 0{
+                cell.layer.borderColor = UIColor.red.cgColor
+                cell.layer.cornerRadius = 6
+                selectedIndexPath = indexPath
+            }
+            else{
+                cell.layer.borderColor = UIColor.lightGray.cgColor
+                cell.layer.cornerRadius = 6
+            }
+            
             return cell
         }
         return UICollectionViewCell()
@@ -326,9 +338,21 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
             showImageSlider(at: indexPath.item)
         }
         else if collectionView == productTwoImageCollectionView {
+            if let previousSelectedIndexPath = selectedIndexPath {
+                        if let previousSelectedCell = collectionView.cellForItem(at: previousSelectedIndexPath) as? ProductTwoImageCollectionCell {
+                            previousSelectedCell.layer.borderColor = UIColor.lightGray.cgColor
+                        }
+                    }
+
+                    // Update the selected cell
+                    if let selectedCell = collectionView.cellForItem(at: indexPath) as? ProductTwoImageCollectionCell {
+                        selectedCell.layer.borderColor = UIColor.red.cgColor
+                        selectedIndexPath = indexPath
+                    }
             didSelectProductTwoImage(at: indexPath)
         }
     }
+    
     func didSelectProductTwoImage(at indexPath: IndexPath) {
         let selectedImage = photosArr[indexPath.row]
         if let index = photosArr.firstIndex(where: { $0.thumbMain == selectedImage.thumbMain }) {
