@@ -20,6 +20,7 @@ class CategoriesNextVC: UIViewController {
     var isBrand: Bool?
     var totalPages = -1
     var currentPage = 1
+    var categoryID: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +48,15 @@ class CategoriesNextVC: UIViewController {
         }
         if let categoryID = notif["category_id"] as? Int{
             selectedID = categoryID
+            self.categoryID = categoryID
         }
         if let brandID = notif["brand_id"] as? Int{
             str = str + "&brand_id=\(brandID)"
         }
         if let categoryName = notif["categoryName"] as? String{
-            self.titleLabel.text = categoryName
+            if selectedID != 0 {
+                self.titleLabel.text = categoryName
+            }
         }
         if let searchbarText = notif["search"] as? String{
             str = str + "&search=\(searchbarText)"
@@ -67,6 +71,7 @@ class CategoriesNextVC: UIViewController {
     
     @IBAction func filterBtnTapped(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BrandPKViewController") as! BrandPKViewController
+        vc.category_Id = self.categoryID ?? 0
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -149,23 +154,21 @@ class CategoriesNextVC: UIViewController {
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {
                     if body["totalItemCount"] != nil{
-                        //                              self.totalItemCount = body["totalItemCount"] as! Int
+//                      self.totalItemCount = body["totalItemCount"] as! Int
                     }
                     if let res = body["response"]?.array{
                         print(res)
                         for dic in res{
-                            
                             let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                             self.productsArr.append(model)
-                            self.categoriesSimpleCV.reloadData()
-                            self.categoriesGridCV.reloadData()
-                            
                         }
                         if self.productsArr.isEmpty {
                             self.insdeCollectionView.isHidden = false
                         } else {
                             self.insdeCollectionView.isHidden = true
                         }
+                        self.categoriesSimpleCV.reloadData()
+                        self.categoriesGridCV.reloadData()
                     }
                 }
             }

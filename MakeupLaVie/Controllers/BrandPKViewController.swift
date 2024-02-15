@@ -166,7 +166,7 @@ class BrandPKViewController: UIViewController {
         if category_Id != 0{
             body.updateValue(category_Id, forKey: "category_id")
         }
-        if categoryName != ""{
+        if categoryName != "" && category_Id != 0{
             body.updateValue(categoryName, forKey: "categoryName")
         }
         if brand_Id != 0{
@@ -261,7 +261,18 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
         case categoriesCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoriesCollectionViewCell
             cell.categoriesLabel?.text = categoryArray[indexPath.item].title
+            if category_Id == categoryArray[indexPath.item].id {
+                previouslySelectedIndex = indexPath
+            }
             cell.isSelected = indexPath == previouslySelectedIndex
+            if cell.isSelected {
+                cell.cellView.backgroundColor = UIColor.red
+                cell.categoriesCellLabel.textColor = UIColor.white
+                
+            } else {
+                cell.cellView.backgroundColor = UIColor(named: "white-gray")
+                cell.categoriesCellLabel.textColor = UIColor(named: "black-white")
+            }
             cell.layer.borderWidth = 2.0
             cell.layer.borderColor = UIColor.gray.cgColor
             return cell
@@ -310,14 +321,35 @@ extension BrandPKViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch collectionView {
         case categoriesCollectionView:
             if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell{
-                cell.isSelected = !cell.isSelected
-                previouslySelectedIndex = cell.isSelected ? indexPath : nil
+                let isSameCellSelected = indexPath == previouslySelectedIndex
+                if isSameCellSelected {
+                    collectionView.deselectItem(at: indexPath, animated: true)
+                    cell.cellView.backgroundColor = UIColor(named: "white-gray")
+                    cell.categoriesCellLabel.textColor = UIColor(named: "black-white")
+                    category_Id = 0
+                    if let indexToRemove = selectedIndexPathOne.firstIndex(of: indexPath) {
+                        selectedIndexPathOne.remove(at: indexToRemove)
+                    }
+                    previouslySelectedIndex = nil
+                    return
+                }
+                if let prevIndexPath = previouslySelectedIndex {
+                    let prevSelectedCell = collectionView.cellForItem(at: prevIndexPath) as? CategoriesCollectionViewCell
+                    prevSelectedCell?.cellView.backgroundColor = UIColor(named: "white-gray")
+                    prevSelectedCell?.categoriesCellLabel.textColor = UIColor(named: "black-white")
+                    if let indexToRemove = selectedIndexPathOne.firstIndex(of: prevIndexPath) {
+                        selectedIndexPathOne.remove(at: indexToRemove)
+                    }
+                }
+                previouslySelectedIndex = indexPath
+                
                 self.category_Id = categoryArray[indexPath.item].id ?? 0
                 self.categoryName = categoryArray[indexPath.item].title ?? ""
                 if selectedIndexPathOne.contains(indexPath) {
                     collectionView.deselectItem(at: indexPath, animated: true)
                     cell.cellView.backgroundColor = UIColor(named: "white-gray")
                     cell.categoriesCellLabel.textColor = UIColor(named: "black-white")
+                    category_Id = 0
                     if let indexToRemove = selectedIndexPathOne.firstIndex(of: indexPath) {
                         selectedIndexPathOne.remove(at: indexToRemove)
                     }

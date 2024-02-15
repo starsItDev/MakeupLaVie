@@ -26,12 +26,12 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         }
 
         private func updateCellSelection() {
-            if isSelected {
-                cellView.backgroundColor = UIColor.red
-                categoriesCellLabel.textColor = UIColor.white
-            } else {
-                cellView.backgroundColor = UIColor(named: "white-gray")
-                categoriesCellLabel.textColor = UIColor(named: "black-white")
-            }
+//            if isSelected {
+//                cellView.backgroundColor = UIColor.red
+//                categoriesCellLabel.textColor = UIColor.white
+//            } else {
+//                cellView.backgroundColor = UIColor(named: "white-gray")
+//                categoriesCellLabel.textColor = UIColor(named: "black-white")
+//            }
         }
 }
