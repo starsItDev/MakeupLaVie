@@ -1158,29 +1158,35 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
         if collectionView == recentProductCV{
             destinationVC.selectedResponseID = recentdataArray[indexPath.item].id
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
         if collectionView == newProductCV{
             destinationVC.selectedResponseID = newproductArray[indexPath.item].id
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
         
         if collectionView == bestProductCV{
             destinationVC.selectedResponseID = bestproductArray[indexPath.item].id
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
         if collectionView == hotProductCV{
             destinationVC.selectedResponseID = hotproductArray[indexPath.item].id
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
         if collectionView == specialOfferCV{
             destinationVC.selectedResponseID = speciallproductArray[indexPath.item].id
+            self.tabBarController?.tabBar.isHidden = true
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
         if collectionView == categoryCollectionView{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
             vc.selectedID = categoryArray[indexPath.item].id
             vc.selectedName = categoryArray[indexPath.item].catagorylabel
+            self.tabBarController?.tabBar.isHidden = true
             navigationController?.pushViewController(vc, animated: true)
         }
         if collectionView == featureBrandCV{
@@ -1188,6 +1194,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             vc.selectedID = BrandArray[indexPath.item].id
             vc.selectedName = BrandArray[indexPath.item].catagorylabel
             vc.isBrand = true
+            self.tabBarController?.tabBar.isHidden = true
             navigationController?.pushViewController(vc, animated: true)
         }
     }

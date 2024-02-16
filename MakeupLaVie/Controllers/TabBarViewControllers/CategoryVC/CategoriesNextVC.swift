@@ -47,7 +47,6 @@ class CategoriesNextVC: UIViewController {
             str = str + "&max_price=\(maxprice)"
         }
         if let categoryID = notif["category_id"] as? Int{
-            selectedID = categoryID
             self.categoryID = categoryID
         }
         if let brandID = notif["brand_id"] as? Int{
@@ -145,10 +144,10 @@ class CategoriesNextVC: UIViewController {
         }
         var urlString = String()
         if isBrand ?? false{
-            urlString = "https://shop.plazauk.com/api/products?brand_id=\(selectedID)"
+            urlString = base_url + "products?brand_id=\(selectedID)"
         }
         else{
-            urlString = "https://shop.plazauk.com/api/products?category_id=\(selectedID)" + sortingString
+            urlString = base_url + "products?category_id=\(selectedID)" + sortingString
         }
         Networking.instance.getApiCall(url: urlString){(response, error, statusCode) in
             if error == nil && statusCode == 200{
@@ -195,7 +194,7 @@ class CategoriesNextVC: UIViewController {
     
     func browseProdAPICall(page: Int){
         //self.productsArr.removeAll()
-            let url = base_url + "products?label=\(prodAttribute ?? "")&&page=\(page)"
+            let url = base_url + "products?label=\(prodAttribute ?? "")&page=\(page)"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {

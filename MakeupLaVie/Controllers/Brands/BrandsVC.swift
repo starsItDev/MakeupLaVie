@@ -79,7 +79,7 @@ extension BrandsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "BrandsCVCell", for: indexPath) as! BrandsCVCell
-        cell.brandTitleLbl.text = brandsArr[indexPath.item].title
+        //cell.brandTitleLbl.text = brandsArr[indexPath.item].title
         cell.brandImg.sd_setImage(with: URL(string: brandsArr[indexPath.item].image))
         cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
         cell.layer.borderWidth = 0.5
@@ -96,6 +96,6 @@ extension BrandsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         navigationController?.pushViewController(vc, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 200)
+            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 170)
     }
 }

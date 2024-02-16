@@ -9,6 +9,5 @@ import UIKit
 
 class BrandsCVCell: UICollectionViewCell {
     
-    @IBOutlet weak var brandTitleLbl: UILabel!
     @IBOutlet weak var brandImg: UIImageView!
 }

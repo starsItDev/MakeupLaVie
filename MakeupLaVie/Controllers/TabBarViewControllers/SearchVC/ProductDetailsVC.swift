@@ -297,12 +297,12 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
             cell.layer.borderWidth = 1
             if indexPath.item == 0{
                 cell.layer.borderColor = UIColor.red.cgColor
-                cell.layer.cornerRadius = 6
+                cell.layer.cornerRadius = 3
                 selectedIndexPath = indexPath
             }
             else{
                 cell.layer.borderColor = UIColor.lightGray.cgColor
-                cell.layer.cornerRadius = 6
+                cell.layer.cornerRadius = 3
             }
             
             return cell
