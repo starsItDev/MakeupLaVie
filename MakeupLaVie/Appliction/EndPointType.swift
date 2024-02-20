@@ -41,7 +41,7 @@ extension EndPointItems:EndPointType {
     }
     
     var baseURL: String {
-        return "https://shop.plazauk.com/api/"
+        return "https://giftbank.pk/api/"
     }
     
     var url: URL? {

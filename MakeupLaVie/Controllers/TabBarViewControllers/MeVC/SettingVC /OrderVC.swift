@@ -117,7 +117,7 @@ extension OrderVC: UITableViewDelegate, UITableViewDataSource {
         let quantity = Double(products.quantity)
         let totalPrice = price * quantity
         cell.totalPrice.text = "\(totalPrice)"
-        cell.myOrderImage.sd_setImage(with: URL(string: products.image))
+        cell.myOrderImage.setImage(with: products.image)
         return cell
     }
 }

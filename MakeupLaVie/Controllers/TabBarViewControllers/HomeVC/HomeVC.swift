@@ -14,6 +14,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var specialOfferCV: UICollectionView!
     @IBOutlet weak var hotProductCV: UICollectionView!
     @IBOutlet weak var bestProductCV: UICollectionView!
+    @IBOutlet weak var featureBrandView: UIView!
     @IBOutlet weak var featureBrandCV: UICollectionView!
     @IBOutlet weak var newProductCV: UICollectionView!
     @IBOutlet weak var recentProductCV: UICollectionView!
@@ -342,17 +343,24 @@ class HomeVC: UIViewController {
         let url = base_url + "brands"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil{
+                
                 if let body = response["body"].dictionary{
                     if body["totalItemCount"] != nil{
                         
                     }
                     if let res = body["response"]?.array{
-                        for dic in res{
-                            
-                            let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                            self.BrandArray.append(model)
-                            self.featureBrandCV.reloadData()
-                            
+                        if !res.isEmpty{
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.BrandArray.append(model)
+                                self.featureBrandCV.reloadData()
+                                
+                            }
+                        }
+                        else{
+                            self.featureBrandView.isHidden = true
+                            self.featureBrandCV.isHidden = true
                         }
                     }
                     
@@ -794,7 +802,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         else if collectionView == categoryCollectionView{
             
             let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell1", for: indexPath) as! collectioncell
-            cell.catagoryimage.sd_setImage(with: URL(string: categoryArray[indexPath.item].catagoryimage))
+            cell.catagoryimage.setImage(with: categoryArray[indexPath.item].catagoryimage)
             cell.catagoryimage.layer.cornerRadius = 40
             cell.catagoryimage.layer.borderWidth = 2
             cell.catagoryimage.layer.borderColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
@@ -806,7 +814,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         else if collectionView == recentProductCV{
             let cell = recentProductCV.dequeueReusableCell(withReuseIdentifier: "recentcell", for: indexPath)  as! collectioncell
             let instance = recentdataArray[indexPath.item]
-            cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+            cell.productImg.setImage(with: instance.catagoryimage)
             
             //cell.addToCartBtn.accessibilityIdentifier = "recent"
             //cell.addToCartBtn.tag = indexPath.item
@@ -874,7 +882,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         }
         else if collectionView == featureBrandCV{
             let cell = featureBrandCV.dequeueReusableCell(withReuseIdentifier: "brandcell", for: indexPath) as! collectioncell
-            cell.brandimg.sd_setImage(with: URL(string: BrandArray[indexPath.row].catagoryimage))
+            cell.brandimg.setImage(with: BrandArray[indexPath.row].catagoryimage)
             cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
@@ -888,7 +896,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.addToCartBtn.accessibilityIdentifier = "new"
             cell.addToCartBtn.tag = indexPath.row
             //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
-            cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+            cell.productImg.setImage(with: instance.catagoryimage)
             
             cell.titleLbl.text = instance.catagorylabel
             
@@ -957,7 +965,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.addToCartBtn.accessibilityIdentifier = "best"
             cell.addToCartBtn.tag = indexPath.row
             //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
-            cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+            cell.productImg.setImage(with: instance.catagoryimage)
             
             cell.titleLbl.text = instance.catagorylabel
             
@@ -1023,7 +1031,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.addToCartBtn.accessibilityIdentifier = "speciall"
             cell.addToCartBtn.tag = indexPath.row
             //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
-            cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+            cell.productImg.setImage(with: instance.catagoryimage)
             
             cell.titleLbl.text = instance.catagorylabel
             
@@ -1091,7 +1099,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.addToCartBtn.accessibilityIdentifier = "hot"
             cell.addToCartBtn.tag = indexPath.row
             //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
-            cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+            cell.productImg.setImage(with: instance.catagoryimage)
             
             cell.titleLbl.text = instance.catagorylabel
             

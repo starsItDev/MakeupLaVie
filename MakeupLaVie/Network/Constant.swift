@@ -7,7 +7,8 @@
 
 import Foundation
 
-let base_url = "https://shop.plazauk.com/api/"
+//let base_url = "https://shop.plazauk.com/api/"
+let base_url = "https://giftbank.pk/api/"
 let signUp_url = "\(base_url)signup"
 let login_url = "\(base_url)login"
 

@@ -40,7 +40,7 @@ class HotDealTableView: UITableViewCell, UICollectionViewDelegate, UICollectionV
         """
 
         guard let postData = parameters.data(using: .utf8) else { return }
-        guard let url = URL(string: "https://shop.plazauk.com/api/wishlist") else { return }
+        guard let url = URL(string: base_url + "wishlist") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")

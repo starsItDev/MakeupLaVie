@@ -37,8 +37,8 @@
                                             <action selector="sideBarMenu:" destination="Xh8-LF-L5Q" eventType="touchUpInside" id="Ps9-E9-on4"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRANDS PK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7U-lV-vdI">
-                                        <rect key="frame" x="142.33333333333334" y="8" width="108.33333333333334" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GIFT BANK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7U-lV-vdI">
+                                        <rect key="frame" x="146.66666666666666" y="8" width="99.666666666666657" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -1682,8 +1682,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BRANDS PK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGV-rk-cIS">
-                                        <rect key="frame" x="95" y="40" width="117" height="26.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GIFT BANK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGV-rk-cIS">
+                                        <rect key="frame" x="95" y="40" width="107.66666666666669" height="26.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1778,6 +1778,7 @@
                         <outlet property="categoryCollectionView" destination="jmT-2O-IZN" id="8tI-63-iLc"/>
                         <outlet property="drawerTableView" destination="Pay-aR-bv4" id="Vje-Mz-Zbk"/>
                         <outlet property="featureBrandCV" destination="WnW-Pn-Yc5" id="gPW-mZ-R0q"/>
+                        <outlet property="featureBrandView" destination="WaI-rn-lTX" id="QAr-Xw-aAC"/>
                         <outlet property="hotProductCV" destination="4Vy-Zh-MpD" id="b9m-JO-0AZ"/>
                         <outlet property="lblName" destination="f7U-lV-vdI" id="jjQ-Cy-0DV"/>
                         <outlet property="loadingImageView" destination="ecn-u1-gCA" id="kep-DT-rt6"/>

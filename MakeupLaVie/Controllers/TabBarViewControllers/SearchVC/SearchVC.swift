@@ -119,7 +119,7 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchcell", for: indexPath) as! collectioncell
         
         let instance = filteredProducts[indexPath.item]
-        cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+        cell.productImg.setImage(with: instance.catagoryimage)
         
         
         cell.titleLbl.text = instance.catagorylabel

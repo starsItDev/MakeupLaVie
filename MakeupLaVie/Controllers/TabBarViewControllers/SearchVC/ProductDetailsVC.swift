@@ -166,7 +166,7 @@ class ProductDetailsVC: UIViewController {
             print("No selected response ID available.")
             return
         }
-        let urlString = "https://shop.plazauk.com/api/product/view/\(responseID)"
+        let urlString = base_url + "product/view/\(responseID)"
         
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
@@ -287,13 +287,13 @@ extension ProductDetailsVC: UICollectionViewDelegate,UICollectionViewDataSource,
             return cell
         } else if collectionView == productImageCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductImageCollectionViewCell
-            cell.productImage.sd_setImage(with: URL(string: photosArr[indexPath.row].thumbProfile))
+            cell.productImage.setImage(with:photosArr[indexPath.row].thumbProfile)
             cell.productImage.sizeToFit()
             return cell
         }
         else if collectionView == productTwoImageCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductTwoImageCollectionCell
-            cell.productTwoImage.sd_setImage(with: URL(string: photosArr[indexPath.row].thumbIcon))
+            cell.productTwoImage.setImage(with: photosArr[indexPath.row].thumbIcon)
             cell.layer.borderWidth = 1
             if indexPath.item == 0{
                 cell.layer.borderColor = UIColor.red.cgColor

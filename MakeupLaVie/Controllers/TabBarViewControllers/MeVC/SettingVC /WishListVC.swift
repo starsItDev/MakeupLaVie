@@ -114,7 +114,7 @@ extension WishListVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         cell.addToCartBtn.accessibilityIdentifier = "new"
         cell.addToCartBtn.tag = indexPath.row
         //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
-        cell.productImg.sd_setImage(with: URL(string: instance.catagoryimage))
+        cell.productImg.setImage(with: instance.catagoryimage)
         
         cell.titleLbl.text = instance.catagorylabel
         

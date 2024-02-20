@@ -80,7 +80,7 @@ extension BrandsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "BrandsCVCell", for: indexPath) as! BrandsCVCell
         //cell.brandTitleLbl.text = brandsArr[indexPath.item].title
-        cell.brandImg.sd_setImage(with: URL(string: brandsArr[indexPath.item].image))
+        cell.brandImg.setImage(with: brandsArr[indexPath.item].image)
         cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 6

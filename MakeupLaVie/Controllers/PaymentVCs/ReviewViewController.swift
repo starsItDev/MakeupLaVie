@@ -80,7 +80,7 @@ class ReviewViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func termsConditionBtn(_ sender: UIButton) {
-        if let url = URL(string: "https://shop.plazauk.com/help/terms") {
+        if let url = URL(string: "https://giftbank.pk/help/terms") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -192,7 +192,7 @@ extension ReviewViewController: UITableViewDelegate, UITableViewDataSource{
         let quantity = prodArr[indexPath.row].quantity
         cell.reviewPriceNameLbl.text = "\(price) x \(quantity)"
         let imageUrl = prodArr[indexPath.row].image
-        cell.reviewTableImage.sd_setImage(with: URL(string: imageUrl))
+        cell.reviewTableImage.setImage(with: imageUrl)
         return cell
     }
 }
