@@ -32,6 +32,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingImageView: UIView!
+    @IBOutlet weak var featureBrandViewHeight: NSLayoutConstraint!
     
     // MARK: - Variable
     var isHeartButtonEnabled = true
@@ -355,12 +356,16 @@ class HomeVC: UIViewController {
                                 let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
                                 self.BrandArray.append(model)
                                 self.featureBrandCV.reloadData()
+                                self.featureBrandView.isHidden = false
+                                self.featureBrandCV.isHidden = false
+                                self.featureBrandViewHeight.constant = 90
                                 
                             }
                         }
                         else{
                             self.featureBrandView.isHidden = true
                             self.featureBrandCV.isHidden = true
+                            self.featureBrandViewHeight.constant = 0
                         }
                     }
                     
