@@ -1615,7 +1615,7 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apm-re-lEK">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="2222"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="2058"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-u1-gCA">
                                                 <rect key="frame" x="30" y="110" width="333" height="280"/>
@@ -1674,11 +1674,6 @@
                                     <constraint firstItem="Apm-re-lEK" firstAttribute="top" secondItem="lWc-WY-PPb" secondAttribute="top" id="xLh-xc-al9"/>
                                     <constraint firstAttribute="bottom" secondItem="CPf-q5-hIK" secondAttribute="bottom" id="zys-f0-q5m"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="Apm-re-lEK"/>
-                                    </mask>
-                                </variation>
                             </scrollView>
                             <view hidden="YES" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YA-lh-NUP">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="2450"/>
@@ -1786,12 +1781,6 @@
                             <constraint firstItem="hN8-yT-iqf" firstAttribute="leading" secondItem="mwz-7T-PGw" secondAttribute="leading" id="wiT-gq-aDA"/>
                             <constraint firstItem="lWc-WY-PPb" firstAttribute="leading" secondItem="hD3-fq-X6c" secondAttribute="leading" id="xzN-CY-EVb"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="6YA-lh-NUP"/>
-                                <exclude reference="raJ-lQ-Ufh"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="SH7-ca-6fa"/>
                     <size key="freeformSize" width="393" height="2450"/>

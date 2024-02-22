@@ -6,6 +6,7 @@
 //
 import UIKit
 import Cosmos
+import SDWebImage
 
 class ProductDetailsVC: UIViewController {
     
@@ -455,6 +456,7 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
         let contentVC = UIViewController()
         let imageView = UIImageView(frame: contentVC.view.bounds)
         imageView.contentMode = .scaleAspectFit
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imageView.sd_setImage(with: URL(string: images[index].thumbMain), completed: nil)
         contentVC.view.addSubview(imageView)
         return contentVC
