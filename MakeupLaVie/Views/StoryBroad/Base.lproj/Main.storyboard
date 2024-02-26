@@ -248,14 +248,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jsh-L5-Exb">
-                                                                    <rect key="frame" x="19" y="24" width="160" height="128"/>
+                                                                    <rect key="frame" x="19" y="24" width="160" height="130"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="128" id="qGL-fr-q3c"/>
+                                                                        <constraint firstAttribute="height" constant="130" id="qGL-fr-q3c"/>
                                                                         <constraint firstAttribute="width" constant="160" id="yif-p5-iwB"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fgds g fdg  gdf g fd fd gfd fd g fd df" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqi-1I-bZf">
-                                                                    <rect key="frame" x="2" y="155" width="185" height="50"/>
+                                                                    <rect key="frame" x="2" y="157" width="185" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="OYe-Ig-W65"/>
                                                                     </constraints>
@@ -264,13 +264,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9S3-bG-aM0">
-                                                                    <rect key="frame" x="9" y="214" width="39" height="23"/>
+                                                                    <rect key="frame" x="9" y="216" width="39" height="26"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$105" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYo-ED-zO4">
-                                                                    <rect key="frame" x="63" y="214" width="39" height="23"/>
+                                                                    <rect key="frame" x="63" y="216" width="39" height="26"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" name="gray6-white"/>
                                                                     <nil key="highlightedColor"/>
@@ -281,10 +281,10 @@
                                                                     <color key="backgroundColor" systemColor="labelColor"/>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-KQ-aee" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="9" y="240.33333333333334" width="143" height="25.000000000000028"/>
+                                                                    <rect key="frame" x="9" y="245.33333333333334" width="143" height="20.000000000000028"/>
                                                                     <color key="backgroundColor" name="white-gray"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="ec0-SY-rJn"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="ec0-SY-rJn"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -428,14 +428,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jl7-uN-qQG">
-                                                                    <rect key="frame" x="19" y="24" width="160" height="128"/>
+                                                                    <rect key="frame" x="19" y="24" width="160" height="130"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="160" id="J9J-pc-Wix"/>
-                                                                        <constraint firstAttribute="height" constant="128" id="fJ6-sY-m2k"/>
+                                                                        <constraint firstAttribute="height" constant="130" id="fJ6-sY-m2k"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fgds g fdg  gdf g fd fd gfd fd g fd df" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgZ-FT-dv4">
-                                                                    <rect key="frame" x="2" y="157" width="185" height="50"/>
+                                                                    <rect key="frame" x="2" y="159" width="185" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="yr2-sg-F7x"/>
                                                                     </constraints>
@@ -444,13 +444,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LJ-iA-NET">
-                                                                    <rect key="frame" x="9" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="9" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$105" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWF-C8-EMs">
-                                                                    <rect key="frame" x="63" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="63" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" name="gray6-white"/>
                                                                     <nil key="highlightedColor"/>
@@ -461,10 +461,10 @@
                                                                     <color key="backgroundColor" systemColor="labelColor"/>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfH-rA-QSr" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="9" y="230.33333333333334" width="143" height="25"/>
+                                                                    <rect key="frame" x="9" y="235.33333333333334" width="143" height="20"/>
                                                                     <color key="backgroundColor" name="white-gray"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="94A-d8-6bN"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="94A-d8-6bN"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -608,14 +608,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aZb-2a-FdL">
-                                                                    <rect key="frame" x="19" y="24" width="160" height="128"/>
+                                                                    <rect key="frame" x="19" y="24" width="160" height="130"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="128" id="l5t-O8-tz4"/>
+                                                                        <constraint firstAttribute="height" constant="130" id="l5t-O8-tz4"/>
                                                                         <constraint firstAttribute="width" constant="160" id="vih-lR-nog"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fgds g fdg  gdf g fd fd gfd fd g fd df" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1v-mI-TIP">
-                                                                    <rect key="frame" x="2" y="157" width="185" height="50"/>
+                                                                    <rect key="frame" x="2" y="159" width="185" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="sEr-wT-U2e"/>
                                                                     </constraints>
@@ -624,13 +624,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgX-YY-sjf">
-                                                                    <rect key="frame" x="9" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="9" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.99607843139999996" green="0.41176470590000003" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$105" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgf-q5-OKO">
-                                                                    <rect key="frame" x="63" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="63" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" name="gray6-white"/>
                                                                     <nil key="highlightedColor"/>
@@ -641,10 +641,10 @@
                                                                     <color key="backgroundColor" systemColor="labelColor"/>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awf-YZ-ubh" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="9" y="230.33333333333334" width="143" height="25"/>
+                                                                    <rect key="frame" x="9" y="235.33333333333334" width="143" height="20"/>
                                                                     <color key="backgroundColor" name="white-gray"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="gPq-iJ-mRP"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="gPq-iJ-mRP"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -787,14 +787,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ABS-wA-bnG">
-                                                                    <rect key="frame" x="19" y="24" width="160" height="128"/>
+                                                                    <rect key="frame" x="19" y="24" width="160" height="130"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="128" id="2Ea-lf-ESc"/>
+                                                                        <constraint firstAttribute="height" constant="130" id="2Ea-lf-ESc"/>
                                                                         <constraint firstAttribute="width" constant="160" id="HBo-f5-yrm"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fgds g fdg  gdf g fd fd gfd fd g fd df" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxR-Qd-wJw">
-                                                                    <rect key="frame" x="2" y="157" width="185" height="50"/>
+                                                                    <rect key="frame" x="2" y="159" width="185" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="Utl-Nn-FJm"/>
                                                                     </constraints>
@@ -803,13 +803,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmg-Lt-7PG">
-                                                                    <rect key="frame" x="9" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="9" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$105" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyD-xB-3QK">
-                                                                    <rect key="frame" x="63" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="63" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" name="gray6-white"/>
                                                                     <nil key="highlightedColor"/>
@@ -820,10 +820,10 @@
                                                                     <color key="backgroundColor" systemColor="labelColor"/>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIG-JT-C3E" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="9" y="230.33333333333334" width="143" height="25"/>
+                                                                    <rect key="frame" x="9" y="235.33333333333334" width="143" height="20"/>
                                                                     <color key="backgroundColor" name="white-gray"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="tqL-dn-enF"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="tqL-dn-enF"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -966,14 +966,14 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DX2-La-dzZ">
-                                                                    <rect key="frame" x="19" y="24" width="160" height="128"/>
+                                                                    <rect key="frame" x="19" y="24" width="160" height="130"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="160" id="O83-oM-Ycp"/>
-                                                                        <constraint firstAttribute="height" constant="128" id="nh1-Np-ADb"/>
+                                                                        <constraint firstAttribute="height" constant="130" id="nh1-Np-ADb"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fgds g fdg  gdf g fd fd gfd fd g fd df" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-CA-MLT">
-                                                                    <rect key="frame" x="2" y="157" width="185" height="50"/>
+                                                                    <rect key="frame" x="2" y="159" width="185" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="VNn-qO-LM2"/>
                                                                     </constraints>
@@ -982,13 +982,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B1-d3-NDy">
-                                                                    <rect key="frame" x="9" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="9" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$105" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbG-1q-Y5K">
-                                                                    <rect key="frame" x="63" y="216" width="39" height="11"/>
+                                                                    <rect key="frame" x="63" y="218" width="39" height="14"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" name="gray6-white"/>
                                                                     <nil key="highlightedColor"/>
@@ -999,10 +999,10 @@
                                                                     <color key="backgroundColor" systemColor="labelColor"/>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-1k-NZ5" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="9" y="230.33333333333334" width="143" height="25"/>
+                                                                    <rect key="frame" x="9" y="235.33333333333334" width="143" height="20"/>
                                                                     <color key="backgroundColor" name="white-gray"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="GqG-XJ-TLb"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="GqG-XJ-TLb"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
