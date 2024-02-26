@@ -22,6 +22,7 @@ class BrandPKViewController: UIViewController {
     @IBOutlet weak var subCategoriesColView: UICollectionView!
     @IBOutlet weak var subCategoryHeight: NSLayoutConstraint!
     @IBOutlet weak var searchBarTxt: UITextField!
+    @IBOutlet weak var brandsViewHeight: NSLayoutConstraint!
     
     // MARK: - Variables
     var maxValue: Int?
@@ -208,10 +209,14 @@ class BrandPKViewController: UIViewController {
                 print(self.categoryArray)
             }
             if let brands = resp?["brands"]?.array{
-                for dic in brands{
-                    let model = CategoryModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                    self.BrandArray.append(model)
-                    self.brandsCollectionView.reloadData()
+                if !brands.isEmpty{
+                    for dic in brands{
+                        let model = CategoryModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                        self.BrandArray.append(model)
+                        self.brandsCollectionView.reloadData()
+                    }
+                } else {
+                    self.brandsViewHeight.constant = 0
                 }
             }
             if let tags = resp?["tags"]?.array{
