@@ -388,8 +388,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "toggleCategoryViewTapped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1384,8 +1384,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "addCartBtnPressed(_:)"
             landmarkType = "7">
             <Locations>
@@ -1432,10 +1432,10 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "ProductDetailsVC"
-            landmarkType = "3">
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   uuid = "9ECAAA01-BA1D-4171-A682-1574CECC64C1 - eed50ec1aeb2e6fc"
@@ -1495,8 +1495,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "updateUI(with:)"
             landmarkType = "7">
             <Locations>
@@ -1668,8 +1668,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "apiCall()"
             landmarkType = "7">
             <Locations>
@@ -1716,8 +1716,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "apiCall()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1889,8 +1889,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "categoryAPICall(sortingString:)"
             landmarkType = "7">
             <Locations>
@@ -1937,8 +1937,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "categoryAPICall(sortingString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1953,8 +1953,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "sortingBtnTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -2001,8 +2001,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "filterSuccess(_:)"
             landmarkType = "7">
             <Locations>
@@ -2502,8 +2502,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "browseProdAPICall(page:)"
             landmarkType = "7">
             <Locations>
@@ -2580,8 +2580,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -2643,8 +2643,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "browseProdAPICall(page:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2999,8 +2999,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "wishListAPI()"
             landmarkType = "7">
             <Locations>
@@ -3122,8 +3122,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "compareAPI()"
             landmarkType = "7">
             <Locations>
@@ -3215,8 +3215,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "htmlToPlainText"
             landmarkType = "24">
             <Locations>
@@ -3324,8 +3324,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "SearchVC"
             landmarkType = "21">
             <Locations>
@@ -3447,8 +3447,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "fetchDataFromAPI(page:)"
             landmarkType = "7">
             <Locations>
@@ -3495,8 +3495,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "filterData(_:)"
             landmarkType = "7">
             <Locations>
@@ -3543,8 +3543,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "SearchVC"
             landmarkType = "21">
             <Locations>
@@ -3606,8 +3606,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "SearchVC"
             landmarkType = "21">
             <Locations>
@@ -3837,8 +3837,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "apiCall()"
             landmarkType = "7">
             <Locations>
@@ -3945,8 +3945,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "ProductDetailsVC"
             landmarkType = "21">
          </BreakpointContent>
@@ -4525,8 +4525,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "fetchDataFromAPI(page:)"
             landmarkType = "7">
             <Locations>
@@ -4603,8 +4603,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "SearchVC"
             landmarkType = "21">
             <Locations>
@@ -4711,8 +4711,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "CategoriesNextVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -4775,8 +4775,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CartVC/CartVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "deleteBtnTapped(sender:)"
             landmarkType = "7">
             <Locations>
@@ -5117,8 +5117,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "sortingBtnTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5229,8 +5229,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "updateUI(with:)"
             landmarkType = "7">
             <Locations>
@@ -5292,8 +5292,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "categoryAPICall(sortingString:)"
             landmarkType = "7">
          </BreakpointContent>

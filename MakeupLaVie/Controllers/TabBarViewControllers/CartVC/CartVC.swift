@@ -42,6 +42,7 @@ class CartVC: UIViewController {
         proccdingView.layer.cornerRadius = 8
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
         if let tabItems = tabBarController?.tabBar.items {
             let tabItem = tabItems[3]
             tabItem.badgeValue = nil
@@ -95,6 +96,7 @@ class CartVC: UIViewController {
             if UserInfo.shared.isUserLoggedIn{
                 let checkOutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
                 //checkOutVC.isComingFromEdit = false
+                self.tabBarController?.tabBar.isHidden = true
                 self.navigationController?.pushViewController(checkOutVC, animated: true)
             }
             else{

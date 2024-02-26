@@ -23,6 +23,10 @@ class CategoryVC: UIViewController {
         self.categoriesSimpleCV.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     @objc func toggleCategoryViewTapped(sender: UIButton){
         if sender.isSelected{
             sender.isSelected = false

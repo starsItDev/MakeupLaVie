@@ -24,6 +24,7 @@ class CategoriesNextVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
         self.titleLabel.text = selectedName
         categoryAPICall(sortingString: "")
         //fetchData()

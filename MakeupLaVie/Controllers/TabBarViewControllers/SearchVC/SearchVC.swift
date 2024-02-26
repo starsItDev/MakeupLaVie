@@ -43,6 +43,11 @@ class SearchVC: UIViewController {
         filterBtn.layer.masksToBounds = true
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     func configurePagination() {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.refreshControl = refreshControl

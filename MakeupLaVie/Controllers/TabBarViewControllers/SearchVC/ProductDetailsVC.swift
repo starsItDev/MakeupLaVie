@@ -45,6 +45,7 @@ class ProductDetailsVC: UIViewController {
     //MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
         activityIndicator.startAnimating()
         apiCall()
         configuration()
