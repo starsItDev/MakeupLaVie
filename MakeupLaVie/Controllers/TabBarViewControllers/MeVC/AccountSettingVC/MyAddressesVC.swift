@@ -17,7 +17,7 @@ class MyAddressesVC: UIViewController {
     //MARK: - override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshPage()
+        //refreshPage()
     }
     override func viewWillAppear(_ animated: Bool) {
         myAddressAPI()

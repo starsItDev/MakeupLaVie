@@ -477,7 +477,6 @@
 			isa = PBXGroup;
 			children = (
 				76883E532A24C9B600240AF1 /* EndPointType.swift */,
-				769E289F2A45C23B0077CE5E /* Extension */,
 			);
 			name = Utillity;
 			path = Appliction;
@@ -633,13 +632,6 @@
 				188F65FF2B5ABB170080BE8E /* AddressModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		769E289F2A45C23B0077CE5E /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		76A4A93029FA7C2B00C6C7D0 /* SettingVC  */ = {

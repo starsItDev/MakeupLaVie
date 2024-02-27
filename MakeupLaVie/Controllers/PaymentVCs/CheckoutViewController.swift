@@ -242,7 +242,12 @@ class CheckoutViewController: UIViewController, UITextFieldDelegate{
     func showData(){
             checkoutLabel.text = "Checkout"
             self.addressId = billingPeopleArr.last?.id ?? 0
+        if billingPeopleArr.count == 0{
+            self.existingAddressTxt.text = "App New Address"
+        }
+        else{
             self.existingAddressTxt.text = billingPeopleArr.last?.Address
+        }
             self.firstNameTxt.text = billingPeopleArr.last?.firstName
             self.lastNameTxt.text = billingPeopleArr.last?.lastName
             self.phoneNoTxt.text = billingPeopleArr.last?.number
@@ -341,7 +346,7 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == addressPicker{
             if row == 0 {
-                return "App new Address"
+                return "App New Address"
             } else {
                 return billingPeopleArr[row - 1].Address
             }
@@ -365,6 +370,8 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 lastNameTxt.text = ""
                 phoneNoTxt.text = ""
                 cityTxt.text = ""
+                countryTxt.text = ""
+                stateTxt.text = ""
                 postCodeTxt.text = ""
                 address1Txt.text = ""
                 address2Txt.text = ""
@@ -372,8 +379,8 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 self.firstNameLbl.isHidden = true
                 self.lastNameLbl.isHidden = true
                 self.numberLbl.isHidden = true
-                self.countryLbl.isHidden = false
-                self.stateLbl.isHidden = false
+                self.countryLbl.isHidden = true
+                self.stateLbl.isHidden = true
                 self.cityLbl.isHidden = true
                 self.postCodeLbl.isHidden = true
                 self.addressOneLbl.isHidden = true
@@ -411,9 +418,11 @@ extension CheckoutViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         else if pickerView == countryPicker{
             self.countryTxt.text = countriesArr[row]
+            self.countryLbl.isHidden = false
         }
         else if pickerView == statePicker{
             self.stateTxt.text = provincesArr[row]
+            self.stateLbl.isHidden = false
         }
     }
 }

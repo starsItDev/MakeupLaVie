@@ -303,7 +303,13 @@ class ShippingViewController: UIViewController {
     
     func showData() {
         self.addressId = shippingPeopleArr.last?.id ?? 0
-        self.existingAddressTxt.text = shippingPeopleArr.last?.Address
+        if billingPeopleArr.count == 0{
+            self.existingAddressTxt.text = "App New Address"
+        }
+        else{
+            self.existingAddressTxt.text = shippingPeopleArr.last?.Address
+        }
+        
         self.firstNameTxt.text = shippingPeopleArr.last?.firstName
         self.lastNameTxt.text = shippingPeopleArr.last?.lastName
         self.phoneNoTxt.text = shippingPeopleArr.last?.number
@@ -394,6 +400,12 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == addressPicker{
             return shippingPeopleArr.count + 1
         }
+        else if pickerView == countryPicker{
+            return countriesArr.count
+        }
+        else if pickerView == statePicker{
+            return provincesArr.count
+        }
         else {
             return 0
         }
@@ -407,10 +419,10 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
         else if pickerView == countryPicker{
-            return shippingPeopleArr[row].country
+            return countriesArr[row]
         }
         else if pickerView == statePicker{
-            return shippingPeopleArr[row].province
+            return provincesArr[row]
         }
         else{
             return nil
@@ -425,6 +437,8 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 lastNameTxt.text = ""
                 phoneNoTxt.text = ""
                 cityTxt.text = ""
+                countryTxt.text = ""
+                stateTxt.text = ""
                 postCodeTxt.text = ""
                 address1Txt.text = ""
                 address2Txt.text = ""
@@ -432,8 +446,8 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 self.firstNameLbl.isHidden = true
                 self.lastNameLbl.isHidden = true
                 self.numberLbl.isHidden = true
-                self.countryLbl.isHidden = false
-                self.stateLbl.isHidden = false
+                self.countryLbl.isHidden = true
+                self.stateLbl.isHidden = true
                 self.cityLbl.isHidden = true
                 self.postCodeLbl.isHidden = true
                 self.addressOneLbl.isHidden = true
@@ -469,10 +483,12 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
         else if pickerView == countryPicker{
-            self.countryTxt.text = shippingPeopleArr[row].country
+            self.countryTxt.text = countriesArr[row]
+            self.countryLbl.isHidden = false
         }
         else if pickerView == statePicker{
-            self.stateTxt.text = shippingPeopleArr[row].province
+            self.stateTxt.text = provincesArr[row]
+            self.stateLbl.isHidden = false
         }
     }
 }

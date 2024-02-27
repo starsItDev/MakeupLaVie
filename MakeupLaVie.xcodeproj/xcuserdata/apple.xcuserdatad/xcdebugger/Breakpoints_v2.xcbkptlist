@@ -1434,8 +1434,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
             endingLineNumber = "246"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "ProductDetailsVC"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "9ECAAA01-BA1D-4171-A682-1574CECC64C1 - eed50ec1aeb2e6fc"
@@ -1795,8 +1795,8 @@
             filePath = "MakeupLaVie/Controllers/PaymentVCs/CheckoutViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "pickerView(_:didSelectRow:inComponent:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2191,8 +2191,8 @@
             filePath = "MakeupLaVie/Controllers/PaymentVCs/CheckoutViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "pickerView(_:didSelectRow:inComponent:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2827,8 +2827,8 @@
             filePath = "MakeupLaVie/Controllers/PaymentVCs/CheckoutViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "pickerView(_:didSelectRow:inComponent:)"
             landmarkType = "7">
             <Locations>
@@ -2935,8 +2935,8 @@
             filePath = "MakeupLaVie/Controllers/PaymentVCs/ShippingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "pickerView(_:titleForRow:forComponent:)"
             landmarkType = "7">
             <Locations>
@@ -3961,8 +3961,8 @@
             filePath = "MakeupLaVie/Controllers/PaymentVCs/CheckoutViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "pickerView(_:didSelectRow:inComponent:)"
             landmarkType = "7">
             <Locations>
@@ -4278,7 +4278,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "myAddressAPI()"
+            landmarkName = "refreshPage()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -4371,7 +4371,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "myAddressAPI()"
+            landmarkName = "deleteBtnTapped(sender:)"
             landmarkType = "7">
             <Locations>
                <Location

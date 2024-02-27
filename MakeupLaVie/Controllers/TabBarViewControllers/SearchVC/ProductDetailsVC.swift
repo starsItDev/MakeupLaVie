@@ -440,7 +440,7 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
         
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         if let index = currentIndex, index >= 0, index < images.count {
@@ -455,7 +455,8 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
     
     func viewControllerAtIndex(_ index: Int) -> UIViewController {
         let contentVC = UIViewController()
-        let imageView = UIImageView(frame: contentVC.view.bounds)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 75, width: contentVC.view.bounds.width, height: contentVC.view.bounds.height - 150))
+        //let imageView = UIImageView(frame: contentVC.view.bounds)
         imageView.contentMode = .scaleAspectFit
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imageView.sd_setImage(with: URL(string: images[index].thumbMain), completed: nil)
