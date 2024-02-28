@@ -21,8 +21,8 @@ class GenericListingModel: NSObject {
     
     //Recent product
     var price = ""
-    // for ADD TO CART
     
+    // for ADD TO CART
     var descriptn = ""
     var sell_count = 0
     var discount = ""
