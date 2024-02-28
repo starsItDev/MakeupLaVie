@@ -241,34 +241,7 @@ extension SearchVC: UISearchBarDelegate {
 }
 
 extension SearchVC {
-    //    func initViewModel() {
-    //        viewModel.fetchProduct()
-    //    }
-    //
-    //    func observeEvent() {
-    //        viewModel.eventHandler = { [weak self] event in
-    //            guard let self = self else { return }
-    //
-    //            switch event {
-    //            case .loading:
-    //                print("Product loading...")
-    //            case .stopLoading:
-    //                print("Stop loading...")
-    //            case .dataLoaded:
-    //                print("Data loaded...")
-    //                print(self.viewModel.products)
-    //                DispatchQueue.main.async {
-    //
-    //                    self.collectionView.reloadData()
-    //                    self.isLoadingData = false
-    //                    self.currentPage += 1
-    //                    self.collectionView.refreshControl?.endRefreshing()
-    //                }
-    //            case .error(let error):
-    //                print(error)
-    //            }
-    //        }
-    //    }
+  
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         if bottomEdge >= scrollView.contentSize.height {

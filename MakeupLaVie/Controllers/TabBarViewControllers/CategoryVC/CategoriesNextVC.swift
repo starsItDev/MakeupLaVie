@@ -19,14 +19,22 @@ class CategoriesNextVC: UIViewController {
     var seeAll: Bool?
     var isBrand: Bool?
     var totalPages = -1
-    var currentPage = 1
+    private var currentPage = 1
     var categoryID: Int?
+    var params = [String: Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.titleLabel.text = selectedName
-        categoryAPICall(sortingString: "")
+        if isBrand ?? false{
+            //            urlString = base_url + "products?brand_id=\(selectedID)"
+            self.params["brand_id"] = selectedID
+        }
+        else{
+            self.params["category_id"] = selectedID
+        }
+        categoryAPICall(page: currentPage)
         //fetchData()
         self.toggleViewBtn.addTarget(self, action: #selector(toggleViewBtnTapped(sender:)), for: .touchUpInside)
         NotificationCenter.default
@@ -40,6 +48,7 @@ class CategoriesNextVC: UIViewController {
     @objc func filterSuccess(_ notification: Notification){
         print((notification.userInfo?["userInfo"]!)! as? [String:Any] ?? [:])
         let notif = notification.userInfo?["userInfo"]! as? [String:Any] ?? [:]
+        self.params = notif
         var str = String()
         if let minprice = notif["min_price"] as? String{
             str = "&min_price=\(minprice)"
@@ -61,7 +70,7 @@ class CategoriesNextVC: UIViewController {
         if let searchbarText = notif["search"] as? String{
             str = str + "&search=\(searchbarText)"
         }
-        categoryAPICall(sortingString: str)
+        categoryAPICall(page: currentPage)
     }
     
     
@@ -79,28 +88,40 @@ class CategoriesNextVC: UIViewController {
         let alertController = UIAlertController()
         
         let popularity = UIAlertAction(title: "Popularity", style: .default) { (action: UIAlertAction!) in
-            let str = "&order_by=view_count&order_direction=desc"
-            self.categoryAPICall(sortingString: str)
+            //let str = "&order_by=view_count&order_direction=desc"
+            self.params["order_by"] = "view_count"
+            self.params["order_direction"] = "desc"
+            self.categoryAPICall(page: self.currentPage)
         }
         let lowToHigh = UIAlertAction(title: "Price Low - High", style: .default) { (action: UIAlertAction!) in
-            let str = "&order_by=price&order_direction=asc"
-            self.categoryAPICall(sortingString: str)
+            //let str = "&order_by=price&order_direction=asc"
+            self.params["order_by"] = "price"
+            self.params["order_direction"] = "asc"
+            self.categoryAPICall(page: self.currentPage)
         }
         let highToLow = UIAlertAction(title: "Price High - Low", style: .default) { (action: UIAlertAction!) in
-            let str = "&order_by=price&order_direction=desc"
-            self.categoryAPICall(sortingString: str)
+            //let str = "&order_by=price&order_direction=desc"
+            self.params["order_by"] = "price"
+            self.params["order_direction"] = "desc"
+            self.categoryAPICall(page: self.currentPage)
         }
         let productRating = UIAlertAction(title: "Product Rating", style: .default) { (action: UIAlertAction!) in
-            let str = "&order_by=rating&order_direction=desc"
-            self.categoryAPICall(sortingString: str)
+            //let str = "&order_by=rating&order_direction=desc"
+            self.params["order_by"] = "rating"
+            self.params["order_direction"] = "desc"
+            self.categoryAPICall(page: self.currentPage)
         }
         let orderAtoZ = UIAlertAction(title: "Order A - Z", style: .default) { (action: UIAlertAction!) in
-            let str = "&order_by=title&order_direction=asc"
-            self.categoryAPICall(sortingString: str)
+            //let str = "&order_by=title&order_direction=asc"
+            self.params["order_by"] = "title"
+            self.params["order_direction"] = "asc"
+            self.categoryAPICall(page: self.currentPage)
         }
         let orderZtoA = UIAlertAction(title: "Order Z - A", style: .default) { (action: UIAlertAction!) in
-            let str = "&order_by=title&order_direction=desc"
-            self.categoryAPICall(sortingString: str)
+            //let str = "&order_by=title&order_direction=desc"
+            self.params["order_by"] = "title"
+            self.params["order_direction"] = "desc"
+            self.categoryAPICall(page: self.currentPage)
         }
         alertController.addAction(popularity)
         alertController.addAction(lowToHigh)
@@ -137,7 +158,7 @@ class CategoriesNextVC: UIViewController {
         //        vc?.selectedID = selectedID
         //        self.navigationController?.pushViewController(vc!, animated: true)
     }
-    func categoryAPICall(sortingString: String) {
+    func categoryAPICall(page: Int) {
         self.productsArr.removeAll()
         guard let selectedID = self.selectedID else {
             print("No selected ID available.")
@@ -145,12 +166,16 @@ class CategoriesNextVC: UIViewController {
         }
         var urlString = String()
         if isBrand ?? false{
-            urlString = base_url + "products?brand_id=\(selectedID)"
+//            urlString = base_url + "products?brand_id=\(selectedID)"
+            //self.params["brand_id"] = selectedID
+            urlString = base_url + "products?page=\(page)"
         }
         else{
-            urlString = base_url + "products?category_id=\(selectedID)" + sortingString
+//            urlString = base_url + "products?category_id=\(selectedID)" + sortingString
+            //self.params["category_id"] = selectedID
+            urlString = base_url + "products?page=\(page)"
         }
-        Networking.instance.getApiCall(url: urlString){(response, error, statusCode) in
+        Networking.instance.getApiCallWithParams(url: urlString, param: self.params){(response, error, statusCode) in
             if error == nil && statusCode == 200{
                 if let body = response["body"].dictionary {
                     if body["totalItemCount"] != nil{
@@ -189,7 +214,12 @@ class CategoriesNextVC: UIViewController {
         let nextPageNumber = currentPage + 1
         currentPage = nextPageNumber
         if currentPage <= totalPages{
-            browseProdAPICall(page: currentPage)
+            if seeAll == true{
+                browseProdAPICall(page: currentPage)
+            }
+            else{
+                categoryAPICall(page: currentPage)
+            }
         }
     }
     
@@ -356,7 +386,7 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
             return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 268)
         }
         else{
-            return CGSize(width: 358, height: 220)
+            return CGSize(width: 358, height: 175)
         }
         //return CGSize(width: 158, height: 305)
     }

@@ -69,6 +69,7 @@ class WishListVC: UIViewController {
             if complete == true{
                 if self.isWishList{
                     if self.wishlistproductsArr[sender.tag].hasWishlist!{
+                        
 //                        self.wishlistproductsArr[sender.tag].hasWishlist = false
                         self.wishlistproductsArr.remove(at: sender.tag)
                         self.collectionView.reloadData()
@@ -83,8 +84,15 @@ class WishListVC: UIViewController {
                 }
                 else{
                     if self.wishlistproductsArr[sender.tag].hasWishlist!{
-                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
-                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                        if self.traitCollection.userInterfaceStyle == .dark {
+                            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                            sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                        } else {
+                            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                            sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                        }
+//                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+//                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                         self.wishlistproductsArr[sender.tag].hasWishlist = false
                     }
                     else{
@@ -159,7 +167,15 @@ extension WishListVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             cell.heartBtn.tintColor = #colorLiteral(red: 0.9991409183, green: 0.2293452919, blue: 0.188941747, alpha: 1)
             cell.heartBtn.isSelected = true
         }
-        
+        else {
+            if traitCollection.userInterfaceStyle == .dark {
+                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            } else {
+                cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            }
+        }
         cell.heartBtn.tag = indexPath.item
         cell.heartBtn.addTarget(self, action: #selector(heartBtnTapped(sender: )), for: .touchUpInside)
         cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor

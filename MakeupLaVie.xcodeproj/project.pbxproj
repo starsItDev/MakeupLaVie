@@ -104,10 +104,6 @@
 		76A4A93F29FA80F200C6C7D0 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A93E29FA80F200C6C7D0 /* UpdateProfileVC.swift */; };
 		76A4A94129FA810D00C6C7D0 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A94029FA810D00C6C7D0 /* ChangePasswordVC.swift */; };
 		76A4A94329FA813400C6C7D0 /* MyAddressesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A94229FA813400C6C7D0 /* MyAddressesVC.swift */; };
-		76A4A94529FA815400C6C7D0 /* TermsAndConditonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A94429FA815400C6C7D0 /* TermsAndConditonsVC.swift */; };
-		76A4A94729FA817700C6C7D0 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A94629FA817700C6C7D0 /* PrivacyPolicyVC.swift */; };
-		76A4A94929FA818A00C6C7D0 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A94829FA818A00C6C7D0 /* HelpVC.swift */; };
-		76A4A94B29FA81A200C6C7D0 /* LogOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4A94A29FA81A200C6C7D0 /* LogOutVC.swift */; };
 		76A63D6A29ED180F00082DED /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A63D6929ED180F00082DED /* LoginVC.swift */; };
 		76A63D6D29ED185400082DED /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A63D6C29ED185400082DED /* SignUpVC.swift */; };
 		76A63D7629ED191600082DED /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A63D7529ED191600082DED /* HomeVC.swift */; };
@@ -251,10 +247,6 @@
 		76A4A93E29FA80F200C6C7D0 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
 		76A4A94029FA810D00C6C7D0 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		76A4A94229FA813400C6C7D0 /* MyAddressesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressesVC.swift; sourceTree = "<group>"; };
-		76A4A94429FA815400C6C7D0 /* TermsAndConditonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditonsVC.swift; sourceTree = "<group>"; };
-		76A4A94629FA817700C6C7D0 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
-		76A4A94829FA818A00C6C7D0 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
-		76A4A94A29FA81A200C6C7D0 /* LogOutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutVC.swift; sourceTree = "<group>"; };
 		76A63D6929ED180F00082DED /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		76A63D6C29ED185400082DED /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		76A63D7529ED191600082DED /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -655,10 +647,6 @@
 				76A4A94029FA810D00C6C7D0 /* ChangePasswordVC.swift */,
 				188F65FD2B5ABA7F0080BE8E /* AddressesTableViewCell.swift */,
 				76A4A94229FA813400C6C7D0 /* MyAddressesVC.swift */,
-				76A4A94429FA815400C6C7D0 /* TermsAndConditonsVC.swift */,
-				76A4A94629FA817700C6C7D0 /* PrivacyPolicyVC.swift */,
-				76A4A94829FA818A00C6C7D0 /* HelpVC.swift */,
-				76A4A94A29FA81A200C6C7D0 /* LogOutVC.swift */,
 				1821D96C2B623F43007E915A /* EditAddressVC.swift */,
 			);
 			path = AccountSettingVC;
@@ -937,7 +925,6 @@
 				18A179AF2A84E25C00054D15 /* ProductCollectionViewCell.swift in Sources */,
 				7699233D2A1C810F00DC149C /* HomePage.swift in Sources */,
 				18A179AD2A84E25C00054D15 /* SizeCollectionViewCell.swift in Sources */,
-				76A4A94529FA815400C6C7D0 /* TermsAndConditonsVC.swift in Sources */,
 				768635872A03926E0089C19E /* UderInfoModel.swift in Sources */,
 				18CCC6332A86142C0046E43A /* PaymentViewController.swift in Sources */,
 				E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */,
@@ -962,10 +949,8 @@
 				76A63D7A29ED194B00082DED /* SearchVC.swift in Sources */,
 				76A4A93F29FA80F200C6C7D0 /* UpdateProfileVC.swift in Sources */,
 				76883E542A24C9B600240AF1 /* EndPointType.swift in Sources */,
-				76A4A94B29FA81A200C6C7D0 /* LogOutVC.swift in Sources */,
 				18CCC6392A86148B0046E43A /* ShippingTableViewCell.swift in Sources */,
 				18EDD0182A7BC0A80053D8A3 /* WishList.swift in Sources */,
-				76A4A94929FA818A00C6C7D0 /* HelpVC.swift in Sources */,
 				76AB5A822A402AC300EBE553 /* NextGridCollectionViewCell.swift in Sources */,
 				18F98F072A66AE350057578D /* utilityFunctions.swift in Sources */,
 				76A4A94129FA810D00C6C7D0 /* ChangePasswordVC.swift in Sources */,
@@ -1006,7 +991,6 @@
 				76A4A92E29FA3E6000C6C7D0 /* CollectionViewCell.swift in Sources */,
 				76A7FF482A2E125A00EA48E4 /* SearchVCCollectionView.swift in Sources */,
 				76A4A93629FA7E1600C6C7D0 /* WishListVC.swift in Sources */,
-				76A4A94729FA817700C6C7D0 /* PrivacyPolicyVC.swift in Sources */,
 				18A179A52A84E1C800054D15 /* BrandPKViewController.swift in Sources */,
 				18BC182E2A7A63810035CD43 /* DashBoardCell.swift in Sources */,
 				76930CE729EFF7B300B33105 /* ReviewsVC.swift in Sources */,

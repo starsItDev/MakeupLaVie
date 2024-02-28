@@ -81,6 +81,7 @@ class BrandPKViewController: UIViewController {
             multiSlider.heightAnchor.constraint(equalToConstant: 45) ])
         updatePriceLabels(lowerValue: Int(multiSlider.value[0]), upperValue: Int(multiSlider.value[1]))
         searchFormAPI()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     //MARK: - HelperFunction

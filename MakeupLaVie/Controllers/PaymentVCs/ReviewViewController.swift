@@ -53,7 +53,8 @@ class ReviewViewController: UIViewController {
     var prodArr = [Product]()
     var billingAddress: [BillingAddress] = []
     var shippingAddress: [ShippingAddress] = []
-    var onDismiss: (() -> Void)?
+    //var onDismiss: (() -> Void)?
+    
     //MARK: - Override function
     override func viewDidLoad() {
         super.viewDidLoad()

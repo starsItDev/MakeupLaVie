@@ -207,7 +207,7 @@ class ShippingViewController: UIViewController {
             self.sameAddress = false
             sender.setImage(UIImage(named: "unCheck"), for: .normal)
             fieldsStackView.isHidden = false
-            if Address.isEmpty{
+            if shippingPeopleArr.isEmpty{
                 existingAddressTxt.text = "App new address"
                 firstNameTxt.text = ""
                 lastNameTxt.text = ""
@@ -217,7 +217,7 @@ class ShippingViewController: UIViewController {
                 address2Txt.text = ""
                 cityTxt.text = ""
             } else {
-                existingAddressTxt.text = self.Address.last
+                existingAddressTxt.text = self.shippingPeopleArr.last?.Address
                 firstNameTxt.text = self.shippingPeopleArr.last?.firstName
                 lastNameTxt.text = self.shippingPeopleArr.last?.lastName
                 phoneNoTxt.text = self.shippingPeopleArr.last?.number
@@ -303,7 +303,7 @@ class ShippingViewController: UIViewController {
     
     func showData() {
         self.addressId = shippingPeopleArr.last?.id ?? 0
-        if billingPeopleArr.count == 0{
+        if shippingPeopleArr.count == 0{
             self.existingAddressTxt.text = "App New Address"
         }
         else{

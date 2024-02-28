@@ -91,6 +91,9 @@ class ProductDetailsVC: UIViewController {
         wishListAPI()
     }
     @IBAction func shareBtnTapped(_ sender: Any) {
+        let link = URL(string: "https://giftbank.pk")!
+                let activityController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+                present(activityController, animated: true)
     }
     
     func cartUpdateAPI() {
