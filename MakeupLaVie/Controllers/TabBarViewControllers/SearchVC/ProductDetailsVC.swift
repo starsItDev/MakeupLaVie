@@ -39,6 +39,7 @@ class ProductDetailsVC: UIViewController {
     var responseIds: [Int] = []
     var selectedIDResponse: Int?
     var similarProductsArr = [ViewProductBody]()
+    var dataModel = [String: Any]()
     var photosArr = [Photo]()
     var selectedIndexPath: IndexPath?
     
@@ -177,53 +178,69 @@ class ProductDetailsVC: UIViewController {
             print("Invalid URL")
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self else { return }
-            
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-            
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let model = try decoder.decode(ViewProductModel.self, from: data)
-                print(model)
-                self.responseID = model.body.id
+        Networking.instance.getApiCall(url: urlString){(response, error, statusCode) in
+            if error == nil{
+                self.dataModel = response["body"].dictionaryObject ?? [:]
+                print(self.dataModel)
                 DispatchQueue.main.async {
-                    self.updateUI(with: model)
-                    self.loadingView.isHidden = true
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
-                }
-            } catch {
-                print("Error decoding JSON: \(error)")
+                    self.updateUI(model: self.dataModel)
+                                    self.loadingView.isHidden = true
+                                    self.activityIndicator.stopAnimating()
+                                    self.activityIndicator.isHidden = true
+                                }
             }
         }
-        task.resume()
+//        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+//            guard let self = self else { return }
+//
+//            if let error = error {
+//                print("Error: \(error)")
+//                return
+//            }
+//
+//            guard let data = data else {
+//                print("No data received")
+//                return
+//            }
+//            let jsonString = String(data: data, encoding: .utf8)
+//            print("JSON Response:", jsonString ?? "Unable to convert to string")
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                let model = try decoder.decode(ViewProductModel.self, from: data)
+//                print(model)
+//                self.responseID = model.body.id
+//                DispatchQueue.main.async {
+//                    self.updateUI(with: model)
+//                    self.loadingView.isHidden = true
+//                    self.activityIndicator.stopAnimating()
+//                    self.activityIndicator.isHidden = true
+//                }
+//            } catch {
+//                print("Error decoding JSON: \(error)")
+//            }
+//        }
+//        task.resume()
     }
-    func updateUI(with model: ViewProductModel) {
-        titleLbl.text = model.body.title
-        rsLbl.text = model.body.price
-        let plainTextDescription = model.body.description.htmlToPlainText
+    func updateUI(model: [String: Any]) {
+        self.responseID = model["id"] as? Int
+        titleLbl.text = model["title"] as? String
+        rsLbl.text = model["price"] as? String
+        let description = model["description"] as? String
+        let plainTextDescription = description?.htmlToPlainText
         //desLbl.text = plainTextDescription
         descTextView.text = plainTextDescription
         descTextView.sizeToFit()
-        self.hasCartItem = model.body.hasCartItem
-        print(model.body.hasCartItem)
+        self.hasCartItem = model["hasCartItem"] as? Bool ?? false
+        //print(model.body.hasCartItem)
         if self.hasCartItem{
             self.addCartBtn.setTitle("REMOVE FROM CART", for: .normal)
         }
         else{
             self.addCartBtn.setTitle("ADD TO CART", for: .normal)
         }
-        
-        self.hasWishList = model.body.hasWishlist
+
+        self.hasWishList = model["hasWishlist"] as? Bool ?? false
         if hasWishList{
             self.wishListBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             self.wishListBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
@@ -232,16 +249,47 @@ class ProductDetailsVC: UIViewController {
             self.wishListBtn.setImage(UIImage(systemName: "heart"), for: .normal)
             //self.wishListBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
-        
+
         ratingView.settings.fillMode = .precise
-        ratingView.rating = model.body.rating
+        ratingView.rating = model["rating"] as? Double ?? 0
         if let responseID = self.responseID {
             print("Response ID: \(responseID)")
         } else {
             print("No response ID available.")
         }
-        self.similarProductsArr = model.body.similarProducts ?? []
-        self.photosArr = model.body.photos ?? []
+        
+//        self.similarProductsArr = model["similarProducts"] as? Array ?? []
+        if let similarProducts = model["similarProducts"] as? [[String: Any]] {
+
+            // Iterate through the JSON array and create ViewProductBody instances
+            for item in similarProducts {
+                if let id = item["id"] as? Int,
+                   let title = item["title"] as? String,
+                   let image = item["image"] as? String,
+                let rating = item["rating"] as? Double,
+                let price = item["price"] as? String,
+                   let hasWishlist = item["hasWishlist"] as? Bool,
+                   let hasCartItem = item["hasCartItem"] as? Bool,
+                   let hasCompare = item["hasCompare"] as? Bool{
+                    // Include other properties as needed
+                    let productInstance = ViewProductBody(id: id, title: title, description: "", keywords: "", photoID: 0, ownerID: 0, categoryID: 0, status: 0, price: price , sale_price: "", stock: 0, viewCount: 0, sellCount: 0, brandID: 0, createdAt: "", updatedAt: "", featured: 0, sponsored: 0, newlabel: 0, hotlabel: 0, salelabel: 0, speciallabel: 0, image: image, imageProfile: "", imageIcon: "", hasCompare: hasCompare, hasWishlist: hasWishlist, hasCartItem: hasCartItem, tags: nil, similarProducts: nil, photos: nil, rating: rating )
+                    similarProductsArr.append(productInstance)
+                }
+            }
+
+            // Now similarProductsArr contains instances of ViewProductBody
+        }
+        if let photos = model["photos"] as? [[String: Any]] {
+            for item in photos{
+                  if let thumb_main = item["thumb_main"] as? String,
+                    let thumb_profile = item["thumb_profile"] as? String,
+                   let thumb_icon = item["thumb_icon"] as? String{
+                    let instance = Photo(thumbMain: thumb_main, thumbProfile: thumb_profile, thumbIcon: thumb_icon)
+                      photosArr.append(instance)
+                }
+            }
+        }
+        //self.photosArr = model["photos"] as? Array ?? []
         self.productCollectionView.reloadData()
         self.productImageCollectionView.reloadData()
         self.productTwoImageCollectionView.reloadData()

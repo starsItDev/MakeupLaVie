@@ -14,7 +14,7 @@ struct ViewProductModel: Codable {
 }
 
 // MARK: - Body
-struct ViewProductBody : Codable {
+struct ViewProductBody : Codable, Identifiable {
     let id: Int
     let title, description, keywords: String
     let photoID, ownerID, categoryID, status: Int

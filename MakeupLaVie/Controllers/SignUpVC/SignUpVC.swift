@@ -232,7 +232,7 @@ class SignUpVC: UIViewController , UITextViewDelegate{
             if error == nil && statusCode == 200{
                 let body = response["body"].dictionary
                 let message = body?["message"]?.stringValue
-                utilityFunctions.showAlertWithTitle(title: "Verification Required", withMessage: message ?? "", withNavigation: self)
+//                utilityFunctions.showAlertWithTitle(title: "Verification Required", withMessage: message ?? "", withNavigation: self)
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
                 let appdelegate = UIApplication.shared.delegate as! AppDelegate
                 appdelegate.window?.rootViewController = vc
