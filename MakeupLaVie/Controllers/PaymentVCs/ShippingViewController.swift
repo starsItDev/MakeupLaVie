@@ -99,23 +99,23 @@ class ShippingViewController: UIViewController {
 
                 isReviewButtonEnabled = false
 
-        if sameAddress == true{
-            params["first_name"] = billingData?.firstName
-            params["last_name"] = billingData?.lastName
-            params["phone"] = billingData?.number
-            params["country"] = billingData?.country
-            params["state"] = billingData?.province
-            params["city"] = billingData?.city
-            params["zip"] = billingData?.postcode
-            params["address_1"] = billingData?.AddressOne
-            params["address_2"] = billingData?.AddressTwo
-            params["default"] = 1
-            var paramDic = [String: Any]()
-            paramDic["address_id"] = billingData?.id
-            paramDic["shipping"] = params
-            postShippingAPICall(params: paramDic)
-        }
-        else {
+//        if sameAddress == true{
+//            params["first_name"] = billingData?.firstName
+//            params["last_name"] = billingData?.lastName
+//            params["phone"] = billingData?.number
+//            params["country"] = billingData?.country
+//            params["state"] = billingData?.province
+//            params["city"] = billingData?.city
+//            params["zip"] = billingData?.postcode
+//            params["address_1"] = billingData?.AddressOne
+//            params["address_2"] = billingData?.AddressTwo
+//            params["default"] = 1
+//            var paramDic = [String: Any]()
+//            paramDic["address_id"] = billingData?.id
+//            paramDic["shipping"] = params
+//            postShippingAPICall(params: paramDic)
+//        }
+//        else {
             if (existingAddressTxt?.text?.isEmpty)! {
                 utilityFunctions.showAlertWithTitle(title: "", withMessage: "Existing Address is required", withNavigation: self)
                 return
@@ -180,57 +180,57 @@ class ShippingViewController: UIViewController {
                 postShippingAPICall(params: paramDic)
                 
             }
-        }
+//        }
     }
-    @IBAction func unCheckButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
-            self.sameAddress = true
-            sender.setImage(UIImage(named: "tick"), for: .normal)
-            fieldsStackView.isHidden = true
-            if let billingData = billingData {
-                existingAddressTxt.text = "\(billingData.firstName) \(billingData.lastName) (\(billingData.AddressOne))"
-                self.firstNameTxt.text = billingData.firstName
-                self.lastNameTxt.text = billingData.lastName
-                self.phoneNoTxt.text = billingData.number
-                self.postCodeTxt.text = billingData.postcode
-                self.address1Txt.text = billingData.AddressOne
-                self.address2Txt.text = billingData.AddressTwo
-                self.countryTxt.text = billingData.country
-                self.stateTxt.text = billingData.province
-                self.cityTxt.text = billingData.city
-            }
-            existingAddressTxt.isUserInteractionEnabled = false
-            existingAddressTxt.textColor = .lightGray
-            stackHeight.constant = 0
-        } else {
-            self.sameAddress = false
-            sender.setImage(UIImage(named: "unCheck"), for: .normal)
-            fieldsStackView.isHidden = false
-            if shippingPeopleArr.isEmpty{
-                existingAddressTxt.text = "App new address"
-                firstNameTxt.text = ""
-                lastNameTxt.text = ""
-                phoneNoTxt.text = ""
-                postCodeTxt.text = ""
-                address1Txt.text = ""
-                address2Txt.text = ""
-                cityTxt.text = ""
-            } else {
-                existingAddressTxt.text = self.shippingPeopleArr.last?.Address
-                firstNameTxt.text = self.shippingPeopleArr.last?.firstName
-                lastNameTxt.text = self.shippingPeopleArr.last?.lastName
-                phoneNoTxt.text = self.shippingPeopleArr.last?.number
-                postCodeTxt.text = self.shippingPeopleArr.last?.postcode
-                address1Txt.text = self.shippingPeopleArr.last?.AddressOne
-                address2Txt.text = self.shippingPeopleArr.last?.AddressTwo
-                cityTxt.text = self.shippingPeopleArr.last?.city
-            }
-            existingAddressTxt.isUserInteractionEnabled = true
-            existingAddressTxt.textColor = .black
-            stackHeight.constant = 556
-        }
-    }
+//    @IBAction func unCheckButton(_ sender: UIButton) {
+//        sender.isSelected = !sender.isSelected
+//        if sender.isSelected {
+//            self.sameAddress = true
+//            sender.setImage(UIImage(named: "tick"), for: .normal)
+//            fieldsStackView.isHidden = true
+//            if let billingData = billingData {
+//                existingAddressTxt.text = "\(billingData.firstName) \(billingData.lastName) (\(billingData.AddressOne))"
+//                self.firstNameTxt.text = billingData.firstName
+//                self.lastNameTxt.text = billingData.lastName
+//                self.phoneNoTxt.text = billingData.number
+//                self.postCodeTxt.text = billingData.postcode
+//                self.address1Txt.text = billingData.AddressOne
+//                self.address2Txt.text = billingData.AddressTwo
+//                self.countryTxt.text = billingData.country
+//                self.stateTxt.text = billingData.province
+//                self.cityTxt.text = billingData.city
+//            }
+//            existingAddressTxt.isUserInteractionEnabled = false
+//            existingAddressTxt.textColor = .lightGray
+//            stackHeight.constant = 0
+//        } else {
+//            self.sameAddress = false
+//            sender.setImage(UIImage(named: "unCheck"), for: .normal)
+//            fieldsStackView.isHidden = false
+//            if shippingPeopleArr.isEmpty{
+//                existingAddressTxt.text = "App new address"
+//                firstNameTxt.text = ""
+//                lastNameTxt.text = ""
+//                phoneNoTxt.text = ""
+//                postCodeTxt.text = ""
+//                address1Txt.text = ""
+//                address2Txt.text = ""
+//                cityTxt.text = ""
+//            } else {
+//                existingAddressTxt.text = self.shippingPeopleArr.last?.Address
+//                firstNameTxt.text = self.shippingPeopleArr.last?.firstName
+//                lastNameTxt.text = self.shippingPeopleArr.last?.lastName
+//                phoneNoTxt.text = self.shippingPeopleArr.last?.number
+//                postCodeTxt.text = self.shippingPeopleArr.last?.postcode
+//                address1Txt.text = self.shippingPeopleArr.last?.AddressOne
+//                address2Txt.text = self.shippingPeopleArr.last?.AddressTwo
+//                cityTxt.text = self.shippingPeopleArr.last?.city
+//            }
+//            existingAddressTxt.isUserInteractionEnabled = true
+//            existingAddressTxt.textColor = .black
+//            stackHeight.constant = 556
+//        }
+//    }
     func checkOutDetailsAPI(){
         let url = base_url + "checkout"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
@@ -348,7 +348,7 @@ class ShippingViewController: UIViewController {
                     if response["body"].dictionary != nil{
                         let body = response["body"].dictionary
                         let type = body?["type"]?.stringValue
-                        if type == "shipping" || type == "billing"{
+                        if type == "shipping" {
                             let id = body?["id"]?.intValue
                             shippingId = id ?? 0
                             let firstName = body?["first_name"]?.stringValue ?? ""
@@ -361,13 +361,13 @@ class ShippingViewController: UIViewController {
                             let state = body?["state"]?.stringValue
                             let city = body?["city"]?.stringValue
                             let existAddr = "\(firstName)\(lastName)(\(address1))"
-                            let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
-                            if let existingIndex = self.billingPeopleArr.firstIndex(where: { $0.id == id }) {
-                                self.shippingPeopleArr[existingIndex] = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
-                            } else {
+//                            let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+//                            if let existingIndex = self.billingPeopleArr.firstIndex(where: { $0.id == id }) {
+//                                self.shippingPeopleArr[existingIndex] = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
+//                            } else {
                                 let person = Person(id: id ?? 0, Address: existAddr, firstName: firstName , lastName: lastName , number: phoneNo ?? "", country: country ?? "", province: state ?? "", city: city ?? "", postcode: zipCode ?? "", AddressOne: address1 , AddressTwo: address2 ?? "", addressType: type ?? "")
                                 self.shippingPeopleArr.append(person)
-                            }
+//                            }
                             DispatchQueue.main.async {
                                     self.isReviewButtonEnabled = true
                                 }

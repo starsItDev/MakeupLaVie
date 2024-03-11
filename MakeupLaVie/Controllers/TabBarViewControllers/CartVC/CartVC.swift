@@ -94,12 +94,13 @@ class CartVC: UIViewController {
             showToast(message: "No item in cart")
         } else {
             if UserInfo.shared.isUserLoggedIn{
-                let checkOutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
-                //checkOutVC.isComingFromEdit = false
-                self.tabBarController?.tabBar.isHidden = true
-                self.navigationController?.pushViewController(checkOutVC, animated: true)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShippingViewController") as? ShippingViewController {
+                    //checkOutVC.isComingFromEdit = false
+                    self.tabBarController?.tabBar.isHidden = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
-            else{
+            else {
                 let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
                 self.navigationController?.pushViewController(mainVC, animated: true)
             }
