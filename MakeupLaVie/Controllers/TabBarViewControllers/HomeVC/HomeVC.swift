@@ -41,7 +41,7 @@ class HomeVC: UIViewController {
     var isSideViewOpen: Bool = false
     var timer: Timer?
     var currentIndex = 0
-    var makeUPImageControl:[String] = ["bg-promotion-1","bg-promotion-2","bg-promotion-3","bg-promotion-4","bg-promotion-5","bg-promotion-6"]
+    var makeUPImageControl:[String] = ["big-gift-pack-01","big-gift-pack-02","big-gift-pack-03","big-gift-pack-04","big-gift-pack-05","big-gift-pack-07","big-gift-pack-08","big-gift-pack-09"]
     private var viewModel = HomeViewModel()
     private var selectedID: Int?
     var counter = 0
@@ -267,17 +267,16 @@ class HomeVC: UIViewController {
     }
     
     @objc func refreshTokenAPI(){
-        print("----Timer-----")
+
         var params = [String:Any]()
         params["grant_type"] = "refresh_token"
         params["client_id"] = "2"
         params["client_secret"] = "YDAIQy9cKcL3fPifVF20eRBI0y9de2ab3UMr01KY"
         params["refresh_token"] = UserInfo.shared.refreshToken
         params["scope"] = ""
-        print(params)
+
         let url = "\(base_url)token/refresh"
         Networking.instance.postApiCall(url: url, param: params){(response, error, statusCode) in
-            print(response)
             if statusCode == 200 && error == nil{
                 let body = response["body"].dictionary
                 let token_type = body?["token_type"]?.stringValue
@@ -294,7 +293,6 @@ class HomeVC: UIViewController {
                 let locale = user?["locale"]?.stringValue
                 let phone = user?["phone"]?.stringValue
                 let userArr = [id ?? 0, first_name ?? "", last_name ?? "", email ?? "", true, access_token ?? "", refresh_token ?? "", expires_in ?? 0, token_type ?? "", phone ?? ""] as [Any]
-                print(userArr)
                 UserInfo.storeUserInfoArrayInInstance(array: userArr)
             }
             else{
@@ -317,7 +315,6 @@ class HomeVC: UIViewController {
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil{
                 if let body = response["body"].dictionary{
-                    print(response)
                     if body["totalItemCount"] != nil{
                         //                              self.totalItemCount = body["totalItemCount"] as! Int
                     }
@@ -486,7 +483,6 @@ class HomeVC: UIViewController {
                 } else {
                     sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-                    print("added in recent")
                     self.recentdataArray[sender.tag].hasWishlist = true
                 }
             } else {
@@ -512,7 +508,6 @@ class HomeVC: UIViewController {
                 else{
                     sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-                    print("added in recent")
                     self.newproductArray[sender.tag].hasWishlist = true
                 }
                 
@@ -540,7 +535,6 @@ class HomeVC: UIViewController {
                 else{
                     sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-                    print("added in recent")
                     self.bestproductArray[sender.tag].hasWishlist = true
                 }
                 
@@ -568,7 +562,7 @@ class HomeVC: UIViewController {
                 else{
                     sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-                    print("added in recent")
+                   
                     self.hotproductArray[sender.tag].hasWishlist = true
                 }
                 
@@ -596,7 +590,6 @@ class HomeVC: UIViewController {
                 else{
                     sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-                    print("added in recent")
                     self.speciallproductArray[sender.tag].hasWishlist = true
                 }
                 
@@ -770,7 +763,6 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             return makeUPImageControl.count
         }
         else if collectionView == categoryCollectionView{
-            print(categoryArray.count)
             return categoryArray.count
         }
         else if collectionView == recentProductCV{
