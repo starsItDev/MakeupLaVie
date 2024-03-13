@@ -4190,15 +4190,23 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system" title=" "/>
                                 <connections>
-                                    <action selector="backBtn:" destination="sDm-WH-g7S" eventType="touchUpInside" id="uIh-7V-pOm"/>
+                                    <action selector="backButtonButton:" destination="jhC-y9-RqK" eventType="touchUpInside" id="t21-hg-kBi"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54w-P8-x8t">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54w-P8-x8t" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="60" y="137.66666666666666" width="273" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="j51-Fp-YT8"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" systemColor="systemRedColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your review must be at least 50 characters." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ2-Mg-Omf">
                                 <rect key="frame" x="25" y="317.66666666666669" width="297" height="18"/>
@@ -4217,6 +4225,9 @@
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButton:" destination="jhC-y9-RqK" eventType="touchUpInside" id="xIy-UA-Bic"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Review" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BE3-cL-GV7">
                                 <rect key="frame" x="20" y="207.66666666666663" width="353" height="100"/>
@@ -4249,6 +4260,10 @@
                             <constraint firstItem="olj-FF-vQf" firstAttribute="leading" secondItem="uiG-gU-GGM" secondAttribute="trailing" id="yXR-cp-J7g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cosmosRating" destination="54w-P8-x8t" id="cQa-Sm-ZoN"/>
+                        <outlet property="reviewTxtView" destination="BE3-cL-GV7" id="X1E-C3-JxB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLn-qH-Wfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
