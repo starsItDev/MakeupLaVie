@@ -458,7 +458,8 @@ extension ProductDetailsVC {
     @IBAction func reviewBtn(_ sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ReviewsVC") as! ReviewsVC
-        self.present(nextViewController, animated:true, completion:nil)
+        nextViewController.modalPresentationStyle = .fullScreen
+        self.present(nextViewController, animated:false, completion:nil)
     }
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

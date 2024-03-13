@@ -19,7 +19,8 @@ class AddReviewVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func backButtonButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: false)
+        self.dismiss(animated: false)
+        
     }
 
    @IBAction func submitButton(_ sender: UIButton) {
@@ -31,7 +32,8 @@ class AddReviewVC: UIViewController {
      postCompleteOrderAPICall(params: params)
  }
     func postCompleteOrderAPICall(params: [String: Any]) {
-        let url = base_url + "product/reviews/11/create"
+        let id = ""
+        let url = base_url + "product/reviews/" + id + "/create"
         Networking.instance.postApiCall(url: url, param: params) { (response, error, statusCode) in
             if error == nil {
                 if statusCode == 200 {
