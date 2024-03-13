@@ -9,6 +9,16 @@ import UIKit
 
 class ReviewsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBOutlet weak var productName: UILabel!
+    
+    
+    @IBOutlet weak var reviews1Label: UILabel!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -32,7 +42,7 @@ class ReviewsVC: UIViewController {
 }
 extension ReviewsVC: UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
