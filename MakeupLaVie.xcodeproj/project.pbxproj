@@ -126,6 +126,7 @@
 		E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */; };
 		E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A188812B4FC86100B49D17 /* MyOrderModel.swift */; };
 		E0C19E7E2B568306007CE996 /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C19E7D2B568306007CE996 /* CornerRadius.swift */; };
+		E0E609402BA0713C0086E7DF /* AddReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E6093F2BA0713C0086E7DF /* AddReviewVC.swift */; };
 		E0EC32772B4D821C00E7F057 /* OrderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */; };
 		E0EC327B2B4D82A000E7F057 /* OrderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */; };
 		E0F68EF32B4E78930075A915 /* orderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */; };
@@ -267,6 +268,7 @@
 		E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0A188812B4FC86100B49D17 /* MyOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderModel.swift; sourceTree = "<group>"; };
 		E0C19E7D2B568306007CE996 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		E0E6093F2BA0713C0086E7DF /* AddReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVC.swift; sourceTree = "<group>"; };
 		E0EC32762B4D821C00E7F057 /* OrderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHeaderView.xib; sourceTree = "<group>"; };
 		E0EC327A2B4D82A000E7F057 /* OrderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHeaderView.swift; sourceTree = "<group>"; };
 		E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTableViewCell.swift; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 				76A4A93929FA7E4B00C6C7D0 /* MyReviewsVC.swift */,
 				76A4A93B29FA7E6F00C6C7D0 /* NotificationsVC.swift */,
 				E0F68EF22B4E78930075A915 /* orderTableViewCell.swift */,
+				E0E6093F2BA0713C0086E7DF /* AddReviewVC.swift */,
 			);
 			path = "SettingVC ";
 			sourceTree = "<group>";
@@ -1007,6 +1010,7 @@
 				E0C19E7E2B568306007CE996 /* CornerRadius.swift in Sources */,
 				E0F8BB2B2B5961BD0074985D /* ProductTwoImageCollectionCell.swift in Sources */,
 				18BC18322A7A87F70035CD43 /* collectioncell.swift in Sources */,
+				E0E609402BA0713C0086E7DF /* AddReviewVC.swift in Sources */,
 				76A63D7629ED191600082DED /* HomeVC.swift in Sources */,
 				76A63D6D29ED185400082DED /* SignUpVC.swift in Sources */,
 				7696C80A29E51CB100383B01 /* SceneDelegate.swift in Sources */,
