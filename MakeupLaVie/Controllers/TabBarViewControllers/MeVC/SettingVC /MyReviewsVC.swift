@@ -10,9 +10,33 @@ import UIKit
 class MyReviewsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var reviewModel = [MyReviewResponse]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        myReviewAPI()
+    }
+    func myReviewAPI() {
+        let urlString = base_url + "user/reviews"
+        Networking.instance.getApiCall(url: urlString) { (response, error, statusCode) in
+            if error == nil && statusCode == 200 {
+                do {
+                    let jsonData = try response.rawData()
+                    let decoder = JSONDecoder()
+                    let myOrderModel = try decoder.decode(MyReviewModel.self, from: jsonData)
+                    print("Status Code: \(myOrderModel.statusCode)")
+                    self.reviewModel.append(contentsOf: myOrderModel.body.response)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } catch {
+                    print("Error decoding JSON: \(error.localizedDescription)")
+                }
+            } else {
+                print("Something went wrong")
+            }
+        }
     }
     private func setupTableView() {
         tableView.delegate = self
@@ -29,7 +53,7 @@ class MyReviewsVC: UIViewController {
 }
 extension MyReviewsVC: UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return reviewModel.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -39,6 +63,13 @@ extension MyReviewsVC: UITableViewDelegate ,UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsTableViewCell",for: indexPath) as? ReviewsTableViewCell? else {
             fatalError()
         }
+        let reviews = reviewModel[indexPath.row]
+        cell?.titleNameLabel.text = reviews.product.title
+        cell?.desLabel.text = reviews.product.description
+        cell?.reviewsLabel.text = reviews.review
+        cell?.dateLabel.text = reviews.product.updatedAt
+        cell?.imageReviewView.setImage(with: reviews.product.imageIcon)
+        cell?.ratingView.rating = Double(reviews.rating)
         return cell ?? UITableViewCell()
     }
 }

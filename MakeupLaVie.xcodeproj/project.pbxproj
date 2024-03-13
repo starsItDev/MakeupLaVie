@@ -123,6 +123,8 @@
 		76ADA3702A25C87D0084A376 /* ViewProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADA36F2A25C87D0084A376 /* ViewProductModel.swift */; };
 		76F284C22A3C71CB00E5850D /* CategoryProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */; };
 		76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F4B3712A43222E00E36DC2 /* WishListModel.swift */; };
+		E02D966A2BA1BAC6007553D6 /* ProductReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D96692BA1BAC6007553D6 /* ProductReviewModel.swift */; };
+		E02D966C2BA1BBD5007553D6 /* MyReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D966B2BA1BBD5007553D6 /* MyReviewModel.swift */; };
 		E039B5DD2B45A88200CB38D8 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E039B5DC2B45A88200CB38D8 /* IQKeyboardManagerSwift */; };
 		E052BB702B58FBE900ABCEF1 /* SwipingMediaView in Frameworks */ = {isa = PBXBuildFile; productRef = E052BB6F2B58FBE900ABCEF1 /* SwipingMediaView */; };
 		E052BB722B59002500ABCEF1 /* ProductImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */; };
@@ -269,6 +271,8 @@
 		76ADA36F2A25C87D0084A376 /* ViewProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProductModel.swift; sourceTree = "<group>"; };
 		76F284C12A3C71CB00E5850D /* CategoryProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductModel.swift; sourceTree = "<group>"; };
 		76F4B3712A43222E00E36DC2 /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
+		E02D96692BA1BAC6007553D6 /* ProductReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductReviewModel.swift; sourceTree = "<group>"; };
+		E02D966B2BA1BBD5007553D6 /* MyReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewModel.swift; sourceTree = "<group>"; };
 		E052BB712B59002500ABCEF1 /* ProductImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0A188812B4FC86100B49D17 /* MyOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderModel.swift; sourceTree = "<group>"; };
 		E0C19E7D2B568306007CE996 /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
@@ -628,6 +632,8 @@
 				76A6EE282A389592009AA9DF /* SecondBrowseProductModel.swift */,
 				E0A188812B4FC86100B49D17 /* MyOrderModel.swift */,
 				188F65FF2B5ABB170080BE8E /* AddressModel.swift */,
+				E02D96692BA1BAC6007553D6 /* ProductReviewModel.swift */,
+				E02D966B2BA1BBD5007553D6 /* MyReviewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -953,6 +959,7 @@
 				18BC18302A7A7CC70035CD43 /* GenericListingModel.swift in Sources */,
 				18052EB62A651870009BABDF /* navigationBarView.swift in Sources */,
 				76417DDD2A0CED7700894E8A /* TrendingCollectionViewCell.swift in Sources */,
+				E02D966C2BA1BBD5007553D6 /* MyReviewModel.swift in Sources */,
 				1821D96D2B623F43007E915A /* EditAddressVC.swift in Sources */,
 				188F65FE2B5ABA7F0080BE8E /* AddressesTableViewCell.swift in Sources */,
 				76883E402A247F3C00240AF1 /* BestProductsTableView.swift in Sources */,
@@ -981,6 +988,7 @@
 				E0A188822B4FC86100B49D17 /* MyOrderModel.swift in Sources */,
 				7688494C2A1C9F2700D81158 /* ViewModel.swift in Sources */,
 				1821D96B2B600011007E915A /* ToastView.swift in Sources */,
+				E02D966A2BA1BAC6007553D6 /* ProductReviewModel.swift in Sources */,
 				76F4B3722A43222E00E36DC2 /* WishListModel.swift in Sources */,
 				7696C81229E51CB200383B01 /* MakeupLaVie.xcdatamodeld in Sources */,
 				18CCC6382A86148B0046E43A /* ReviewTableViewCell.swift in Sources */,
