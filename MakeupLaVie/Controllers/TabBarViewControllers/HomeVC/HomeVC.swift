@@ -41,7 +41,7 @@ class HomeVC: UIViewController {
     var isSideViewOpen: Bool = false
     var timer: Timer?
     var currentIndex = 0
-    var makeUPImageControl:[String] = ["big-gift-pack-01","big-gift-pack-02","big-gift-pack-03","big-gift-pack-04","big-gift-pack-05","big-gift-pack-07","big-gift-pack-08","big-gift-pack-09"]
+    var makeUPImageControl:[String] = ["1","2","3","4","5"]
     private var viewModel = HomeViewModel()
     private var selectedID: Int?
     var counter = 0

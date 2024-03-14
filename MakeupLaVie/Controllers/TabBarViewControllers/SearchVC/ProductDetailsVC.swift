@@ -26,6 +26,7 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var reviewCountLbl: UILabel!
     
     //MARK: - Variables
     var selectedIndex: Int?
@@ -35,13 +36,15 @@ class ProductDetailsVC: UIViewController {
     var hasCartItem = false
     var hasWishList = false
     var selectedResponseID: Int?
-    private var responseID: Int?
+    var responseID: Int?
     var responseIds: [Int] = []
     var selectedIDResponse: Int?
     var similarProductsArr = [ViewProductBody]()
     var dataModel = [String: Any]()
     var photosArr = [Photo]()
     var selectedIndexPath: IndexPath?
+    var productName: String?
+    var canReview = false
     
     //MARK: - Override Functions
     override func viewDidLoad() {
@@ -225,18 +228,20 @@ class ProductDetailsVC: UIViewController {
     func updateUI(model: [String: Any]) {
         self.responseID = model["id"] as? Int
         titleLbl.text = model["title"] as? String
+        self.productName = titleLbl.text
         rsLbl.text = model["price"] as? String
         let description = model["description"] as? String
         let plainTextDescription = description?.htmlToPlainText
-        //desLbl.text = plainTextDescription
         descTextView.text = plainTextDescription
         descTextView.sizeToFit()
+        let count = model["reviews_count"] as? Int
+        reviewCountLbl.text = "Reviews(\(count ?? 0))"
+        self.canReview = model["canReview"] as? Bool ?? false
         self.hasCartItem = model["hasCartItem"] as? Bool ?? false
-        //print(model.body.hasCartItem)
-        if self.hasCartItem{
+        if self.hasCartItem {
             self.addCartBtn.setTitle("REMOVE FROM CART", for: .normal)
         }
-        else{
+        else {
             self.addCartBtn.setTitle("ADD TO CART", for: .normal)
         }
 
@@ -245,7 +250,7 @@ class ProductDetailsVC: UIViewController {
             self.wishListBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             self.wishListBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
         }
-        else{
+        else {
             self.wishListBtn.setImage(UIImage(systemName: "heart"), for: .normal)
             //self.wishListBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
@@ -261,7 +266,6 @@ class ProductDetailsVC: UIViewController {
 //        self.similarProductsArr = model["similarProducts"] as? Array ?? []
         if let similarProducts = model["similarProducts"] as? [[String: Any]] {
 
-            // Iterate through the JSON array and create ViewProductBody instances
             for item in similarProducts {
                 if let id = item["id"] as? Int,
                    let title = item["title"] as? String,
@@ -458,6 +462,10 @@ extension ProductDetailsVC {
     @IBAction func reviewBtn(_ sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ReviewsVC") as! ReviewsVC
+        nextViewController.giftName = self.productName
+        nextViewController.productId = self.responseID
+        nextViewController.canReview = self.canReview
+        nextViewController.comingFromAdd = false
         nextViewController.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated:false, completion:nil)
     }

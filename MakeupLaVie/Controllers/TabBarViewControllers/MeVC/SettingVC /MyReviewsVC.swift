@@ -39,8 +39,8 @@ class MyReviewsVC: UIViewController {
         }
     }
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.estimatedRowHeight = 10.0
         tableView.rowHeight = UITableView.automaticDimension
         self.tableView.register(UINib(nibName: "ReviewsTableViewCell", bundle: nil),forCellReuseIdentifier:"ReviewsTableViewCell")
@@ -65,9 +65,17 @@ extension MyReviewsVC: UITableViewDelegate ,UITableViewDataSource{
         }
         let reviews = reviewModel[indexPath.row]
         cell?.titleNameLabel.text = reviews.product.title
-        cell?.desLabel.text = reviews.product.description
+        cell?.desLabel.text = reviews.product.description.htmlToPlainText
         cell?.reviewsLabel.text = reviews.review
-        cell?.dateLabel.text = reviews.product.updatedAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+        if let date = dateFormatter.date(from: reviews.product.createdAt) {
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let formattedDate = dateFormatter.string(from: date)
+            cell?.dateLabel.text = formattedDate
+        } else {
+            cell?.dateLabel.text = ""
+        }
         cell?.imageReviewView.setImage(with: reviews.product.imageIcon)
         cell?.ratingView.rating = Double(reviews.rating)
         return cell ?? UITableViewCell()
