@@ -41,7 +41,7 @@ class HomeVC: UIViewController {
     var isSideViewOpen: Bool = false
     var timer: Timer?
     var currentIndex = 0
-    var makeUPImageControl:[String] = ["1","2","3","4","5"]
+    var makeUPImageControl:[String] = ["banner1", "banner2", "banner3"]
     private var viewModel = HomeViewModel()
     private var selectedID: Int?
     var counter = 0

@@ -67,6 +67,7 @@ extension MyReviewsVC: UITableViewDelegate ,UITableViewDataSource{
         cell?.titleNameLabel.text = reviews.product.title
         cell?.desLabel.text = reviews.product.description.htmlToPlainText
         cell?.reviewsLabel.text = reviews.review
+        cell?.selectionStyle = .none
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
         if let date = dateFormatter.date(from: reviews.product.createdAt) {

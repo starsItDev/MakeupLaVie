@@ -178,6 +178,7 @@ extension WishListVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
         cell.heartBtn.tag = indexPath.item
         cell.heartBtn.addTarget(self, action: #selector(heartBtnTapped(sender: )), for: .touchUpInside)
+        cell.cosmosRating.rating = instance.rating ?? 0
         cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 6

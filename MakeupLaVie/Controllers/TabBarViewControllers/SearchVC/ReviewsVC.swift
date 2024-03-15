@@ -146,6 +146,7 @@ extension ReviewsVC: UITableViewDelegate ,UITableViewDataSource{
         cell?.titleNameLabel.text = review.owner.title
         cell?.reviewsLabel.text = review.review
         cell?.desLabel.text = review.createdAt
+        cell?.selectionStyle = .none
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
         if let date = dateFormatter.date(from: review.createdAt) {

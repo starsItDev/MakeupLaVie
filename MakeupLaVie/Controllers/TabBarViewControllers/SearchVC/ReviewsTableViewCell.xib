@@ -76,7 +76,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-sX-82m" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="272" y="80" width="100" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2Rw-x2-xgQ"/>
                                     <constraint firstAttribute="width" constant="100" id="C7e-pr-W7B"/>
@@ -119,7 +118,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="white-gray"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="kah-mU-BbX" secondAttribute="bottom" id="BGN-hY-z3d"/>
                             <constraint firstItem="kah-mU-BbX" firstAttribute="leading" secondItem="SsY-gD-EM8" secondAttribute="leading" constant="12" id="DUC-8K-MYl"/>
@@ -153,6 +152,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="white-gray"/>
                 <constraints>
                     <constraint firstItem="SsY-gD-EM8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="V6f-qQ-3FN"/>
                     <constraint firstAttribute="bottom" secondItem="SsY-gD-EM8" secondAttribute="bottom" constant="5" id="X7r-D0-Syw"/>
@@ -176,6 +176,9 @@
         <image name="ic_user_edit" width="512" height="512"/>
         <namedColor name="black-white">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="white-gray">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
