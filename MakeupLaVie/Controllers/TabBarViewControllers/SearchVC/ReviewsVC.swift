@@ -12,6 +12,8 @@ protocol SecondViewControllerDelegate: AnyObject {
 }
 
 class ReviewsVC: UIViewController, SecondViewControllerDelegate {
+    
+    //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var overallRatingLbl: UILabel!
@@ -28,12 +30,16 @@ class ReviewsVC: UIViewController, SecondViewControllerDelegate {
     @IBOutlet weak var threeStarProgress: UIProgressView!
     @IBOutlet weak var twoStarProgress: UIProgressView!
     @IBOutlet weak var oneStarProgress: UIProgressView!
+    @IBOutlet weak var noReviewView: UIView!
+    
+    //MARK: Variables
     var giftName: String?
     var productId: Int?
     var canReview: Bool?
     var comingFromAdd = false
     var productReview = [ReviewResponse]()
     
+    //MARK: LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -99,6 +105,9 @@ class ReviewsVC: UIViewController, SecondViewControllerDelegate {
                                 }
                             }
                             let totalReview = body["totalItemCount"]
+                            if totalReview == 0{
+                                self.noReviewView.isHidden = false
+                            }
                             self.totalReviewCount.text = "\(totalReview ?? 0) Reviews"
                         }
                         self.tableView.reloadData()
