@@ -3040,11 +3040,6 @@
                             <constraint firstItem="Vnu-OT-0AS" firstAttribute="bottom" secondItem="mGU-bh-iH4" secondAttribute="bottom" id="w9k-Pi-Hr9"/>
                             <constraint firstItem="mGU-bh-iH4" firstAttribute="bottom" secondItem="1Nx-ah-Ogm" secondAttribute="bottom" id="yDg-95-Hcf"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="1Nx-ah-Ogm"/>
-                            </mask>
-                        </variation>
                     </view>
                     <size key="freeformSize" width="393" height="1000"/>
                     <connections>
