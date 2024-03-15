@@ -27,14 +27,20 @@ class AddReviewVC: UIViewController {
         self.dismiss(animated: false)
     }
 
-   @IBAction func submitButton(_ sender: UIButton) {
-      let params: [String: Any] = [
-        "rating": "\(cosmosRating.rating)",
-         "review": reviewTxtView.text ?? "",
-         "recommend": "1"
-     ]
-     postCompleteOrderAPICall(params: params)
- }
+    @IBAction func submitButton(_ sender: UIButton) {
+        guard let reviewText = reviewTxtView.text,
+              !reviewText.isEmpty,
+              reviewText.trimmingCharacters(in: .whitespacesAndNewlines) != "Write review" else {
+            utilityFunctions.showAlertWithTitle(title: "Alert", withMessage: "Please write a review before submitting", withNavigation: self)
+            return
+        }
+        let params: [String: Any] = [
+            "rating": "\(cosmosRating.rating)",
+            "review": reviewTxtView.text ?? "",
+            "recommend": "1"
+        ]
+        postCompleteOrderAPICall(params: params)
+    }
     func postCompleteOrderAPICall(params: [String: Any]) {
         let url = base_url + "product/reviews/\(reviewProductId ?? 0)/create"
         Networking.instance.postApiCall(url: url, param: params) { (response, error, statusCode) in

@@ -27,6 +27,7 @@ class ProductDetailsVC: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var reviewCountLbl: UILabel!
+    @IBOutlet weak var ratingCount: UILabel!
     
     //MARK: - Variables
     var selectedIndex: Int?
@@ -236,6 +237,8 @@ class ProductDetailsVC: UIViewController {
         descTextView.sizeToFit()
         let count = model["reviews_count"] as? Int
         reviewCountLbl.text = "Reviews(\(count ?? 0))"
+        let rating = model["rating"] as? Double
+        ratingCount.text = "(\(rating ?? 0))"
         self.canReview = model["canReview"] as? Bool ?? false
         self.hasCartItem = model["hasCartItem"] as? Bool ?? false
         if self.hasCartItem {
