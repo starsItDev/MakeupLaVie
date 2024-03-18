@@ -40,7 +40,7 @@ class CollectionViewInsideTableViewCell: UITableViewCell {
         }
         else{
             
-            let image = UIImage(systemName: "heart.fill")?.withTintColor(#colorLiteral(red: 0.6508949399, green: 0.03400629759, blue: 0.03454545513, alpha: 1))
+            let image = UIImage(systemName: "heart.fill")?.withTintColor(#colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1))
             sender.setImage(image, for: .normal)
             sender.isSelected = true
         }

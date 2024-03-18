@@ -35,7 +35,7 @@ class CartVC: UIViewController {
     var isDeleteButtonEnabled = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        VoucherView.layer.borderColor = UIColor.red.cgColor
+        VoucherView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.5882352941, blue: 0.2862745098, alpha: 1)
         VoucherView.layer.borderWidth = 1.0
         VoucherView.layer.cornerRadius = 8
         applyView.layer.cornerRadius = 8

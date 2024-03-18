@@ -802,7 +802,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.catagoryimage.setImage(with: categoryArray[indexPath.item].catagoryimage)
             cell.catagoryimage.layer.cornerRadius = 40
             cell.catagoryimage.layer.borderWidth = 2
-            cell.catagoryimage.layer.borderColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+            cell.catagoryimage.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.5882352941, blue: 0.2862745098, alpha: 1)
             cell.catagorynames.text = categoryArray[indexPath.item].catagorylabel
             //            return cell
             print("collectionview 2")
