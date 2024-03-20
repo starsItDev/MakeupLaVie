@@ -22,6 +22,7 @@ class ShippingViewController: UIViewController {
     @IBOutlet weak var address2Txt: UITextField!
     @IBOutlet weak var countryImage: UIImageView!
     @IBOutlet weak var stateImage: UIImageView!
+    @IBOutlet weak var paymentButton: UIButton!
     @IBOutlet weak var fieldsStackView: UIStackView!
     @IBOutlet weak var stackHeight: NSLayoutConstraint!
     @IBOutlet weak var existingAddressLbl: UILabel!
@@ -75,6 +76,9 @@ class ShippingViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        paymentButton.isUserInteractionEnabled = true
+    }
     
     // MARK: - HelperFunctions
     @objc func handleTap() {
@@ -93,95 +97,75 @@ class ShippingViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func paymentButton(_ sender: UIButton) {
-        if !isReviewButtonEnabled {
-                    return
-                }
+        paymentButton.isUserInteractionEnabled = false
 
-                isReviewButtonEnabled = false
+           if (existingAddressTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "Existing Address is required")
+               return
+           }
+           if (firstNameTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "First Name is required")
+               return
+           }
+           if (lastNameTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "Last Name is required")
+               return
+           }
+           if (phoneNoTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "Phone Number is required")
+               return
+           }
+           if (phoneNoTxt.text?.count ?? 0 < 6) {
+               showAlertAndEnableButton(message: "Phone Number should be at least six characters")
+               return
+           }
+           if (countryTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "Country is required")
+               return
+           }
+           if (stateTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "State is required")
+               return
+           }
+           if (cityTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "City Name is required")
+               return
+           }
+           if (postCodeTxt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "Postcode/Zip Name is required")
+               return
+           }
+           if (address1Txt?.text?.isEmpty)! {
+               showAlertAndEnableButton(message: "Address 1 is required")
+               return
+           } else {
+               params["first_name"] = firstNameTxt.text
+               params["last_name"] = lastNameTxt.text
+               params["phone"] = phoneNoTxt.text
+               params["country"] = countryTxt.text
+               params["state"] = stateTxt.text
+               params["city"] = cityTxt.text
+               params["zip"] = postCodeTxt.text
+               params["address_1"] = address1Txt.text
+               params["address_2"] = address2Txt.text
+               params["default"] = 1
+               var paramDic = [String: Any]()
+               if self.addressId == 0 {
+                   paramDic["address_id"] = "1"
+                   shippingId = 1
+               } else {
+                   paramDic["address_id"] = "\(addressId)"
+                   shippingId = addressId
+               }
+               paramDic["shipping"] = params
+               postShippingAPICall(params: paramDic)
+           }
+       }
 
-//        if sameAddress == true{
-//            params["first_name"] = billingData?.firstName
-//            params["last_name"] = billingData?.lastName
-//            params["phone"] = billingData?.number
-//            params["country"] = billingData?.country
-//            params["state"] = billingData?.province
-//            params["city"] = billingData?.city
-//            params["zip"] = billingData?.postcode
-//            params["address_1"] = billingData?.AddressOne
-//            params["address_2"] = billingData?.AddressTwo
-//            params["default"] = 1
-//            var paramDic = [String: Any]()
-//            paramDic["address_id"] = billingData?.id
-//            paramDic["shipping"] = params
-//            postShippingAPICall(params: paramDic)
-//        }
-//        else {
-            if (existingAddressTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Existing Address is required", withNavigation: self)
-                return
-            }
-            if (firstNameTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "First Name is required", withNavigation: self)
-                return
-            }
-            if (lastNameTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Last Name is required", withNavigation: self)
-                return
-            }
-            if (phoneNoTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Phone Number is required", withNavigation: self)
-                return
-            }
-            if (phoneNoTxt.text?.count ?? 0 < 6) {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Phone Number should be at least six characters", withNavigation: self)
-                return
-            }
-            if (countryTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Country is required", withNavigation: self)
-                return
-            }
-            if (stateTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "State is required", withNavigation: self)
-                return
-            }
-            if (cityTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "City Name is required", withNavigation: self)
-                return
-            }
-            if (postCodeTxt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Postcode/Zip Name is required", withNavigation: self)
-                return
-            }
-            if (address1Txt?.text?.isEmpty)! {
-                utilityFunctions.showAlertWithTitle(title: "", withMessage: "Address 1 is required", withNavigation: self)
-                return
-            }
-            else{
-                params["first_name"] = firstNameTxt.text
-                params["last_name"] = lastNameTxt.text
-                params["phone"] = phoneNoTxt.text
-                params["country"] = countryTxt.text
-                params["state"] = stateTxt.text
-                params["city"] = cityTxt.text
-                params["zip"] = postCodeTxt.text
-                params["address_1"] = address1Txt.text
-                params["address_2"] = address2Txt.text
-                params["default"] = 1
-                var paramDic = [String: Any]()
-                if self.addressId == 0{
-                    paramDic["address_id"] = "1"
-                    shippingId = 1
-                }
-                else{
-                    paramDic["address_id"] = "\(addressId)"
-                    shippingId = addressId
-                }
-                paramDic["shipping"] = params
-                postShippingAPICall(params: paramDic)
-                
-            }
-//        }
-    }
+       func showAlertAndEnableButton(message: String) {
+           utilityFunctions.showAlertWithTitle(title: "", withMessage: message, withNavigation: self)
+           paymentButton.isUserInteractionEnabled = true
+       }
 //    @IBAction func unCheckButton(_ sender: UIButton) {
 //        sender.isSelected = !sender.isSelected
 //        if sender.isSelected {
@@ -492,6 +476,7 @@ extension ShippingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
 }
+
 
 extension ShippingViewController: UITextFieldDelegate{
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

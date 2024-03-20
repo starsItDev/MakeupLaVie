@@ -107,6 +107,8 @@ class ReviewsVC: UIViewController, SecondViewControllerDelegate {
                             let totalReview = body["totalItemCount"]
                             if totalReview == 0{
                                 self.noReviewView.isHidden = false
+                            } else {
+                                self.noReviewView.isHidden = true
                             }
                             self.totalReviewCount.text = "\(totalReview ?? 0) Reviews"
                         }

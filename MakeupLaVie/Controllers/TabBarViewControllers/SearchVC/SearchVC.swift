@@ -5,6 +5,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filterBtn: UIButton!
+    @IBOutlet weak var noProductView: UIView!
     
     private var viewModel = BrowseProductViewModel()
     
@@ -98,6 +99,15 @@ class SearchVC: UIViewController {
             product.catagorylabel.lowercased().contains(searchText.lowercased())
         }
         collectionView.reloadData()
+        
+        // Check if there are no matching products
+        if filteredProducts.isEmpty {
+            // Show the noProductView if no products match the search query
+            noProductView.isHidden = false
+        } else {
+            // Hide the noProductView if there are matching products
+            noProductView.isHidden = true
+        }
     }
 
     @IBAction func filterBtnTapped(_ sender: UIButton) {

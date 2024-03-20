@@ -518,21 +518,19 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     }
     
     private func loadMoreData(){
-        //get ready the data . fetch
-        
-        let nextPageNumber = currentPage + 1
-        currentPage = nextPageNumber
-        if currentPage <= totalPages{
-            allProductAPI(page: currentPage)
-            //self.totalHeight = 0
-            //for view in self.scrollView.subviews {
-            self.totalHeight += allproductsCV.contentSize.height
-                    //}
-                    
-                    // Set the content size of the scroll view
-            self.scrollViewHeight.constant = self.totalHeight
-        }
-    }
+         //get ready the data . fetch
+         let nextPageNumber = currentPage + 1
+         currentPage = nextPageNumber
+         if currentPage < totalPages{
+             allProductAPI(page: currentPage)
+             self.scrollViewHeight.constant = self.totalHeight + allproductsCV.contentSize.height
+         }
+         else if currentPage == totalPages{
+             allProductAPI(page: currentPage)
+             let height = self.scrollViewHeight.constant - allproductsCV.contentSize.height
+             self.scrollViewHeight.constant = allproductsCV.contentSize.height + height + 200//200 for tabbar height
+         }
+     }
 
     @objc func recentHeartBtnTapped(sender: UIButton) {
         // Disable the button to prevent multiple clicks
