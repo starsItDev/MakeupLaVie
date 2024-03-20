@@ -80,7 +80,8 @@ class SearchVC: UIViewController {
         collectionView.dataSource = self
         //collectionView.prefetchDataSource = self
     }
-    
+    @IBAction func searchBtnTapped(_ sender: UIButton) {
+    }
     @IBAction func filterBtnTapped(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BrandPKViewController") as! BrandPKViewController
         self.navigationController?.pushViewController(vc, animated: true)

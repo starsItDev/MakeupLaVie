@@ -11,6 +11,11 @@ import SDWebImage
 class ProductDetailsVC: UIViewController {
     
     //MARK: - Outlets
+    
+    @IBOutlet weak var available: UILabel!
+    
+    @IBOutlet weak var quanityView: UIView!
+    
     @IBOutlet weak var productCollectionView: UICollectionView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet weak var rsLbl: UILabel!

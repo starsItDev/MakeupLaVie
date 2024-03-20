@@ -45,6 +45,11 @@ class CategoriesNextVC: UIViewController {
             browseProdAPICall(page: currentPage)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.productsArr.removeAll()
+    }
+    
     @objc func filterSuccess(_ notification: Notification){
         print((notification.userInfo?["userInfo"]!)! as? [String:Any] ?? [:])
         let notif = notification.userInfo?["userInfo"]! as? [String:Any] ?? [:]
@@ -70,6 +75,7 @@ class CategoriesNextVC: UIViewController {
         if let searchbarText = notif["search"] as? String{
             str = str + "&search=\(searchbarText)"
         }
+        currentPage = 1
         categoryAPICall(page: currentPage)
     }
     
@@ -159,7 +165,7 @@ class CategoriesNextVC: UIViewController {
         //        self.navigationController?.pushViewController(vc!, animated: true)
     }
     func categoryAPICall(page: Int) {
-        self.productsArr.removeAll()
+        
         guard let selectedID = self.selectedID else {
             print("No selected ID available.")
             return
@@ -180,6 +186,9 @@ class CategoriesNextVC: UIViewController {
                 if let body = response["body"].dictionary {
                     if body["totalItemCount"] != nil{
 //                      self.totalItemCount = body["totalItemCount"] as! Int
+                    }
+                    if body["totalPages"] != nil{
+                        self.totalPages = body["totalPages"]?.intValue ?? 0
                     }
                     if let res = body["response"]?.array{
                         print(res)
