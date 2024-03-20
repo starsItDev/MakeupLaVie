@@ -63,6 +63,7 @@ class SearchVC: UIViewController {
     @objc func refreshData() {
         currentPage = 1
         self.products.removeAll()
+        searchBar.text = ""
         fetchDataFromAPI(page: currentPage)
         refreshControl.endRefreshing()
     }
@@ -81,7 +82,24 @@ class SearchVC: UIViewController {
         //collectionView.prefetchDataSource = self
     }
     @IBAction func searchBtnTapped(_ sender: UIButton) {
+        performSearch()
     }
+
+    func performSearch() {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            // If the search text is empty, reset to display all products
+            filteredProducts = products
+            collectionView.reloadData()
+            return
+        }
+
+        // Filter products based on search text
+        filteredProducts = products.filter { product in
+            product.catagorylabel.lowercased().contains(searchText.lowercased())
+        }
+        collectionView.reloadData()
+    }
+
     @IBAction func filterBtnTapped(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BrandPKViewController") as! BrandPKViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -200,45 +218,27 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 
 extension SearchVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //filterProducts(with: searchText)
-        guard !searchText.isEmpty else{
-            filteredProducts = products
-            collectionView.reloadData()
-            return
+            if searchText.isEmpty {
+                // If the search text is empty, show all products
+                filteredProducts = products
+                collectionView.reloadData()
+            }
         }
-        filteredProducts = products.filter({hotDeal -> Bool in
-            hotDeal.catagorylabel.lowercased().contains(searchText.lowercased())
-        })
-        collectionView.reloadData()
-    }
-    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        // Clear the search and reload all products
+        filteredProducts = products
         collectionView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder() // Dismiss the keyboard
-        collectionView.reloadData()
+        // Perform search when the search button is tapped
+        performSearch()
     }
     
-    //    func filterProducts(with searchText: String) {
-    //        if isSearching {
-    //            filteredProducts = viewModel.products.map { product in
-    //                let filteredResponse = product.body.response.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
-    //                return BrowseProductModel(statusCode: product.statusCode, body: BrowseProductBody(totalItemCount: 0, totalPages: 0, response: filteredResponse))
-    //            }
-    //        } else {
-    //            filteredProducts = viewModel.products
-    //        }
-    //
-    //        responseIds = filteredProducts.flatMap { $0.body.response.map { $0.id } }
-    //
-    //        collectionView.reloadData()
-    //    }
-    
-    
+    // Your existing performSearch method remains the same
 }
 
 extension SearchVC {
@@ -317,15 +317,3 @@ extension SearchVC {
         }
     }
 }
-
-//extension SearchVC: UICollectionViewDataSourcePrefetching {
-//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-//        let totalItems = collectionView.numberOfItems(inSection: 0)
-//        let lastIndexPath = indexPaths.last
-//
-//        if let lastItem = lastIndexPath?.item, lastItem == totalItems - 1 {
-//            // Fetch more data when reaching the last item
-//            //fetchDataFromAPI()
-//        }
-//    }
-//}

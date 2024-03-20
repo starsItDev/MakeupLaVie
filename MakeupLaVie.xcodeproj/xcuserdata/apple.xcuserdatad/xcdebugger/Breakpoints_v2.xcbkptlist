@@ -1504,8 +1504,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "updateAddCartButtonText()"
             landmarkType = "7">
             <Locations>
@@ -1552,8 +1552,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "updateUI(model:)"
             landmarkType = "7">
             <Locations>
@@ -1695,8 +1695,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "apiCall()"
             landmarkType = "7">
             <Locations>
@@ -1743,8 +1743,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "minusclick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1916,8 +1916,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "categoryAPICall(page:)"
             landmarkType = "7">
             <Locations>
@@ -1964,28 +1964,13 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "categoryAPICall(page:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "07731AD9-CDBE-4CFC-9703-4AF2A18E8CF9 - fd7e8f1d05752724"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.categoryAPICall(sortingString: Swift.String) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160"
-                  offsetFromSymbolStart = "476">
-               </Location>
-               <Location
-                  uuid = "07731AD9-CDBE-4CFC-9703-4AF2A18E8CF9 - 8e53479e8445e790"
+                  uuid = "07731AD9-CDBE-4CFC-9703-4AF2A18E8CF9 - 8e53479e8445e0a9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1995,12 +1980,12 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "668">
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "636">
                </Location>
                <Location
-                  uuid = "07731AD9-CDBE-4CFC-9703-4AF2A18E8CF9 - 8e53479e8445e790"
+                  uuid = "07731AD9-CDBE-4CFC-9703-4AF2A18E8CF9 - 8e53479e8445e0d6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2010,9 +1995,9 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "794">
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "631">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2027,43 +2012,43 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "sortingBtnTapped(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - f3dcb2833c1081b9"
+                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - 7cafb88c6ac48367"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
                   moduleName = "MakeupLaVie"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
                   offsetFromSymbolStart = "139">
                </Location>
                <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - 839924b1a068c3b4"
+                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - cea2ebef6bcc18f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Optional&lt;__C.UIAlertAction&gt;) -&gt; () in MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
                   moduleName = "MakeupLaVie"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "47">
                </Location>
                <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - 7cafb88c6ac4828a"
+                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - 7cafb88c6ac48340"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2073,57 +2058,12 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - cea2ebef6bcc0c5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIAlertAction&gt;) -&gt; () in MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "68">
-               </Location>
-               <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - cea2ebef6bcc0ea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIAlertAction&gt;) -&gt; () in MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - 7cafb88c6ac4828a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
                   offsetFromSymbolStart = "139">
                </Location>
                <Location
-                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - cea2ebef6bcc0ea"
+                  uuid = "654C8FA8-AB28-4DA5-A1EC-6C4C5A2DFC22 - cea2ebef6bcc1ac"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2133,8 +2073,8 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
                   offsetFromSymbolStart = "47">
                </Location>
             </Locations>
@@ -2150,73 +2090,13 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "filterSuccess(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 13c1d1701fc925ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.filterSuccess(Foundation.Notification) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "1722">
-               </Location>
-               <Location
-                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 13c1d1701fc925ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.filterSuccess(Foundation.Notification) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "248">
-               </Location>
-               <Location
-                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 13c1d1701fc925ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.filterSuccess(Foundation.Notification) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "255">
-               </Location>
-               <Location
-                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 13c1d1701fc9258d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.filterSuccess(Foundation.Notification) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "248">
-               </Location>
-               <Location
-                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 9cb2db7f491d20bd"
+                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 9cb2db7f491d2021"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2226,12 +2106,12 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "420">
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "1780">
                </Location>
                <Location
-                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 9cb2db7f491d20bd"
+                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 9cb2db7f491d2021"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2241,8 +2121,23 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "2083">
+               </Location>
+               <Location
+                  uuid = "182F28B6-B35B-4906-BBBA-2E1B05CA4BAC - 9cb2db7f491d27c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.CategoriesNextVC.filterSuccess(Foundation.Notification) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
                   offsetFromSymbolStart = "248">
                </Location>
             </Locations>
@@ -2711,8 +2606,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "browseProdAPICall(page:)"
             landmarkType = "7">
             <Locations>
@@ -2897,13 +2792,13 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "browseProdAPICall(page:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "BCECE377-6338-46F3-9936-FD55FB58AB03 - 9f7da900c2ecae0a"
+                  uuid = "BCECE377-6338-46F3-9936-FD55FB58AB03 - 9f7da900c2ecadcd"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2913,12 +2808,12 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "211"
-                  endingLineNumber = "211"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "106">
                </Location>
                <Location
-                  uuid = "BCECE377-6338-46F3-9936-FD55FB58AB03 - 9f7da900c2ecacc5"
+                  uuid = "BCECE377-6338-46F3-9936-FD55FB58AB03 - 9f7da900c2ecadec"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -2928,23 +2823,8 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "228"
-                  endingLineNumber = "228"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "BCECE377-6338-46F3-9936-FD55FB58AB03 - 9f7da900c2ecacc5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.browseProdAPICall(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "228"
-                  endingLineNumber = "228"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
                   offsetFromSymbolStart = "106">
                </Location>
             </Locations>
@@ -3420,8 +3300,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "wishListAPI()"
             landmarkType = "7">
             <Locations>
@@ -3485,6 +3365,51 @@
                   endingLineNumber = "155"
                   offsetFromSymbolStart = "860">
                </Location>
+               <Location
+                  uuid = "56DE378F-C300-469B-95E7-11AC646999BE - ba5c477094daf564"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in MakeupLaVie.ProductDetailsVC.wishListAPI() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "860">
+               </Location>
+               <Location
+                  uuid = "56DE378F-C300-469B-95E7-11AC646999BE - ba5c477094daf564"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in MakeupLaVie.ProductDetailsVC.wishListAPI() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "377">
+               </Location>
+               <Location
+                  uuid = "56DE378F-C300-469B-95E7-11AC646999BE - ba5c477094daf545"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in MakeupLaVie.ProductDetailsVC.wishListAPI() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "377">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -3498,8 +3423,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "compareAPI()"
             landmarkType = "7">
             <Locations>
@@ -3563,6 +3488,51 @@
                   endingLineNumber = "137"
                   offsetFromSymbolStart = "1893">
                </Location>
+               <Location
+                  uuid = "8E2D0030-D92E-4D2A-8C36-BFF1E90E636B - 3fc3bf394a107c66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.ProductDetailsVC.compareAPI() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "1751">
+               </Location>
+               <Location
+                  uuid = "8E2D0030-D92E-4D2A-8C36-BFF1E90E636B - 3fc3bf394a107c66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.ProductDetailsVC.compareAPI() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "788">
+               </Location>
+               <Location
+                  uuid = "8E2D0030-D92E-4D2A-8C36-BFF1E90E636B - 3fc3bf394a107c45"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.ProductDetailsVC.compareAPI() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "788">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -3576,10 +3546,10 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "updateUI(model:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "4B948E3E-0AF4-4FD2-B778-97DE311BEF59 - 5791ed71eb82ab0"
@@ -3723,147 +3693,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A93FC134-92E3-4D7A-AC2F-BAC8544CA5D1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "fetchDataFromAPI(page:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A93FC134-92E3-4D7A-AC2F-BAC8544CA5D1 - 36da5cbfe7de1ce4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "116">
-               </Location>
-               <Location
-                  uuid = "A93FC134-92E3-4D7A-AC2F-BAC8544CA5D1 - 36da5cbfe7de1ce4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "288"
-                  endingLineNumber = "288"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "A93FC134-92E3-4D7A-AC2F-BAC8544CA5D1 - b0af23b35c0479c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "293"
-                  endingLineNumber = "293"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "A93FC134-92E3-4D7A-AC2F-BAC8544CA5D1 - b0af23b35c047459"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "A93FC134-92E3-4D7A-AC2F-BAC8544CA5D1 - b0af23b35c047459"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "116">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D94E872D-7A89-48FC-A1B5-864C636C2104"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "filterData(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D94E872D-7A89-48FC-A1B5-864C636C2104 - d113a4bcc4016bfe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.filterData(Foundation.Notification) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "856">
-               </Location>
-               <Location
-                  uuid = "D94E872D-7A89-48FC-A1B5-864C636C2104 - d113a4bcc4016bfe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.SearchVC.filterData(Foundation.Notification) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "652">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "212ABF52-F95C-4641-BE4D-FA76CC625D98"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -3949,8 +3778,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "ProductDetailsVC"
             landmarkType = "21">
          </BreakpointContent>
@@ -4702,174 +4531,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "fetchDataFromAPI(page:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - bc802d19bce9f582"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "2255">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - bc802d19bce9f582"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "2865">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - bc802d19bce9f582"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "1776">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - bc802d19bce9f582"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/MakeupLaVie/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "300"
-                  endingLineNumber = "300"
-                  offsetFromSymbolStart = "2228">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - 3af55215073390a2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "305"
-                  endingLineNumber = "305"
-                  offsetFromSymbolStart = "1776">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - 3af55215073390a2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "305"
-                  endingLineNumber = "305"
-                  offsetFromSymbolStart = "2228">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - 3af5521507339c27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "278"
-                  endingLineNumber = "278"
-                  offsetFromSymbolStart = "1776">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - 3af5521507339c27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "278"
-                  endingLineNumber = "278"
-                  offsetFromSymbolStart = "2228">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - 3af5521507339c27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "278"
-                  endingLineNumber = "278"
-                  offsetFromSymbolStart = "2255">
-               </Location>
-               <Location
-                  uuid = "58B7E9FF-C09B-4EF5-9795-67182DB48DD9 - 3af5521507339c27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.SearchVC.fetchDataFromAPI(page: Swift.Int) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/SearchVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "278"
-                  endingLineNumber = "278"
-                  offsetFromSymbolStart = "2865">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2A6A820F-AC7D-4F11-AB61-D2945CEA4F92"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -4877,8 +4538,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "CategoriesNextVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -4893,8 +4554,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "sideBarMenu(_:)"
             landmarkType = "7">
             <Locations>
@@ -5109,8 +4770,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -5157,8 +4818,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "checkUserLoggedIn()"
             landmarkType = "7">
             <Locations>
@@ -5280,8 +4941,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "refreshData()"
             landmarkType = "7">
             <Locations>
@@ -5373,28 +5034,28 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "sortingBtnTapped(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "D37B7B39-0F1A-4C29-9DDA-EAF990EEDD41 - 61ef115c4f88975a"
+                  uuid = "D37B7B39-0F1A-4C29-9DDA-EAF990EEDD41 - 7cafb88c6ac48575"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #7 (__C.UIAlertAction) -&gt; () in MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
+                  symbolName = "MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
                   moduleName = "MakeupLaVie"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "1310">
                </Location>
                <Location
-                  uuid = "D37B7B39-0F1A-4C29-9DDA-EAF990EEDD41 - 61ef115c4f88952e"
+                  uuid = "D37B7B39-0F1A-4C29-9DDA-EAF990EEDD41 - 61ef115c4f8894e4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -5404,23 +5065,8 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  uuid = "D37B7B39-0F1A-4C29-9DDA-EAF990EEDD41 - 61ef115c4f88952e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #7 (__C.UIAlertAction) -&gt; () in MakeupLaVie.CategoriesNextVC.sortingBtnTapped(Any) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
@@ -5514,10 +5160,57 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "updateUI(model:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0C16DB00-6E24-41BC-82BF-3CBD5256BA64 - e00c4dd2062de996"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "5658">
+               </Location>
+               <Location
+                  uuid = "0C16DB00-6E24-41BC-82BF-3CBD5256BA64 - e00c4dd2062de996"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "3661">
+               </Location>
+               <Location
+                  uuid = "0C16DB00-6E24-41BC-82BF-3CBD5256BA64 - e00c4dd2062de9b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "245"
+                  endingLineNumber = "245"
+                  offsetFromSymbolStart = "3661">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5530,28 +5223,13 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "categoryAPICall(page:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F18D1A8E-A30F-4379-87EE-E2B0E5149CFC - fd7e8f1d0575260b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MakeupLaVie.CategoriesNextVC.categoryAPICall(sortingString: Swift.String) -&gt; ()"
-                  moduleName = "MakeupLaVie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "196">
-               </Location>
-               <Location
-                  uuid = "F18D1A8E-A30F-4379-87EE-E2B0E5149CFC - 8e53479e8445e6c7"
+                  uuid = "F18D1A8E-A30F-4379-87EE-E2B0E5149CFC - 8e53479e8445e63d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -5561,12 +5239,12 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "208">
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "1248">
                </Location>
                <Location
-                  uuid = "F18D1A8E-A30F-4379-87EE-E2B0E5149CFC - 8e53479e8445e6c7"
+                  uuid = "F18D1A8E-A30F-4379-87EE-E2B0E5149CFC - 8e53479e8445e63d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -5576,9 +5254,9 @@
                   urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "262">
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "132">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -5687,9 +5365,9 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1178"
-            endingLineNumber = "1178"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            startingLineNumber = "1323"
+            endingLineNumber = "1323"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5735,8 +5413,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "apiCall()"
             landmarkType = "7">
             <Locations>
@@ -5792,14 +5470,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0E02AEF3-A007-4A6A-B613-DE457BE367CA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "apiCall()"
             landmarkType = "7">
             <Locations>
@@ -5863,6 +5541,36 @@
                   endingLineNumber = "185"
                   offsetFromSymbolStart = "260">
                </Location>
+               <Location
+                  uuid = "0E02AEF3-A007-4A6A-B613-DE457BE367CA - c1c27d7d68e5047d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.apiCall() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "632">
+               </Location>
+               <Location
+                  uuid = "0E02AEF3-A007-4A6A-B613-DE457BE367CA - 4ac6915278a23da8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.ProductDetailsVC.apiCall() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "260">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -5876,10 +5584,57 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "updateUI(model:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9336CD39-C26F-4906-A845-CD379100A3E1 - e00c4dd2062deb47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "7368">
+               </Location>
+               <Location
+                  uuid = "9336CD39-C26F-4906-A845-CD379100A3E1 - e00c4dd2062deb64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "7102">
+               </Location>
+               <Location
+                  uuid = "9336CD39-C26F-4906-A845-CD379100A3E1 - e00c4dd2062deb05"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "263"
+                  endingLineNumber = "263"
+                  offsetFromSymbolStart = "7102">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5892,10 +5647,72 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "updateUI(model:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5ACB80FB-DC31-46AA-94CD-70C805373C12 - e00c4dd2062df767"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "14342">
+               </Location>
+               <Location
+                  uuid = "5ACB80FB-DC31-46AA-94CD-70C805373C12 - e00c4dd2062df767"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "14652">
+               </Location>
+               <Location
+                  uuid = "5ACB80FB-DC31-46AA-94CD-70C805373C12 - e00c4dd2062df767"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "13086">
+               </Location>
+               <Location
+                  uuid = "5ACB80FB-DC31-46AA-94CD-70C805373C12 - e00c4dd2062df704"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.updateUI(model: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
+                  offsetFromSymbolStart = "13086">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5959,6 +5776,355 @@
                   offsetFromSymbolStart = "450">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA775438-3241-498E-92AB-E1220F55BB11"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "loadMoreData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EA775438-3241-498E-92AB-E1220F55BB11 - e3ae3a965a7f221d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.CategoriesNextVC.loadMoreData() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "85">
+               </Location>
+               <Location
+                  uuid = "EA775438-3241-498E-92AB-E1220F55BB11 - e3ae3a965a7f221d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.CategoriesNextVC.loadMoreData() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C79DED0-6B1F-4AF5-9DF9-88C94FAC69D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "categoryAPICall(page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6C79DED0-6B1F-4AF5-9DF9-88C94FAC69D0 - 4b13ba2720e4b9b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.CategoriesNextVC.categoryAPICall(page: Swift.Int) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "677">
+               </Location>
+               <Location
+                  uuid = "6C79DED0-6B1F-4AF5-9DF9-88C94FAC69D0 - 4b13ba2720e4b9b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.CategoriesNextVC.categoryAPICall(page: Swift.Int) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "411">
+               </Location>
+               <Location
+                  uuid = "6C79DED0-6B1F-4AF5-9DF9-88C94FAC69D0 - 4b13ba2720e4b9b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.CategoriesNextVC.categoryAPICall(page: Swift.Int) -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "603">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A3C7542-8CD3-4805-9523-E42EEC7C3B73"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/CategoryVC/CategoriesNextVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "374BD2BA-E3B6-407F-9607-AFA345909F89"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "apiCall()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "374BD2BA-E3B6-407F-9607-AFA345909F89 - 4ac6915278a23da8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON, Swift.Optional&lt;Swift.String&gt;, Swift.Int) -&gt; () in MakeupLaVie.ProductDetailsVC.apiCall() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "260">
+               </Location>
+               <Location
+                  uuid = "374BD2BA-E3B6-407F-9607-AFA345909F89 - c1c27d7d68e5041e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.apiCall() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "579">
+               </Location>
+               <Location
+                  uuid = "374BD2BA-E3B6-407F-9607-AFA345909F89 - c1c27d7d68e5043f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.ProductDetailsVC.apiCall() -&gt; ()"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/SearchVC/ProductDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "579">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5668C31-215C-4A11-8419-13581811C62E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
+            landmarkName = "allProductAPI(page:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A55C196-6A12-40A0-854C-7FD5C1023271"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "allProductAPI(page:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84CFC594-8157-4576-BA14-5F9BDD382C27"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "862"
+            endingLineNumber = "862"
+            landmarkName = "HomeVC"
+            landmarkType = "21">
+            <Locations>
+               <Location
+                  uuid = "84CFC594-8157-4576-BA14-5F9BDD382C27 - 76ff4ef2aa026b2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.HomeVC.collectionView(_: __C.UICollectionView, numberOfItemsInSection: Swift.Int) -&gt; Swift.Int"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "887"
+                  endingLineNumber = "887"
+                  offsetFromSymbolStart = "4464">
+               </Location>
+               <Location
+                  uuid = "84CFC594-8157-4576-BA14-5F9BDD382C27 - 76ff4ef2aa026ccc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.HomeVC.collectionView(_: __C.UICollectionView, numberOfItemsInSection: Swift.Int) -&gt; Swift.Int"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "888"
+                  endingLineNumber = "888"
+                  offsetFromSymbolStart = "4373">
+               </Location>
+               <Location
+                  uuid = "84CFC594-8157-4576-BA14-5F9BDD382C27 - 76ff4ef2aa026805"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.HomeVC.collectionView(_: __C.UICollectionView, numberOfItemsInSection: Swift.Int) -&gt; Swift.Int"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "863"
+                  endingLineNumber = "863"
+                  offsetFromSymbolStart = "4373">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "436257FE-1E37-4898-BE55-8FC88FDF51AC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1239"
+            endingLineNumber = "1239"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "436257FE-1E37-4898-BE55-8FC88FDF51AC - 721b8322edfaf38"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.HomeVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1224"
+                  endingLineNumber = "1224"
+                  offsetFromSymbolStart = "60884">
+               </Location>
+               <Location
+                  uuid = "436257FE-1E37-4898-BE55-8FC88FDF51AC - 721b8322edfa2bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeupLaVie.HomeVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "MakeupLaVie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/office-data/GiftBank/MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1251"
+                  endingLineNumber = "1251"
+                  offsetFromSymbolStart = "60884">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B806E6D-BD74-4DBD-99EF-CE8826B1DA5E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
+            landmarkName = "loadMoreData()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

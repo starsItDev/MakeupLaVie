@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 //class HomeVC: UIViewController, CollectionViewCellDelegate ,CollectionViewCellDelegate2 {
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, UIScrollViewDelegate {
     // MARK: - OutLets
     @IBOutlet weak var specialOfferCV: UICollectionView!
     @IBOutlet weak var hotProductCV: UICollectionView!
@@ -33,6 +33,9 @@ class HomeVC: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingImageView: UIView!
     @IBOutlet weak var featureBrandViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var allproductsCV: UICollectionView!
+    
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     
     // MARK: - Variable
     var isHeartButtonEnabled = true
@@ -47,6 +50,8 @@ class HomeVC: UIViewController {
     var counter = 0
     var namesArray = ["Home", "Search", "Products" , "Categories" , "WishList" , "CompareList", "Privacy Policy", "Login"]
     let imgArr = ["home","search","bag","menu","like", "recycle", "insurance","user"]
+    var currentPage = 1
+    var totalPages = -1
     
     var recentdataArray = [GenericListingModel]()
     var newproductArray = [GenericListingModel]()
@@ -55,7 +60,9 @@ class HomeVC: UIViewController {
     var speciallproductArray = [GenericListingModel]()
     var categoryArray = [GenericListingModel]()
     var BrandArray = [GenericListingModel]()
+    var allProductArr = [GenericListingModel]()
     var mArray = [Int]()
+    var totalHeight: CGFloat = 0.0
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -72,6 +79,7 @@ class HomeVC: UIViewController {
         getCategoryAPI()
         getBrandAPI()
         homePageAPI()
+        allProductAPI(page: currentPage)
         categoryCollectionView.reloadData()
         recentProductCV.reloadData()
         featureBrandCV.reloadData()
@@ -79,17 +87,26 @@ class HomeVC: UIViewController {
         bestProductCV.reloadData()
         hotProductCV.reloadData()
         specialOfferCV.reloadData()
+        allproductsCV.reloadData()
         sideBarView.isHidden = true
         isSideViewOpen = false
         setupViews()
         drawerTableView.reloadData()
         //lblName.text = strName
         myPageControl.currentPage = 0
+        
+        for view in scrollView.subviews {
+            totalHeight += view.bounds.height
+                }
+
+                // Set the content size of the scroll view
+        scrollViewHeight.constant = totalHeight
         myPageControl.numberOfPages = makeUPImageControl.count
         
         DispatchQueue.main.async {
           self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
         }
+        self.scrollView.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         checkUserLoggedIn()
@@ -454,6 +471,68 @@ class HomeVC: UIViewController {
             self.loadingImageView.isHidden = false
         }
     }
+    
+    func allProductAPI(page: Int) {
+        
+        //isLoadingData = true
+        let url = base_url + "products?page=\(page)"
+            Networking.instance.getApiCall(url: url){(response, error, statusCode) in
+                if error == nil && statusCode == 200{
+                    if let body = response["body"].dictionary{
+                        print(response)
+                        if body["totalPages"] != nil{
+                            self.totalPages = body["totalPages"]?.intValue ?? 0
+                        }
+                        if let res = body["response"]?.array{
+                            for dic in res{
+                                
+                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+                                self.allProductArr.append(model)
+                                
+                            }
+                            self.allproductsCV.reloadData()
+                        }
+                        
+                    }
+                    
+                    //self.filteredProducts = self.products
+                }
+            }
+        //}
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        // Check if the user is near the bottom
+        if maximumOffset - currentOffset <= 0 {
+            // Smoothly scroll to the bottom to give a better user experience
+            scrollView.setContentOffset(CGPoint(x: 0, y: maximumOffset), animated: true)
+            
+            // After smooth scrolling, load more data
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.loadMoreData()
+            }
+        }
+    }
+    
+    private func loadMoreData(){
+        //get ready the data . fetch
+        
+        let nextPageNumber = currentPage + 1
+        currentPage = nextPageNumber
+        if currentPage <= totalPages{
+            allProductAPI(page: currentPage)
+            //self.totalHeight = 0
+            //for view in self.scrollView.subviews {
+            self.totalHeight += allproductsCV.contentSize.height
+                    //}
+                    
+                    // Set the content size of the scroll view
+            self.scrollViewHeight.constant = self.totalHeight
+        }
+    }
 
     @objc func recentHeartBtnTapped(sender: UIButton) {
         // Disable the button to prevent multiple clicks
@@ -600,6 +679,33 @@ class HomeVC: UIViewController {
             }
         }
     }
+    @objc func allProductHeartBtnTapped(sender: UIButton){
+        let id = allProductArr[sender.tag].id ?? 0
+        WishList.wishListAPICall(id: id){(complete) in
+            if complete == true{
+                if self.allProductArr[sender.tag].hasWishlist!{
+                    if self.traitCollection.userInterfaceStyle == .dark {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        sender.setImage(UIImage(systemName: "heart"), for: .normal)
+                        sender.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    }
+                    self.allProductArr[sender.tag].hasWishlist = false
+                }
+                else{
+                    sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    sender.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+                    self.allProductArr[sender.tag].hasWishlist = true
+                }
+                
+            }
+            else{
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
 }
 
 // MARK: - Table View
@@ -622,36 +728,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
         else{
-//            switch indexPath.row {
-//            case 0:
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: "TrendingTableViewCell", for: indexPath) as? TrendingTableViewCell {
-//                    cell.delegate = self
-//                    return cell
-//                }
-//            case 1:
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionViewInsideTableViewCell", for: indexPath) as? CollectionViewInsideTableViewCell{
-//                    cell.delegate = self
-//                    return cell
-//                }
-//            case 2:
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: "SpecialTableView", for: indexPath) as? SpecialTableView {
-//                    cell.delegate = self
-//                    return cell
-//                }
-//            case 3:
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: "BestProductsTableView", for: indexPath) as? BestProductsTableView {
-//                    cell.delegate = self
-//                    return cell
-//                }
-//            case 4:
-//                if let cell = tableView.dequeueReusableCell(withIdentifier: "HotDealTableView", for: indexPath) as? HotDealTableView {
-//                    cell.delegate = self
-//                    return cell
-//                }
-//
-//            default:
-//                break
-//            }
             return UITableViewCell()
         }
     }
@@ -780,8 +856,11 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         else if collectionView == hotProductCV{
             return hotproductArray.count
         }
-        else{
+        else if collectionView == specialOfferCV{
             return speciallproductArray.count
+        }
+        else{
+            return allProductArr.count
         }
     }
     
@@ -931,7 +1010,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             
             
             cell.heartBtn.tag = indexPath.item
-            cell.heartBtn.addTarget(self, action: #selector(newHeartBtnTapped(sender:)), for: UIControl.Event.touchUpInside)
+            cell.heartBtn.addTarget(self, action: #selector(newHeartBtnTapped(sender:)), for: .touchUpInside)
             if instance.hasWishlist == true{
                 
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -999,7 +1078,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             }
             
             cell.heartBtn.tag = indexPath.item
-            cell.heartBtn.addTarget(self, action: #selector(bestHeartBtnTapped(sender:)), for: UIControl.Event.touchUpInside)
+            cell.heartBtn.addTarget(self, action: #selector(bestHeartBtnTapped(sender:)), for: .touchUpInside)
             if instance.hasWishlist == true{
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
@@ -1065,7 +1144,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             }
             
             cell.heartBtn.tag = indexPath.item
-            cell.heartBtn.addTarget(self, action: #selector(specialHeartBtnTapped(sender:)), for: UIControl.Event.touchUpInside)
+            cell.heartBtn.addTarget(self, action: #selector(specialHeartBtnTapped(sender:)), for: .touchUpInside)
             if instance.hasWishlist == true{
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
@@ -1090,7 +1169,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             
         }
         
-        else{
+        else if collectionView == hotProductCV{
             let instance = hotproductArray[indexPath.item]
             let cell = hotProductCV.dequeueReusableCell(withReuseIdentifier: "hotproductcell", for: indexPath) as! collectioncell
             cell.addToCartBtn.accessibilityIdentifier = "hot"
@@ -1133,7 +1212,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             }
             
             cell.heartBtn.tag = indexPath.item
-            cell.heartBtn.addTarget(self, action: #selector(hotHeartBtnTapped(sender: )), for: UIControl.Event.touchUpInside)
+            cell.heartBtn.addTarget(self, action: #selector(hotHeartBtnTapped(sender: )), for: .touchUpInside)
             if instance.hasWishlist == true{
                 cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                 cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
@@ -1156,6 +1235,72 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.masksToBounds = true
             return cell
             
+        }
+        else{
+            let cell = allproductsCV.dequeueReusableCell(withReuseIdentifier: "allproductcell", for: indexPath) as! collectioncell
+            //cell.addToCartBtn.accessibilityIdentifier = "hot"
+            //cell.addToCartBtn.tag = indexPath.row
+            let instance = allProductArr[indexPath.item]
+            //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
+            cell.productImg.setImage(with: instance.catagoryimage)
+            
+            cell.titleLbl.text = instance.catagorylabel
+            
+            let salePrice = (instance.sale_price as NSString).integerValue
+            let price = (instance.price as NSString).integerValue
+            if salePrice == price{
+                cell.oldPriceLbl.isHidden = true
+                cell.newPriceLbl.text = instance.sale_price
+            }
+            else{
+                cell.oldPriceLbl.isHidden = false
+                cell.newPriceLbl.text = instance.sale_price
+                let attributedString = NSAttributedString(string: instance.price, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
+                cell.oldPriceLbl.attributedText = attributedString
+            }
+            
+            if instance.featured == 1{
+                cell.featureLbl.text = "Featured"
+            }
+            else if instance.sponsored == 1{
+                cell.featureLbl.text = "Sponsored"
+            }
+            else if instance.newLabel == 1{
+                cell.featureLbl.text = "New"
+            }
+            else if instance.hotLabel == 1{
+                cell.featureLbl.text = "Hot"
+            }
+            else if instance.saleLabel == 1{
+                cell.featureLbl.text = "Sale"
+            }
+            else if instance.specialLabel == 1{
+                cell.featureLbl.text = "Special"
+            }
+            
+            cell.heartBtn.tag = indexPath.item
+            cell.heartBtn.addTarget(self, action: #selector(allProductHeartBtnTapped(sender: )), for: .touchUpInside)
+            if instance.hasWishlist == true{
+                cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+            }
+            else {
+                if traitCollection.userInterfaceStyle == .dark {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
+            }
+            
+            cell.cosmosRating.settings.fillMode = .precise
+            cell.cosmosRating.rating = instance.rating ?? 0
+            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
+            cell.layer.borderWidth = 0.5
+            cell.layer.cornerRadius = 6
+            cell.layer.masksToBounds = true
+            return cell
         }
         
     }
@@ -1207,6 +1352,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == pagerCollectionView{
             return CGSize(width: pagerCollectionView.bounds.width, height: 180)
+        }
+        if collectionView == allproductsCV{
+            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 250)
         }
         if collectionView == categoryCollectionView{
             return CGSize(width: 87, height: 80)

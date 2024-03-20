@@ -14,7 +14,7 @@ class ProductDetailsVC: UIViewController {
     
     @IBOutlet weak var available: UILabel!
     
-    @IBOutlet weak var quanityView: UIView!
+    @IBOutlet weak var quantityView: UIView!
     
     @IBOutlet weak var productCollectionView: UICollectionView!
     @IBOutlet var titleLbl: UILabel!
@@ -60,6 +60,7 @@ class ProductDetailsVC: UIViewController {
         apiCall()
         configuration()
         updateAddCartButtonText()
+        
     }
     
     //MARK: - Helper Functions
