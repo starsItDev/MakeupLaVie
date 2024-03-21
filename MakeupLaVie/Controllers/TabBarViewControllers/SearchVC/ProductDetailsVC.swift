@@ -522,14 +522,15 @@ class ImageSliderViewController: UIViewController, UIPageViewControllerDataSourc
     }
     
     func viewControllerAtIndex(_ index: Int) -> UIViewController {
-        let contentVC = UIViewController()
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 75, width: contentVC.view.bounds.width, height: contentVC.view.bounds.height - 150))
-        //let imageView = UIImageView(frame: contentVC.view.bounds)
-        imageView.contentMode = .scaleAspectFit
-        imageView.setImage(with: images[index].thumbMain)
-        contentVC.view.addSubview(imageView)
-        return contentVC
-    }
+            let contentVC = UIViewController()
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 75, width: contentVC.view.bounds.width, height: contentVC.view.bounds.height - 150))
+            //let imageView = UIImageView(frame: contentVC.view.bounds)
+            imageView.contentMode = .scaleAspectFit
+            imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            imageView.sd_setImage(with: URL(string: images[index].thumbMain), completed: nil)
+            contentVC.view.addSubview(imageView)
+            return contentVC
+        }
     @objc func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
     }

@@ -94,13 +94,6 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         drawerTableView.reloadData()
         //lblName.text = strName
         myPageControl.currentPage = 0
-        
-        for view in scrollView.subviews {
-            totalHeight += view.bounds.height
-                }
-
-                // Set the content size of the scroll view
-        scrollViewHeight.constant = totalHeight
         myPageControl.numberOfPages = makeUPImageControl.count
         
         DispatchQueue.main.async {
@@ -501,36 +494,6 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         //}
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let currentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        
-        // Check if the user is near the bottom
-        if maximumOffset - currentOffset <= 0 {
-            // Smoothly scroll to the bottom to give a better user experience
-            scrollView.setContentOffset(CGPoint(x: 0, y: maximumOffset), animated: true)
-            
-            // After smooth scrolling, load more data
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.loadMoreData()
-            }
-        }
-    }
-    
-    private func loadMoreData(){
-         //get ready the data . fetch
-         let nextPageNumber = currentPage + 1
-         currentPage = nextPageNumber
-         if currentPage < totalPages{
-             allProductAPI(page: currentPage)
-             self.scrollViewHeight.constant = self.totalHeight + allproductsCV.contentSize.height
-         }
-         else if currentPage == totalPages{
-             allProductAPI(page: currentPage)
-             let height = self.scrollViewHeight.constant - allproductsCV.contentSize.height
-             self.scrollViewHeight.constant = allproductsCV.contentSize.height + height + 200//200 for tabbar height
-         }
-     }
 
     @objc func recentHeartBtnTapped(sender: UIButton) {
         // Disable the button to prevent multiple clicks
@@ -837,11 +800,8 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         else if collectionView == hotProductCV{
             return hotproductArray.count
         }
-        else if collectionView == specialOfferCV{
-            return speciallproductArray.count
-        }
         else{
-            return allProductArr.count
+            return speciallproductArray.count
         }
     }
     
@@ -1162,7 +1122,7 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             
         }
         
-        else if collectionView == hotProductCV{
+        else{
             let instance = hotproductArray[indexPath.item]
             let cell = hotProductCV.dequeueReusableCell(withReuseIdentifier: "hotproductcell", for: indexPath) as! collectioncell
             cell.addToCartBtn.accessibilityIdentifier = "hot"
@@ -1232,75 +1192,6 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             return cell
             
         }
-        else{
-            let cell = allproductsCV.dequeueReusableCell(withReuseIdentifier: "allproductcell", for: indexPath) as! collectioncell
-            //cell.addToCartBtn.accessibilityIdentifier = "hot"
-            //cell.addToCartBtn.tag = indexPath.row
-            let instance = allProductArr[indexPath.item]
-            //cell.addToCartBtn.addTarget(self, action: #selector(AddtoCart(_:)), for: UIControl.Event.touchUpInside)
-            cell.productImg.setImage(with: instance.catagoryimage)
-            
-            cell.titleLbl.text = instance.catagorylabel
-            
-            let salePrice = (instance.sale_price as NSString).integerValue
-            let price = (instance.price as NSString).integerValue
-            if salePrice == price{
-                cell.oldPriceLbl.isHidden = true
-                cell.newPriceLbl.text = instance.sale_price
-            }
-            else{
-                cell.oldPriceLbl.isHidden = false
-                cell.newPriceLbl.text = instance.sale_price
-                let attributedString = NSAttributedString(string: instance.price, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
-                cell.oldPriceLbl.attributedText = attributedString
-            }
-            
-            if instance.featured == 1{
-                cell.featureLbl.text = "Featured"
-            }
-            else if instance.sponsored == 1{
-                cell.featureLbl.text = "Sponsored"
-            }
-            else if instance.newLabel == 1{
-                cell.featureLbl.text = "New"
-            }
-            else if instance.hotLabel == 1{
-                cell.featureLbl.text = "Hot"
-            }
-            else if instance.saleLabel == 1{
-                cell.featureLbl.text = "Sale"
-            }
-            else if instance.specialLabel == 1{
-                cell.featureLbl.text = "Special"
-            }
-            
-            cell.heartBtn.tag = indexPath.item
-            cell.heartBtn.addTarget(self, action: #selector(allProductHeartBtnTapped(sender: )), for: .touchUpInside)
-            if instance.hasWishlist == true{
-                cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
-            }
-            else {
-                if traitCollection.userInterfaceStyle == .dark {
-                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                    cell.heartBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                } else {
-                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
-                    cell.heartBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                }
-            }
-            
-            cell.cosmosRating.settings.fillMode = .precise
-            cell.cosmosRating.rating = instance.rating ?? 0
-            cell.layer.borderColor = UIColor(named: "black-darkgrey")?.cgColor
-            cell.layer.borderWidth = 0.5
-            cell.layer.cornerRadius = 6
-            cell.layer.masksToBounds = true
-            cell.featureLbl.clipsToBounds = true
-            cell.featureLbl.layer.cornerRadius = 8
-            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
-            return cell
-        }
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -1328,11 +1219,6 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
         }
         if collectionView == specialOfferCV{
             destinationVC.selectedResponseID = speciallproductArray[indexPath.item].id
-            
-            self.navigationController?.pushViewController(destinationVC, animated: true)
-        }
-        if collectionView == allproductsCV{
-            destinationVC.selectedResponseID = allProductArr[indexPath.item].id
             
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }

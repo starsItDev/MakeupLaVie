@@ -386,6 +386,8 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
                     cell.favBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 }
             }
+            cell.cosmosView.settings.fillMode = .precise
+            cell.cosmosView.rating = product.rating ?? 0
             cell.favBtn.tag = indexPath.item
             cell.favBtn.addTarget(self, action: #selector(heartBtnTapped(sender:)), for: .touchUpInside)
             //            cell.cosmosView.settings.fillMode = .precise

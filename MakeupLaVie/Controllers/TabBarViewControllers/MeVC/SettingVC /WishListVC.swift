@@ -6,7 +6,8 @@ class WishListVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLbl: UILabel!
     
-    
+    var totalPages = -1
+    var currentPage = 1
     var isWishList = false
     var isCompare = false
     var wishlistproductsArr: [GenericListingModel] = []
@@ -15,17 +16,17 @@ class WishListVC: UIViewController {
         if isWishList{
             self.titleLbl.text = "WishList"
             let str = "wishlist"
-            fetchData(str: str)
+            fetchData(str: str, page: currentPage)
         }
         else if isCompare{
             self.titleLbl.text = "Compare List"
             let str = "compare"
-            fetchData(str: str)
+            fetchData(str: str, page: currentPage)
         }
         else{
             self.titleLbl.text = "Products"
             let str = "products"
-            fetchData(str: str)
+            fetchData(str: str, page: currentPage)
         }
     }
     
@@ -37,14 +38,17 @@ class WishListVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func fetchData(str: String) {
-        let url = base_url + str
+    func fetchData(str: String, page: Int) {
+        let url = base_url + "\(str)?page=\(page)"
         Networking.instance.getApiCall(url: url){(response, error, statusCode) in
             if error == nil{
                 if let body = response["body"].dictionary {
                     //print(response)
                     if body["totalItemCount"] != nil{
                         //                              self.totalItemCount = body["totalItemCount"] as! Int
+                    }
+                    if body["totalPages"] != nil{
+                        self.totalPages = body["totalPages"]?.intValue ?? 1
                     }
                     if let res = body["response"]?.array{
                         for dic in res{
@@ -63,6 +67,35 @@ class WishListVC: UIViewController {
             }
         }
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if bottomEdge >= scrollView.contentSize.height {
+            // User has reached the bottom, load the next page
+            loadMoreData()
+        }
+    }
+    private func loadMoreData(){
+        //get ready the data . fetch
+        
+        let nextPageNumber = currentPage + 1
+        currentPage = nextPageNumber
+        if currentPage <= totalPages{
+            if isWishList{
+                let str = "wishlist"
+                fetchData(str: str, page: currentPage)
+            }
+            else if isCompare{
+                let str = "compare"
+                fetchData(str: str, page: currentPage)
+            }
+            else{
+                let str = "products"
+                fetchData(str: str, page: currentPage)
+            }
+        }
+    }
+    
     @objc func heartBtnTapped(sender: UIButton){
         let id = wishlistproductsArr[sender.tag].id ?? 0
         WishList.wishListAPICall(id: id){(complete) in
