@@ -810,24 +810,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         return 40
 
     }
-//
-//    func didSelectItemAtIndex(index: Int, selectedID: Int) {
-//        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
-//        destinationVC.selectedIndex = index
-//        destinationVC.selectedResponseID = selectedID
-//        navigationController?.pushViewController(destinationVC, animated: true)
-//    }
-//
-//    func didSelectItemAtIndex2(index: Int ,selectedID: Int) {
-//        print("ALL IS WELL")
-//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
-//        //vc.selectedIndex = index
-//        vc.selectedID = selectedID
-//        navigationController?.pushViewController(vc, animated: true)
-//
-//    }
-//
-//
+
 }
 
 // MARK: - Collection View
@@ -952,6 +935,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
+            cell.featureLbl.clipsToBounds = true
+            cell.featureLbl.layer.cornerRadius = 8
+            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
             return cell
         }
         else if collectionView == featureBrandCV{
@@ -1030,6 +1016,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
+            cell.featureLbl.clipsToBounds = true
+            cell.featureLbl.layer.cornerRadius = 8
+            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
             return cell
             
         }
@@ -1097,6 +1086,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
+            cell.featureLbl.clipsToBounds = true
+            cell.featureLbl.layer.cornerRadius = 8
+            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
             return cell
         }
         else if collectionView == specialOfferCV{
@@ -1163,6 +1155,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
+            cell.featureLbl.clipsToBounds = true
+            cell.featureLbl.layer.cornerRadius = 8
+            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
             return cell
             
         }
@@ -1231,6 +1226,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
+            cell.featureLbl.clipsToBounds = true
+            cell.featureLbl.layer.cornerRadius = 8
+            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
             return cell
             
         }
@@ -1298,6 +1296,9 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             cell.layer.borderWidth = 0.5
             cell.layer.cornerRadius = 6
             cell.layer.masksToBounds = true
+            cell.featureLbl.clipsToBounds = true
+            cell.featureLbl.layer.cornerRadius = 8
+            cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
             return cell
         }
         

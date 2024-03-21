@@ -5365,9 +5365,9 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1323"
-            endingLineNumber = "1323"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "1322"
+            endingLineNumber = "1322"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6010,10 +6010,10 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "862"
-            endingLineNumber = "862"
-            landmarkName = "HomeVC"
-            landmarkType = "21">
+            startingLineNumber = "843"
+            endingLineNumber = "843"
+            landmarkName = "collectionView(_:numberOfItemsInSection:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "84CFC594-8157-4576-BA14-5F9BDD382C27 - 76ff4ef2aa026b2d"
@@ -6073,8 +6073,8 @@
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1239"
-            endingLineNumber = "1239"
+            startingLineNumber = "1235"
+            endingLineNumber = "1235"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
@@ -6114,15 +6114,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2B806E6D-BD74-4DBD-99EF-CE8826B1DA5E"
+            uuid = "1D739E8F-4BA8-4240-9751-50A3593117BF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeupLaVie/Controllers/TabBarViewControllers/HomeVC/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "529"
-            endingLineNumber = "529"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "loadMoreData()"
             landmarkType = "7">
          </BreakpointContent>

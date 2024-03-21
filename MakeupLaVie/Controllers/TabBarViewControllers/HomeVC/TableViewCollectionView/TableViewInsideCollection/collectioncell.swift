@@ -48,6 +48,7 @@ class collectioncell: UICollectionViewCell {
             shadowview.layer.shadowColor = UIColor.black.cgColor
             shadowview.layer.shadowOffset = .zero
         }
+        
     }
     @IBAction func butnclk(_ sender: UIButton){
         let dic  = ["tag":"\(self.tag)"]
