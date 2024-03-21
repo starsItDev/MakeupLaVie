@@ -211,6 +211,9 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 6
         cell.layer.masksToBounds = true
+        cell.featureLbl.clipsToBounds = true
+        cell.featureLbl.layer.cornerRadius = 8
+        cell.featureLbl.layer.maskedCorners = [.layerMaxXMaxYCorner]
         return cell
         
     }

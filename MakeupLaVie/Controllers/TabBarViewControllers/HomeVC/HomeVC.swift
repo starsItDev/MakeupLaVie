@@ -1331,6 +1331,11 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
             
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
+        if collectionView == allproductsCV{
+            destinationVC.selectedResponseID = allProductArr[indexPath.item].id
+            
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        }
         if collectionView == categoryCollectionView{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
             vc.selectedID = categoryArray[indexPath.item].id

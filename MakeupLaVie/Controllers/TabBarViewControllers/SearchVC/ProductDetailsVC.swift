@@ -13,9 +13,7 @@ class ProductDetailsVC: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var available: UILabel!
-    
     @IBOutlet weak var quantityView: UIView!
-    
     @IBOutlet weak var productCollectionView: UICollectionView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet weak var rsLbl: UILabel!
@@ -60,7 +58,8 @@ class ProductDetailsVC: UIViewController {
         apiCall()
         configuration()
         updateAddCartButtonText()
-        
+        quantityView.layer.borderWidth = 1
+        quantityView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     //MARK: - Helper Functions
