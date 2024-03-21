@@ -46,10 +46,6 @@ class CategoriesNextVC: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.productsArr.removeAll()
-    }
-    
     @objc func filterSuccess(_ notification: Notification){
         print((notification.userInfo?["userInfo"]!)! as? [String:Any] ?? [:])
         let notif = notification.userInfo?["userInfo"]! as? [String:Any] ?? [:]
@@ -75,6 +71,7 @@ class CategoriesNextVC: UIViewController {
         if let searchbarText = notif["search"] as? String{
             str = str + "&search=\(searchbarText)"
         }
+        self.productsArr.removeAll()
         currentPage = 1
         categoryAPICall(page: currentPage)
     }

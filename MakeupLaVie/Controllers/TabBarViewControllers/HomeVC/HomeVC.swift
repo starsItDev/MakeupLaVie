@@ -33,7 +33,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingImageView: UIView!
     @IBOutlet weak var featureBrandViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var allproductsCV: UICollectionView!
+    //@IBOutlet weak var allproductsCV: UICollectionView!
     
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     
@@ -50,8 +50,8 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     var counter = 0
     var namesArray = ["Home", "Search", "Products" , "Categories" , "WishList" , "CompareList", "Privacy Policy", "Login"]
     let imgArr = ["home","search","bag","menu","like", "recycle", "insurance","user"]
-    var currentPage = 1
-    var totalPages = -1
+//    var currentPage = 1
+//    var totalPages = -1
     
     var recentdataArray = [GenericListingModel]()
     var newproductArray = [GenericListingModel]()
@@ -79,7 +79,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         getCategoryAPI()
         getBrandAPI()
         homePageAPI()
-        allProductAPI(page: currentPage)
+        //allProductAPI(page: currentPage)
         categoryCollectionView.reloadData()
         recentProductCV.reloadData()
         featureBrandCV.reloadData()
@@ -87,7 +87,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         bestProductCV.reloadData()
         hotProductCV.reloadData()
         specialOfferCV.reloadData()
-        allproductsCV.reloadData()
+        //allproductsCV.reloadData()
         sideBarView.isHidden = true
         isSideViewOpen = false
         setupViews()
@@ -171,6 +171,13 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - Button Action
+    
+    @IBAction func viewAllProductsTapped(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WishListVC") as? WishListVC
+        vc?.isWishList = false
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
     
     @IBAction func recentSeeAllBtnTapped(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoriesNextVC") as! CategoriesNextVC
@@ -465,34 +472,34 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func allProductAPI(page: Int) {
-        
-        //isLoadingData = true
-        let url = base_url + "products?page=\(page)"
-            Networking.instance.getApiCall(url: url){(response, error, statusCode) in
-                if error == nil && statusCode == 200{
-                    if let body = response["body"].dictionary{
-                        print(response)
-                        if body["totalPages"] != nil{
-                            self.totalPages = body["totalPages"]?.intValue ?? 0
-                        }
-                        if let res = body["response"]?.array{
-                            for dic in res{
-                                
-                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
-                                self.allProductArr.append(model)
-                                
-                            }
-                            self.allproductsCV.reloadData()
-                        }
-                        
-                    }
-                    
-                    //self.filteredProducts = self.products
-                }
-            }
-        //}
-    }
+//    func allProductAPI(page: Int) {
+//
+//        //isLoadingData = true
+//        let url = base_url + "products?page=\(page)"
+//            Networking.instance.getApiCall(url: url){(response, error, statusCode) in
+//                if error == nil && statusCode == 200{
+//                    if let body = response["body"].dictionary{
+//                        print(response)
+//                        if body["totalPages"] != nil{
+//                            self.totalPages = body["totalPages"]?.intValue ?? 0
+//                        }
+//                        if let res = body["response"]?.array{
+//                            for dic in res{
+//
+//                                let model = GenericListingModel.init(dic.rawValue as! Dictionary<String, AnyObject>)
+//                                self.allProductArr.append(model)
+//
+//                            }
+//                            //self.allproductsCV.reloadData()
+//                        }
+//
+//                    }
+//
+//                    //self.filteredProducts = self.products
+//                }
+//            }
+//        //}
+//    }
     
 
     @objc func recentHeartBtnTapped(sender: UIButton) {
@@ -1242,9 +1249,6 @@ extension HomeVC: UICollectionViewDelegate,UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == pagerCollectionView{
             return CGSize(width: pagerCollectionView.bounds.width, height: 180)
-        }
-        if collectionView == allproductsCV{
-            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 250)
         }
         if collectionView == categoryCollectionView{
             return CGSize(width: 87, height: 80)
