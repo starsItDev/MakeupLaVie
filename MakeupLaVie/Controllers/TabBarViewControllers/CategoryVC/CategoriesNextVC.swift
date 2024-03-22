@@ -88,6 +88,7 @@ class CategoriesNextVC: UIViewController {
     }
     
     @IBAction func sortingBtnTapped(_ sender: Any) {
+        self.productsArr.removeAll()
         let alertController = UIAlertController()
         
         let popularity = UIAlertAction(title: "Popularity", style: .default) { (action: UIAlertAction!) in
@@ -132,12 +133,19 @@ class CategoriesNextVC: UIViewController {
         alertController.addAction(productRating)
         alertController.addAction(orderAtoZ)
         alertController.addAction(orderZtoA)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
-            action in
-            
-        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // Check if running on iPad
+        if let popoverPresentationController = alertController.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            // You can adjust the rect to your needs
+            popoverPresentationController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverPresentationController.permittedArrowDirections = []
+        }
+        
         self.present(alertController, animated: true, completion: nil)
     }
+
     
     @objc func toggleViewBtnTapped(sender: UIButton) {
         if toggleViewBtn.isSelected{
