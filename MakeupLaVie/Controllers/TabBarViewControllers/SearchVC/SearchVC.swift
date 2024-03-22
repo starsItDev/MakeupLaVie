@@ -225,7 +225,7 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 250)
+        return CGSize(width: 160, height: 250)
     }
 }
 

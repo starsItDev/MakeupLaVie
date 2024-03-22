@@ -233,10 +233,10 @@ class SignUpVC: UIViewController , UITextViewDelegate{
                 let body = response["body"].dictionary
                 let message = body?["message"]?.stringValue
 //                utilityFunctions.showAlertWithTitle(title: "Verification Required", withMessage: message ?? "", withNavigation: self)
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
-                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                appdelegate.window?.rootViewController = vc
-                appdelegate.window?.makeKeyAndVisible()
+//                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+//                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+//                appdelegate.window?.rootViewController = vc
+//                appdelegate.window?.makeKeyAndVisible()
                 //self.navigationController?.popViewController(animated: true)
                 //                let user = body?["user"]?.dictionary
                 //                let id = user?["id"]?.intValue
@@ -247,6 +247,8 @@ class SignUpVC: UIViewController , UITextViewDelegate{
                 //                let locale = user?["locale"]?.stringValue
                 //                let phone = user?["phone"]?.stringValue
                 //                let account_type = user?["account_type"]?.intValue
+                self.navigationController?.popViewController(animated: true)
+
             }
             else{
                 let body = response["body"].dictionary

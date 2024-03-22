@@ -95,7 +95,11 @@ extension BrandsVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         vc.isBrand = true
         navigationController?.pushViewController(vc, animated: true)
     }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 170)
+//    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 170)
+        return CGSize(width: 160, height: 250)
     }
+
 }

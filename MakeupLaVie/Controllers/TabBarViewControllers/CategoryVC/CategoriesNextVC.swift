@@ -394,7 +394,7 @@ extension CategoriesNextVC: UICollectionViewDelegate, UICollectionViewDataSource
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == categoriesGridCV{
-            return CGSize(width: UIScreen.main.bounds.width/2 - 15, height: 268)
+            return CGSize(width: 160, height: 268)
         }
         else{
             return CGSize(width: 358, height: 175)
